@@ -100,6 +100,7 @@ services:
             - ./service_django/volumes/staticfiles/${APPLICATION_ENVIRONMENT}:/service_nginx/volumes/staticfiles:rw
             - ./service_django/volumes/mediafiles/${APPLICATION_ENVIRONMENT}:/service_nginx/volumes/mediafiles:rw
             - ./service_nginx/volumes/nginx/${APPLICATION_ENVIRONMENT}:/service_nginx/volumes/nginx:rw
+            - ./service_nginx/nginx/ssl:/etc/nginx/certs
             # This is our nginx template with the variables substituted:
             - ./service_nginx/nginx/nginx.conf:/etc/nginx/nginx.conf
         networks:
