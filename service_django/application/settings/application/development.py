@@ -34,7 +34,7 @@ INSTALLED_APPS = [
     'src.application.help',
     'src.application.home',
     'src.application.website',
-    # 'src.application.statistic',
+    'src.application.statistic',
     'src.application.hpc',
     'src.application.bigdata',
     'src.application.administration',
