@@ -49,9 +49,6 @@ $(window).bind("load resize", function () {
             intHeight -= 12; //#application___hpc___content___center has margin-top=10px and margin-bottom=0px and border-top=1px and border-bottom=1px
             intHeight -= 10; //#application___hpc___content___footer has margin-top=10px
         }
-        // (-62) #application___hpc___content___message has height=42px and margin-top=10px and margin-bottom=10px
-        // (-100) #application___hpc___content___footer has min-height=100px
-        $("#application___hpc___content___center").css("min-height", (intHeight - 62 - 100) + "px");
     }
 });
 /* */
@@ -60,37 +57,6 @@ $(window).bind("load resize", function () {
 var ___HTML___application___RELOAD___ = function () {
     var $link = $(this);
     window.location = $link.attr("data-url");
-};
-/* */
-/* */
-/* */
-var ___HTML___application___hpc___leftside___SCROLL_DESTROY___ = function () {
-    $("#application___hpc___leftside").mCustomScrollbar("destroy");
-};
-var ___HTML___application___hpc___leftside___SCROLL_CREATE___ = function () {
-    $("#application___hpc___leftside").mCustomScrollbar({
-        theme: "minimal-dark"
-    });
-};
-var ___HTML___application___hpc___leftside___SCROLL_DISABLE___ = function () {
-    $("#application___hpc___leftside").mCustomScrollbar("disable");
-};
-var ___HTML___application___hpc___leftside___SCROLL_ENABLE___ = function () {
-    $("#application___hpc___leftside").mCustomScrollbar("update");
-};
-var ___HTML___application___hpc___content___SCROLL_DESTROY___ = function () {
-    $("#application___hpc___content").mCustomScrollbar("destroy");
-};
-var ___HTML___application___hpc___content___SCROLL_CREATE___ = function () {
-    $("#application___hpc___content").mCustomScrollbar({
-        theme: "minimal-dark"
-    });
-};
-var ___HTML___application___hpc___content___SCROLL_DISABLE___ = function () {
-    $("#application___hpc___content").mCustomScrollbar("disable");
-};
-var ___HTML___application___hpc___content___SCROLL_ENABLE___ = function () {
-    $("#application___hpc___content").mCustomScrollbar("update");
 };
 /* */
 /* */
@@ -171,7 +137,7 @@ var ___HTML___application___hpc___header___RELOAD___ = function () {
 /* */
 /* */
 /* */
-var ___HTML___application___hpc___leftside___RELOAD___ = function (boolean___is_scroll_disable) {
+var ___HTML___application___hpc___leftside___RELOAD___ = function () {
     var identifier = "#application___hpc___leftside";
     $.ajax({
         url: $(identifier).attr("data-url"),
@@ -188,15 +154,10 @@ var ___HTML___application___hpc___leftside___RELOAD___ = function (boolean___is_
             else {
                 $(identifier).html(data.___HTML___APPLICATION___HPC___LEFTSIDE___);
                 $(identifier).application___hpc___leftside___nav();
-                ___HTML___application___hpc___leftside___SCROLL_DESTROY___();
-                ___HTML___application___hpc___leftside___SCROLL_CREATE___();
-                if (boolean___is_scroll_disable) {
-                    ___HTML___application___hpc___leftside___SCROLL_DISABLE___();
-                }
                 /* remove event */
                 $(identifier).off("click", ".LINK___application___hpc___content___center___reload");
                 /* add event */
-                $(identifier).on("click", ".LINK___application___hpc___content___center___reload", {"boolean___is_scroll_disable": boolean___is_scroll_disable}, ___HTML___application___hpc___content___center___RELOAD___);
+                $(identifier).on("click", ".LINK___application___hpc___content___center___reload", ___HTML___application___hpc___content___center___RELOAD___);
                 /* Refresh Automatic Click */
                 if ($(".LINK___application___hpc___content___center___reload").hasClass("active")) {
                     var link___leftside___active = ".LINK___application___hpc___content___center___reload.active";
@@ -227,18 +188,13 @@ var ___HTML___application___hpc___leftside___RELOAD___ = function (boolean___is_
                         },
                         success: function (data) {
                             $(identifier_2).html(data.___HTML___APPLICATION___HPC___CONTENT___CENTER___);
-                            ___HTML___application___hpc___content___SCROLL_DESTROY___();
-                            ___HTML___application___hpc___content___SCROLL_CREATE___();
-                            if (boolean___is_scroll_disable) {
-                                ___HTML___application___hpc___content___SCROLL_DISABLE___();
-                            }
                         }
                     });
                 }
                 /* remove event */
                 $(identifier).off("click", ".LINK___application___hpc___content___center___reload");
                 /* add event */
-                $(identifier).on("click", ".LINK___application___hpc___content___center___reload", {"boolean___is_scroll_disable": false}, ___HTML___application___hpc___content___center___RELOAD___);
+                $(identifier).on("click", ".LINK___application___hpc___content___center___reload", ___HTML___application___hpc___content___center___RELOAD___);
             }
         }
     });
@@ -249,7 +205,6 @@ var ___HTML___application___hpc___leftside___RELOAD___ = function (boolean___is_
 var searchRequest = null;
 var ___HTML___application___hpc___content___center___RELOAD___ = function (event) {
     var $link = $(this);
-    var boolean___is_scroll_disable = event.data.boolean___is_scroll_disable;
     if (searchRequest)
         searchRequest.abort();
     searchRequest = $.ajax({
@@ -270,11 +225,6 @@ var ___HTML___application___hpc___content___center___RELOAD___ = function (event
             }
             else {
                 $("#application___hpc___content___center").html(data.___HTML___APPLICATION___HPC___CONTENT___CENTER___);
-                ___HTML___application___hpc___content___SCROLL_DESTROY___();
-                ___HTML___application___hpc___content___SCROLL_CREATE___();
-                if (boolean___is_scroll_disable) {
-                    ___HTML___application___hpc___content___SCROLL_DISABLE___();
-                }
             }
         }
     });
@@ -370,9 +320,6 @@ var ___HTML___application___hpc___modal___ACTION_REFRESH___SECURITY___LOGIN___ =
 };
 var ___HTML___application___hpc___modal___ACTION_CLOSE___ = function () {
     $("#application___hpc___modal").modal("hide").html("");
-    /* */
-    ___HTML___application___hpc___leftside___SCROLL_ENABLE___();
-    ___HTML___application___hpc___content___SCROLL_ENABLE___();
 };
 var ___HTML___application___hpc___modal___ACTION_LOGIN___ = function () {
     var $form = $(this);
@@ -395,9 +342,7 @@ var ___HTML___application___hpc___modal___ACTION_LOGIN___ = function () {
                         ___HTML___application___hpc___load___RELOAD___();
                         ___HTML___application___hpc___title___RELOAD___();
                         ___HTML___application___hpc___header___RELOAD___();
-                        ___HTML___application___hpc___leftside___SCROLL_DESTROY___();
-                        ___HTML___application___hpc___content___SCROLL_DESTROY___();
-                        ___HTML___application___hpc___leftside___RELOAD___(false); // scroll___disable = false
+                        ___HTML___application___hpc___leftside___RELOAD___();
                         ___HTML___application___hpc___content___footer___RELOAD___();
                         /* */
                         ___HTML___application___hpc___modal___SHOW_MESSAGE_OK___(data);
@@ -463,9 +408,7 @@ var ___HTML___application___hpc___modal___ACTION_PROFILE___ = function () {
                 if (data.___BOOLEAN___IS_METHOD_POST___) {
                     if (data.___BOOLEAN___IS_VALID_FORM___) {
                         ___HTML___application___hpc___header___RELOAD___();
-                        ___HTML___application___hpc___leftside___SCROLL_DESTROY___();
-                        ___HTML___application___hpc___content___SCROLL_DESTROY___();
-                        ___HTML___application___hpc___leftside___RELOAD___(true); // scroll___disable = true
+                        ___HTML___application___hpc___leftside___RELOAD___();
                         /* */
                         $application___hpc___modal.html(data.___HTML___APPLICATION___HPC___MODAL___);
                         $application___hpc___modal.find(".modal___message").html(data.___HTML___APPLICATION___HPC___MODAL___MESSAGE___);
@@ -498,13 +441,10 @@ var ___HTML___application___hpc___modal___ACTION_LOCALE___ = function () {
                 ___HTML___application___hpc___modal___SHOW_MESSAGE_ERROR___(data);
             }
             else {
-                ___HTML___application___hpc___leftside___SCROLL_DESTROY___();
-                ___HTML___application___hpc___content___SCROLL_DESTROY___();
-                /* */
                 ___HTML___application___hpc___load___RELOAD___();
                 ___HTML___application___hpc___title___RELOAD___();
                 ___HTML___application___hpc___header___RELOAD___();
-                ___HTML___application___hpc___leftside___RELOAD___(false); // scroll___disable = false
+                ___HTML___application___hpc___leftside___RELOAD___();
                 ___HTML___application___hpc___content___footer___RELOAD___();
                 /* */
                 ___HTML___application___hpc___modal___SHOW_MESSAGE_OK___(data);
@@ -515,8 +455,6 @@ var ___HTML___application___hpc___modal___ACTION_LOCALE___ = function () {
 /* */
 var ___HTML___application___hpc___modal___SHOW_LOAD___ = function () {
     $("#application___hpc___leftside.collapse").removeClass("in");
-    ___HTML___application___hpc___leftside___SCROLL_DISABLE___();
-    ___HTML___application___hpc___content___SCROLL_DISABLE___();
     var $application___hpc___modal = $("#application___hpc___modal");
     if ($application___hpc___modal.hasClass("in")) {
         ___HTML___application___hpc___modal___modal_content___SHOW_LOAD___();
@@ -595,8 +533,6 @@ var ___HTML___application___hpc___modal___SHOW_MESSAGE_ERROR___ = function (data
     function ___JS___modal___message___close___() {
         $application___hpc___modal.find(".modal___message").off("click", ".alert button.close");
         $application___hpc___modal.modal("hide").html("");
-        ___HTML___application___hpc___leftside___SCROLL_ENABLE___();
-        ___HTML___application___hpc___content___SCROLL_ENABLE___();
         int___message_state = 1;
         if (typeof(data.___APPLICATION___SECURITY___USER___WITHOUT_PERMISSION___) != "undefined" && data.___APPLICATION___SECURITY___USER___WITHOUT_PERMISSION___ == true) {
             window.location.replace(data.___APPLICATION___SECURITY___USER___URL_REDIRECT___);
@@ -638,8 +574,6 @@ var ___HTML___application___hpc___modal___SHOW_MESSAGE_OK___ = function (data) {
     function ___JS___modal___message___close___() {
         $application___hpc___modal.find(".modal___message").off("click", ".alert button.close");
         $application___hpc___modal.modal("hide").html("");
-        ___HTML___application___hpc___leftside___SCROLL_ENABLE___();
-        ___HTML___application___hpc___content___SCROLL_ENABLE___();
         int___message_state = 1;
         if (typeof(data.___APPLICATION___SECURITY___USER___WITHOUT_PERMISSION___) != "undefined" && data.___APPLICATION___SECURITY___USER___WITHOUT_PERMISSION___ == true) {
             window.location.replace(data.___APPLICATION___SECURITY___USER___URL_REDIRECT___);

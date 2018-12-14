@@ -112,6 +112,13 @@ class Command(management.base.BaseCommand):
             {'identifier': 'application_help_document_detail', 'name': 'help document ___detail___'},
             {'identifier': 'application_help_document_update', 'name': 'help document ___update___'},
             {'identifier': 'application_help_document_delete', 'name': 'help document ___delete___'},
+            {'identifier': 'application_home_document_list', 'name': 'home document ___list___'},
+            {'identifier': 'application_home_document_create', 'name': 'home document ___create___'},
+            {'identifier': 'application_home_document_detail', 'name': 'home document ___detail___'},
+            {'identifier': 'application_home_document_update', 'name': 'home document ___update___'},
+            {'identifier': 'application_home_document_delete', 'name': 'home document ___delete___'},
+            # {'identifier': 'application_statistic_node_list', 'name': 'statistic node ___list___'},
+            # {'identifier': 'application_statistic_node_delete', 'name': 'statistic node ___delete___'},
         ]
         for x in list_dict___permission:
             instance___permission = models___application___security.Permission(
@@ -125,9 +132,14 @@ class Command(management.base.BaseCommand):
         self.stdout.write('%s' % ('+' * 100))
         self.stdout.write('%s %s %s' % ('+' * 3, 'Celery.....', '+' * 84))
         self.stdout.write('%s' % ('+' * 100))
-        # instervalschedule, boolean___created = models___django_celery_beat.IntervalSchedule.objects.get_or_create(
-        #     every=10,
+        # intervalschedule, boolean___created = models___django_celery_beat.IntervalSchedule.objects.get_or_create(
+        #     every=60,
         #     period=models___django_celery_beat.IntervalSchedule.SECONDS,
+        # )
+        # models___django_celery_beat.PeriodicTask.objects.create(
+        #     interval=intervalschedule,
+        #     name='PeriodicStatisticTask 001',
+        #     task='src.application.statistic.tasks.statistic_generator',
         # )
         crontabschedule, boolean___created = models___django_celery_beat.CrontabSchedule.objects.get_or_create(
             minute='*',  # */1

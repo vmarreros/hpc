@@ -5,12 +5,13 @@
     <!DOCTYPE html>
     <html lang="en">
         <head>
+            <!-- Application Administration Title -->
+            <title data-url="{% url "application___administration:index___title" %}">{% include "application/administration/___includes___/title/title.html" %}</title>
+
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
             <meta charset="utf-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1">
-            <!-- Application Administration Title -->
-            <title data-url="{% url "application___administration:index___title" %}">{% include "application/administration/___includes___/title/title.html" %}</title>
             <!-- favicon -->
             <link rel="shortcut icon" href="{% static 'application/administration/img/favicon/favicon.png' %}?{{ ctx___now }}" type="image/png">
             <!-- Bootstrap -->
@@ -22,8 +23,6 @@
             <link href="{% static "vendors/malihu-custom-scrollbar/jquery.mCustomScrollbar.min.css" %}?{{ ctx___now }}" rel="stylesheet"/>
             <!-- jQuery Drag Drop Collapsible Tree Table -->
             <link href="{% static "vendors/jquery-drag-drop-collapsible-tree-table/css/jquery.drag.drop.collapsible.tree.table.css" %}?{{ ctx___now }}" rel="stylesheet"/>
-            <!-- jQuery Checkbox Select Multiple Collapsible Tree Table -->
-            <link href="{% static "vendors/jquery-checkbox-select-multiple-collapsible-tree-table/css/jquery.checkbox.select.multiple.collapsible.tree.table.css" %}?{{ ctx___now }}" rel="stylesheet"/>
             <!-- WYSIWYG Editor Trumbowyg -->
             <link href="{% static 'vendors/trumbowyg/ui/trumbowyg.min.css' %}?{{ ctx___now }}" rel="stylesheet"/>
             <!-- Application Administration Custom Theme Style -->
@@ -83,8 +82,6 @@
             <script src="{% static "vendors/jquery/jquery.min.js" %}?{{ ctx___now }}"></script>
             <!-- Bootstrap -->
             <script src="{% static "vendors/bootstrap/js/bootstrap.min.js" %}?{{ ctx___now }}"></script>
-            <!-- CustomScrollbar -->
-            <script src="{% static "vendors/malihu-custom-scrollbar/jquery.mCustomScrollbar.concat.min.js" %}?{{ ctx___now }}"></script>
             <!-- jQuery Drag Drop Collapsible Tree Table -->
             <script src="{% static "vendors/jquery-drag-drop-collapsible-tree-table/js/jquery.drag.drop.collapsible.tree.table.js" %}?{{ ctx___now }}"></script>
             <!-- jQuery Checkbox Select Multiple Collapsible Tree Table -->

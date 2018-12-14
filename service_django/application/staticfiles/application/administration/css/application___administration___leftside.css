@@ -30,7 +30,8 @@
 
 #application___administration___leftside #leftside___user
 {
-    overflow :hidden;
+    display: flex;
+    min-height: 95px;
 }
 
 #application___administration___leftside #leftside___user #user___img
@@ -47,7 +48,7 @@
 
 #application___administration___leftside #leftside___user #user___text
 {
-    margin :20px 10px 10px 90px;
+    margin :20px 10px 10px 0;
 }
 
 #application___administration___leftside #leftside___user #user___text #text___welcome,
@@ -81,7 +82,7 @@
 
 #application___administration___leftside #leftside___nav li a.active
 {
-    background-color :#2a3f54;
+    background-color :#002E6D;
     color            :#ffffff;
 }
 

@@ -1,5 +1,11 @@
+html, body
+{
+    height: 100%
+}
+
 #application___bigdata
 {
+    height: 100%;
     position         :absolute !important;
     top              :0 !important;
     right            :0 !important;

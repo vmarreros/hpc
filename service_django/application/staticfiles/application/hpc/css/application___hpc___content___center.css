@@ -86,8 +86,3 @@
     background-color: #2a3f54 !important;
     color: white !important;
 }
-@media (min-width :992px) {
-    #application___hpc___content___center {
-        min-height: calc(100vh - 70px) !important;
-    }
-}

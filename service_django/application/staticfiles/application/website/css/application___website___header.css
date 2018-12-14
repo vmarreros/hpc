@@ -1,7 +1,7 @@
 #application___website___header
 {
     height           :50px;
-    background-color :#2a3f54;
+    background-color :#002E6D;
     border           :none;
 }
 
@@ -18,9 +18,15 @@
     color :#ffffff !important;
 }
 
-#application___website___header .navbar-header .navbar-brand
-{
-    color :#ffffff;
+#application___website___header .navbar-header .navbar-brand {
+    color: #ffffff;
+}
+
+#application___website___header .navbar-header .navbar-brand img {
+    max-height       :22px;
+    background-color :white;
+    padding          :2px;
+    border-radius    :3px;
 }
 
 #application___website___header .navbar-toggle
@@ -74,7 +80,7 @@
 {
     padding    :15px 10px;
     min-height :50px;
-    color      :#73879c;
+    color      :#ffffff;
     cursor     :pointer;
 }
 
@@ -87,6 +93,26 @@
 {
     background-color :transparent;
     color            :#ffffff;
+}
+
+@media (min-width :768px) {
+    #application___website___header .header___links > li.active {
+        color: #ffffff;
+    }
+
+    #application___website___header .header___links > li.active:after {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 0;
+        margin-left: -5px;
+        vertical-align: middle;
+        content: " ";
+        border-right: 5px solid transparent;
+        border-bottom: 5px solid;
+        border-left: 5px solid transparent;
+    }
 }
 
 #application___website___header .header___links > li > a > img
@@ -159,7 +185,7 @@
 #application___website___header .header___links > li.dropdown > ul.dropdown-menu > li > a:focus,
 #application___website___header .header___links > li.dropdown > ul.dropdown-menu > li > a:focus > div > span
 {
-    background-color :#2a3f54;
+    background-color :#002E6D;
     color            :#ffffff;
 }
 

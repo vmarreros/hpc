@@ -62,26 +62,9 @@
     border-radius: 3px;
     padding: 5px;
 }
-#application___hpc___content #datatable-jobs tr.child .panel > .panel-body .panel:last-child {
-    margin-bottom: 0;
-}
 
-#application___hpc___content #job-codes-info .panel {
-    border-radius: 3px
-}
-#application___hpc___content #job-codes-info .panel table {
-    margin-bottom: 0
-}
 #application___hpc___content #job-codes-info .panel:nth-child(2){
     margin-bottom: 0;
-}
-#application___hpc___content #job-codes-info .panel > .panel-heading {
-    font-size: 16px;
-    color: #fff;
-    background: linear-gradient(60deg, #2a3f54, #2a0f34);
-}
-#application___hpc___content #job-codes-info .panel > .panel-body {
-    padding: 15px 15px 15px 15px;
 }
 #application___hpc___content #job-codes-info .panel > .panel-body {
     overflow-x: auto
@@ -91,4 +74,44 @@
 }
 #application___hpc___content #job-codes-info .panel:nth-child(2) > .panel-body > table > tbody > tr > td:nth-child(2) {
     min-width: 280px;
+}
+
+[data-background-color] {
+    color: #FFFFFF;
+}
+[data-background-color="darker"] {
+    background: linear-gradient(60deg, #2a3f54, #2a0f34) !important;
+}
+[data-box-shadow="darker"] {
+    box-shadow: 0 12px 20px -10px rgba(13, 31, 110, 0.28), 0 4px 20px 0 rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(13, 31, 110, 0.2) !important;
+}
+[data-background-color="green"] {
+    background: linear-gradient(60deg, #66bb6a, #43a047) !important;
+}
+[data-box-shadow="green"] {
+    box-shadow: 0 12px 20px -10px rgba(76, 175, 80, 0.28), 0 4px 20px 0 rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(76, 175, 80, 0.2) !important;
+}
+[data-background-color="orange"] {
+    background: linear-gradient(60deg, #ffa726, #fb8c00) !important;
+}
+[data-box-shadow="orange"] {
+    box-shadow: 0 12px 20px -10px rgba(255, 152, 0, 0.28), 0 4px 20px 0 rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(255, 152, 0, 0.2) !important;
+}
+[data-background-color="red"] {
+    background: linear-gradient(60deg, #ef5350, #e53935) !important;
+}
+[data-box-shadow="red"] {
+    box-shadow: 0 12px 20px -10px rgba(244, 67, 54, 0.28), 0 4px 20px 0 rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(244, 67, 54, 0.2) !important;
+}
+[data-background-color="purple"] {
+    background: linear-gradient(60deg, #ab47bc, #8e24aa) !important;
+}
+[data-box-shadow="purple"] {
+    box-shadow: 0 12px 20px -10px rgba(156, 39, 176, 0.28), 0 4px 20px 0 rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(156, 39, 176, 0.2) !important;
+}
+[data-background-color="blue"] {
+    background: linear-gradient(60deg, #26c6da, #00acc1) !important;
+}
+[data-box-shadow="blue"] {
+    box-shadow: 0 12px 20px -10px rgba(0, 188, 212, 0.28), 0 4px 20px 0 rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(0, 188, 212, 0.2) !important;
 }

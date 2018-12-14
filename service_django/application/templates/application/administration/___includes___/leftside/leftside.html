@@ -3,7 +3,7 @@
 
 {% if request|___required___application___security___user___ %}
     <div id="leftside___user">
-        <div id="user___img" class="pull-left">
+        <div id="user___img">
             <img src="{{ request|___get_string___application___security___user___avatar_url___ }}" class="img-circle"/>
         </div>
         <div id="user___text">
@@ -85,6 +85,19 @@
                         <li>
                             {% url "application___administration:modules:administration_help:document:index" as url %}
                             <a data-url="{{ url }}" class="LINK___application___administration___content___center___reload {% if url == request|___get_string___application___security___user___url_current___ %}active{% endif %}"><span class="fa fa-list-ol fa-fw" aria-hidden="true"></span> {% trans "APPLICATION___ADMINISTRATION___LEFTSIDE___NAV___MODULE___HELP___DOCUMENTS" %}</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </li>
+        {% endif %}
+        {% if request|___required___application___security___user___has_permission___:"application_home_document_list" %}
+            <li>
+                <a href=""><span class="fa fa-home fa-fw" aria-hidden="true"></span> {% trans "APPLICATION___ADMINISTRATION___LEFTSIDE___NAV___MODULE___HOME" %}<span class="fa arrow" aria-hidden="true"></span></a>
+                <ul class="nav nav___second_level">
+                    {% if request|___required___application___security___user___has_permission___:"application_home_document_list" %}
+                        <li>
+                            {% url "application___administration:modules:administration_home:document:index" as url %}
+                            <a data-url="{{ url }}" class="LINK___application___administration___content___center___reload {% if url == request|___get_string___application___security___user___url_current___ %}active{% endif %}"><span class="fa fa-list-ol fa-fw" aria-hidden="true"></span> {% trans "APPLICATION___ADMINISTRATION___LEFTSIDE___NAV___MODULE___HOME___DOCUMENTS" %}</a>
                         </li>
                     {% endif %}
                 </ul>

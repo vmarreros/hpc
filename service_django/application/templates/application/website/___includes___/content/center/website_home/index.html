@@ -6,8 +6,46 @@
 <link href="{% static "application/website/css/application___website___content___center___home.css" %}?{{ ctx___now }}" rel="stylesheet">
 
 <h3 id="center___header">
-    <span class="fa fa-home fa-fw" aria-hidden="true"></span> {% trans "APPLICATION___WEBSITE___CONTENT___WEBSITE_HOME" %}
+    <span class="fa fa-home fa-fw" aria-hidden="true"></span> {% trans 'APPLICATION___WEBSITE___CONTENT___WEBSITE_HOME' %}
 </h3>
 <div id="center___content">
-    {% trans "APPLICATION___WEBSITE___CONTENT___WEBSITE_HOME___TEXT" %}
+    <div id="website___home">
+        <div id="website___home___banner">
+            <div id="website___home___banner___content">
+                {% if ctx___instance %}
+                    <img onload="$(this).parent().css({'max-width': $(this).width()});" class="img-responsive"
+                         src="{% if ctx___instance.image %}{{ MEDIA_URL }}{{ ctx___instance.image }}{% else %}{% static "application/home/img/imagen_share.png" %}{% endif %}" alt="...">
+                {% else %}
+                    <img onload="$(this).parent().css({'max-width': $(this).width()});" width="100%" src="{% static "application/home/img/imagen_share.png" %}" alt="...">
+                {% endif %}
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div id="website___home___banner___text">
+                            <h4>{% if ctx___title %}{{ ctx___title }}{% else %}{% trans "APPLICATION___WEBSITE___CONTENT___WEBSITE_HOME___BANNER___NON_TITLE" %}{% endif %}</h4>
+                            <p>{% if ctx___content %}{{ ctx___content|safe }}{% else %}{% trans "APPLICATION___WEBSITE___CONTENT___WEBSITE_HOME___BANNER___NON_DESCRIPTION" %}{% endif %}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-sm-6 col-md-offset-1 col-md-5 col-lg-offset-2 col-lg-4">
+                <div class="website___home___card">
+                    <span class="fa fa-server fa-fw fa-2x" aria-hidden="true"></span>
+                    <h4><b><a href="{% url "application___hpc:index" %}">{% trans "APPLICATION___WEBSITE___CONTENT___WEBSITE_HOME___CARD_HPC___TITLE" %}</a></b></h4>
+                    <hr>
+                    <p>{% trans "APPLICATION___WEBSITE___CONTENT___WEBSITE_HOME___CARD_HPC___DESCRIPTION" %}</p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-5 col-lg-4">
+                <div class="website___home___card">
+                    <span class="fa fa-database fa-fw fa-2x" aria-hidden="true"></span>
+                    <h4><b><a href="{% url "application___bigdata:index" %}">{% trans "APPLICATION___WEBSITE___CONTENT___WEBSITE_HOME___CARD_BIGDATA___TITLE" %}</a></b></h4>
+                    <hr>
+                    <p>{% trans "APPLICATION___WEBSITE___CONTENT___WEBSITE_HOME___CARD_BIGDATA___DESCRIPTION" %}</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

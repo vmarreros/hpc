@@ -1,39 +1,34 @@
-#application___website___content___footer
-{
-    min-height :100px;
-    margin     :10px 10px 0 10px;
-    padding    :0;
-    color      :#73879c;
+#application___website___content___footer {
+    margin :auto 10px 0 10px;
+    color  :white;
 }
 
-@media (max-width :767px)
-{
-    #application___website___content___footer
-    {
-        margin        :0;
+@media (max-width :767px) {
+    #application___website___content___footer {
+        margin        :auto 0 0 0;
         border-bottom :1px solid inherit;
     }
 }
 
-#application___website___content___footer #footer___text_1
-{
-    margin :20px 20px 0 20px;
+#application___website___content___footer #footer__banner {
+    padding          :20px;
+    background-color :#2a3f54;
 }
 
-#application___website___content___footer #footer___text_2
-{
-    margin :0 20px 20px 20px;
+#application___website___content___footer #footer__copyright {
+    padding          :20px;
+    background-color :#002E6D;
 }
 
-@media (max-width :767px)
-{
-    #application___website___content___footer #footer___text_1
-    {
-        margin :20px 10px 0 10px;
-    }
+#application___website___content___footer #footer__banner > #social > #share > img {
+    max-height       :35px;
+    background-color :white;
+    padding          :2px;
+    border-radius    :3px
+}
 
-    #application___website___content___footer #footer___text_2
-    {
-        margin :0 10px 10px 10px;
-    }
+#application___website___content___footer #footer__banner > #social > #share > a {
+    text-decoration :none;
+    color           :white;
+    padding         :0 0 0 3px;
 }

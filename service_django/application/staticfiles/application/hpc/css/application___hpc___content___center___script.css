@@ -3,6 +3,7 @@
         padding: 0;
     }
 }
+
 @media (min-width: 1200px) {
     #application___hpc___content #script___content > div:nth-child(1) {
         padding-left: 0;
@@ -18,15 +19,14 @@
     }
 }
 
-/*** #application___hpc___content ***/
 #application___hpc___content #script___content .button-width{
     width: 130px;
     text-align: center;
 }
+
 #application___hpc___content #script___content .CodeMirror {
     font-size: 12px;
     line-height: 1.5;
-    border-radius: 3px;
     border: 1px solid #ccc;
     -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
     box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
@@ -34,51 +34,30 @@
     -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
-#application___hpc___content #script___content > div:nth-child(1) .CodeMirror-focused {
-    /*border-color: #66afe9;
-    outline: 0;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6)*/
-}
-#application___hpc___content #script___content form > .panel {
-    border-radius: 3px
-}
-#application___hpc___content #script___content form > .panel > .panel-heading {
-    font-size: 16px;
-    color: #fff;
-    background: linear-gradient(60deg, #2a3f54, #2a0f34);
-}
-#application___hpc___content #script___content form > .panel > .panel-heading select {
-    padding: 2px 8px;
-    display: inline !important;
-    width: auto !important;
-}
-#application___hpc___content #script___content form > .panel > .panel-body {
-    padding: 15px 15px 0 15px;
-}
-#application___hpc___content #script___content form > .panel > .panel-body hr {
-    margin-top: 0
-}
+
 #application___hpc___content #script___content .application___hpc___script___error {
     color: red;
 }
 
-/*** #application___hpc___modal ***/
 #application___hpc___modal > #modal-variables .modal-body {
     max-height: 600px;
     overflow-y: auto;
 }
+
 #application___hpc___modal > #modal-variables .modal-body > .modal___tab .tab-content{
     margin-top: 10px;
 }
+
 #application___hpc___modal > #modal-variables .modal-body > .modal___tab {
     margin: 0;
     padding: 5px 15px 15px 15px;
     border: none
 }
+
 #application___hpc___modal > #modal-variables .modal-body > .modal___tab table > thead > tr > th:nth-child(2){
     min-width: 300px
 }
+
 #application___hpc___modal > #modal-variables .modal-body > .modal___tab table > tbody > tr > td {
-    color: #73879c
+    color: #2a3f54
 }

@@ -296,7 +296,7 @@ def ___jsonresponse___create___(request, ___utils___module___, ___utils___module
         boolean___request = ___utils___module_model___.___boolean___create___initial___(request=request, dict___data=dict___data)
         if boolean___request is False:
             return ___jsonresponse___error___(request=request)
-    form = ___utils___module_model___.___FORM___CREATE___(data=request.POST or None, request=request)
+    form = ___utils___module_model___.___FORM___CREATE___(data=request.POST or None, request=request, files=request.FILES or None)
     if request.method == 'POST':
         dict___data['___BOOLEAN___IS_METHOD_POST___'] = True
         if form.is_valid():

@@ -32,7 +32,9 @@ INSTALLED_APPS = [
     'captcha',
     'src.application.security',
     'src.application.help',
+    'src.application.home',
     'src.application.website',
+    # 'src.application.statistic',
     'src.application.hpc',
     'src.application.bigdata',
     'src.application.administration',
@@ -105,6 +107,7 @@ LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'i18n/application/administration/locale/application___administration___content___admin_security___group/locale'),
     os.path.join(BASE_DIR, 'i18n/application/administration/locale/application___administration___content___admin_security___permission/locale'),
     os.path.join(BASE_DIR, 'i18n/application/administration/locale/application___administration___content___admin_help___document/locale'),
+    os.path.join(BASE_DIR, 'i18n/application/administration/locale/application___administration___content___admin_home___document/locale'),
 )
 
 # Database

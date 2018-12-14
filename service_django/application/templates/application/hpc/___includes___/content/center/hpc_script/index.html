@@ -9,10 +9,10 @@
             {% csrf_token %}
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    {% trans 'HPC___CONTENT___SCRIPT___HEADER' %}
+                    <span class="fa fa-header fa-inverse"></span>&nbsp;{% trans 'HPC___CONTENT___SCRIPT___HEADER' %}
                 </div>
                 <div class="panel-body">
-                    <h4>{% trans 'HPC___CONTENT___SCRIPT___LEGEND___GENERAL_OPTION' %}</h4>
+                    <h5><b>{% trans 'HPC___CONTENT___SCRIPT___LEGEND___GENERAL_OPTION' %}</b></h5>
                     {% with field=form.script_name title="HPC___CONTENT___SCRIPT___FIELD___SCRIPT_NAME___POPOVER___TITLE" content="HPC___CONTENT___SCRIPT___FIELD___SCRIPT_NAME___POPOVER___CONTENT" name="HPC___CONTENT___SCRIPT___FIELD___SCRIPT_NAME___TITLE" addon=".sl"%}
                         {% include 'application/hpc/___includes___/content/center/hpc_script/___includes___/form/textfield.html' %}
                     {% endwith %}
@@ -26,7 +26,7 @@
                         {% include 'application/hpc/___includes___/content/center/hpc_script/___includes___/form/textfield.html' %}
                     {% endwith %}
                     <hr>
-                    <h4>{% trans 'HPC___CONTENT___SCRIPT___LEGEND___RESOURCE_HANDLING' %}</h4>
+                    <h5><b>{% trans 'HPC___CONTENT___SCRIPT___LEGEND___RESOURCE_HANDLING' %}</b></h5>
                     {% with field1=form.nodes field2=form.ntasks title="HPC___CONTENT___SCRIPT___FIELD___RESOURCE_LIST_NODES___POPOVER___TITLE" content="HPC___CONTENT___SCRIPT___FIELD___RESOURCE_LIST_NODES___POPOVER___CONTENT" name="HPC___CONTENT___SCRIPT___FIELD___RESOURCE_LIST_NODES___TITLE" %}
                         {% include 'application/hpc/___includes___/content/center/hpc_script/___includes___/form/group2field.html' %}
                     {% endwith %}
@@ -52,7 +52,7 @@
                         {% include 'application/hpc/___includes___/content/center/hpc_script/___includes___/form/textfield.html' %}
                     {% endwith %}
                     <hr>
-                    <h4>{% trans 'HPC___CONTENT___SCRIPT___LEGEND___STREAM_OPTIONS' %}</h4>
+                    <h5><b>{% trans 'HPC___CONTENT___SCRIPT___LEGEND___STREAM_OPTIONS' %}</b></h5>
                     {% with field=form.output title="HPC___CONTENT___SCRIPT___FIELD___OUTPUT_STREAM___POPOVER___TITLE" content="HPC___CONTENT___SCRIPT___FIELD___OUTPUT_STREAM___POPOVER___CONTENT" name="HPC___CONTENT___SCRIPT___FIELD___OUTPUT_STREAM___TITLE" %}
                         {% include 'application/hpc/___includes___/content/center/hpc_script/___includes___/form/textfield.html' %}
                     {% endwith %}
@@ -60,7 +60,7 @@
                         {% include 'application/hpc/___includes___/content/center/hpc_script/___includes___/form/textfield.html' %}
                     {% endwith %}
                     <hr>
-                    <h4>{% trans 'HPC___CONTENT___SCRIPT___LEGEND___MAIL_OPTIONS' %}</h4>
+                    <h5><b>{% trans 'HPC___CONTENT___SCRIPT___LEGEND___MAIL_OPTIONS' %}</b></h5>
                     {% with field=form.mail_user title="HPC___CONTENT___SCRIPT___FIELD___MAIL_ADDRESS___POPOVER___TITLE" content="HPC___CONTENT___SCRIPT___FIELD___MAIL_ADDRESS___POPOVER___CONTENT" name="HPC___CONTENT___SCRIPT___FIELD___MAIL_ADDRESS___TITLE" %}
                         {% include 'application/hpc/___includes___/content/center/hpc_script/___includes___/form/textfield.html' %}
                     {% endwith %}
@@ -71,7 +71,7 @@
             </div>
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    {% trans 'HPC___CONTENT___SCRIPT___BODY' %}
+                    <span class="fa fa-code fa-inverse"></span>&nbsp;{% trans 'HPC___CONTENT___SCRIPT___BODY' %}
                     <div class="form-inline input-group-sm pull-right">
                         <label class="hidden-xs">Lang</label>
                         <select class="form-control" onchange="selectLang(this)">

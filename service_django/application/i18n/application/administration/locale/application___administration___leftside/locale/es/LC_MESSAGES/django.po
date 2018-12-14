@@ -46,3 +46,9 @@ msgstr "Ayuda"
 
 msgid "APPLICATION___ADMINISTRATION___LEFTSIDE___NAV___MODULE___HELP___DOCUMENTS"
 msgstr "Documentos"
+
+msgid "APPLICATION___ADMINISTRATION___LEFTSIDE___NAV___MODULE___HOME"
+msgstr "Inicio"
+
+msgid "APPLICATION___ADMINISTRATION___LEFTSIDE___NAV___MODULE___HOME___DOCUMENTS"
+msgstr "Documentos"

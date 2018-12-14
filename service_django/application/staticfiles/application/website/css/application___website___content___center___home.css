@@ -1,20 +1,36 @@
-#application___website___content___center #center___content h4
-{
-    margin :20px 0 5px 0;
+#application___website___content___center #center___content #website___home___banner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-#application___website___content___center #center___content h4:first-child
-{
-    margin-top :10px;
+#application___website___content___center #center___content #website___home___banner___content {
+    background-color :rgba(0,0,0,.8);
+    color            :white;
+    text-align       :center;
+    padding          :4px;
+    box-shadow       :1px 2px 2px rgba(0,0,0,.8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-#application___website___content___center #center___content p
-{
-    margin :5px 0;
+#application___website___content___center #center___content #website___home___banner___content div{
+    padding:0 10px;
 }
 
-#application___website___content___center #center___content a
-{
-    color           :blue;
-    text-decoration :underline;
+#application___website___content___center #center___content #website___home___banner___content a {
+    text-decoration :none;
+    color           :#73879c;
+}
+
+#application___website___content___center #center___content .website___home___card {
+    text-align :center;
+    box-shadow :1px 2px 2px rgba(0,0,0,.3);
+    padding    :15px;
+}
+
+#application___website___content___center #center___content .website___home___card h4 a{
+    text-decoration :none;
+    color           :#73879c !important;
 }

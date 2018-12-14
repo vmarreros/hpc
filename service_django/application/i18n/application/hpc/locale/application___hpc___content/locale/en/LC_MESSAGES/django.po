@@ -12,8 +12,22 @@ msgstr "HPC"
 
 
 
-msgid "APPLICATION___HPC___CONTENT___FOOTER___TEXT_1"
-msgstr "Developed by the Departament of Informatization and Comunication."
+msgid "APPLICATION___HPC___CONTENT___FOOTER___SOCIAL___HEADER"
+msgstr "Share"
 
-msgid "APPLICATION___HPC___CONTENT___FOOTER___TEXT_2 %(ctx___now_l)s %(ctx___now_F)s %(ctx___now_j)s %(ctx___now_Y)s"
+msgid "APPLICATION___HPC___CONTENT___FOOTER___SUPPORT___HEADER"
+msgstr "Technical support"
+msgid "APPLICATION___HPC___CONTENT___FOOTER___SUPPORT___TEXT1"
+msgstr "Phone"
+msgid "APPLICATION___HPC___CONTENT___FOOTER___SUPPORT___TEXT2"
+msgstr "E-mail"
+
+msgid "APPLICATION___HPC___CONTENT___FOOTER___DEVELOPED___HEADER"
+msgstr "Developed by"
+msgid "APPLICATION___HPC___CONTENT___FOOTER___DEVELOPED___TEXT1"
+msgstr "Computerization Department of the UCLV"
+msgid "APPLICATION___HPC___CONTENT___FOOTER___DEVELOPED___TEXT2 %(ctx___now_l)s %(ctx___now_F)s %(ctx___now_j)s %(ctx___now_Y)s"
 msgstr "Today is %(ctx___now_l)s, %(ctx___now_F)s %(ctx___now_j)s, %(ctx___now_Y)s"
+
+msgid "APPLICATION___HPC___CONTENT___FOOTER___COPYRIGHT"
+msgstr "Copyright © 2018 Central University \"Marta Abreu\" of Las Villas. All rights reserved."

@@ -49,9 +49,6 @@ $(window).bind("load resize", function () {
             intHeight -= 12; //#application___administration___content___center has margin-top=10px and margin-bottom=0px and border-top=1px and border-bottom=1px
             intHeight -= 10; //#application___administration___content___footer has margin-top=10px
         }
-        // (-62) #application___administration___content___message has height=42px and margin-top=10px and margin-bottom=10px
-        // (-100) #application___administration___content___footer has min-height=100px
-        $("#application___administration___content___center").css("min-height", (intHeight - 62 - 100) + "px");
     }
 });
 /* */
@@ -60,37 +57,6 @@ $(window).bind("load resize", function () {
 var ___HTML___application___RELOAD___ = function () {
     var $link = $(this);
     window.location = $link.attr("data-url");
-};
-/* */
-/* */
-/* */
-var ___HTML___application___administration___leftside___SCROLL_DESTROY___ = function () {
-    $("#application___administration___leftside").mCustomScrollbar("destroy");
-};
-var ___HTML___application___administration___leftside___SCROLL_CREATE___ = function () {
-    $("#application___administration___leftside").mCustomScrollbar({
-        theme: "minimal-dark"
-    });
-};
-var ___HTML___application___administration___leftside___SCROLL_DISABLE___ = function () {
-    $("#application___administration___leftside").mCustomScrollbar("disable");
-};
-var ___HTML___application___administration___leftside___SCROLL_ENABLE___ = function () {
-    $("#application___administration___leftside").mCustomScrollbar("update");
-};
-var ___HTML___application___administration___content___SCROLL_DESTROY___ = function () {
-    $("#application___administration___content").mCustomScrollbar("destroy");
-};
-var ___HTML___application___administration___content___SCROLL_CREATE___ = function () {
-    $("#application___administration___content").mCustomScrollbar({
-        theme: "minimal-dark"
-    });
-};
-var ___HTML___application___administration___content___SCROLL_DISABLE___ = function () {
-    $("#application___administration___content").mCustomScrollbar("disable");
-};
-var ___HTML___application___administration___content___SCROLL_ENABLE___ = function () {
-    $("#application___administration___content").mCustomScrollbar("update");
 };
 /* */
 /* */
@@ -171,7 +137,7 @@ var ___HTML___application___administration___header___RELOAD___ = function () {
 /* */
 /* */
 /* */
-var ___HTML___application___administration___leftside___RELOAD___ = function (boolean___is_scroll_disable) {
+var ___HTML___application___administration___leftside___RELOAD___ = function () {
     var identifier = "#application___administration___leftside";
     $.ajax({
         url: $(identifier).attr("data-url"),
@@ -188,15 +154,10 @@ var ___HTML___application___administration___leftside___RELOAD___ = function (bo
             else {
                 $(identifier).html(data.___HTML___APPLICATION___ADMINISTRATION___LEFTSIDE___);
                 $(identifier).application___administration___leftside___nav();
-                ___HTML___application___administration___leftside___SCROLL_DESTROY___();
-                ___HTML___application___administration___leftside___SCROLL_CREATE___();
-                if (boolean___is_scroll_disable) {
-                    ___HTML___application___administration___leftside___SCROLL_DISABLE___();
-                }
                 /* remove event */
                 $(identifier).off("click", ".LINK___application___administration___content___center___reload");
                 /* add event */
-                $(identifier).on("click", ".LINK___application___administration___content___center___reload", {"boolean___is_scroll_disable": boolean___is_scroll_disable}, ___HTML___application___administration___content___center___RELOAD___);
+                $(identifier).on("click", ".LINK___application___administration___content___center___reload", ___HTML___application___administration___content___center___RELOAD___);
                 /* Refresh Automatic Click */
                 if ($(".LINK___application___administration___content___center___reload").hasClass("active")) {
                     var link___leftside___active = ".LINK___application___administration___content___center___reload.active";
@@ -227,18 +188,13 @@ var ___HTML___application___administration___leftside___RELOAD___ = function (bo
                         },
                         success: function (data) {
                             $(identifier_2).html(data.___HTML___APPLICATION___ADMINISTRATION___CONTENT___CENTER___);
-                            ___HTML___application___administration___content___SCROLL_DESTROY___();
-                            ___HTML___application___administration___content___SCROLL_CREATE___();
-                            if (boolean___is_scroll_disable) {
-                                ___HTML___application___administration___content___SCROLL_DISABLE___();
-                            }
                         }
                     });
                 }
                 /* remove event */
                 $(identifier).off("click", ".LINK___application___administration___content___center___reload");
                 /* add event */
-                $(identifier).on("click", ".LINK___application___administration___content___center___reload", {"boolean___is_scroll_disable": false}, ___HTML___application___administration___content___center___RELOAD___);
+                $(identifier).on("click", ".LINK___application___administration___content___center___reload", ___HTML___application___administration___content___center___RELOAD___);
             }
         }
     });
@@ -248,7 +204,6 @@ var ___HTML___application___administration___leftside___RELOAD___ = function (bo
 /* */
 var ___HTML___application___administration___content___center___RELOAD___ = function (event) {
     var $link = $(this);
-    var boolean___is_scroll_disable = event.data.boolean___is_scroll_disable;
     var $application___administration___content___center = $("#application___administration___content___center");
     var $application___administration___modal = $("#application___administration___modal");
     $.ajax({
@@ -269,12 +224,6 @@ var ___HTML___application___administration___content___center___RELOAD___ = func
             }
             else {
                 $application___administration___content___center.html(data.___HTML___APPLICATION___ADMINISTRATION___CONTENT___CENTER___);
-                ___HTML___application___administration___content___SCROLL_DESTROY___();
-                ___HTML___application___administration___content___SCROLL_CREATE___();
-                if (boolean___is_scroll_disable) {
-                    ___HTML___application___administration___content___SCROLL_DISABLE___();
-                }
-                /* Binding */
                 $(document).ready(function () {
                     /* Instructions to excecute when end the load. */
                     /* Table TBody Refresh */
@@ -569,9 +518,6 @@ var ___HTML___application___administration___modal___ACTION_REFRESH___ADMINISTRA
 };
 var ___HTML___application___administration___modal___ACTION_CLOSE___ = function () {
     $("#application___administration___modal").modal("hide").html("");
-    /* */
-    ___HTML___application___administration___leftside___SCROLL_ENABLE___();
-    ___HTML___application___administration___content___SCROLL_ENABLE___();
 };
 var ___HTML___application___administration___modal___ACTION_LOGIN___ = function () {
     var $form = $(this);
@@ -594,9 +540,7 @@ var ___HTML___application___administration___modal___ACTION_LOGIN___ = function 
                         ___HTML___application___administration___load___RELOAD___();
                         ___HTML___application___administration___title___RELOAD___();
                         ___HTML___application___administration___header___RELOAD___();
-                        ___HTML___application___administration___leftside___SCROLL_DESTROY___();
-                        ___HTML___application___administration___content___SCROLL_DESTROY___();
-                        ___HTML___application___administration___leftside___RELOAD___(false); // scroll___disable = false
+                        ___HTML___application___administration___leftside___RELOAD___();
                         ___HTML___application___administration___content___footer___RELOAD___();
                         /* */
                         ___HTML___application___administration___modal___SHOW_MESSAGE_OK___(data);
@@ -662,9 +606,7 @@ var ___HTML___application___administration___modal___ACTION_PROFILE___ = functio
                 if (data.___BOOLEAN___IS_METHOD_POST___) {
                     if (data.___BOOLEAN___IS_VALID_FORM___) {
                         ___HTML___application___administration___header___RELOAD___();
-                        ___HTML___application___administration___leftside___SCROLL_DESTROY___();
-                        ___HTML___application___administration___content___SCROLL_DESTROY___();
-                        ___HTML___application___administration___leftside___RELOAD___(true); // scroll___disable = true
+                        ___HTML___application___administration___leftside___RELOAD___();
                         /* */
                         $application___administration___modal.html(data.___HTML___APPLICATION___ADMINISTRATION___MODAL___);
                         $application___administration___modal.find(".modal___message").html(data.___HTML___APPLICATION___ADMINISTRATION___MODAL___MESSAGE___);
@@ -697,13 +639,10 @@ var ___HTML___application___administration___modal___ACTION_LOCALE___ = function
                 ___HTML___application___administration___modal___SHOW_MESSAGE_ERROR___(data);
             }
             else {
-                ___HTML___application___administration___leftside___SCROLL_DESTROY___();
-                ___HTML___application___administration___content___SCROLL_DESTROY___();
-                /* */
                 ___HTML___application___administration___load___RELOAD___();
                 ___HTML___application___administration___title___RELOAD___();
                 ___HTML___application___administration___header___RELOAD___();
-                ___HTML___application___administration___leftside___RELOAD___(false); // scroll___disable = false
+                ___HTML___application___administration___leftside___RELOAD___();
                 ___HTML___application___administration___content___footer___RELOAD___();
                 /* */
                 ___HTML___application___administration___modal___SHOW_MESSAGE_OK___(data);
@@ -726,9 +665,12 @@ var ___HTML___application___administration___modal___ACTION_CREATE___ = function
     }
     $.ajax({
         url: $form.attr("action") + string___url,
-        data: $form.serialize(),
+        data: new FormData(this),
         type: $form.attr("method"),
         dataType: "json",
+        cache: false,
+        processData: false,
+        contentType: false,
         beforeSend: function () {
             ___HTML___application___administration___modal___modal_content___modal_body___SHOW_LOAD___();
         },
@@ -1055,8 +997,6 @@ var ___HTML___application___administration___modal___ACTION_DISAPPROVE___ = func
 /* */
 var ___HTML___application___administration___modal___SHOW_LOAD___ = function () {
     $("#application___administration___leftside.collapse").removeClass("in");
-    ___HTML___application___administration___leftside___SCROLL_DISABLE___();
-    ___HTML___application___administration___content___SCROLL_DISABLE___();
     var $application___administration___modal = $("#application___administration___modal");
     if ($application___administration___modal.hasClass("in")) {
         ___HTML___application___administration___modal___modal_content___SHOW_LOAD___();
@@ -1105,14 +1045,17 @@ var ___HTML___application___administration___modal___EVENTS_OFF___ = function ()
         .off("click", ".LINK___application___administration___modal___action_refresh")
         .off("click", ".LINK___application___administration___modal___action_refresh___security___login")
         .off("click", ".LINK___application___administration___modal___action_refresh___administration_help___document")
+        .off("click", ".LINK___application___administration___modal___action_refresh___administration_home___document")
         .off("click", ".LINK___application___administration___modal___action_close")
         .off("submit", ".LINK___application___administration___modal___action_login")
         .off("submit", ".LINK___application___administration___modal___action_logout")
         .off("submit", ".LINK___application___administration___modal___action_profile")
         .off("submit", ".LINK___application___administration___modal___action_create")
         .off("submit", ".LINK___application___administration___modal___action_create___administration_help___document")
+        .off("submit", ".LINK___application___administration___modal___action_create___administration_home___document")
         .off("submit", ".LINK___application___administration___modal___action_update")
         .off("submit", ".LINK___application___administration___modal___action_update___administration_help___document")
+        .off("submit", ".LINK___application___administration___modal___action_update___administration_home___document")
         .off("submit", ".LINK___application___administration___modal___action_delete")
         .off("submit", ".LINK___application___administration___modal___action_approve")
         .off("submit", ".LINK___application___administration___modal___action_disapprove")
@@ -1129,14 +1072,17 @@ var ___HTML___application___administration___modal___EVENTS_ON___ = function () 
         .on("click", ".LINK___application___administration___modal___action_refresh", ___HTML___application___administration___modal___ACTION_REFRESH___)
         .on("click", ".LINK___application___administration___modal___action_refresh___security___login", ___HTML___application___administration___modal___ACTION_REFRESH___SECURITY___LOGIN___)
         .on("click", ".LINK___application___administration___modal___action_refresh___administration_help___document", ___HTML___application___administration___modal___ACTION_REFRESH___ADMINISTRATION_HELP___DOCUMENT___)
+        .on("click", ".LINK___application___administration___modal___action_refresh___administration_home___document", ___HTML___application___administration___modal___ACTION_REFRESH___)
         .on("click", ".LINK___application___administration___modal___action_close", ___HTML___application___administration___modal___ACTION_CLOSE___)
         .on("submit", ".LINK___application___administration___modal___action_login", ___HTML___application___administration___modal___ACTION_LOGIN___)
         .on("submit", ".LINK___application___administration___modal___action_logout", ___HTML___application___administration___modal___ACTION_LOGOUT___)
         .on("submit", ".LINK___application___administration___modal___action_profile", ___HTML___application___administration___modal___ACTION_PROFILE___)
         .on("submit", ".LINK___application___administration___modal___action_create", ___HTML___application___administration___modal___ACTION_CREATE___)
         .on("submit", ".LINK___application___administration___modal___action_create___administration_help___document", ___HTML___application___administration___modal___ACTION_CREATE___ADMINISTRATION_HELP___DOCUMENT___)
+        .on("submit", ".LINK___application___administration___modal___action_create___administration_home___document", ___HTML___application___administration___modal___ACTION_CREATE___)
         .on("submit", ".LINK___application___administration___modal___action_update", ___HTML___application___administration___modal___ACTION_UPDATE___)
         .on("submit", ".LINK___application___administration___modal___action_update___administration_help___document", ___HTML___application___administration___modal___ACTION_UPDATE___ADMINISTRATION_HELP___DOCUMENT___)
+        .on("submit", ".LINK___application___administration___modal___action_update___administration_home___document", ___HTML___application___administration___modal___ACTION_UPDATE___)
         .on("submit", ".LINK___application___administration___modal___action_delete", ___HTML___application___administration___modal___ACTION_DELETE___)
         .on("submit", ".LINK___application___administration___modal___action_approve", ___HTML___application___administration___modal___ACTION_APPROVE___)
         .on("submit", ".LINK___application___administration___modal___action_disapprove", ___HTML___application___administration___modal___ACTION_DISAPPROVE___)
@@ -1164,8 +1110,6 @@ var ___HTML___application___administration___modal___SHOW_MESSAGE_ERROR___ = fun
     function ___JS___modal___message___close___() {
         $application___administration___modal.find(".modal___message").off("click", ".alert button.close");
         $application___administration___modal.modal("hide").html("");
-        ___HTML___application___administration___leftside___SCROLL_ENABLE___();
-        ___HTML___application___administration___content___SCROLL_ENABLE___();
         int___message_state = 1;
         if (typeof(data.___APPLICATION___SECURITY___USER___WITHOUT_PERMISSION___) != "undefined" && data.___APPLICATION___SECURITY___USER___WITHOUT_PERMISSION___ == true) {
             window.location.replace(data.___APPLICATION___SECURITY___USER___URL_REDIRECT___);
@@ -1207,8 +1151,6 @@ var ___HTML___application___administration___modal___SHOW_MESSAGE_OK___ = functi
     function ___JS___modal___message___close___() {
         $application___administration___modal.find(".modal___message").off("click", ".alert button.close");
         $application___administration___modal.modal("hide").html("");
-        ___HTML___application___administration___leftside___SCROLL_ENABLE___();
-        ___HTML___application___administration___content___SCROLL_ENABLE___();
         int___message_state = 1;
         if (typeof(data.___APPLICATION___SECURITY___USER___WITHOUT_PERMISSION___) != "undefined" && data.___APPLICATION___SECURITY___USER___WITHOUT_PERMISSION___ == true) {
             window.location.replace(data.___APPLICATION___SECURITY___USER___URL_REDIRECT___);
