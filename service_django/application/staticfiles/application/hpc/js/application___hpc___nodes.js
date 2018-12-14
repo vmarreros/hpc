@@ -29,9 +29,9 @@ var hpc_nodes_datatable_init = function(){
         },
         sPaginationType: 'numbers'
     };
-    $("#datatable-nodes").DataTable(optionsDataTable);
-    $('#datatable-nodes_length').addClass('col-sm-6').css('padding', '0');
-    $('#datatable-nodes_filter').addClass('col-sm-6').css('padding', '0');
+    $("#nodes___datatable").DataTable(optionsDataTable);
+    $('#nodes___datatable_length').addClass('col-sm-6').css('padding', '0');
+    $('#nodes___datatable_filter').addClass('col-sm-6').css('padding', '0');
 };
 
 var hpc_nodes_chart_reload = function(snapshot){

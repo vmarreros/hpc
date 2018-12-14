@@ -7,7 +7,49 @@
 {% with ctx___graph=ctx___now %}
     <div id="center___content">
         <div id="nodes___content" class="container-fluid" data-url="{% url 'application___hpc:modules:hpc_nodes:chartnodes' %}" data-snapshot="{{ ctx___graph }}">
-            <div class="row">
+            <div id="nodes___cpu">
+
+            </div>
+            <table id="nodes___datatable" class="table nowrap" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>{% trans 'HPC___CONTENT___NODES___TABLE_NODES___COLUMN_Name' %}</th>
+                        <th>{% trans 'HPC___CONTENT___NODES___TABLE_NODES___COLUMN_Partition' %}</th>
+                        <th>{% trans 'HPC___CONTENT___NODES___TABLE_NODES___COLUMN_IP_address' %}</th>
+                        <th>{% trans 'HPC___CONTENT___NODES___TABLE_NODES___COLUMN_State' %}</th>
+                        <th>CPUs</th>
+                        <th>{% trans 'HPC___CONTENT___NODES___TABLE_NODES___COLUMN_Assigned_CPUs' %}</th>
+                        <th>{% trans 'HPC___CONTENT___NODES___TABLE_NODES___COLUMN_CPU_load' %}</th>
+                        <th>{% trans 'HPC___CONTENT___NODES___TABLE_NODES___COLUMN_Resources' %}</th>
+                        <th>{% trans 'HPC___CONTENT___NODES___TABLE_NODES___COLUMN_Memory' %}</th>
+                        <th>{% trans 'HPC___CONTENT___NODES___TABLE_NODES___COLUMN_Free_memory' %}</th>
+                        <th>{% trans 'HPC___CONTENT___NODES___TABLE_NODES___COLUMN_Assigned_memory' %}</th>
+                        <th>S:C:T</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for node in nodes %}
+                    <tr>
+                        <td>{{ node.NodeName }}</td>
+                        <td>{{ node.Partitions }}</td>
+                        <td>{{ node.NodeAddr }}</td>
+                        <td>{{ node.State | title }}</td>
+                        <td>{{ node.CPUTot }}</td>
+                        <td>{{ node.CPUAlloc }}</td>
+                        <td>{{ node.CPULoad }}</td>
+                        <td>{% ifequal node.Gres '(null)' %}cpu{% else %}{{ node.Gres }}{% endifequal %}</td>
+                        <td>{{ node.RealMemory }}mb</td>
+                        <td>{{ node.FreeMem }}mb</td>
+                        <td>{{ node.AllocMem }}mb</td>
+                        <td>{{ node.Sockets }}:{{ node.CoresPerSocket }}:{{ node.ThreadsPerCore }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <div id="cluster___statistic" class="row">
+                {% comment %}<h4 id="center___header">
+                    <span class="fa fa-calculator fa-fw" aria-hidden="true"></span> Estadistica general del cluster
+                </h4>{% endcomment %}
                 <div class="col-md-6 col-lg-4">
                     <div class="wrapper">
                         <canvas id="myLineChart" height="1" width="1"></canvas>
@@ -44,43 +86,6 @@
                     </table>
                 </div>
             </div>
-            <hr>
-            <table id="datatable-nodes" class="table nowrap" cellspacing="0" width="100%">
-                <thead>
-                    <tr>
-                        <th>{% trans 'HPC___CONTENT___NODES___TABLE_NODES___COLUMN_Name' %}</th>
-                        <th>{% trans 'HPC___CONTENT___NODES___TABLE_NODES___COLUMN_Partition' %}</th>
-                        <th>{% trans 'HPC___CONTENT___NODES___TABLE_NODES___COLUMN_IP_address' %}</th>
-                        <th>{% trans 'HPC___CONTENT___NODES___TABLE_NODES___COLUMN_State' %}</th>
-                        <th>CPUs</th>
-                        <th>{% trans 'HPC___CONTENT___NODES___TABLE_NODES___COLUMN_Assigned_CPUs' %}</th>
-                        <th>{% trans 'HPC___CONTENT___NODES___TABLE_NODES___COLUMN_CPU_load' %}</th>
-                        <th>{% trans 'HPC___CONTENT___NODES___TABLE_NODES___COLUMN_Resources' %}</th>
-                        <th>{% trans 'HPC___CONTENT___NODES___TABLE_NODES___COLUMN_Memory' %}</th>
-                        <th>{% trans 'HPC___CONTENT___NODES___TABLE_NODES___COLUMN_Free_memory' %}</th>
-                        <th>{% trans 'HPC___CONTENT___NODES___TABLE_NODES___COLUMN_Assigned_memory' %}</th>
-                        <th>S:C:T</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {% for node in nodes %}
-                    <tr>
-                        <td>{{ node.NodeName }}</td>
-                        <td>{{ node.Partitions }}</td>
-                        <td>{{ node.NodeAddr }}</td>
-                        <td>{{ node.State | title }}</td>
-                        <td>{{ node.CPUTot }}</td>
-                        <td>{{ node.CPUAlloc }}</td>
-                        <td>{{ node.CPULoad }}</td>
-                        <td>{% ifequal node.Gres '(null)' %}cpu{% else %}{{ node.Gres }}{% endifequal %}</td>
-                        <td>{{ node.RealMemory }}mb</td>
-                        <td>{{ node.FreeMem }}mb</td>
-                        <td>{{ node.AllocMem }}mb</td>
-                        <td>{{ node.Sockets }}:{{ node.CoresPerSocket }}:{{ node.ThreadsPerCore }}</td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
         </div>
     </div>
     <script>

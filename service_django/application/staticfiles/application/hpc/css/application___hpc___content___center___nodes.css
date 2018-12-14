@@ -33,11 +33,11 @@
 
 
 @media (max-width: 767px) {
-    #application___hpc___content #datatable-nodes_wrapper > .dataTables_length > label {
+    #application___hpc___content #nodes___datatable_wrapper > .dataTables_length > label {
         display: none
     }
 }
-#application___hpc___content #datatable-nodes_wrapper > .dataTables_paginate>.pagination>li>a {
+#application___hpc___content #nodes___datatable_wrapper > .dataTables_paginate>.pagination>li>a {
     background-color: #ffffff;
     border-color: #d9dee4;
     color: #2a3f54;
@@ -45,10 +45,10 @@
     font-size: 12px;
     line-height: 1.5
 }
-#application___hpc___content #datatable-nodes_wrapper > .dataTables_paginate >.pagination>li>a:hover {
+#application___hpc___content #nodes___datatable_wrapper > .dataTables_paginate >.pagination>li>a:hover {
     background-color: #ededed;
 }
-#application___hpc___content #datatable-nodes_wrapper > .dataTables_paginate>.pagination>li.active>a {
+#application___hpc___content #nodes___datatable_wrapper > .dataTables_paginate>.pagination>li.active>a {
     background-color: #2a3f54;
     border-color: #2a3f54;
     color: #ffffff
