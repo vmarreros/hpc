@@ -78,7 +78,7 @@ def ___view___edit___(request):
             messages.add_message(request, messages.ERROR, response)
         else:
             encoding = response.decode('utf-8')
-            if encoding.find("text/") == -1:
+            if encoding.find("text/") == -1 and encoding.find("inode/x-empty") == -1:
                 messages.add_message(request, messages.ERROR, _('HPC___SSH___MESSAGES_OpenFileNotEncodingText') % encoding)
             else:
                 error, response = linux.open_file(instance, full_path)
