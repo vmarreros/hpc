@@ -136,7 +136,7 @@ ___FIELD___LOGIN___REQUEST___IDENTIFIER___ = forms.CharField(
     min_length=1,
     max_length=100,
     validators=[
-        validators.RegexValidator('^[\w_]+$', message=_('APPLICATION___SECURITY___LOGIN___REQUEST___VALIDATION Only letters, numbers and the special character _.')),
+        validators.RegexValidator('^[a-z\d_]+$', message=_('APPLICATION___SECURITY___LOGIN___REQUEST___VALIDATION Only letters, numbers and the special character _.')),
     ],
     widget=forms.TextInput(
         attrs={
