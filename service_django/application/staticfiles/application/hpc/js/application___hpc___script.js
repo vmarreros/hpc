@@ -42,14 +42,10 @@ var hpc_script_submit = function(evt){
             if (data['___BOOLEAN___ERROR___']) {
                 ___HTML___application___hpc___modal___SHOW_MESSAGE_ERROR___(data);
                 $application___hpc___content___center.html(data['___HTML___APPLICATION___HPC___CONTENT___CENTER___']);
-                ___HTML___application___hpc___content___SCROLL_DESTROY___();
-                ___HTML___application___hpc___content___SCROLL_CREATE___();
             }
             else {
                 $application___hpc___content___center.html(data['___HTML___APPLICATION___HPC___CONTENT___CENTER___']);
                 ___HTML___application___hpc___modal___SHOW_MESSAGE_OK___(data);
-                ___HTML___application___hpc___content___SCROLL_DESTROY___();
-                ___HTML___application___hpc___content___SCROLL_CREATE___();
             }
         }
     });
@@ -77,14 +73,10 @@ var hpc_script_run = function(){
             if (data['___BOOLEAN___ERROR___']) {
                 ___HTML___application___hpc___modal___SHOW_MESSAGE_ERROR___(data);
                 $application___hpc___content___center.html(data['___HTML___APPLICATION___HPC___CONTENT___CENTER___']);
-                ___HTML___application___hpc___content___SCROLL_DESTROY___();
-                ___HTML___application___hpc___content___SCROLL_CREATE___();
             }
             else {
                 $application___hpc___content___center.html(data['___HTML___APPLICATION___HPC___CONTENT___CENTER___']);
                 ___HTML___application___hpc___modal___SHOW_MESSAGE_OK___(data);
-                ___HTML___application___hpc___content___SCROLL_DESTROY___();
-                ___HTML___application___hpc___content___SCROLL_CREATE___();
             }
         }
     });
