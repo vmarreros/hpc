@@ -8,7 +8,7 @@ msgstr ""
 
 
 msgid "HPC___CONTENT___EXPLORER"
-msgstr "Sistema de archivos"
+msgstr "Sistema de archivos .v2"
 
 # *****************************************************************************
 # APPLICATION HPC CONTENT HPC_EXPLORER
@@ -28,7 +28,7 @@ msgstr "Acciones"
 msgid "HPC___CONTENT___EXPLORER___BUTTONS___Back"
 msgstr "Atrás"
 msgid "HPC___CONTENT___EXPLORER___BUTTONS___View"
-msgstr "Ver"
+msgstr "Abrir"
 msgid "HPC___CONTENT___EXPLORER___BUTTONS___Edit"
 msgstr "Editar"
 msgid "HPC___CONTENT___EXPLORER___BUTTONS___Rename"

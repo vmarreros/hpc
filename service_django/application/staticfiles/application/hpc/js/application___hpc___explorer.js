@@ -17,29 +17,34 @@ var hpc_explorer_init = function(){
     const
         $hpc__content__center = $('#application___hpc___content___center'),
         $hpc__modal =  $('#application___hpc___modal'),
-
         $hpc__tbody =  $hpc__content__center.find('#explorer___content').find('#tableFileSystem').find('tbody'),
-        $hpc__pwd = $hpc__content__center.find('#explorer___content').find('#printWorkingDirectory'),
         $hpc__buttons = $hpc__content__center.find('#explorer___content').find('#actionsFileSystem'),
-        $hpc__buttons__header = $hpc__content__center.find('#center___header').find('#actionsInHeader'),
         url_list =  $hpc__content__center.find('#explorer___content').find('#tableFileSystem').attr('data-url-list'),
         url_error =  $hpc__content__center.find('#explorer___content').find('#tableFileSystem').attr('data-url-error'),
         home =  $hpc__content__center.find('#explorer___content').find('#tableFileSystem').attr('data-home');
     var filesToCopy = [];
 
+    function breadcumbs (p) {
+        var $breadcumbs = $hpc__content__center.find('#explorer___content').find('#printWorkingDirectory'),
+            pwd = p.split("/"),
+            i = 1;
+        $breadcumbs.html('<a data-path="' + pwd.slice(0,4).join("/") + '"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a>');
+        pwd.slice(4).forEach(function(e){
+            $breadcumbs.append('&nbsp;/&nbsp;<a data-path="' + pwd.slice(0,4+i).join("/") + '">' + e + '</a>');
+            i++;
+        });
+    }
 
-    var hpc__explorer__disabled_all_actions= function(){
-        $hpc__buttons.find('a').each(function(){
+    var hpc__explorer__btn__disable = function(){
+        $hpc__buttons.find('a[data-option]').each(function(){
             $(this).attr('disabled', 'disabled');
         });
-        $hpc__buttons__header.find('a').each(function (){
-            $(this).attr('disabled', 'disabled');
+        $hpc__buttons.find('li[data-option]').each(function(){
+            $(this).addClass('disabled');
         });
     };
-    var hpc__explorer__disabled_actions = function(){
-        $hpc__buttons__header.find('a').each(function (){
-            $(this).removeAttr('disabled');
-        });
+    var hpc__explorer__btn__enable = function(){
+        hpc__explorer__btn__disable();
         var i = 0, count = 0, d = false, f = false;
         $hpc__tbody.find('tr').each(function(){
             if($(this).hasClass('primary')) {
@@ -51,36 +56,46 @@ var hpc_explorer_init = function(){
             }
             count++;
         });
-        var $actions = $hpc__buttons.find('a');
-        $actions.each(function(){
-            $(this).attr('disabled', 'disabled');
-        });
+        $hpc__buttons.find('a[data-option="goto"]').removeAttr('disabled');
+        $hpc__buttons.find('a[data-option="unselect-all"]').removeAttr('disabled');
+        $hpc__buttons.find('a[data-option="select-all"]').removeAttr('disabled');
+        $hpc__buttons.find('a[data-option="folder"]').removeAttr('disabled');
+        $hpc__buttons.find('a[data-option="file"]').removeAttr('disabled');
+        $hpc__buttons.find('li[data-option="file"]').removeClass('disabled');
+        $hpc__buttons.find('a[data-option="upload"]').removeAttr('disabled');
         if(path !== home)
-            $actions.eq(0).removeAttr('disabled');
+            $hpc__buttons.find('a[data-option="back"]').removeAttr('disabled');
         if(i === 1) {
-            $actions.eq(3).removeAttr('disabled');
+            $hpc__buttons.find('a[data-option="rename"]').removeAttr('disabled');
+            $hpc__buttons.find('li[data-option="rename"]').removeClass('disabled');
             if (d)
-                $actions.eq(1).removeAttr('disabled');
+                $hpc__buttons.find('a[data-option="open"]').removeAttr('disabled');
             if (f) {
-                $actions.eq(2).removeAttr('disabled');
-                $actions.eq(8).removeAttr('disabled');
-
+                $hpc__buttons.find('a[data-option="edit"]').removeAttr('disabled');
+                $hpc__buttons.find('li[data-option="edit"]').removeClass('disabled');
+                $hpc__buttons.find('a[data-option="execute"]').removeAttr('disabled');
+                $hpc__buttons.find('li[data-option="execute"]').removeClass('disabled');
             }
         }
         if(i > 0){
-            $actions.eq(4).removeAttr('disabled');
-            $actions.eq(5).removeAttr('disabled');
-            $actions.eq(9).removeAttr('disabled');
+            $hpc__buttons.find('a[data-option="download"]').removeAttr('disabled');
+            $hpc__buttons.find('a[data-option="download-small"]').removeAttr('disabled');
+            $hpc__buttons.find('a[data-option="copy"]').removeAttr('disabled');
+            $hpc__buttons.find('li[data-option="copy"]').removeClass('disabled');
+            $hpc__buttons.find('a[data-option="delete"]').removeAttr('disabled');
+            $hpc__buttons.find('li[data-option="delete"]').removeClass('disabled');
         }
-        if(filesToCopy.length > 0)
-            $actions.eq(6).removeAttr('disabled');
+        if(filesToCopy.length > 0){
+            $hpc__buttons.find('li[data-option="paste"]').removeClass('disabled');
+            $hpc__buttons.find('a[data-option="paste"]').removeAttr('disabled');
+        }
         if(i === count)
-            $actions.eq(7).attr('data-option', 'unselect-all').removeAttr('disabled').find('span').eq(1).text(' unSelect All');
+            $hpc__buttons.find('a[data-option="select-all"]').attr('data-option', 'unselect-all').find('span').eq(0).removeClass('glyphicon-check').addClass('glyphicon-unchecked');
         else
-            $actions.eq(7).attr('data-option', 'select-all').removeAttr('disabled').find('span').eq(1).text(' Select All');
+            $hpc__buttons.find('a[data-option="unselect-all"]').attr('data-option', 'select-all').find('span').eq(0).removeClass('glyphicon-unchecked').addClass('glyphicon-check');
     };
     var hpc__explorer__list = function(){
-        hpc__explorer__disabled_all_actions();
+        hpc__explorer__btn__disable();
         $.getJSON(url_list, {'path': path}, function(data) {
             if(data['___BOOLEAN___ERROR___']){
                 ___HTML___application___hpc___modal___SHOW_LOAD___();
@@ -89,13 +104,18 @@ var hpc_explorer_init = function(){
             }
             else {
                 $hpc__tbody.html(data.list);
-                $hpc__pwd.find('strong').text(path);
-                hpc__explorer__disabled_actions();
+                breadcumbs(path);
+                hpc__explorer__btn__enable();
             }
         }).always(function() {});
     };
     hpc__explorer__list();
 
+    $hpc__content__center.find('#explorer___content').find('#printWorkingDirectory').on('click', 'a', function(){
+        path = $(this).attr('data-path');
+        $hpc__tbody.html('<tr><td colspan="3"><span class="fa fa-spinner fa-pulse"></span> Cargando...</td></tr>');
+        hpc__explorer__list()
+    });
 
     /*<<<<<<<<*/
     var hpc__explorer__action__activeRow = function (event) {
@@ -111,7 +131,7 @@ var hpc_explorer_init = function(){
             });
             $(this).addClass('primary');
         }
-        hpc__explorer__disabled_actions();
+        hpc__explorer__btn__enable();
     };
     var hpc__explorer__action__dblClick = function() {
         if ($(this).attr('data-type') === 'directory') {
@@ -127,7 +147,7 @@ var hpc_explorer_init = function(){
 
 
     /*<<<<<<<<*/
-    var hpc__explorer__action__back = function(){
+    var hpc__explorer__a__back = function(){
         if($(this).attr('disabled')!=='disabled') {
             $(this).attr('disabled', 'disabled');
             var tmp = path.split('/');
@@ -138,7 +158,7 @@ var hpc_explorer_init = function(){
             hpc__explorer__list();
         }
     };
-    var hpc__explorer__action__view = function(){
+    var hpc__explorer__a__open = function(){
         if($(this).attr('disabled')!=='disabled') {
             $(this).attr('disabled', 'disabled');
             path += '/' + $hpc__tbody.find('tr.primary').attr('data-name');
@@ -146,7 +166,7 @@ var hpc_explorer_init = function(){
             hpc__explorer__list();
         }
     };
-    var hpc__explorer__action__edit = function(){
+    var hpc__explorer__a__edit = function(){
         if($(this).attr('disabled')!=='disabled') {
             $(this).attr('disabled', 'disabled');
             var data = {
@@ -170,12 +190,41 @@ var hpc_explorer_init = function(){
                         $hpc__modal.find('.modal___message').html(data['___HTML___APPLICATION___HPC___MODAL___MESSAGE___']);
                         ___HTML___application___hpc___modal___EVENTS_ON___();
                     }
-                    hpc__explorer__disabled_actions();
+                    hpc__explorer__btn__enable();
                 }
             });
         }
     };
-    var hpc__explorer__action__rename = function(){
+    var hpc__explorer__li__edit = function(){
+        if(!$(this).hasClass('disabled')) {
+            $(this).addClass('disabled');
+            var data = {
+                file_name: $hpc__tbody.find('tr.primary').attr('data-name'),
+                path: path
+            };
+            $.ajax({
+                url: $(this).attr('data-url'),
+                type: 'GET',
+                data: data,
+                dataType: 'json',
+                beforeSend: function () {
+                    ___HTML___application___hpc___modal___SHOW_LOAD___();
+                },
+                success: function (data) {
+                    if (data['___BOOLEAN___ERROR___']) {
+                        ___HTML___application___hpc___modal___SHOW_MESSAGE_ERROR___(data, 10000);
+                    }
+                    else {
+                        $hpc__modal.html(data['___HTML___APPLICATION___HPC___MODAL___']);
+                        $hpc__modal.find('.modal___message').html(data['___HTML___APPLICATION___HPC___MODAL___MESSAGE___']);
+                        ___HTML___application___hpc___modal___EVENTS_ON___();
+                    }
+                    hpc__explorer__btn__enable();
+                }
+            });
+        }
+    };
+    var hpc__explorer__a__rename = function(){
         if($(this).attr('disabled')!=='disabled') {
             $(this).attr('disabled', 'disabled');
             $.ajax({
@@ -198,7 +247,30 @@ var hpc_explorer_init = function(){
             });
         }
     };
-    var hpc__explorer__action__download = function(){
+    var hpc__explorer__li__rename = function(){
+        if(!$(this).hasClass('disabled')) {
+            $(this).addClass('disabled');
+            $.ajax({
+                url: $(this).attr('data-url'),
+                type: 'GET',
+                dataType: 'json',
+                beforeSend: function () {
+                    ___HTML___application___hpc___modal___SHOW_LOAD___();
+                },
+                success: function (data) {
+                    if (data['___BOOLEAN___ERROR___']) {
+                        ___HTML___application___hpc___modal___SHOW_MESSAGE_ERROR___(data);
+                    }
+                    else {
+                        $hpc__modal.html(data['___HTML___APPLICATION___HPC___MODAL___']);
+                        $hpc__modal.find('.modal___message').html(data['___HTML___APPLICATION___HPC___MODAL___MESSAGE___']);
+                        ___HTML___application___hpc___modal___EVENTS_ON___();
+                    }
+                }
+            });
+        }
+    };
+    var hpc__explorer__a__download = function(){
         var $button_download = $(this);
         if($button_download.attr('disabled')==='disabled')
             return;
@@ -255,7 +327,7 @@ var hpc_explorer_init = function(){
            $button_download.button('reset');
         });
     };
-    var hpc__explorer__action__copy = function(){
+    var hpc__explorer__a__copy = function(){
         if($(this).attr('disabled')!=='disabled') {
             filesToCopy = [];
             filesToCopy.push(path);
@@ -265,7 +337,17 @@ var hpc_explorer_init = function(){
             $hpc__buttons.find('a').eq(6).removeAttr('disabled');
         }
     };
-    var hpc__explorer__action__paste = function(){
+    var hpc__explorer__li__copy = function(){
+        if(!$(this).hasClass('disabled')) {
+            filesToCopy = [];
+            filesToCopy.push(path);
+            $.each($hpc__tbody.find('tr.primary'), function (index, elem) {
+                filesToCopy.push($(elem).attr('data-name'));
+            });
+            $hpc__buttons.find('a').eq(6).removeAttr('disabled');
+        }
+    };
+    var hpc__explorer__a__paste = function(){
         if($(this).attr('disabled')!=='disabled') {
             $(this).attr('disabled', 'disabled');
             $.ajaxSetup({
@@ -287,7 +369,7 @@ var hpc_explorer_init = function(){
                         '<td colspan="3"><span class="fa fa-spinner fa-pulse"></span> Cargando...</td>' +
                         '</tr>'
                     );
-                    hpc__explorer__disabled_all_actions();
+                    hpc__explorer__btn__disable();
                 },
                 success: function (data) {
                     filesToCopy = [];
@@ -298,30 +380,68 @@ var hpc_explorer_init = function(){
                     }
                     else {
                         $hpc__tbody.html(data.list);
-                        $hpc__pwd.find('strong').text(path);
-                        hpc__explorer__disabled_actions();
+                        breadcumbs(path);
+                        hpc__explorer__btn__enable();
                     }
                 }
             });
         }
     };
-    var hpc__explorer__action__selectAll = function(){
-        $(this).attr('data-option', 'unselect-all');
+    var hpc__explorer__li__paste = function(){
+        if(!$(this).hasClass('disabled')) {
+            $(this).addClass('disabled');
+            $.ajaxSetup({
+                headers: {"X-CSRFToken": getCookie("csrftoken")}
+            });
+            $.ajax({
+                url: $(this).attr('data-url'),
+                data: {
+                    'from': filesToCopy.shift(),
+                    'filesToCopy': filesToCopy,
+                    'to': path
+                },
+                type: 'post',
+                dataType: 'json',
+                cache: false,
+                beforeSend: function () {
+                    $hpc__tbody.html('' +
+                        '<tr>' +
+                        '<td colspan="3"><span class="fa fa-spinner fa-pulse"></span> Cargando...</td>' +
+                        '</tr>'
+                    );
+                    hpc__explorer__btn__disable();
+                },
+                success: function (data) {
+                    filesToCopy = [];
+                    if (data['___BOOLEAN___ERROR___']) {
+                        ___HTML___application___hpc___modal___SHOW_LOAD___();
+                        ___HTML___application___hpc___modal___SHOW_MESSAGE_ERROR___(data, 10000);
+                        $(data['___HTML___APPLICATION___HPC___MODAL___MESSAGE___']).find('.alert___message___text').text();
+                    }
+                    else {
+                        $hpc__tbody.html(data.list);
+                        breadcumbs(path);
+                        hpc__explorer__btn__enable();
+                    }
+                }
+            });
+        }
+    };
+    var hpc__explorer__a__selectAll = function(){
         var tr = $hpc__tbody.find('tr');
         tr.each(function(){
             $(this).addClass('primary');
         });
-        hpc__explorer__disabled_actions();
+        hpc__explorer__btn__enable();
     };
-    var hpc__explorer__action__unSelectAll = function(){
-        $(this).attr('data-option', 'select-all');
+    var hpc__explorer__a__unSelectAll = function(){
         var tr = $hpc__tbody.find('tr');
         tr.each(function(){
             $(this).removeClass('primary');
         });
-        hpc__explorer__disabled_actions();
+        hpc__explorer__btn__enable();
     };
-    var hpc__explorer__action__execute = function(){
+    var hpc__explorer__a__execute = function(){
         if($(this).attr('disabled')!=='disabled') {
             $.ajax({
                 url: $(this).attr('data-url'),
@@ -343,8 +463,101 @@ var hpc_explorer_init = function(){
             });
         }
     };
-    var hpc__explorer__action__delete = function(){
+    var hpc__explorer__li__execute = function(){
+        if(!$(this).hasClass('disabled')) {
+            $.ajax({
+                url: $(this).attr('data-url'),
+                type: 'GET',
+                dataType: 'json',
+                beforeSend: function () {
+                    ___HTML___application___hpc___modal___SHOW_LOAD___();
+                },
+                success: function (data) {
+                    if (data['___BOOLEAN___ERROR___']) {
+                        ___HTML___application___hpc___modal___SHOW_MESSAGE_ERROR___(data);
+                    }
+                    else {
+                        $hpc__modal.html(data['___HTML___APPLICATION___HPC___MODAL___']);
+                        $hpc__modal.find('.modal___message').html(data['___HTML___APPLICATION___HPC___MODAL___MESSAGE___']);
+                        ___HTML___application___hpc___modal___EVENTS_ON___();
+                    }
+                }
+            });
+        }
+    };
+    var hpc__explorer__a__delete = function(){
         if($(this).attr('disabled')!=='disabled') {
+            $(this).attr('disabled', 'disabled');
+            $.ajax({
+                url: $(this).attr('data-url'),
+                type: 'GET',
+                dataType: 'json',
+                beforeSend: function () {
+                    ___HTML___application___hpc___modal___SHOW_LOAD___();
+                },
+                success: function (data) {
+                    if (data['___BOOLEAN___ERROR___']) {
+                        ___HTML___application___hpc___modal___SHOW_MESSAGE_ERROR___(data);
+                    }
+                    else {
+                        $hpc__modal.html(data['___HTML___APPLICATION___HPC___MODAL___']);
+                        $hpc__modal.find('.modal___message').html(data['___HTML___APPLICATION___HPC___MODAL___MESSAGE___']);
+                        ___HTML___application___hpc___modal___EVENTS_ON___();
+                    }
+                }
+            });
+        }
+    };
+    var hpc__explorer__li__delete = function(){
+        if(!$(this).hasClass('disabled')) {
+            $(this).addClass('disabled');
+            $.ajax({
+                url: $(this).attr('data-url'),
+                type: 'GET',
+                dataType: 'json',
+                beforeSend: function () {
+                    ___HTML___application___hpc___modal___SHOW_LOAD___();
+                },
+                success: function (data) {
+                    if (data['___BOOLEAN___ERROR___']) {
+                        ___HTML___application___hpc___modal___SHOW_MESSAGE_ERROR___(data);
+                    }
+                    else {
+                        $hpc__modal.html(data['___HTML___APPLICATION___HPC___MODAL___']);
+                        $hpc__modal.find('.modal___message').html(data['___HTML___APPLICATION___HPC___MODAL___MESSAGE___']);
+                        ___HTML___application___hpc___modal___EVENTS_ON___();
+                    }
+                }
+            });
+        }
+    };
+    var hpc__explorer__a__generic = function(){
+        if($(this).attr('disabled'))
+            return;
+        var option = $(this).attr('data-option');
+        $.ajax({
+            url: $(this).attr('data-url'),
+            type: 'GET',
+            dataType: 'json',
+            beforeSend: function () {
+                ___HTML___application___hpc___modal___SHOW_LOAD___();
+            },
+            success: function (data) {
+                if (data['___BOOLEAN___ERROR___']) {
+                    ___HTML___application___hpc___modal___SHOW_MESSAGE_ERROR___(data);
+                }
+                else {
+                    $hpc__modal.html(data['___HTML___APPLICATION___HPC___MODAL___']);
+                    $hpc__modal.find('.modal___message').html(data['___HTML___APPLICATION___HPC___MODAL___MESSAGE___']);
+                    ___HTML___application___hpc___modal___EVENTS_ON___();
+                }
+            }
+        });
+    };
+    var hpc__explorer__li__file = function(){
+        if(!$(this).hasClass('disabled')) {
+            $(this).addClass('disabled');
+            var option = $(this).attr('data-option');
             $.ajax({
                 url: $(this).attr('data-url'),
                 type: 'GET',
@@ -366,51 +579,29 @@ var hpc_explorer_init = function(){
         }
     };
     $hpc__buttons
-        .on('click', 'a[data-option="back"]', hpc__explorer__action__back)
-        .on('click', 'a[data-option="view"]', hpc__explorer__action__view)
-        .on('click', 'a[data-option="edit"]', hpc__explorer__action__edit)
-        .on('click', 'a[data-option="rename"]', hpc__explorer__action__rename)
-        .on('click', 'a[data-option="download"]', hpc__explorer__action__download)
-        .on('click', 'a[data-option="copy"]', hpc__explorer__action__copy)
-        .on('click', 'a[data-option="paste"]', hpc__explorer__action__paste)
-        .on('click', 'a[data-option="select-all"]', hpc__explorer__action__selectAll)
-        .on('click', 'a[data-option="unselect-all"]', hpc__explorer__action__unSelectAll)
-        .on('click', 'a[data-option="execute"]', hpc__explorer__action__execute)
-        .on('click', 'a[data-option="delete"]', hpc__explorer__action__delete);
-    /*>>>>>>>>*/
-
-
-    /*<<<<<<<<*/
-    var hpc__explorer__action__generic = function(){
-        if($(this).attr('disabled'))
-            return;
-        var option = $(this).attr('data-option');
-        $.ajax({
-            url: $(this).attr('data-url'),
-            type: 'GET',
-            dataType: 'json',
-            beforeSend: function () {
-                ___HTML___application___hpc___modal___SHOW_LOAD___();
-            },
-            success: function (data) {
-                if (data['___BOOLEAN___ERROR___']) {
-                    ___HTML___application___hpc___modal___SHOW_MESSAGE_ERROR___(data);
-                }
-                else {
-                    $hpc__modal.html(data['___HTML___APPLICATION___HPC___MODAL___']);
-                    $hpc__modal.find('.modal___message').html(data['___HTML___APPLICATION___HPC___MODAL___MESSAGE___']);
-                    if(option === 'goto')
-                        $hpc__modal.find('.modal___form').find('span').text(home + '/');
-                    ___HTML___application___hpc___modal___EVENTS_ON___();
-                }
-            }
-        });
-    };
-    $hpc__buttons__header
-        .on('click', 'a[data-option="goto"]', hpc__explorer__action__generic)
-        .on('click', 'a[data-option="folder"]', hpc__explorer__action__generic)
-        .on('click', 'a[data-option="file"]', hpc__explorer__action__generic)
-        .on('click', 'a[data-option="upload"]', hpc__explorer__action__generic);
+        .on('click', 'a[data-option="back"]', hpc__explorer__a__back)
+        .on('click', 'a[data-option="open"]', hpc__explorer__a__open)
+        .on('click', 'a[data-option="edit"]', hpc__explorer__a__edit)
+        .on('click', 'li[data-option="edit"]', hpc__explorer__li__edit)
+        .on('click', 'a[data-option="rename"]', hpc__explorer__a__rename)
+        .on('click', 'li[data-option="rename"]', hpc__explorer__li__rename)
+        .on('click', 'a[data-option="download"]', hpc__explorer__a__download)
+        .on('click', 'a[data-option="download-small"]', hpc__explorer__a__download)
+        .on('click', 'a[data-option="copy"]', hpc__explorer__a__copy)
+        .on('click', 'li[data-option="copy"]', hpc__explorer__li__copy)
+        .on('click', 'a[data-option="paste"]', hpc__explorer__a__paste)
+        .on('click', 'li[data-option="paste"]', hpc__explorer__li__paste)
+        .on('click', 'a[data-option="select-all"]', hpc__explorer__a__selectAll)
+        .on('click', 'a[data-option="unselect-all"]', hpc__explorer__a__unSelectAll)
+        .on('click', 'a[data-option="execute"]', hpc__explorer__a__execute)
+        .on('click', 'li[data-option="execute"]', hpc__explorer__li__execute)
+        .on('click', 'a[data-option="delete"]', hpc__explorer__a__delete)
+        .on('click', 'li[data-option="delete"]', hpc__explorer__li__delete)
+        .on('click', 'a[data-option="goto"]', hpc__explorer__a__generic)
+        .on('click', 'a[data-option="folder"]', hpc__explorer__a__generic)
+        .on('click', 'a[data-option="file"]', hpc__explorer__a__generic)
+        .on('click', 'li[data-option="file"]', hpc__explorer__li__file)
+        .on('click', 'a[data-option="upload"]', hpc__explorer__a__generic);
     /*>>>>>>>>*/
 
 
@@ -434,7 +625,7 @@ var hpc_explorer_init = function(){
                         '<td colspan="3"><span class="fa fa-spinner fa-pulse"></span> Cargando...</td>' +
                     '</tr>'
                 );
-                hpc__explorer__disabled_all_actions();
+                hpc__explorer__btn__disable();
                 ___HTML___application___hpc___modal___SHOW_LOAD___();
                 $('.application___hpc___load').css('height', '20px');
             },
@@ -445,8 +636,8 @@ var hpc_explorer_init = function(){
                     ___HTML___application___hpc___modal___ACTION_CLOSE___();
                 if(data.list) {
                     $hpc__tbody.html(data.list);
-                    $hpc__pwd.find('strong').text(path);
-                    hpc__explorer__disabled_actions();
+                    breadcumbs(path);
+                    hpc__explorer__btn__enable();
                 }
             }
         });
@@ -473,7 +664,7 @@ var hpc_explorer_init = function(){
                         '<td colspan="3"><span class="fa fa-spinner fa-pulse"></span> Cargando...</td>' +
                     '</tr>'
                 );
-                hpc__explorer__disabled_all_actions();
+                hpc__explorer__btn__disable();
                 ___HTML___application___hpc___modal___SHOW_LOAD___();
                 $('.application___hpc___load').css('height', '20px');
             },
@@ -484,8 +675,8 @@ var hpc_explorer_init = function(){
                     ___HTML___application___hpc___modal___ACTION_CLOSE___();
                 if (data.list) {
                     $hpc__tbody.html(data.list);
-                    $hpc__pwd.find('strong').text(path);
-                    hpc__explorer__disabled_actions();
+                    breadcumbs(path);
+                    hpc__explorer__btn__enable();
                 }
             }
         });
@@ -512,7 +703,7 @@ var hpc_explorer_init = function(){
                         '<td colspan="3"><span class="fa fa-spinner fa-pulse"></span> Cargando...</td>' +
                     '</tr>'
                 );
-                hpc__explorer__disabled_all_actions();
+                hpc__explorer__btn__disable();
                 ___HTML___application___hpc___modal___SHOW_LOAD___();
                 $('.application___hpc___load').css('height', '20px');
             },
@@ -523,8 +714,8 @@ var hpc_explorer_init = function(){
                     ___HTML___application___hpc___modal___ACTION_CLOSE___();
                 if (data.list) {
                     $hpc__tbody.html(data.list);
-                    $hpc__pwd.find('strong').text(path);
-                    hpc__explorer__disabled_actions();
+                    breadcumbs(path);
+                    hpc__explorer__btn__enable();
                 }
             }
         });
@@ -551,7 +742,7 @@ var hpc_explorer_init = function(){
                         '<td colspan="3"><span class="fa fa-spinner fa-pulse"></span> Cargando...</td>' +
                     '</tr>'
                 );
-                hpc__explorer__disabled_all_actions();
+                hpc__explorer__btn__disable();
                 ___HTML___application___hpc___modal___SHOW_LOAD___();
                 $('.application___hpc___load').css('height', '20px');
             },
@@ -562,8 +753,8 @@ var hpc_explorer_init = function(){
                     ___HTML___application___hpc___modal___ACTION_CLOSE___();
                 if (data.list) {
                     $hpc__tbody.html(data.list);
-                    $hpc__pwd.find('strong').text(path);
-                    hpc__explorer__disabled_actions();
+                    breadcumbs(path);
+                    hpc__explorer__btn__enable();
                 }
             }
         });
@@ -630,7 +821,7 @@ var hpc_explorer_init = function(){
                         '<td colspan="3"><span class="fa fa-spinner fa-pulse"></span> Cargando...</td>' +
                     '</tr>'
                 );
-                hpc__explorer__disabled_all_actions();
+                hpc__explorer__btn__disable();
                 ___HTML___application___hpc___modal___SHOW_LOAD___();
                 $('.application___hpc___load').css('height', '20px');
             },
@@ -641,8 +832,8 @@ var hpc_explorer_init = function(){
                     ___HTML___application___hpc___modal___ACTION_CLOSE___();
                 if (data.list) {
                     $hpc__tbody.html(data.list);
-                    $hpc__pwd.find('strong').text(path);
-                    hpc__explorer__disabled_actions();
+                    breadcumbs(path);
+                    hpc__explorer__btn__enable();
                 }
             }
         });
@@ -662,7 +853,7 @@ var hpc_explorer_init = function(){
             dataType: 'json',
             cache: false,
             beforeSend: function () {
-                hpc__explorer__disabled_all_actions();
+                hpc__explorer__btn__disable();
                 ___HTML___application___hpc___modal___SHOW_LOAD___();
                 $('.application___hpc___load').css('height', '20px')
             },
@@ -671,7 +862,7 @@ var hpc_explorer_init = function(){
                     ___HTML___application___hpc___modal___SHOW_MESSAGE_ERROR___(data, 10000);
                 else
                     ___HTML___application___hpc___modal___SHOW_MESSAGE_OK___(data);
-                hpc__explorer__disabled_actions();
+                hpc__explorer__btn__enable();
             }
         });
     };
@@ -698,7 +889,7 @@ var hpc_explorer_init = function(){
                         '<td colspan="3"><span class="fa fa-spinner fa-pulse"></span> Cargando...</td>' +
                     '</tr>'
                 );
-                hpc__explorer__disabled_all_actions();
+                hpc__explorer__btn__disable();
                 ___HTML___application___hpc___modal___SHOW_LOAD___();
                 $('.application___hpc___load').css('height', '20px')
             },
@@ -709,8 +900,8 @@ var hpc_explorer_init = function(){
                     ___HTML___application___hpc___modal___ACTION_CLOSE___();
                 if (data.list) {
                     $hpc__tbody.html(data.list);
-                    $hpc__pwd.find('strong').text(path);
-                    hpc__explorer__disabled_actions();
+                    breadcumbs(path);
+                    hpc__explorer__btn__enable();
                 }
             }
         });

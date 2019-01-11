@@ -85,7 +85,7 @@ def command_execution(request, option, dict___data, parameters):
     if option == 'file':
         command = 'touch "{0}/{1}" && ls --full-time -igGh --group-directories-first "{0}"'.format(parameters[0], parameters[1])
     if option == 'paste':
-        command = 'cp '
+        command = 'cp -R '
         for file in parameters[2:]:
             command += '"{}/{}" '.format(parameters[1], file)
         command += '"{0}" && ls --full-time -igGh --group-directories-first "{0}"'.format(parameters[0])
