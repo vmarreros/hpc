@@ -198,7 +198,7 @@ msgid "APPLICATION___SECURITY___LOGIN___REQUEST___VALIDATION Only letters, numbe
 msgstr "Sólo letras, números y el carácter especial punto."
 
 msgid "APPLICATION___SECURITY___LOGIN___REQUEST___VALIDATION Only letters, numbers and the special character _."
-msgstr "Sólo letras, números y el carácter especial _."
+msgstr "Sólo letras minúsculas, números y el carácter especial _."
 
 msgid "APPLICATION___SECURITY___LOGIN___REQUEST___VALIDATION Only letters, numbers and special characters dot, -, _ and space."
 msgstr "Sólo letras, números y los carácteres especiales punto, - , _ y espacio."

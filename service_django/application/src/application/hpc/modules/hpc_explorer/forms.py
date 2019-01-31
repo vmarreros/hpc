@@ -93,13 +93,13 @@ class MultiFileField(forms.FileField):
         if len(data) and not data[0]:
             num_files = 0
         if num_files < self.min_num:
-            raise ValidationError(_('BASE_APPLICATION_CLUSTER_USER_HOME_FORM_ERROR_MIN %(min_num)s %(num_files)s') % {'min_num': self.min_num, 'num_files': num_files})
+            raise ValidationError(_('HPC___EXPLORER___MODAL___UPLOAD___VALIDATION___Min'))
         elif self.max_num and num_files > self.max_num:
-            raise ValidationError(_('BASE_APPLICATION_CLUSTER_USER_HOME_FORM_ERROR_MAX %(max_num)s %(num_files)s') % {'max_num': self.max_num, 'num_files': num_files})
+            raise ValidationError(_('HPC___EXPLORER___MODAL___UPLOAD___VALIDATION___Max'))
         for uploaded_file in data:
             if uploaded_file.size > self.maximum_file_size:
-                raise ValidationError(_('BASE_APPLICATION_CLUSTER_USER_HOME_FORM_ERROR_FILE_SIZE %(uploaded_file_name)s') % {'uploaded_file_name': uploaded_file.name})
+                raise ValidationError(_('HPC___EXPLORER___MODAL___UPLOAD___VALIDATION___Size'))
 
 
 class UploadFilesForm(forms.Form):
-    files = MultiFileField(max_num=10, min_num=1, maximum_file_size=1024*1024*40)
+    files = MultiFileField(max_num=10, min_num=1, maximum_file_size=1024*1024*150)

@@ -931,15 +931,15 @@ var hpc_explorer_init = function(){
             error = false;
         if (files.length > 0 && files.length < 11){
             for(i; i<files.length; i++) {
-                if (files[i].size > 1024 * 1024 * 40) {
+                if (files[i].size > 1024 * 1024 * 150) {
                     error = true;
-                    $hpc__modal__body.find('.help-block').html('<span class="fa fa-exclamation-circle fa-fw"></span> &OpenCurlyDoubleQuote;Los archivos no deben exceder los 40mb.&CloseCurlyDoubleQuote;');
+                    $hpc__modal__body.find('.help-block').html('<span class="fa fa-exclamation-circle fa-fw"></span> ' + gettext('HPC___EXPLORER___MODAL___UPLOAD___VALIDATION___Size'));
                     break;
                 }
                 for (var j = 0; j < files[i].name.length; j++) {
                     if (files[i].name[j] === '\\'){
                         error = true;
-                        $hpc__modal__body.find('.help-block').html('<span class="fa fa-exclamation-circle fa-fw"></span> &OpenCurlyDoubleQuote;El caracter <b>\\</b> no puede estar contenido en el nombre de los archivos.&CloseCurlyDoubleQuote;');
+                        $hpc__modal__body.find('.help-block').html('<span class="fa fa-exclamation-circle fa-fw"></span> ' + gettext('HPC___EXPLORER___MODAL___UPLOAD___VALIDATION___Char'));
                         break;
                     }
                 }
@@ -955,9 +955,9 @@ var hpc_explorer_init = function(){
             error = true;
             $hpc__modal__footer.find('button.btn-primary').attr('disabled', 'disabled');
             if(files.length === 0)
-                $hpc__modal__body.find('.help-block').html('<span class="fa fa-exclamation-circle fa-fw"></span> &OpenCurlyDoubleQuote;Seleccione al menos un archivo.&CloseCurlyDoubleQuote;');
+                $hpc__modal__body.find('.help-block').html('<span class="fa fa-exclamation-circle fa-fw"></span> ' + gettext('HPC___EXPLORER___MODAL___UPLOAD___VALIDATION___Min'));
             else
-                $hpc__modal__body.find('.help-block').html('<span class="fa fa-exclamation-circle fa-fw"></span> &OpenCurlyDoubleQuote;No puede subir más de 10 archivos simultaneamente.&CloseCurlyDoubleQuote;');
+                $hpc__modal__body.find('.help-block').html('<span class="fa fa-exclamation-circle fa-fw"></span> ' + gettext('HPC___EXPLORER___MODAL___UPLOAD___VALIDATION___Max'));
         }
         var elem = $hpc__modal__body.find('.btn');
         var formGroup = $hpc__modal__body.find('.form-group');
