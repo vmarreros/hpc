@@ -35,56 +35,23 @@ var hpc_nodes_datatable_init = function(){
 };
 
 var hpc_nodes_chart_reload = function(snapshot){
-    var ctx = document.getElementById("myLineChart").getContext("2d");
-    var myLineChart, data = [, , , , , , , , , , , , parseInt(cpuload)];
+    var ctxDoughnutMem = document.getElementById("DoughnutMem").getContext("2d");
+    var DoughnutMemChart, percent_free_mem;
 
-    var ctxDoughnut = document.getElementById("myDoughnutChart").getContext("2d");
-    var myDoughnutChart, percent;
+    var ctxDoughnutCPU = document.getElementById("DoughnutCPU").getContext("2d");
+    var DoughnutCPUChart, percent_cpu_alloc;
 
-    var ctxDoughnut2 = document.getElementById("myDoughnutChart2").getContext("2d");
-    var myDoughnutChart2, percent2;
-
-    Chart.defaults.global.legend.labels.boxWidth = 12;
-    myLineChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: ["60", '', "50", '', "40", '', "30", '', "20", '', "10", '', "0"], //labels: ["60", ,"50", ,"40", ,"30", ,"20", ,"10", ,"0"],
-            datasets: [{
-                label: gettext('HPC___CONTENT___NODES___CHART_LINE'),
-                fill: true,
-                lineTension: 0,
-                pointRadius: 0,
-                borderWidth: 1,
-                pointHitRadius: 0,
-                backgroundColor: "rgba(255,10,10,0.6)",
-                borderColor: "rgba(255,10,10,1)",
-                borderJoinStyle: 'miter',
-                data: data
-            }]
-        },
-        options: {
-            responsive: true,
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        suggestedMax: 100, suggestedMin: 0
-                    }
-                }]
-            }
-        }
-    });
-
-    percent = Math.round(100 * parseInt(allocmem) / parseInt(freemem));
-    myDoughnutChart = new Chart(ctxDoughnut, {
+    percent_free_mem = Math.round(100 * parseInt(free_mem) / parseInt(real_mem));
+    DoughnutMemChart = new Chart(ctxDoughnutMem, {
         type: 'doughnut',
         data: {
             labels: [
-                gettext('HPC___CONTENT___NODES___CHART_DOUGHNUT_1_Assigned_mem') + percent + '%',
-                gettext('HPC___CONTENT___NODES___CHART_DOUGHNUT_1_Free_mem') + (100 - percent) + '%'
+                gettext('HPC___CONTENT___NODES___CHART_DOUGHNUT_1_Used_mem') + (100 - percent_free_mem) + '%',
+                gettext('HPC___CONTENT___NODES___CHART_DOUGHNUT_1_Free_mem') + percent_free_mem + '%'
             ],
             datasets: [
                 {
-                    data: [parseInt(allocmem), parseInt(freemem) - parseInt(allocmem)],
+                    data: [parseInt(real_mem) - parseInt(free_mem), parseInt(free_mem)],
                     backgroundColor: [
                         "#FF6384", "#36A2EB"
                     ],
@@ -99,17 +66,17 @@ var hpc_nodes_chart_reload = function(snapshot){
         }
     });
 
-    percent2 = Math.round(100 * parseInt(cpualloc) / parseInt(cputot));
-    myDoughnutChart2 = new Chart(ctxDoughnut2, {
+    percent_cpu_alloc = Math.round(100 * parseInt(cpu_alloc) / parseInt(cpu_tot));
+    DoughnutCPUChart = new Chart(ctxDoughnutCPU, {
         type: 'doughnut',
         data: {
             labels: [
-                gettext('HPC___CONTENT___NODES___CHART_DOUGHNUT_2_Assigned_CPUs') + percent2 + '%',
-                gettext('HPC___CONTENT___NODES___CHART_DOUGHNUT_2_Free_CPUs') + (100 - percent2) + '%'
+                gettext('HPC___CONTENT___NODES___CHART_DOUGHNUT_2_Assigned_CPUs') + percent_cpu_alloc + '%',
+                gettext('HPC___CONTENT___NODES___CHART_DOUGHNUT_2_Free_CPUs') + (100 - percent_cpu_alloc) + '%'
             ],
             datasets: [
                 {
-                    data: [parseInt(cpualloc), parseInt(cputot) - parseInt(cpualloc)],
+                    data: [parseInt(cpu_alloc), parseInt(cpu_tot) - parseInt(cpu_alloc)],
                     backgroundColor: [
                         "#FF6384", "#FF9933"
                     ],
@@ -133,35 +100,25 @@ var hpc_nodes_chart_reload = function(snapshot){
                 cache: false,
                 dataType: 'json',
                 success: function (response) {
-                    //LineChart
-                    var number = response.statistics.cpuload;
-                    for (var i = 0; i < data.length; i++)
-                        if (i === data.length - 1)
-                            data[i] = /*Math.floor(Math.random() * Math.floor(100)) + */number;
-                        else
-                            data[i] = data[i + 1];
-                    myLineChart.data = data;
-                    myLineChart.update(0);
+                    //DoughnutMemChart
+                    var free_mem = response.statistics.free_mem;
+                    var real_mem = response.statistics.real_mem;
+                    percent_free_mem = Math.round(100 * free_mem / real_mem);
+                    DoughnutMemChart.data.labels[0] = gettext('HPC___CONTENT___NODES___CHART_DOUGHNUT_1_Assigned_mem') + (100 - percent_free_mem) + '%';
+                    DoughnutMemChart.data.labels[1] = gettext('HPC___CONTENT___NODES___CHART_DOUGHNUT_1_Free_mem') + percent_free_mem + '%';
+                    DoughnutMemChart.data.datasets[0].data[0] = real_mem - free_mem;
+                    DoughnutMemChart.data.datasets[0].data[1] = free_mem;
+                    DoughnutMemChart.update(0);
 
-                    //DoughnutChart
-                    var freemem = response.statistics.freemem;
-                    var allocmem = response.statistics.allocmem;
-                    percent = Math.round(100 * allocmem / freemem);
-                    myDoughnutChart.data.labels[0] = gettext('HPC___CONTENT___NODES___CHART_DOUGHNUT_1_Assigned_mem') + percent + '%';
-                    myDoughnutChart.data.labels[1] = gettext('HPC___CONTENT___NODES___CHART_DOUGHNUT_1_Free_mem') + (100 - percent) + '%';
-                    myDoughnutChart.data.datasets[0].data[0] = allocmem;
-                    myDoughnutChart.data.datasets[0].data[1] = freemem - allocmem;
-                    myDoughnutChart.update(0);
-
-                    //DoughnutChart2
-                    var cpualloc = response.statistics.cpualloc;
-                    var cputot = response.statistics.cputot;
-                    percent2 = Math.round(100 * cpualloc / cputot);
-                    myDoughnutChart2.data.labels[0] = gettext('HPC___CONTENT___NODES___CHART_DOUGHNUT_2_Assigned_CPUs') + percent2 + '%';
-                    myDoughnutChart2.data.labels[1] = gettext('HPC___CONTENT___NODES___CHART_DOUGHNUT_2_Free_CPUs') + (100 - percent2) + '%';
-                    myDoughnutChart2.data.datasets[0].data[0] = cpualloc;
-                    myDoughnutChart2.data.datasets[0].data[1] = cputot - cpualloc;
-                    myDoughnutChart2.update(0);
+                    //DoughnutCPUChart
+                    var cpu_alloc = response.statistics.cpu_alloc;
+                    var cpu_tot = response.statistics.cpu_tot;
+                    percent_cpu_alloc = Math.round(100 * cpu_alloc / cpu_tot);
+                    DoughnutCPUChart.data.labels[0] = gettext('HPC___CONTENT___NODES___CHART_DOUGHNUT_2_Assigned_CPUs') + percent_cpu_alloc + '%';
+                    DoughnutCPUChart.data.labels[1] = gettext('HPC___CONTENT___NODES___CHART_DOUGHNUT_2_Free_CPUs') + (100 - percent_cpu_alloc) + '%';
+                    DoughnutCPUChart.data.datasets[0].data[0] = cpu_alloc;
+                    DoughnutCPUChart.data.datasets[0].data[1] = cpu_tot - cpu_alloc;
+                    DoughnutCPUChart.update(0);
                 },
                 error: function (response) {
                 }

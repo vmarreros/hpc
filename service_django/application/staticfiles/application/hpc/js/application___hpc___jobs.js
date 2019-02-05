@@ -4,7 +4,7 @@ function capitalize(s){
     });
 }
 
-function ___data_background___(state){
+function bg_job_state(state){
     if(state==='PENDING')
         return "red";
     if(state==='RUNNING')
@@ -87,7 +87,7 @@ var hpc_jobs_datatable_init = function(){
         columnDefs: [
             {
                 "render": function ( data/*, type, row*/ ) {
-                    return '<span class="label" data-background-color="'+___data_background___(data)+'">' + data + '</span>'
+                    return '<span class="label" data-background-color="'+bg_job_state(data)+'">' + data + '</span>'
                 },
                 "targets": 1
             },

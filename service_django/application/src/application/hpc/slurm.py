@@ -24,7 +24,7 @@ def generate_data_dict(request, option, parameters=None):
         if option == 'nodes':
             # sinfo -N --Format=all
             nodes = list()
-            cpuload = cputotal = cpualloc = freemem = allocmem = 0
+            cpu_load = cpu_total = cpu_alloc = free_mem = real_mem = 0
             for node in string_in_utf8.split('\n'):
                 features = dict()
                 for feature in node.split():
@@ -33,13 +33,13 @@ def generate_data_dict(request, option, parameters=None):
                             feature.split('=')[0]: feature.split('=')[1]
                         })
                 nodes.append(features)
-                cpuload = cpuload + to_float(features['CPULoad'])
-                cputotal = cputotal + to_float(features['CPUTot'])
-                cpualloc = cpualloc + to_float(features['CPUAlloc'])
-                freemem = freemem + to_float(features['FreeMem'])
-                allocmem = allocmem + to_float(features['AllocMem'])
+                cpu_load = cpu_load + to_float(features['CPULoad'])
+                cpu_total = cpu_total + to_float(features['CPUTot'])
+                cpu_alloc = cpu_alloc + to_float(features['CPUAlloc'])
+                free_mem = free_mem + to_float(features['FreeMem'])
+                real_mem = real_mem + to_float(features['RealMemory'])
             __dict__['nodes'] = nodes
-            __dict__['statistics'] = {'cpuload': cpuload/len(string_in_utf8.split('\n')), 'freemem': freemem, 'allocmem': allocmem, 'cputot': cputotal, 'cpualloc': cpualloc}
+            __dict__['summary'] = {'cpuload': cpu_load/len(nodes), 'free_mem': free_mem, 'real_mem': real_mem, 'cpu_tot': cpu_total, 'cpu_alloc': cpu_alloc}
             __dict__.update(generate_data_dict(request, 'partitions-detail'))
         if option == 'partitions-detail':
             data = list()

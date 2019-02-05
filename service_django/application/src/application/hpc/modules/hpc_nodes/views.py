@@ -1,12 +1,16 @@
 # -*- coding: utf-8 -*-
+import random
+
 # django modules import
 from django import http
 from django.conf import settings
+from django.core import serializers
 from django.utils import timezone
 from django.http import HttpResponse
 
 # user modules import
-from ....security import (
+from src.application.statistic import models
+from src.application.security import (
     decorators as decorators___application___security,
     utils as utils___application___security
 )
@@ -19,8 +23,8 @@ from ... import slurm
 @decorators___application___security.___required___application___security___user___is_ldapuser_or_ldapuserimported___(___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___HPC___)
 def ___view___index___(request):
     dict___data = dict()
-    import random
     info = slurm.generate_data_dict(request, option='nodes')
+    # info.update({'statistic': serializers.serialize("json", models.Node.objects.all())})
     info.update({'random': random.random()})
     if info:
         dict___data['___HTML___APPLICATION___HPC___CONTENT___CENTER___'] = utils___hpc.___html___template___(
@@ -36,5 +40,4 @@ def ___view___index___(request):
 @decorators___application___security.___required___request_is_ajax___()
 @decorators___application___security.___required___application___security___user___is_ldapuser_or_ldapuserimported___(___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___HPC___)
 def ___view___chartnodes___(request):
-    serializers = slurm.generate_data_json(request, option='nodes')
-    return HttpResponse(serializers)
+    return HttpResponse(slurm.generate_data_json(request, option='nodes'))

@@ -5,7 +5,7 @@ register = template.Library()
 
 
 @register.filter()
-def ___data_background___(state):
+def bg_job_state(state):
     """
     JOB STATE CODES
        Jobs typically pass through several states in the course of their exe-
@@ -55,6 +55,17 @@ def ___data_background___(state):
     if state == 'NODE_FAIL':
         return 'red'
     return ''
+
+
+@register.filter()
+def bg_load_cpu(load_cpu):
+    load_cpu = float(load_cpu)
+    if load_cpu > 1:
+        return 'red'
+    elif load_cpu == 1:
+        return 'warning'
+    else:
+        return 'green'
 
 
 @register.filter()

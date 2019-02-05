@@ -1,4 +1,5 @@
 {% load i18n %}
+{% load application___hpc %}
 {% now "YmdHis" as ctx___now %}
 
 <h3 id="center___header">
@@ -7,9 +8,6 @@
 {% with ctx___graph=ctx___now %}
     <div id="center___content">
         <div id="nodes___content" class="container-fluid" data-url="{% url 'application___hpc:modules:hpc_nodes:chartnodes' %}" data-snapshot="{{ ctx___graph }}">
-            <div id="nodes___cpu">
-
-            </div>
             <table id="nodes___datatable" class="table nowrap" cellspacing="0" width="100%">
                 <thead>
                     <tr>
@@ -36,7 +34,7 @@
                         <td>{{ node.State | title }}</td>
                         <td>{{ node.CPUTot }}</td>
                         <td>{{ node.CPUAlloc }}</td>
-                        <td>{{ node.CPULoad }}</td>
+                        <td><span class="label" data-background-color="{{ node.CPULoad|bg_load_cpu }}">{{ node.CPULoad }}</span></td>
                         <td>{% ifequal node.Gres '(null)' %}cpu{% else %}{{ node.Gres }}{% endifequal %}</td>
                         <td>{{ node.RealMemory }}mb</td>
                         <td>{{ node.FreeMem }}mb</td>
@@ -46,25 +44,21 @@
                 {% endfor %}
                 </tbody>
             </table>
-            <div id="cluster___statistic" class="row">
-                {% comment %}<h4 id="center___header">
-                    <span class="fa fa-calculator fa-fw" aria-hidden="true"></span> Estadistica general del cluster
-                </h4>{% endcomment %}
+            <div id="nodes___summary" class="row">
+                <h4>
+                    <span class="fa fa-calculator fa-fw" aria-hidden="true"></span> {% trans 'HPC___CONTENT___NODES___SUMMARY___Header' %}
+                </h4>
                 <div class="col-md-6 col-lg-4">
                     <div class="wrapper">
-                        <canvas id="myLineChart" height="1" width="1"></canvas>
+                        <canvas id="DoughnutMem" height="190%"></canvas>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <div class="wrapper">
-                        <canvas id="myDoughnutChart2" height="150%"></canvas>
-                    </div>
-                    <div class="wrapper">
-                        <canvas id="myDoughnutChart" height="150%"></canvas>
+                        <canvas id="DoughnutCPU" height="190%"></canvas>
                     </div>
                 </div>
                 <div class="col-md-12 col-lg-4">
-                    <p style="padding-top: 8px; font-size: 12px">{% trans 'HPC___CONTENT___NODES___TABLE_PARTITION___TITLE_Partitions' %} <span class="badge">{{ partitions.data | length }}</span></p>
                     <table id="table-cluster" class="table nowrap" cellspacing="0" width="100%">
                         <thead>
                             <tr>
@@ -89,11 +83,11 @@
         </div>
     </div>
     <script>
-        var cpuload = '{{ statistics.cpuload }}';
-        var cputot = '{{ statistics.cputot }}';
-        var cpualloc = '{{ statistics.cpualloc }}';
-        var freemem = '{{ statistics.freemem }}';
-        var allocmem = '{{ statistics.allocmem }}';
+        var cpu_load = '{{ summary.cpu_load }}';
+        var cpu_tot = '{{ summary.cpu_tot }}';
+        var cpu_alloc = '{{ summary.cpu_alloc }}';
+        var free_mem = '{{ summary.free_mem }}';
+        var real_mem = '{{ summary.real_mem }}';
         hpc_nodes_datatable_init();
         hpc_nodes_chart_reload('{{ ctx___graph }}');
     </script>
