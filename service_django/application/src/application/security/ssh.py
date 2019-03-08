@@ -83,7 +83,7 @@ def generate__private__and__public__key(instance, password):
         )
         h_input, h_output, h_error = ssh_client.exec_command('mkdir -p ~/.ssh/')
         error__private__and__public__key(h_error)
-        h_input, h_output, h_error = ssh_client.exec_command('echo "%s" > ~/.ssh/authorized_keys' % pubkey)
+        h_input, h_output, h_error = ssh_client.exec_command('echo "%s" >> ~/.ssh/authorized_keys' % pubkey)
         error__private__and__public__key(h_error)
         h_input, h_output, h_error = ssh_client.exec_command('chmod 600 ~/.ssh/authorized_keys')
         error__private__and__public__key(h_error)
