@@ -46,7 +46,7 @@ msgid "APPLICATION___SECURITY___LOGIN___LDAP_GROUP"
 msgstr "Group"
 
 msgid "APPLICATION___SECURITY___LOGIN___IDENTIFIER"
-msgstr "Identifier"
+msgstr "Username"
 
 msgid "APPLICATION___SECURITY___LOGIN___PASSWORD"
 msgstr "Password"
@@ -61,10 +61,10 @@ msgid "APPLICATION___SECURITY___LOGIN___MESSAGE Welcome %(instance)s."
 msgstr "Welcome <strong>&OpenCurlyDoubleQuote;%(instance)s&CloseCurlyDoubleQuote;</strong>."
 
 msgid "APPLICATION___SECURITY___LOGIN___MESSAGE The identifier and password are incorrect."
-msgstr "The identifier and password are incorrect."
+msgstr "The username and password are incorrect."
 
 msgid "APPLICATION___SECURITY___LOGIN___MESSAGE The identifier and password are correct, but this user is not active."
-msgstr "The identifier and password are correct, but this user is not active."
+msgstr "The username and password are correct, but this user is not active."
 
 
 
@@ -143,7 +143,7 @@ msgid "APPLICATION___SECURITY___LOGIN___REQUEST___LAST_NAME"
 msgstr "Last name"
 
 msgid "APPLICATION___SECURITY___LOGIN___REQUEST___IDENTIFIER"
-msgstr "Identifier"
+msgstr "Username"
 
 msgid "APPLICATION___SECURITY___LOGIN___REQUEST___EMAIL"
 msgstr "Email"
@@ -204,7 +204,7 @@ msgid "APPLICATION___SECURITY___LOGIN___REQUEST___VALIDATION Only letters, numbe
 msgstr "Only letters, numbers and special characters dot, -, _ and space."
 
 msgid "APPLICATION___SECURITY___LOGIN___REQUEST___VALIDATION This identifier has already been chosen."
-msgstr "This identifier has already been chosen."
+msgstr "This username has already been chosen."
 
 msgid "APPLICATION___SECURITY___LOGIN___REQUEST___VALIDATION This email has already been chosen."
 msgstr "This email has already been chosen."
@@ -250,7 +250,7 @@ msgid "APPLICATION___SECURITY___PROFILE___LAST_NAME"
 msgstr "Last name"
 
 msgid "APPLICATION___SECURITY___PROFILE___IDENTIFIER"
-msgstr "Identifier"
+msgstr "Username"
 
 msgid "APPLICATION___SECURITY___PROFILE___EMAIL"
 msgstr "Email"
@@ -274,7 +274,7 @@ msgid "APPLICATION___SECURITY___PROFILE___VALIDATION Only letters, numbers and s
 msgstr "Only letters, numbers and special characters dot, -, _ and space."
 
 msgid "APPLICATION___SECURITY___PROFILE___VALIDATION This identifier has already been chosen."
-msgstr "This identifier has already been chosen."
+msgstr "This username has already been chosen."
 
 msgid "APPLICATION___SECURITY___PROFILE___VALIDATION This email has already been chosen."
 msgstr "This email has already been chosen."
