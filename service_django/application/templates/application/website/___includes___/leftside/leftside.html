@@ -19,10 +19,8 @@
         {% url "application___website:modules:website_home:index" as url %}
         <a data-url="{{ url }}" class="LINK___application___website___content___center___reload {% if url == request|___get_string___application___security___user___url_current___ %}active{% endif %}"><span class="fa fa-home fa-fw" aria-hidden="true"></span> {% trans "APPLICATION___WEBSITE___LEFTSIDE___NAV___MODULE___HOME" %}</a>
     </li>
-    {% if request|___required___application___security___user___ %}
-        <li>
-            {% url "application___website:modules:website_help:index" as url %}
-            <a data-url="{{ url }}" class="LINK___application___website___content___center___reload {% if url == request|___get_string___application___security___user___url_current___ %}active{% endif %}"><span class="fa fa-book fa-fw" aria-hidden="true"></span> {% trans "APPLICATION___WEBSITE___LEFTSIDE___NAV___MODULE___HELP" %}</a>
-        </li>
-    {% endif %}
+    <li>
+        {% url "application___website:modules:website_help:index" as url %}
+        <a data-url="{{ url }}" class="LINK___application___website___content___center___reload {% if url == request|___get_string___application___security___user___url_current___ %}active{% endif %}"><span class="fa fa-book fa-fw" aria-hidden="true"></span> {% trans "APPLICATION___WEBSITE___LEFTSIDE___NAV___MODULE___HELP" %}</a>
+    </li>
 </ul>

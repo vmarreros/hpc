@@ -11,7 +11,6 @@ from django.utils.translation import ugettext_lazy as _
 
 
 @decorators___application___security.___required___request_is_ajax___()
-@decorators___application___security.___required___application___security___user___(___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___WEBSITE___)
 def ___view___index___(request):
     dict___data = dict()
     dict___data['___HTML___APPLICATION___WEBSITE___CONTENT___CENTER___'] = utils___website.___html___template___(
