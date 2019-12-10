@@ -4,7 +4,7 @@
 
 <div class="panel panel-default">
     <div class="panel-heading">
-        <span class="label" data-background-color="{{ data.JobState| ___data_background___ }}">{{ data.JobState }}</span>
+        <span class="label" data-background-color="{{ data.JobState|bg_job_state }}">{{ data.JobState }}</span>
         <b>{{ data.JobName }}({{ data.JobId }})</b>
         {% ifequal data.Username request|___get_string___group_user___ %}
         <div class="pull-right">

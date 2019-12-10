@@ -59,7 +59,10 @@ def bg_job_state(state):
 
 @register.filter()
 def bg_load_cpu(load_cpu):
-    load_cpu = float(load_cpu)
+    try:
+        load_cpu = float(load_cpu)
+    except:
+        return 'red'
     if load_cpu > 1:
         return 'red'
     elif load_cpu == 1:

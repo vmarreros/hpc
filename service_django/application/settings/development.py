@@ -8,16 +8,16 @@ DEBUG = True
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')[1:-1]
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Allowed hosts
 ALLOWED_HOSTS = ['*']
 
 # WSGI
-WSGI_APPLICATION = 'wsgi.application.wsgi.application'
+WSGI_APPLICATION = 'wsgi.application'
 
 # Root url
-ROOT_URLCONF = 'src.application.urls_%s' % (os.environ.get('APPLICATION_ENVIRONMENT'),)
+ROOT_URLCONF = 'src.application.urls'
 
 # Installed applications
 INSTALLED_APPS = [

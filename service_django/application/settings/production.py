@@ -14,10 +14,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 ALLOWED_HOSTS = ['*']
 
 # WSGI
-WSGI_APPLICATION = 'wsgi.application.wsgi.application'
+WSGI_APPLICATION = 'wsgi.application'
 
 # Root url
-ROOT_URLCONF = 'src.application.urls_%s' % (os.environ.get('APPLICATION_ENVIRONMENT'),)
+ROOT_URLCONF = 'src.application.urls'
 
 # Installed applications
 INSTALLED_APPS = [
@@ -27,6 +27,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_celery_results',
     'django_celery_beat',
+    'django.contrib.auth',
+    'django.contrib.admin',
     'captcha',
     'src.application.security',
     'src.application.help',
@@ -123,7 +125,7 @@ DATABASES = {
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'application/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -141,13 +143,13 @@ TEMPLATES = [
 # Static files
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'staticfiles'),
+    os.path.join(BASE_DIR, 'application/staticfiles'),
 )
-STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'volumes', 'staticfiles')
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'service_django/volumes', 'staticfiles')
 
 # Media files
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'volumes', 'mediafiles')
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'service_django/volumes', 'mediafiles')
 
 # Emails settings
 EMAIL_HOST = os.environ.get('DJANGO_EMAIL_HOST')[1:-1]

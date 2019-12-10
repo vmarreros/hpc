@@ -1,6 +1,6 @@
 FROM postgres:10
 
-ARG APPLICATION_ENVIRONMENT
+ARG ENVIRONMENT
 
 RUN mkdir -p /service_postgres
 WORKDIR /service_postgres

@@ -7,8 +7,8 @@ sh /service_django/commands/celery.sh
 echo "[uwsgi]"
 uwsgi \
         --chdir=./ \
-        --module=wsgi.application.wsgi:application \
-        --env DJANGO_SETTINGS_MODULE=settings.application.${APPLICATION_ENVIRONMENT} \
+        --module=wsgi:application \
+        --env DJANGO_SETTINGS_MODULE=settings.${ENVIRONMENT} \
         --master \
         --http-socket=${DJANGO_HTTP_SOCKET_HOST}:${DJANGO_PORT} \
         --processes=5 \

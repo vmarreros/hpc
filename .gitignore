@@ -1,1 +1,4 @@
 .idea/
+.env
+production.env
+commands
