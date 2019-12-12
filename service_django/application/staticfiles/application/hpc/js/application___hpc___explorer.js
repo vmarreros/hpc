@@ -117,7 +117,6 @@ var hpc_explorer_init = function(){
         hpc__explorer__list()
     });
 
-    /*<<<<<<<<*/
     var hpc__explorer__action__activeRow = function (event) {
         if(event.ctrlKey) {
             if ($(this).hasClass('primary'))
@@ -143,10 +142,8 @@ var hpc_explorer_init = function(){
     $hpc__tbody
         .on('click', 'tr', hpc__explorer__action__activeRow)
         .on('dblclick', 'tr', hpc__explorer__action__dblClick);
-    /*>>>>>>>>*/
 
 
-    /*<<<<<<<<*/
     var hpc__explorer__a__back = function(){
         if($(this).attr('disabled')!=='disabled') {
             $(this).attr('disabled', 'disabled');
@@ -602,10 +599,8 @@ var hpc_explorer_init = function(){
         .on('click', 'a[data-option="file"]', hpc__explorer__a__generic)
         .on('click', 'li[data-option="file"]', hpc__explorer__li__file)
         .on('click', 'a[data-option="upload"]', hpc__explorer__a__generic);
-    /*>>>>>>>>*/
 
 
-    /*<<<<<<<<*/
     var hpc__explorer__modal__click__go_to = function(){
         var dir = $hpc__modal.find('#modal-goto').find('input[name=goto]').val();
         path = '/' + path.split('/')[1] + '/' + path.split('/')[2] + '/' + path.split('/')[3];
@@ -915,10 +910,8 @@ var hpc_explorer_init = function(){
         .on('submit', '.hpc___modal___submit___rename', hpc__explorer__modal__submit__rename)
         .on('click', '.hpc___modal___click___execute', hpc__explorer__modal__click__execute)
         .on('click', '.hpc___modal___click___delete', hpc__explorer__modal__click__delete);
-    /*>>>>>>>>*/
 
 
-    /*<<<<<<<<*/
     var hpc__explorer__modal__upload__validation = function() {
         var $hpc__modal__body = $hpc__modal.find('.modal-body'),
             $hpc__modal__footer = $hpc__modal.find('.modal-footer');
@@ -998,5 +991,4 @@ var hpc_explorer_init = function(){
         .on('keyup', '#modal-file #id_generic', ekeyup)
         .on('keyup', '#modal-folder #id_generic', ekeyup)
         .on('keyup', '#modal-rename #id_generic', ekeyup);
-    /*>>>>>>>>*/
 };

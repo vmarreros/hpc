@@ -31,14 +31,14 @@
 
 #application___website___content___center #center___content #content___list div.table-responsive table tbody tr td a
 {
-    color           :#2a3f54;
+    color           :#504a4a;
     text-decoration :none;
 }
 
 #application___website___content___center #center___content #content___list div.table-responsive table tbody tr td a.active
 {
     text-decoration :none;
-    background-color: #2a3f54;
+    background-color: #504a4a;
     color: white;
 }
 
