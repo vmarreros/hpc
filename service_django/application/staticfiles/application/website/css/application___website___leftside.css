@@ -71,7 +71,7 @@
 
 #application___website___leftside #leftside___nav li a
 {
-    color  :#2a3f54;
+    color  :#504a4a;
     cursor :pointer;
 }
 
@@ -82,7 +82,7 @@
 
 #application___website___leftside #leftside___nav li a.active
 {
-    background-color :#002E6D;
+    background-color :#6D002E;
     color            :#ffffff;
 }
 
