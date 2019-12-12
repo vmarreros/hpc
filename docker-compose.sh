@@ -9,7 +9,7 @@ sudo chmod +x ./service_django/commands/cmd.sh
 sudo chmod +x ./service_django/commands/entrypoint.sh
 sudo chmod +x ./service_django/commands/celery.sh
 
-if [ "$1" == '--compose' ]
+if [ "$1" == '--build' ]
 then
     # Create network
     docker network create ${APPLICATION}
@@ -26,6 +26,6 @@ then
 
 else
     echo "[options]"
-    echo "--compose"
+    echo "--build"
     echo "--bash"
 fi
