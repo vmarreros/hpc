@@ -10,7 +10,7 @@
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <!-- Application HPC Title -->
-            <title data-url="{% url "application___hpc:index___title" %}">{% include "application/hpc/___includes___/title/title.html" %}</title>
+            <title data-url="{% url "hpc:index___title" %}">{% include "application/hpc/___includes___/title/title.html" %}</title>
             <!-- favicon -->
             <link rel="shortcut icon" href="{% static 'application/hpc/img/favicon/favicon.png' %}?{{ ctx___now }}" type="image/png">
             <!-- Bootstrap -->
@@ -76,22 +76,22 @@
             <!-- Application HPC -->
             <div id="application___hpc">
                 <!-- Application HPC Load -->
-                <div id="application___hpc___load" class="hidden" data-url="{% url "application___hpc:index___load" %}">
+                <div id="application___hpc___load" class="hidden" data-url="{% url "hpc:index___load" %}">
                     {% include "application/hpc/___includes___/load/load.html" %}
                 </div>
                 <!-- Application HPC Header -->
-                <header id="application___hpc___header" class="navbar navbar-fixed-top" data-url="{% url "application___hpc:index___header" %}">
+                <header id="application___hpc___header" class="navbar navbar-fixed-top" data-url="{% url "hpc:index___header" %}">
                 </header>
                 <!-- Application HPC Leftside -->
-                <aside id="application___hpc___leftside" data-url="{% url "application___hpc:index___leftside" %}">
+                <aside id="application___hpc___leftside" data-url="{% url "hpc:index___leftside" %}">
                 </aside>
                 <!-- Application HPC Content -->
                 <section id="application___hpc___content">
                     <!-- Application HPC Content Center -->
-                    <div id="application___hpc___content___center" data-url="{% url "application___hpc:index___content___center" %}">
+                    <div id="application___hpc___content___center" data-url="{% url "hpc:index___content___center" %}">
                     </div>
                     <!-- Application HPC Content Footer -->
-                    <footer id="application___hpc___content___footer" data-url="{% url "application___hpc:index___content___footer" %}">
+                    <footer id="application___hpc___content___footer" data-url="{% url "hpc:index___content___footer" %}">
                     </footer>
                 </section>
                 <!-- Application HPC Modal -->

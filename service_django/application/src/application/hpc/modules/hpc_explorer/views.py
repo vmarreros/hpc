@@ -21,7 +21,7 @@ from . import forms
 
 @decorators___application___security.___required___request_is_ajax___()
 @decorators___application___security.___required___application___security___user___is_ldapuser_or_ldapuserimported___(___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___HPC___)
-def ___view___index___(request):
+def index(request):
     dict___data = dict()
     path = linux.generate_data_dict(request, 'path')
     if path:
@@ -40,7 +40,7 @@ def ___view___index___(request):
 
 @decorators___application___security.___required___request_is_ajax___()
 @decorators___application___security.___required___application___security___user___is_ldapuser_or_ldapuserimported___(___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___HPC___)
-def ___view___list___(request):
+def ls(request):
     dict___data = dict()
     path = request.GET.get('path', None)
     data = linux.generate_data_dict(request, option='list', dict___data=dict___data, parameters=[path])
@@ -59,7 +59,7 @@ def ___view___list___(request):
 
 @decorators___application___security.___required___request_is_ajax___()
 @decorators___application___security.___required___application___security___user___is_ldapuser_or_ldapuserimported___(___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___HPC___)
-def ___view___edit___(request):
+def edit(request):
     instance = request.___APPLICATION___SECURITY___USER___
     dict___data = dict()
     dict___data['___BOOLEAN___ERROR___'] = False
@@ -97,7 +97,7 @@ def ___view___edit___(request):
 
 @decorators___application___security.___required___request_is_ajax___()
 @decorators___application___security.___required___application___security___user___is_ldapuser_or_ldapuserimported___(___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___HPC___)
-def ___view___rename___(request):
+def rename(request):
     dict___data = dict()
     dict___data['___BOOLEAN___ERROR___'] = False
     if request.method == 'POST':
@@ -128,7 +128,7 @@ def ___view___rename___(request):
 
 
 @decorators___application___security.___required___application___security___user___is_ldapuser_or_ldapuserimported___(___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___HPC___)
-def ___view___download___(request):
+def download(request):
     instance = request.___APPLICATION___SECURITY___USER___
     path = request.GET.get('path', None)
     name = request.GET.get('name', None)
@@ -159,7 +159,7 @@ def ___view___download___(request):
 
 @decorators___application___security.___required___request_is_ajax___()
 @decorators___application___security.___required___application___security___user___is_ldapuser_or_ldapuserimported___(___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___HPC___)
-def ___view___paste___(request):
+def paste(request):
     dict___data = dict()
     dict___data['___BOOLEAN___ERROR___'] = False
     if request.method == 'POST':
@@ -185,7 +185,7 @@ def ___view___paste___(request):
 
 @decorators___application___security.___required___request_is_ajax___()
 @decorators___application___security.___required___application___security___user___is_ldapuser_or_ldapuserimported___(___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___HPC___)
-def ___view___execute___(request):
+def execute(request):
     instance = request.___APPLICATION___SECURITY___USER___
     dict___data = dict()
     dict___data['___BOOLEAN___ERROR___'] = False
@@ -211,7 +211,7 @@ def ___view___execute___(request):
 
 @decorators___application___security.___required___request_is_ajax___()
 @decorators___application___security.___required___application___security___user___is_ldapuser_or_ldapuserimported___(___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___HPC___)
-def ___view___delete___(request):
+def delete(request):
     dict___data = dict()
     dict___data['___BOOLEAN___ERROR___'] = False
     if request.method == 'POST':
@@ -239,7 +239,7 @@ def ___view___delete___(request):
 
 @decorators___application___security.___required___request_is_ajax___()
 @decorators___application___security.___required___application___security___user___is_ldapuser_or_ldapuserimported___(___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___HPC___)
-def ___view___go_to___(request):
+def go_to(request):
     dict___data = dict()
     dict___data['___BOOLEAN___ERROR___'] = False
     dict___data['___HTML___APPLICATION___HPC___MODAL___'] = utils___hpc.___html___template___(
@@ -252,7 +252,7 @@ def ___view___go_to___(request):
 
 @decorators___application___security.___required___request_is_ajax___()
 @decorators___application___security.___required___application___security___user___is_ldapuser_or_ldapuserimported___(___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___HPC___)
-def ___view___create_folder___(request):
+def create_folder(request):
     dict___data = dict()
     dict___data['___BOOLEAN___ERROR___'] = False
     if request.method == 'POST':
@@ -283,7 +283,7 @@ def ___view___create_folder___(request):
 
 @decorators___application___security.___required___request_is_ajax___()
 @decorators___application___security.___required___application___security___user___is_ldapuser_or_ldapuserimported___(___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___HPC___)
-def ___view___create_file___(request):
+def create_file(request):
     dict___data = dict()
     dict___data['___BOOLEAN___ERROR___'] = False
     if request.method == 'POST':
@@ -314,7 +314,7 @@ def ___view___create_file___(request):
 
 @decorators___application___security.___required___request_is_ajax___()
 @decorators___application___security.___required___application___security___user___is_ldapuser_or_ldapuserimported___(___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___HPC___)
-def ___view___upload___(request):
+def upload(request):
     dict___data = dict()
     dict___data['___BOOLEAN___ERROR___'] = False
     if request.method == 'POST':
@@ -355,7 +355,7 @@ def ___view___upload___(request):
 
 @decorators___application___security.___required___request_is_ajax___()
 @decorators___application___security.___required___application___security___user___is_ldapuser_or_ldapuserimported___(___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___HPC___)
-def ___view___error___(request):
+def error(request):
     message = request.GET.get('message')
     messages.add_message(request, messages.ERROR, message)
     return utils___hpc.___httpresponse___error___(request)

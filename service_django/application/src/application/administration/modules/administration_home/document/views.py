@@ -9,7 +9,7 @@ from src.application.security import (
 
 
 @decorators___application___security.___required___request_is_ajax___()
-def ___view___index___(request):
+def index(request):
     return utils___application___administration.___jsonresponse___index___(
         request=request,
         ___utils___module___=utils___application___administration___module,
@@ -22,7 +22,7 @@ def ___view___index___(request):
     ___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___ADMINISTRATION___,
     set_identifier___to_verify={'application_home_document_list', }
 )
-def ___view___list___(request):
+def list(request):
     return utils___application___administration.___jsonresponse___list___(
         request=request,
         ___utils___module___=utils___application___administration___module,
@@ -35,7 +35,7 @@ def ___view___list___(request):
     ___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___ADMINISTRATION___,
     set_identifier___to_verify={'application_home_document_list', 'application_home_document_create', }
 )
-def ___view___create___(request):
+def create(request):
     return utils___application___administration.___jsonresponse___create___(
         request=request,
         ___utils___module___=utils___application___administration___module,
@@ -48,7 +48,7 @@ def ___view___create___(request):
     ___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___ADMINISTRATION___,
     set_identifier___to_verify={'application_home_document_list', 'application_home_document_detail', }
 )
-def ___view___detail___(request, pk):
+def detail(request, pk):
     return utils___application___administration.___jsonresponse___detail___(
         request=request,
         ___utils___module___=utils___application___administration___module,
@@ -62,7 +62,7 @@ def ___view___detail___(request, pk):
     ___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___ADMINISTRATION___,
     set_identifier___to_verify={'application_home_document_list', 'application_home_document_update', }
 )
-def ___view___update___(request, pk):
+def update(request, pk):
     return utils___application___administration.___jsonresponse___update___(
         request=request,
         ___utils___module___=utils___application___administration___module,
@@ -76,7 +76,7 @@ def ___view___update___(request, pk):
     ___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___ADMINISTRATION___,
     set_identifier___to_verify={'application_home_document_list', 'application_home_document_delete', }
 )
-def ___view___delete___(request, pk):
+def delete(request, pk):
     return utils___application___administration.___jsonresponse___delete___(
         request=request,
         ___utils___module___=utils___application___administration___module,

@@ -14,7 +14,7 @@ from ... import slurm
 
 @decorators___application___security.___required___request_is_ajax___()
 @decorators___application___security.___required___application___security___user___is_ldapuser_or_ldapuserimported___(___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___HPC___)
-def ___view___index___(request):
+def index(request):
     dict___data = dict()
     data = slurm.generate_data_dict(request, option='keys')
     if data:
@@ -32,7 +32,7 @@ def ___view___index___(request):
 
 @decorators___application___security.___required___request_is_ajax___()
 @decorators___application___security.___required___application___security___user___is_ldapuser_or_ldapuserimported___(___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___HPC___)
-def ___view___list___(request):
+def jobs(request):
     option = request.GET.get('option', None)
     parameters = request.GET.getlist('parameters[]', None)
     data = slurm.generate_data_json(request, option, parameters=parameters)
@@ -44,7 +44,7 @@ def ___view___list___(request):
 
 @decorators___application___security.___required___request_is_ajax___()
 @decorators___application___security.___required___application___security___user___is_ldapuser_or_ldapuserimported___(___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___HPC___)
-def ___view___detail___(request):
+def detail(request):
     dict___data = dict()
     parameters = request.GET.getlist('parameters[]', None)
     data = slurm.generate_data_dict(request, option='detail job', parameters=parameters)
@@ -64,7 +64,7 @@ def ___view___detail___(request):
 @csrf_exempt
 @decorators___application___security.___required___request_is_ajax___()
 @decorators___application___security.___required___application___security___user___is_ldapuser_or_ldapuserimported___(___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___HPC___)
-def ___view___action___(request):
+def action(request):
     if request.method == 'POST':
         dict___data = dict()
         option = request.POST.get('option', None)

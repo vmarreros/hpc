@@ -57,7 +57,7 @@ var hpc_jobs_datatable_init = function(){
             }
         ],
         ajax: {
-            url: $datatable.attr('data-url-list'),
+            url: $datatable.attr('data-url-jobs'),
             type: "GET",
             data: function() {
                 return {

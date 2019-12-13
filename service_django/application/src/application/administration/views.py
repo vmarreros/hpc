@@ -8,7 +8,7 @@ from django import http, shortcuts
 
 
 @decorators___application___security.___required___application___security___user___(___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___ADMINISTRATION___)
-def ___view___index___(request):
+def index(request):
     dict___context = dict()
     return shortcuts.render(
         request=request,
@@ -19,7 +19,7 @@ def ___view___index___(request):
 
 @decorators___application___security.___required___request_is_ajax___()
 @decorators___application___security.___required___application___security___user___(___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___ADMINISTRATION___)
-def ___view___index___load___(request):
+def index___load(request):
     dict___data = dict()
     dict___data['___BOOLEAN___ERROR___'] = False
     dict___data['___HTML___APPLICATION___ADMINISTRATION___LOAD___'] = utils.___html___template___(
@@ -32,7 +32,7 @@ def ___view___index___load___(request):
 
 @decorators___application___security.___required___request_is_ajax___()
 @decorators___application___security.___required___application___security___user___(___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___ADMINISTRATION___)
-def ___view___index___title___(request):
+def index___title(request):
     dict___data = dict()
     dict___data['___BOOLEAN___ERROR___'] = False
     dict___data['___HTML___APPLICATION___ADMINISTRATION___TITLE___'] = utils.___html___template___(
@@ -45,7 +45,7 @@ def ___view___index___title___(request):
 
 @decorators___application___security.___required___request_is_ajax___()
 @decorators___application___security.___required___application___security___user___(___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___ADMINISTRATION___)
-def ___view___index___header___(request):
+def index___header(request):
     dict___data = dict()
     dict___data['___BOOLEAN___ERROR___'] = False
     dict___data['___HTML___APPLICATION___ADMINISTRATION___HEADER___'] = utils.___html___template___(
@@ -58,7 +58,7 @@ def ___view___index___header___(request):
 
 @decorators___application___security.___required___request_is_ajax___()
 @decorators___application___security.___required___application___security___user___(___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___ADMINISTRATION___)
-def ___view___index___leftside___(request):
+def index___leftside(request):
     dict___data = dict()
     dict___data['___BOOLEAN___ERROR___'] = False
     dict___data['___HTML___APPLICATION___ADMINISTRATION___LEFTSIDE___'] = utils.___html___template___(
@@ -71,7 +71,7 @@ def ___view___index___leftside___(request):
 
 @decorators___application___security.___required___request_is_ajax___()
 @decorators___application___security.___required___application___security___user___(___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___ADMINISTRATION___)
-def ___view___index___content___center___(request):
+def index___content___center(request):
     dict___data = dict()
     dict___data['___BOOLEAN___ERROR___'] = False
     dict___data['___HTML___APPLICATION___ADMINISTRATION___CONTENT___CENTER___'] = utils.___html___template___(
@@ -84,7 +84,7 @@ def ___view___index___content___center___(request):
 
 @decorators___application___security.___required___request_is_ajax___()
 @decorators___application___security.___required___application___security___user___(___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___ADMINISTRATION___)
-def ___view___index___content___footer___(request):
+def index___content___footer(request):
     dict___data = dict()
     dict___data['___BOOLEAN___ERROR___'] = False
     dict___data['___HTML___APPLICATION___ADMINISTRATION___CONTENT___FOOTER___'] = utils.___html___template___(
@@ -96,7 +96,7 @@ def ___view___index___content___footer___(request):
 
 
 @decorators___application___security.___required___request_is_ajax___()
-def ___view___login___(request):
+def login(request):
     return utils___application___security.___jsonresponse___login___(
         request=request,
         ___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___ADMINISTRATION___
@@ -104,7 +104,7 @@ def ___view___login___(request):
 
 
 @decorators___application___security.___required___request_is_ajax___()
-def ___view___login___forgot_credentials_1___(request):
+def login___forgot_credentials_1(request):
     return utils___application___security.___jsonresponse___login___forgot_credentials_1___(
         request=request,
         ___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___ADMINISTRATION___
@@ -112,7 +112,7 @@ def ___view___login___forgot_credentials_1___(request):
 
 
 @decorators___application___security.___required___request_is_ajax___()
-def ___view___login___forgot_credentials_2___(request, pk):
+def login___forgot_credentials_2(request, pk):
     return utils___application___security.___jsonresponse___login___forgot_credentials_2___(
         request=request,
         ___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___ADMINISTRATION___,
@@ -121,7 +121,7 @@ def ___view___login___forgot_credentials_2___(request, pk):
 
 
 @decorators___application___security.___required___request_is_ajax___()
-def ___view___login___forgot_credentials_3___(request, pk):
+def login___forgot_credentials_3(request, pk):
     return utils___application___security.___jsonresponse___login___forgot_credentials_3___(
         request=request,
         ___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___ADMINISTRATION___,
@@ -130,7 +130,7 @@ def ___view___login___forgot_credentials_3___(request, pk):
 
 
 @decorators___application___security.___required___request_is_ajax___()
-def ___view___login___request___(request):
+def login___request(request):
     return utils___application___security.___jsonresponse___login___request___(
         request=request,
         ___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___ADMINISTRATION___
@@ -139,7 +139,7 @@ def ___view___login___request___(request):
 
 @decorators___application___security.___required___request_is_ajax___()
 @decorators___application___security.___required___application___security___user___(___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___ADMINISTRATION___)
-def ___view___logout___(request):
+def logout(request):
     return utils___application___security.___jsonresponse___logout___(
         request=request,
         ___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___ADMINISTRATION___
@@ -148,7 +148,7 @@ def ___view___logout___(request):
 
 @decorators___application___security.___required___request_is_ajax___()
 @decorators___application___security.___required___application___security___user___(___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___ADMINISTRATION___)
-def ___view___profile___(request):
+def profile(request):
     return utils___application___security.___jsonresponse___profile___(
         request=request,
         ___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___ADMINISTRATION___
@@ -156,7 +156,7 @@ def ___view___profile___(request):
 
 
 @decorators___application___security.___required___request_is_ajax___()
-def ___view___locale___(request):
+def locale(request):
     return utils___application___security.___jsonresponse___locale___(
         request=request,
         ___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___ADMINISTRATION___

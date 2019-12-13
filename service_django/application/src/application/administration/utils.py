@@ -55,7 +55,7 @@ def ___html___template_index___pagination___(request, ___utils___module___, ___u
         template_name='application/administration/___includes___/content/center/___includes___/pagination/pagination.html',
         context={
             'ctx___page': page,
-            'ctx___data_url': 'application___administration:modules:%s:%s:list' % (___utils___module___.___MODULE_PATH___, ___utils___module_model___.___MODEL_PATH___,),
+            'ctx___data_url': 'administration:modules:%s:%s:list' % (___utils___module___.___MODULE_PATH___, ___utils___module_model___.___MODEL_PATH___,),
             'ctx___search': search
         },
         request=request

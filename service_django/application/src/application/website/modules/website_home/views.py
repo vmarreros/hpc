@@ -8,7 +8,7 @@ from django import http
 
 
 @decorators___application___security.___required___request_is_ajax___()
-def ___view___index___(request):
+def index(request):
     dict___data = dict()
     instance = models.Document.objects.all().filter(is_active=True).reverse().first()
     context = dict()

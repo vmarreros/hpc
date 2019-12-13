@@ -10,7 +10,7 @@
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <!-- Application BIGDATA Title -->
-            <title data-url="{% url "application___bigdata:index___title" %}">{% include "application/bigdata/___includes___/title/title.html" %}</title>
+            <title data-url="{% url "bigdata:index___title" %}">{% include "application/bigdata/___includes___/title/title.html" %}</title>
             <!-- favicon -->
             <link rel="shortcut icon" href="{% static 'application/bigdata/img/favicon/favicon.png' %}?{{ ctx___now }}" type="image/png">
             <!-- Bootstrap -->
@@ -42,22 +42,22 @@
             <!-- Application BIGDATA -->
             <div id="application___bigdata">
                 <!-- Application BIGDATA Load -->
-                <div id="application___bigdata___load" class="hidden" data-url="{% url "application___bigdata:index___load" %}">
+                <div id="application___bigdata___load" class="hidden" data-url="{% url "bigdata:index___load" %}">
                     {% include "application/bigdata/___includes___/load/load.html" %}
                 </div>
                 <!-- Application BIGDATA Header -->
-                <header id="application___bigdata___header" class="navbar navbar-fixed-top" data-url="{% url "application___bigdata:index___header" %}">
+                <header id="application___bigdata___header" class="navbar navbar-fixed-top" data-url="{% url "bigdata:index___header" %}">
                 </header>
                 <!-- Application BIGDATA Leftside -->
-                <aside id="application___bigdata___leftside" data-url="{% url "application___bigdata:index___leftside" %}">
+                <aside id="application___bigdata___leftside" data-url="{% url "bigdata:index___leftside" %}">
                 </aside>
                 <!-- Application BIGDATA Content -->
                 <section id="application___bigdata___content">
                     <!-- Application BIGDATA Content Center -->
-                    <div id="application___bigdata___content___center" data-url="{% url "application___bigdata:index___content___center" %}">
+                    <div id="application___bigdata___content___center" data-url="{% url "bigdata:index___content___center" %}">
                     </div>
                     <!-- Application BIGDATA Content Footer -->
-                    <footer id="application___bigdata___content___footer" data-url="{% url "application___bigdata:index___content___footer" %}">
+                    <footer id="application___bigdata___content___footer" data-url="{% url "bigdata:index___content___footer" %}">
                     </footer>
                 </section>
                 <!-- Application BIGDATA Modal -->

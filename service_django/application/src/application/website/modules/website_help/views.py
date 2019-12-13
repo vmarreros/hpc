@@ -11,7 +11,7 @@ from django.utils.translation import ugettext_lazy as _
 
 
 @decorators___application___security.___required___request_is_ajax___()
-def ___view___index___(request):
+def index(request):
     dict___data = dict()
     dict___data['___HTML___APPLICATION___WEBSITE___CONTENT___CENTER___'] = utils___website.___html___template___(
         request=request,
@@ -21,7 +21,7 @@ def ___view___index___(request):
     return http.JsonResponse(dict___data)
 
 
-def ___view___list___(request):
+def list(request):
     dict___data = dict()
     instances = models.Document.objects.all().filter(is_active=True)
     dict___data['___HTML___APPLICATION___WEBSITE___CONTENT___CENTER___LIST___'] = utils___website.___html___template___(
@@ -34,7 +34,7 @@ def ___view___list___(request):
     return http.JsonResponse(dict___data)
 
 
-def ___view___content___(request, pk):
+def content(request, pk):
     dict___data = dict()
     try:
         pk = int(pk)
