@@ -18,7 +18,8 @@ urlpatterns = [
     url(r'^hpc/', include('src.application.hpc.urls', namespace='hpc')),
     url(r'^bigdata/', include('src.application.bigdata.urls', namespace='bigdata')),
     url(r'^administration/', include('src.application.administration.urls', namespace='administration')),
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^secret/', admin.site.urls),
+    url(r'^admin/', include('admin_honeypot.urls', namespace='admin_honeypot')),
 ]
 
 if settings.DEBUG:

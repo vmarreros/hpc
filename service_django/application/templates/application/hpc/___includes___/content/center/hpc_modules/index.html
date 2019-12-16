@@ -1,0 +1,40 @@
+{% load i18n %}
+{% load application___hpc %}
+{% now "YmdHis" as ctx___now %}
+
+<h3 id="center___header">
+    <span class="fa fa-linode fa-fw" aria-hidden="true"></span> {% trans 'HPC___CONTENT___MODULES___HEADER' %}
+</h3>
+{% with ctx___graph=ctx___now %}
+    <div id="center___content">
+        <div id="nodes___content" class="container-fluid" data-url="">
+            <table id="nodes___datatable" class="table table-striped" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th width="30px">{% trans 'HPC___CONTENT___MODULES___TABLE___INDEX' %}</th>
+                        <th width="80px">{% trans 'HPC___CONTENT___MODULES___TABLE___MODULE' %}</th>
+                        <th width="200px">{% trans 'HPC___CONTENT___MODULES___TABLE___VERSIONS' %}</th>
+                        <th>{% trans 'HPC___CONTENT___MODULES___TABLE___DESCRIPTION' %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for module in modules %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ module.name }}</td>
+                        <td>
+                            {% for version in module.version_set.all %}
+                                {{ version.name }}<br>
+                            {% endfor %}
+                        </td>
+                        <td>{{ module.description }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        hpc_nodes_datatable_init();
+    </script>
+{% endwith %}

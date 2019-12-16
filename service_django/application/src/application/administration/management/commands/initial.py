@@ -143,7 +143,7 @@ class Command(management.base.BaseCommand):
         # )
         crontabschedule, boolean___created = models___django_celery_beat.CrontabSchedule.objects.get_or_create(
             minute='*',  # */1
-            hour='midnight and noon',  # '0,8,9,10,11,12,13,14,15,16,17,18',  # 0,12 # midnight and noon
+            hour='midnight',  # '0,8,9,10,11,12,13,14,15,16,17,18',  # 0,12 # midnight and noon
             day_of_week='*',
             day_of_month='*',
             month_of_year='*',
@@ -153,6 +153,12 @@ class Command(management.base.BaseCommand):
             crontab=crontabschedule,
             name='PeriodicTask 001',
             task='src.application.security.tasks.___task___application___security___ldap___synchronize___',
+        )
+        models___django_celery_beat.PeriodicTask.objects.create(
+            # interval=instervalschedule,
+            crontab=crontabschedule,
+            name='PeriodicTask 002',
+            task='src.application.hpc.tasks.___task___application___hpc___modules___synchronize___',
         )
         self.stdout.write('')
         # #

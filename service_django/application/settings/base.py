@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django_celery_beat',
     'django.contrib.auth',
     'django.contrib.admin',
+    'admin_honeypot',
     'captcha',
     'src.application.security',
     'src.application.help',
@@ -96,6 +97,7 @@ LOCALE_PATHS = (
     root('i18n/application/hpc/locale/application___hpc___content___hpc_script/locale'),
     root('i18n/application/hpc/locale/application___hpc___content___hpc_nodes/locale'),
     root('i18n/application/hpc/locale/application___hpc___content___hpc_explorer/locale'),
+    root('i18n/application/hpc/locale/application___hpc___content___hpc_modules/locale'),
     root('i18n/application/hpc/locale/application___hpc___ssh/locale'),
     #
     root('i18n/application/bigdata/locale/application___bigdata/locale'),
