@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 # django modules import
 from django import http
-from django.views.decorators.csrf import csrf_exempt
 
 # user modules import
 from ....security import (
