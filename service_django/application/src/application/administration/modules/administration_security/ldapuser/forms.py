@@ -7,7 +7,7 @@ import os
 import shutil
 
 ___FIELD___IS_ACTIVE___ = forms.BooleanField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___IS_ACTIVE'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___IS_ACTIVE'),
     required=False,
     widget=forms.CheckboxInput(
         attrs={
@@ -18,7 +18,7 @@ ___FIELD___IS_ACTIVE___ = forms.BooleanField(
     ),
 )
 ___FIELD___CREATED___ = forms.DateField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___CREATED'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___CREATED'),
     required=False,
     widget=forms.DateInput(
         attrs={
@@ -29,7 +29,7 @@ ___FIELD___CREATED___ = forms.DateField(
     ),
 )
 ___FIELD___MODIFIED___ = forms.DateField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___MODIFIED'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___MODIFIED'),
     required=False,
     widget=forms.DateInput(
         attrs={
@@ -40,7 +40,7 @@ ___FIELD___MODIFIED___ = forms.DateField(
     ),
 )
 ___FIELD___AVATAR___ = forms.ImageField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___AVATAR'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___AVATAR'),
     required=False,
     widget=forms.FileInput(
         attrs={
@@ -53,12 +53,12 @@ ___FIELD___AVATAR___ = forms.ImageField(
     ),
 )
 ___FIELD___FIRST_NAME___ = forms.CharField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___FIRST_NAME'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___FIRST_NAME'),
     required=False,
     min_length=1,
     max_length=100,
     validators=[
-        validators.RegexValidator('^[\w .\-_]+$', message=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___VALIDATION Only letters, numbers and special characters dot, -, _ and space.')),
+        validators.RegexValidator('^[\w .\-_]+$', message=_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___VALIDATION Only letters, numbers and special characters dot, -, _ and space.')),
     ],
     widget=forms.TextInput(
         attrs={
@@ -70,12 +70,12 @@ ___FIELD___FIRST_NAME___ = forms.CharField(
     ),
 )
 ___FIELD___LAST_NAME___ = forms.CharField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___LAST_NAME'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___LAST_NAME'),
     required=False,
     min_length=1,
     max_length=100,
     validators=[
-        validators.RegexValidator('^[\w .\-_]+$', message=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___VALIDATION Only letters, numbers and special characters dot, -, _ and space.')),
+        validators.RegexValidator('^[\w .\-_]+$', message=_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___VALIDATION Only letters, numbers and special characters dot, -, _ and space.')),
     ],
     widget=forms.TextInput(
         attrs={
@@ -87,12 +87,12 @@ ___FIELD___LAST_NAME___ = forms.CharField(
     ),
 )
 ___FIELD___IDENTIFIER___ = forms.CharField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___IDENTIFIER'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___IDENTIFIER'),
     required=True,
     min_length=1,
     max_length=100,
     validators=[
-        validators.RegexValidator('^[\w_]+$', message=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___VALIDATION Only letters, numbers and the special character _.')),
+        validators.RegexValidator('^[\w_]+$', message=_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___VALIDATION Only letters, numbers and the special character _.')),
     ],
     widget=forms.TextInput(
         attrs={
@@ -104,7 +104,7 @@ ___FIELD___IDENTIFIER___ = forms.CharField(
     ),
 )
 ___FIELD___EMAIL___ = forms.EmailField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___EMAIL'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___EMAIL'),
     required=True,
     min_length=1,
     max_length=150,
@@ -118,7 +118,7 @@ ___FIELD___EMAIL___ = forms.EmailField(
     ),
 )
 ___FIELD___PASSWORD___ = forms.CharField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___PASSWORD'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___PASSWORD'),
     required=False,
     max_length=32,
     widget=forms.PasswordInput(
@@ -132,7 +132,7 @@ ___FIELD___PASSWORD___ = forms.CharField(
     ),
 )
 ___FIELD___PASSWORD_CONFIRMATION___ = forms.CharField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___PASSWORD_CONFIRMATION'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___PASSWORD_CONFIRMATION'),
     required=False,
     max_length=32,
     widget=forms.PasswordInput(
@@ -146,7 +146,7 @@ ___FIELD___PASSWORD_CONFIRMATION___ = forms.CharField(
     ),
 )
 ___FIELD___DETAIL___ = forms.CharField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___DETAIL'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___DETAIL'),
     required=True,
     min_length=1,
     max_length=1024,
@@ -161,7 +161,7 @@ ___FIELD___DETAIL___ = forms.CharField(
     ),
 )
 ___FIELD___INSTITUTE___ = forms.CharField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___INSTITUTE'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___INSTITUTE'),
     required=True,
     min_length=1,
     max_length=256,
@@ -175,7 +175,7 @@ ___FIELD___INSTITUTE___ = forms.CharField(
     ),
 )
 ___FIELD___RESEARCH_FIELD___ = forms.CharField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___RESEARCH_FIELD'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___RESEARCH_FIELD'),
     required=True,
     min_length=1,
     max_length=256,
@@ -189,7 +189,7 @@ ___FIELD___RESEARCH_FIELD___ = forms.CharField(
     ),
 )
 ___FIELD___RESEARCH_GROUP___ = forms.CharField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___RESEARCH_GROUP'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___RESEARCH_GROUP'),
     required=True,
     min_length=1,
     max_length=256,
@@ -203,15 +203,15 @@ ___FIELD___RESEARCH_GROUP___ = forms.CharField(
     ),
 )
 ___FIELD___USER_PROFILE___ = forms.ChoiceField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___USER_PROFILE'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___USER_PROFILE'),
     required=True,
     choices=[
-        ('Teacher', _("APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___USER_PROFILE___OPTION___TEACHER")),
-        ('Investigator', _("APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___USER_PROFILE___OPTION___INVESTIGATOR")),
-        ('Undergraduate student', _("APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___USER_PROFILE___OPTION___UNDERGRADUATE_STUDENT")),
-        ('Master\'s student', _("APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___USER_PROFILE___OPTION____MASTER'S_STUDENT")),
-        ('PhD student', _("APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___USER_PROFILE___OPTION___PHD_STUDENT")),
-        ('Other', _("APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___USER_PROFILE___OPTION___OTHER")),
+        ('Teacher', _("ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___USER_PROFILE___OPTION___TEACHER")),
+        ('Investigator', _("ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___USER_PROFILE___OPTION___INVESTIGATOR")),
+        ('Undergraduate student', _("ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___USER_PROFILE___OPTION___UNDERGRADUATE_STUDENT")),
+        ('Master\'s student', _("ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___USER_PROFILE___OPTION____MASTER'S_STUDENT")),
+        ('PhD student', _("ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___USER_PROFILE___OPTION___PHD_STUDENT")),
+        ('Other', _("ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___USER_PROFILE___OPTION___OTHER")),
     ],
     initial='Teacher',
     widget=forms.Select(
@@ -224,7 +224,7 @@ ___FIELD___USER_PROFILE___ = forms.ChoiceField(
     ),
 )
 ___FIELD___TUTOR_INSTITUTION___ = forms.CharField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___TUTOR_INSTITUTION'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___TUTOR_INSTITUTION'),
     required=False,
     min_length=1,
     max_length=256,
@@ -238,7 +238,7 @@ ___FIELD___TUTOR_INSTITUTION___ = forms.CharField(
     ),
 )
 ___FIELD___TUTOR_MAIL___ = forms.EmailField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___TUTOR_MAIL'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___TUTOR_MAIL'),
     required=False,
     min_length=1,
     max_length=256,
@@ -252,7 +252,7 @@ ___FIELD___TUTOR_MAIL___ = forms.EmailField(
     ),
 )
 ___FIELD___TUTOR_NAME___ = forms.CharField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___TUTOR_NAME'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___TUTOR_NAME'),
     required=False,
     min_length=1,
     max_length=256,
@@ -266,7 +266,7 @@ ___FIELD___TUTOR_NAME___ = forms.CharField(
     ),
 )
 ___FIELD___GROUPS___ = forms.ModelMultipleChoiceField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___GROUPS'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___GROUPS'),
     required=False,
     widget=forms.CheckboxSelectMultiple(
         attrs={
@@ -279,7 +279,7 @@ ___FIELD___GROUPS___ = forms.ModelMultipleChoiceField(
     queryset=models.Group.objects.all(),
 )
 ___FIELD___PERMISSIONS___ = forms.ModelMultipleChoiceField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___PERMISSIONS'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___PERMISSIONS'),
     required=False,
     widget=forms.CheckboxSelectMultiple(
         attrs={
@@ -330,40 +330,40 @@ class LDAPUserCreate(forms.ModelForm):
         super().__init__(*args, **kwargs)
         #
         # is_active
-        ___field___attribute___help_text___locale___reload__(field=self.fields['is_active'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___IS_ACTIVE___HELP_TEXT')
+        ___field___attribute___help_text___locale___reload__(field=self.fields['is_active'], locale='ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___IS_ACTIVE___HELP_TEXT')
         self.fields['is_active'].initial = True
         # first_name
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['first_name'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___FIRST_NAME')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['first_name'], locale='ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___FIRST_NAME')
         self.fields['first_name'].widget.attrs['autofocus'] = True
         # last name
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['last_name'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___LAST_NAME')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['last_name'], locale='ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___LAST_NAME')
         # identifier
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['identifier'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___IDENTIFIER')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['identifier'], locale='ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___IDENTIFIER')
         # email
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['email'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___EMAIL')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['email'], locale='ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___EMAIL')
         # password
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['password'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___PASSWORD')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['password'], locale='ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___PASSWORD')
         self.fields['password'].required = True
         # password_confirmation
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['password_confirmation'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___PASSWORD_CONFIRMATION')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['password_confirmation'], locale='ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___PASSWORD_CONFIRMATION')
         self.fields['password_confirmation'].required = True
         # detail
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['detail'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___DETAIL')
-        ___field___attribute___help_text___locale___reload__(field=self.fields['detail'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___DETAIL___HELP_TEXT')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['detail'], locale='ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___DETAIL')
+        ___field___attribute___help_text___locale___reload__(field=self.fields['detail'], locale='ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___DETAIL___HELP_TEXT')
         # institute
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['institute'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___INSTITUTE')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['institute'], locale='ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___INSTITUTE')
         # researchField
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['researchField'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___RESEARCH_FIELD')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['researchField'], locale='ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___RESEARCH_FIELD')
         # researchGroup
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['researchGroup'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___RESEARCH_GROUP')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['researchGroup'], locale='ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___RESEARCH_GROUP')
         # userProfile
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['userProfile'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___USER_PROFILE')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['userProfile'], locale='ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___USER_PROFILE')
         # tutorInstitution
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['tutorInstitution'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___TUTOR_INSTITUTION')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['tutorInstitution'], locale='ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___TUTOR_INSTITUTION')
         # tutorMail
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['tutorMail'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___TUTOR_MAIL')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['tutorMail'], locale='ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___TUTOR_MAIL')
         # tutorName
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['tutorName'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___TUTOR_NAME')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['tutorName'], locale='ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___TUTOR_NAME')
         # groups
         self.groups_choices = models.Group.objects.all()
         # permissions
@@ -378,7 +378,7 @@ class LDAPUserCreate(forms.ModelForm):
                 models.LDAPUserRequest.objects.get(identifier=identifier)
             except models.LDAPUserRequest.DoesNotExist:
                 return identifier
-        raise forms.ValidationError(_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___VALIDATION This identifier has already been chosen.'))
+        raise forms.ValidationError(_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___VALIDATION This identifier has already been chosen.'))
 
     def clean_email(self):
         email = self.cleaned_data.get('email')
@@ -389,14 +389,14 @@ class LDAPUserCreate(forms.ModelForm):
                 models.LDAPUserRequest.objects.get(email=email)
             except models.LDAPUserRequest.DoesNotExist:
                 return email
-        raise forms.ValidationError(_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___VALIDATION This email has already been chosen.'))
+        raise forms.ValidationError(_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___VALIDATION This email has already been chosen.'))
 
     def clean_tutorInstitution(self):
         userProfile = self.cleaned_data.get('userProfile')
         tutorInstitution = self.cleaned_data.get('tutorInstitution')
         if userProfile in ['Undergraduate student', "Master's student", 'PhD student']:
             if tutorInstitution is None or tutorInstitution == '':
-                raise forms.ValidationError(_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___VALIDATION Specify the tutor\'s institution.'))
+                raise forms.ValidationError(_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___VALIDATION Specify the tutor\'s institution.'))
         return tutorInstitution
 
     def clean_tutorMail(self):
@@ -404,7 +404,7 @@ class LDAPUserCreate(forms.ModelForm):
         tutorMail = self.cleaned_data.get('tutorMail')
         if userProfile in ['Undergraduate student', "Master's student", 'PhD student']:
             if tutorMail is None or tutorMail == '':
-                raise forms.ValidationError(_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___VALIDATION Specify the tutor\'s mail.'))
+                raise forms.ValidationError(_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___VALIDATION Specify the tutor\'s mail.'))
         return tutorMail
 
     def clean_tutorName(self):
@@ -412,7 +412,7 @@ class LDAPUserCreate(forms.ModelForm):
         tutorName = self.cleaned_data.get('tutorName')
         if userProfile in ['Undergraduate student', "Master's student", 'PhD student']:
             if tutorName is None or tutorName == '':
-                raise forms.ValidationError(_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___VALIDATION Specify the tutor\'s name.'))
+                raise forms.ValidationError(_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___VALIDATION Specify the tutor\'s name.'))
         return tutorName
 
     def clean(self):
@@ -421,8 +421,8 @@ class LDAPUserCreate(forms.ModelForm):
         password = str(self.cleaned_data.get('password')).strip()
         password_confirmation = str(self.cleaned_data.get('password_confirmation')).strip()
         if password != password_confirmation:
-            self.add_error('password', _('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___VALIDATION The password and your confirmation do not match.'))
-            self.add_error('password_confirmation', _('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___VALIDATION The password and your confirmation do not match.'))
+            self.add_error('password', _('ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___VALIDATION The password and your confirmation do not match.'))
+            self.add_error('password_confirmation', _('ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___VALIDATION The password and your confirmation do not match.'))
         return ___clean___
 
     def save(self, commit=True):
@@ -519,38 +519,38 @@ class LDAPUserUpdate(forms.ModelForm):
         super().__init__(*args, **kwargs)
         #
         # is_active
-        ___field___attribute___help_text___locale___reload__(field=self.fields['is_active'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___IS_ACTIVE___HELP_TEXT')
+        ___field___attribute___help_text___locale___reload__(field=self.fields['is_active'], locale='ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___IS_ACTIVE___HELP_TEXT')
         # first_name
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['first_name'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___FIRST_NAME')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['first_name'], locale='ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___FIRST_NAME')
         self.fields['first_name'].widget.attrs['autofocus'] = True
         # last name
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['last_name'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___LAST_NAME')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['last_name'], locale='ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___LAST_NAME')
         # identifier
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['identifier'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___IDENTIFIER')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['identifier'], locale='ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___IDENTIFIER')
         self.fields['identifier'].widget.attrs['readonly'] = 'readonly'
         # email
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['email'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___EMAIL')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['email'], locale='ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___EMAIL')
         # password
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['password'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___PASSWORD')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['password'], locale='ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___PASSWORD')
         # password_confirmation
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['password_confirmation'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___PASSWORD_CONFIRMATION')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['password_confirmation'], locale='ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___PASSWORD_CONFIRMATION')
         # detail
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['detail'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___DETAIL')
-        ___field___attribute___help_text___locale___reload__(field=self.fields['detail'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___DETAIL___HELP_TEXT')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['detail'], locale='ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___DETAIL')
+        ___field___attribute___help_text___locale___reload__(field=self.fields['detail'], locale='ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___DETAIL___HELP_TEXT')
         # institute
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['institute'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___INSTITUTE')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['institute'], locale='ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___INSTITUTE')
         # researchField
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['researchField'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___RESEARCH_FIELD')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['researchField'], locale='ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___RESEARCH_FIELD')
         # researchGroup
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['researchGroup'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___RESEARCH_GROUP')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['researchGroup'], locale='ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___RESEARCH_GROUP')
         # researchGroup
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['userProfile'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___USER_PROFILE')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['userProfile'], locale='ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___USER_PROFILE')
         # tutorInstitution
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['tutorInstitution'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___TUTOR_INSTITUTION')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['tutorInstitution'], locale='ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___TUTOR_INSTITUTION')
         # tutorMail
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['tutorMail'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___TUTOR_MAIL')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['tutorMail'], locale='ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___TUTOR_MAIL')
         # tutorName
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['tutorName'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___TUTOR_NAME')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['tutorName'], locale='ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___TUTOR_NAME')
 
         # groups
         self.groups_choices = models.Group.objects.all()
@@ -561,7 +561,7 @@ class LDAPUserUpdate(forms.ModelForm):
         avatar = self.cleaned_data.get('avatar')
         if self.files.get('avatar'):
             if len(self.files.get('avatar')) > 1 * 1024 * 1024:  # 1MB
-                raise forms.ValidationError(_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___VALIDATION The avatar should not be beggear than %(weight)s.') % {'weight': '1mb', })
+                raise forms.ValidationError(_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___VALIDATION The avatar should not be beggear than %(weight)s.') % {'weight': '1mb', })
         return avatar
 
     def clean_identifier(self):
@@ -575,7 +575,7 @@ class LDAPUserUpdate(forms.ModelForm):
         #         return identifier
         # if instance.identifier == self.instance_current.identifier:
         #     return identifier
-        # raise forms.ValidationError(_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___VALIDATION This identifier has already been chosen.'))
+        # raise forms.ValidationError(_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___VALIDATION This identifier has already been chosen.'))
         identifier = self.instance_current.identifier
         return identifier
 
@@ -590,14 +590,14 @@ class LDAPUserUpdate(forms.ModelForm):
                 return email
         if instance.email == self.instance_current.email:
             return email
-        raise forms.ValidationError(_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___VALIDATION This email has already been chosen.'))
+        raise forms.ValidationError(_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___VALIDATION This email has already been chosen.'))
 
     def clean_tutorInstitution(self):
         userProfile = self.cleaned_data.get('userProfile')
         tutorInstitution = self.cleaned_data.get('tutorInstitution')
         if userProfile in ['Undergraduate student', "Master's student", 'PhD student']:
             if tutorInstitution is None or tutorInstitution == '':
-                raise forms.ValidationError(_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___VALIDATION Specify the tutor\'s institution.'))
+                raise forms.ValidationError(_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___VALIDATION Specify the tutor\'s institution.'))
         return tutorInstitution
 
     def clean_tutorMail(self):
@@ -605,7 +605,7 @@ class LDAPUserUpdate(forms.ModelForm):
         tutorMail = self.cleaned_data.get('tutorMail')
         if userProfile in ['Undergraduate student', "Master's student", 'PhD student']:
             if tutorMail is None or tutorMail == '':
-                raise forms.ValidationError(_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___VALIDATION Specify the tutor\'s mail.'))
+                raise forms.ValidationError(_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___VALIDATION Specify the tutor\'s mail.'))
         return tutorMail
 
     def clean_tutorName(self):
@@ -613,7 +613,7 @@ class LDAPUserUpdate(forms.ModelForm):
         tutorName = self.cleaned_data.get('tutorName')
         if userProfile in ['Undergraduate student', "Master's student", 'PhD student']:
             if tutorName is None or tutorName == '':
-                raise forms.ValidationError(_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___VALIDATION Specify the tutor\'s name.'))
+                raise forms.ValidationError(_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___VALIDATION Specify the tutor\'s name.'))
         return tutorName
 
     def clean(self):
@@ -622,8 +622,8 @@ class LDAPUserUpdate(forms.ModelForm):
         password = str(self.cleaned_data.get('password')).strip()
         password_confirmation = str(self.cleaned_data.get('password_confirmation')).strip()
         if password != password_confirmation:
-            self.add_error('password', _('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___VALIDATION The password and your confirmation do not match.'))
-            self.add_error('password_confirmation', _('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSER___VALIDATION The password and your confirmation do not match.'))
+            self.add_error('password', _('ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___VALIDATION The password and your confirmation do not match.'))
+            self.add_error('password_confirmation', _('ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___VALIDATION The password and your confirmation do not match.'))
         return ___clean___
 
     def save(self, commit=True):

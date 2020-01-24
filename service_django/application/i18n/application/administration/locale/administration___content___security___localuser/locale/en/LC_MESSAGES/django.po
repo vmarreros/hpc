@@ -1,0 +1,94 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+
+
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LOCALUSERS"
+msgstr "LOCAL users"
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LOCALUSER"
+msgstr "LOCAL user"
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___TABLE___NAME"
+msgstr "Name"
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___TABLE___IDENTIFIER"
+msgstr "Identifier"
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___TABLE___IS_ACTIVE"
+msgstr "Is active"
+
+
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___ID"
+msgstr "ID"
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___IS_ACTIVE"
+msgstr "Is active"
+msgid "ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___IS_ACTIVE___HELP_TEXT"
+msgstr "Indicates whether this instance should be treated as active. Disable this option instead of deleting it."
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___CREATED"
+msgstr "Created"
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___MODIFIED"
+msgstr "Modified"
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___AVATAR"
+msgstr "Avatar"
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___FIRST_NAME"
+msgstr "First name"
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___LAST_NAME"
+msgstr "Last name"
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___IDENTIFIER"
+msgstr "Identifier"
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___EMAIL"
+msgstr "Email"
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___PASSWORD"
+msgstr "Password"
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___PASSWORD_CONFIRMATION"
+msgstr "Password confirmation"
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___GROUPS"
+msgstr "Groups"
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___PERMISSIONS"
+msgstr "Permissions"
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___DETAIL"
+msgstr "Detail"
+msgid "ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___DETAIL___HELP_TEXT"
+msgstr "Write a brief summary."
+
+
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___VALIDATION Only letters, numbers and the special character dot."
+msgstr "Only letters, numbers and the special character dot."
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___VALIDATION Only letters, numbers and the special character _."
+msgstr "Only letters, numbers and the special character _."
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___VALIDATION Only letters, numbers and special characters dot, -, _ and space."
+msgstr "Only letters, numbers and special characters dot, -, _ and space."
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___VALIDATION The avatar should not be beggear than %(weight)s."
+msgstr "The avatar should not be beggear than %(weight)s."
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___VALIDATION This identifier has already been chosen."
+msgstr "This identifier has already been chosen."
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___VALIDATION This email has already been chosen."
+msgstr "This email has already been chosen."
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___VALIDATION The password and your confirmation do not match."
+msgstr "The password and your confirmation do not match."

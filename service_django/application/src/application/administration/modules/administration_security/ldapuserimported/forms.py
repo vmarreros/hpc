@@ -6,7 +6,7 @@ import os
 import shutil
 
 ___FIELD___IS_ACTIVE___ = forms.BooleanField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERIMPORTED___IS_ACTIVE'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSERIMPORTED___IS_ACTIVE'),
     required=False,
     widget=forms.CheckboxInput(
         attrs={
@@ -17,7 +17,7 @@ ___FIELD___IS_ACTIVE___ = forms.BooleanField(
     ),
 )
 ___FIELD___CREATED___ = forms.DateField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERIMPORTED___CREATED'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSERIMPORTED___CREATED'),
     required=False,
     widget=forms.DateInput(
         attrs={
@@ -28,7 +28,7 @@ ___FIELD___CREATED___ = forms.DateField(
     ),
 )
 ___FIELD___MODIFIED___ = forms.DateField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERIMPORTED___MODIFIED'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSERIMPORTED___MODIFIED'),
     required=False,
     widget=forms.DateInput(
         attrs={
@@ -39,7 +39,7 @@ ___FIELD___MODIFIED___ = forms.DateField(
     ),
 )
 ___FIELD___AVATAR___ = forms.ImageField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERIMPORTED___AVATAR'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSERIMPORTED___AVATAR'),
     required=False,
     widget=forms.FileInput(
         attrs={
@@ -52,7 +52,7 @@ ___FIELD___AVATAR___ = forms.ImageField(
     ),
 )
 ___FIELD___FIRST_NAME___ = forms.CharField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERIMPORTED___FIRST_NAME'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSERIMPORTED___FIRST_NAME'),
     required=False,
     widget=forms.TextInput(
         attrs={
@@ -64,7 +64,7 @@ ___FIELD___FIRST_NAME___ = forms.CharField(
     ),
 )
 ___FIELD___LAST_NAME___ = forms.CharField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERIMPORTED___LAST_NAME'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSERIMPORTED___LAST_NAME'),
     required=False,
     widget=forms.TextInput(
         attrs={
@@ -76,7 +76,7 @@ ___FIELD___LAST_NAME___ = forms.CharField(
     ),
 )
 ___FIELD___IDENTIFIER___ = forms.CharField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERIMPORTED___IDENTIFIER'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSERIMPORTED___IDENTIFIER'),
     required=False,
     widget=forms.TextInput(
         attrs={
@@ -88,7 +88,7 @@ ___FIELD___IDENTIFIER___ = forms.CharField(
     ),
 )
 ___FIELD___EMAIL___ = forms.EmailField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERIMPORTED___EMAIL'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSERIMPORTED___EMAIL'),
     required=False,
     widget=forms.EmailInput(
         attrs={
@@ -100,7 +100,7 @@ ___FIELD___EMAIL___ = forms.EmailField(
     ),
 )
 ___FIELD___DETAIL___ = forms.CharField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERIMPORTED___DETAIL'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSERIMPORTED___DETAIL'),
     required=False,
     widget=forms.Textarea(
         attrs={
@@ -113,7 +113,7 @@ ___FIELD___DETAIL___ = forms.CharField(
     ),
 )
 ___FIELD___INSTITUTE___ = forms.CharField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERIMPORTED___INSTITUTE'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSERIMPORTED___INSTITUTE'),
     required=True,
     min_length=1,
     max_length=256,
@@ -127,7 +127,7 @@ ___FIELD___INSTITUTE___ = forms.CharField(
     ),
 )
 ___FIELD___RESEARCH_FIELD___ = forms.CharField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERIMPORTED___RESEARCH_FIELD'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSERIMPORTED___RESEARCH_FIELD'),
     required=True,
     min_length=1,
     max_length=256,
@@ -141,7 +141,7 @@ ___FIELD___RESEARCH_FIELD___ = forms.CharField(
     ),
 )
 ___FIELD___RESEARCH_GROUP___ = forms.CharField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERIMPORTED___RESEARCH_GROUP'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSERIMPORTED___RESEARCH_GROUP'),
     required=True,
     min_length=1,
     max_length=256,
@@ -155,15 +155,15 @@ ___FIELD___RESEARCH_GROUP___ = forms.CharField(
     ),
 )
 ___FIELD___USER_PROFILE___ = forms.ChoiceField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERIMPORTED___USER_PROFILE'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSERIMPORTED___USER_PROFILE'),
     required=True,
     choices=[
-        ('Teacher', _("APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERIMPORTED___USER_PROFILE___OPTION___TEACHER")),
-        ('Investigator', _("APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERIMPORTED___USER_PROFILE___OPTION___INVESTIGATOR")),
-        ('Undergraduate student', _("APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERIMPORTED___USER_PROFILE___OPTION___UNDERGRADUATE_STUDENT")),
-        ('Master\'s student', _("APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERIMPORTED___USER_PROFILE___OPTION____MASTER'S_STUDENT")),
-        ('PhD student', _("APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERIMPORTED___USER_PROFILE___OPTION___PHD_STUDENT")),
-        ('Other', _("APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERIMPORTED___USER_PROFILE___OPTION___OTHER")),
+        ('Teacher', _("ADMINISTRATION___CONTENT___SECURITY___LDAPUSERIMPORTED___USER_PROFILE___OPTION___TEACHER")),
+        ('Investigator', _("ADMINISTRATION___CONTENT___SECURITY___LDAPUSERIMPORTED___USER_PROFILE___OPTION___INVESTIGATOR")),
+        ('Undergraduate student', _("ADMINISTRATION___CONTENT___SECURITY___LDAPUSERIMPORTED___USER_PROFILE___OPTION___UNDERGRADUATE_STUDENT")),
+        ('Master\'s student', _("ADMINISTRATION___CONTENT___SECURITY___LDAPUSERIMPORTED___USER_PROFILE___OPTION____MASTER'S_STUDENT")),
+        ('PhD student', _("ADMINISTRATION___CONTENT___SECURITY___LDAPUSERIMPORTED___USER_PROFILE___OPTION___PHD_STUDENT")),
+        ('Other', _("ADMINISTRATION___CONTENT___SECURITY___LDAPUSERIMPORTED___USER_PROFILE___OPTION___OTHER")),
     ],
     initial='Teacher',
     widget=forms.Select(
@@ -176,7 +176,7 @@ ___FIELD___USER_PROFILE___ = forms.ChoiceField(
     ),
 )
 ___FIELD___TUTOR_INSTITUTION___ = forms.CharField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERIMPORTED___TUTOR_INSTITUTION'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSERIMPORTED___TUTOR_INSTITUTION'),
     required=False,
     min_length=1,
     max_length=256,
@@ -190,7 +190,7 @@ ___FIELD___TUTOR_INSTITUTION___ = forms.CharField(
     ),
 )
 ___FIELD___TUTOR_MAIL___ = forms.EmailField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERIMPORTED___TUTOR_MAIL'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSERIMPORTED___TUTOR_MAIL'),
     required=False,
     min_length=1,
     max_length=256,
@@ -204,7 +204,7 @@ ___FIELD___TUTOR_MAIL___ = forms.EmailField(
     ),
 )
 ___FIELD___TUTOR_NAME___ = forms.CharField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERIMPORTED___TUTOR_NAME'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSERIMPORTED___TUTOR_NAME'),
     required=False,
     min_length=1,
     max_length=256,
@@ -277,48 +277,48 @@ class LDAPUserImportedUpdate(forms.ModelForm):
         super().__init__(*args, **kwargs)
         #
         # is_active
-        ___field___attribute___help_text___locale___reload__(field=self.fields['is_active'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERIMPORTED___IS_ACTIVE___HELP_TEXT')
+        ___field___attribute___help_text___locale___reload__(field=self.fields['is_active'], locale='ADMINISTRATION___CONTENT___SECURITY___LDAPUSERIMPORTED___IS_ACTIVE___HELP_TEXT')
         # first_name
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['first_name'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERIMPORTED___FIRST_NAME')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['first_name'], locale='ADMINISTRATION___CONTENT___SECURITY___LDAPUSERIMPORTED___FIRST_NAME')
         self.fields['first_name'].widget.attrs['readonly'] = 'readonly'
         self.fields['first_name'].widget.attrs['autofocus'] = True
         # last name
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['last_name'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERIMPORTED___LAST_NAME')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['last_name'], locale='ADMINISTRATION___CONTENT___SECURITY___LDAPUSERIMPORTED___LAST_NAME')
         self.fields['last_name'].widget.attrs['readonly'] = 'readonly'
         # identifier
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['identifier'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERIMPORTED___IDENTIFIER')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['identifier'], locale='ADMINISTRATION___CONTENT___SECURITY___LDAPUSERIMPORTED___IDENTIFIER')
         self.fields['identifier'].widget.attrs['readonly'] = 'readonly'
         # email
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['email'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERIMPORTED___EMAIL')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['email'], locale='ADMINISTRATION___CONTENT___SECURITY___LDAPUSERIMPORTED___EMAIL')
         self.fields['email'].widget.attrs['readonly'] = 'readonly'
         # detail
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['detail'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERIMPORTED___DETAIL')
-        ___field___attribute___help_text___locale___reload__(field=self.fields['detail'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERIMPORTED___DETAIL___HELP_TEXT')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['detail'], locale='ADMINISTRATION___CONTENT___SECURITY___LDAPUSERIMPORTED___DETAIL')
+        ___field___attribute___help_text___locale___reload__(field=self.fields['detail'], locale='ADMINISTRATION___CONTENT___SECURITY___LDAPUSERIMPORTED___DETAIL___HELP_TEXT')
         self.fields['detail'].widget.attrs['readonly'] = 'readonly'
         # institute
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['institute'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERIMPORTED___INSTITUTE')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['institute'], locale='ADMINISTRATION___CONTENT___SECURITY___LDAPUSERIMPORTED___INSTITUTE')
         self.fields['institute'].widget.attrs['readonly'] = 'readonly'
         # researchField
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['researchField'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERIMPORTED___RESEARCH_FIELD')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['researchField'], locale='ADMINISTRATION___CONTENT___SECURITY___LDAPUSERIMPORTED___RESEARCH_FIELD')
         self.fields['researchField'].widget.attrs['readonly'] = 'readonly'
         # researchGroup
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['researchGroup'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERIMPORTED___RESEARCH_GROUP')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['researchGroup'], locale='ADMINISTRATION___CONTENT___SECURITY___LDAPUSERIMPORTED___RESEARCH_GROUP')
         self.fields['researchGroup'].widget.attrs['readonly'] = 'readonly'
         # userProfile
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['userProfile'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERIMPORTED___USER_PROFILE')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['userProfile'], locale='ADMINISTRATION___CONTENT___SECURITY___LDAPUSERIMPORTED___USER_PROFILE')
         self.fields['userProfile'].widget.attrs['readonly'] = 'readonly'
         # tutorInstitution
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['tutorInstitution'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERIMPORTED___TUTOR_INSTITUTION')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['tutorInstitution'], locale='ADMINISTRATION___CONTENT___SECURITY___LDAPUSERIMPORTED___TUTOR_INSTITUTION')
         # tutorMail
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['tutorMail'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERIMPORTED___TUTOR_MAIL')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['tutorMail'], locale='ADMINISTRATION___CONTENT___SECURITY___LDAPUSERIMPORTED___TUTOR_MAIL')
         # tutorName
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['tutorName'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERIMPORTED___TUTOR_NAME')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['tutorName'], locale='ADMINISTRATION___CONTENT___SECURITY___LDAPUSERIMPORTED___TUTOR_NAME')
 
     def clean_avatar(self):
         avatar = self.cleaned_data.get('avatar')
         if self.files.get('avatar'):
             if len(self.files.get('avatar')) > 1 * 1024 * 1024:  # 1MB
-                raise forms.ValidationError(_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERIMPORTED___VALIDATION The avatar should not be beggear than %(weight)s.') % {'weight': '1mb', })
+                raise forms.ValidationError(_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSERIMPORTED___VALIDATION The avatar should not be beggear than %(weight)s.') % {'weight': '1mb', })
         return avatar
 
     def clean_first_name(self):

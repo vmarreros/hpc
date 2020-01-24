@@ -1,0 +1,93 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+
+
+
+msgid "LEFTSIDE___WELCOME"
+msgstr "Bienvenido"
+
+msgid "ADMINISTRATION___LEFTSIDE___SECURITY"
+msgstr "Seguridad"
+
+
+msgid "ADMINISTRATION___LEFTSIDE___SECURITY___LOCAL"
+msgstr "LOCAL"
+
+msgid "ADMINISTRATION___LEFTSIDE___SECURITY___LOCALUSERREQUESTS"
+msgstr "Solicitudes de Usuario"
+
+msgid "ADMINISTRATION___LEFTSIDE___SECURITY___LOCALUSERS"
+msgstr "Usuarios"
+
+msgid "ADMINISTRATION___LEFTSIDE___SECURITY___LDAP"
+msgstr "LDAP"
+
+msgid "ADMINISTRATION___LEFTSIDE___SECURITY___LDAPUSERREQUESTS"
+msgstr "Solicitudes de Usuario"
+
+msgid "ADMINISTRATION___LEFTSIDE___SECURITY___LDAPUSERS"
+msgstr "Usuarios"
+
+msgid "ADMINISTRATION___LEFTSIDE___SECURITY___LDAPUSERIMPORTEDS"
+msgstr "Usuarios importados"
+
+msgid "ADMINISTRATION___LEFTSIDE___SECURITY___GROUPS"
+msgstr "Grupos"
+
+msgid "ADMINISTRATION___LEFTSIDE___SECURITY___PERMISSIONS"
+msgstr "Permisos"
+
+msgid "ADMINISTRATION___LEFTSIDE___SOFTWARE"
+msgstr "Software"
+
+msgid "ADMINISTRATION___LEFTSIDE___SOFTWARE___INSTALLED"
+msgstr "Instalado"
+
+msgid "ADMINISTRATION___LEFTSIDE___SOFTWARE___REQUESTED"
+msgstr "Solicitado"
+
+msgid "ADMINISTRATION___LEFTSIDE___HELP"
+msgstr "Ayuda"
+
+msgid "ADMINISTRATION___LEFTSIDE___HELP___DOCUMENTS"
+msgstr "Documentos"
+
+msgid "ADMINISTRATION___LEFTSIDE___HOMEPAGE"
+msgstr "Página de inicio"
+
+msgid "BIGDATA___LEFTSIDE___MODULE01"
+msgstr "Modulo01"
+
+msgid "HPC___LEFTSIDE___Jobs"
+msgstr "Trabajos"
+
+msgid "HPC___LEFTSIDE___Active_Jobs"
+msgstr "Activos"
+
+msgid "HPC___LEFTSIDE___History_Jobs"
+msgstr "Históricos"
+
+msgid "HPC___LEFTSIDE___Script"
+msgstr "Generador de Scripts"
+
+msgid "HPC___LEFTSIDE___Nodes"
+msgstr "Nodos"
+
+msgid "HPC___LEFTSIDE___Explorer"
+msgstr "Sistema de Archivos"
+
+msgid "HPC___LEFTSIDE___Modules"
+msgstr "Software"
+
+msgid "HPC___LEFTSIDE___Charts"
+msgstr "Estadísticas"
+
+msgid "HPC___LEFTSIDE___Users"
+msgstr "Usuarios"
+
+msgid "HPC___LEFTSIDE___Terminal"
+msgstr "Terminal"

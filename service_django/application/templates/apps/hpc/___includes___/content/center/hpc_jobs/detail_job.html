@@ -1,0 +1,64 @@
+{% load i18n %}
+{% load application___hpc %}
+{% load application___security %}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <span class="label" data-background-color="{{ data.JobState|bg_job_state }}">{{ data.JobState }}</span>
+        <b>{{ data.JobName }}({{ data.JobId }})</b>
+        {% ifequal data.Username request|___get_string___group_user___ %}
+        <div class="pull-right">
+            <button class="btn btn-xs btn-default" type="button" data-url="{% url 'hpc:modules:hpc_jobs:action_job' %}" data-option="job resume" title="Resume" {% ifnotequal data.JobState 'STOPPED' %}disabled{% endifnotequal %}>
+                <span class="fa fa-play"></span>
+            </button>
+            <button class="btn btn-xs btn-default" type="button" data-url="{% url 'hpc:modules:hpc_jobs:action_job' %}" data-option="job pause" title="Pause" {% ifnotequal data.JobState 'RUNNING' %}disabled{% endifnotequal %}>
+                <span class="fa fa-pause"></span>
+            </button>
+            <button class="btn btn-xs btn-default" type="button" data-url="{% url 'hpc:modules:hpc_jobs:action_job' %}" data-option="job requeue" title="Requeue" {{ data.JobState | ___disable_if_cant_requeue___ }}>
+                <span class="fa fa-refresh"></span>
+            </button>
+            <button class="btn btn-xs btn-default" type="button" data-url="{% url 'hpc:modules:hpc_jobs:action_job' %}" data-option="job kill" title="Remove" {{ data.JobState | ___disable_if_cant_cancelled___ }}>
+                <span class="fa fa-remove"></span>
+            </button>
+        </div>
+        {% endifequal %}
+    </div>
+    <div class="panel-body">
+        <table class="table table-bordered table-striped table-condensed">
+            <tr><td colspan=2><b>{% trans 'HPC___JOBS___Job_Information' %}</b></td></tr>
+            <tr><td>{% trans 'HPC___JOBS___Job_Id' %}</td><td>{{ data.JobId }}</td></tr>
+            <tr><td>{% trans 'HPC___JOBS___Job_Name' %}</td><td>{{ data.JobName }}</td></tr>
+            <tr><td>{% trans 'HPC___JOBS___Job_User' %}</td><td>{{ data.UserId }}</td></tr>
+            <tr><td>{% trans 'HPC___JOBS___Job_Partition' %}</td><td>{{ data.Partition }}</td></tr>
+            <tr><td>{% trans 'HPC___JOBS___Job_Group_Id' %}</td><td>{{ data.GroupId }}</td></tr>
+            <tr><td colspan=2><b>{% trans 'HPC___JOBS___Job_Time' %}</b></td></tr>
+            <tr><td>{% trans 'HPC___JOBS___Job_Run_Time' %}</td><td>{{ data.RunTime }}</td></tr>
+            <tr><td>{% trans 'HPC___JOBS___Job_Time_Limit' %}</td><td>{{ data.TimeLimit }}</td></tr>
+            <tr><td>{% trans 'HPC___JOBS___Job_Submit_Time' %}</td><td>{{ data.SubmitTime }}</td></tr>
+            <tr><td>{% trans 'HPC___JOBS___Job_Eligible_Time' %}</td><td>{{ data.EligibleTime }}</td></tr>
+            <tr><td>{% trans 'HPC___JOBS___Job_Start_Time' %}</td><td>{{ data.StartTime }}</td></tr>
+            <tr><td>{% trans 'HPC___JOBS___Job_End_Time' %}</td><td>{{ data.EndTime }}</td></tr>
+            <tr><td colspan=2><b>{% trans 'HPC___JOBS___Job_Nodes' %}</b></td></tr>
+            <tr><td>{% trans 'HPC___JOBS___Job_Node_Count' %}</td><td>{{ data.NumNodes }}</td></tr>
+            <tr><td>{% trans 'HPC___JOBS___Job_Nodes_List' %}</td><td>{{ data.NodeList }}</td></tr>
+            <tr><td>{% trans 'HPC___JOBS___Job_Batch_Node' %}</td><td>{{ data.BatchHost }}</td></tr>
+            <tr><td colspan=2><b>{% trans 'HPC___JOBS___Job_Resources' %}</b></td></tr>
+            <tr><td>{% trans 'HPC___JOBS___Job_Num_CPUs' %}</td><td>{{ data.NumCPUs }}</td></tr>
+            <tr><td>{% trans 'HPC___JOBS___Job_Num_Tasks' %}</td><td>{{ data.NumTasks }}</td></tr>
+            <tr><td>{% trans 'HPC___JOBS___Job_CPUs/Task' %}</td><td>{{ data.CPUsTask }}</td></tr>
+            <tr><td>{% trans 'HPC___JOBS___Job_Memory' %}</td><td>{{ data.mem }}</td></tr>
+        </table>
+        <div width="width:80px">{% trans 'HPC___JOBS___Job_File_Location' %}</div>
+        <div class="panel panel-default">
+            <div class="panel-heading">{{ data.Command }}</div>
+        </div>
+        <div style="width:80px">{% trans 'HPC___JOBS___Job_Output_Location' %}</div>
+        <div class="panel panel-default">
+            <div class="panel-heading">{{ data.StdOut }}</div>
+        </div>
+        <div style="width:80px">{% trans 'HPC___JOBS___Job_Error_Location' %}</div>
+        <div class="panel panel-default">
+            <div class="panel-heading">{{ data.StdErr }}</div>
+        </div>
+    </div>
+</div>

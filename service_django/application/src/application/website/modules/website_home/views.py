@@ -18,9 +18,9 @@ def index(request):
             'ctx___title': instance,
             'ctx___content': instance.___string___content___(),
         })
-    dict___data['___HTML___APPLICATION___WEBSITE___CONTENT___CENTER___'] = utils___website.___html___template___(
+    dict___data['___HTML___WEBSITE___CONTENT___CENTER___'] = utils___website.___html___template___(
         request=request,
         context=context,
-        template_name='application/website/___includes___/content/center/website_home/index.html',
+        template_name='apps/website/___includes___/content/center/website_home/index.html',
     )
     return http.JsonResponse(dict___data)

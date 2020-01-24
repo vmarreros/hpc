@@ -1,0 +1,136 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+
+
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LDAPUSERS"
+msgstr "LDAP users"
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LDAPUSER"
+msgstr "LDAP user"
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___TABLE___NAME"
+msgstr "Name"
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___TABLE___IDENTIFIER"
+msgstr "Identifier"
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___TABLE___IS_ACTIVE"
+msgstr "Is active"
+
+
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___ID"
+msgstr "ID"
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___IS_ACTIVE"
+msgstr "Is active"
+msgid "ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___IS_ACTIVE___HELP_TEXT"
+msgstr "Indicates whether this instance should be treated as active. Disable this option instead of deleting it."
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___CREATED"
+msgstr "Created"
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___MODIFIED"
+msgstr "Modified"
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___AVATAR"
+msgstr "Avatar"
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___FIRST_NAME"
+msgstr "First name"
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___LAST_NAME"
+msgstr "Last name"
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___IDENTIFIER"
+msgstr "Identifier"
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___EMAIL"
+msgstr "Email"
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___PASSWORD"
+msgstr "Password"
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___PASSWORD_CONFIRMATION"
+msgstr "Password confirmation"
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___GROUPS"
+msgstr "Groups"
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___PERMISSIONS"
+msgstr "Permissions"
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___DETAIL"
+msgstr "Detail"
+msgid "ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___DETAIL___HELP_TEXT"
+msgstr "Write a brief summary."
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___INSTITUTE"
+msgstr "Institute"
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___RESEARCH_FIELD"
+msgstr "Research field"
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___RESEARCH_GROUP"
+msgstr "Research group"
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___USER_PROFILE"
+msgstr "User profile"
+msgid "ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___USER_PROFILE___OPTION___TEACHER"
+msgstr "Teacher"
+msgid "ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___USER_PROFILE___OPTION___INVESTIGATOR"
+msgstr "Investigator"
+msgid "ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___USER_PROFILE___OPTION___UNDERGRADUATE_STUDENT"
+msgstr "Undergraduate student"
+msgid "ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___USER_PROFILE___OPTION____MASTER'S_STUDENT"
+msgstr "Master's student"
+msgid "ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___USER_PROFILE___OPTION___PHD_STUDENT"
+msgstr "PhD student"
+msgid "ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___USER_PROFILE___OPTION___OTHER"
+msgstr "Other"
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___TUTOR_INSTITUTION"
+msgstr "Tutor's institution"
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___TUTOR_MAIL"
+msgstr "Tutor's mail"
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___TUTOR_NAME"
+msgstr "Tutor's name"
+
+
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___VALIDATION Only letters, numbers and the special character dot."
+msgstr "Only letters, numbers and the special character dot."
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___VALIDATION Only letters, numbers and the special character _."
+msgstr "Only letters, numbers and the special character _."
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___VALIDATION Only letters, numbers and special characters dot, -, _ and space."
+msgstr "Only letters, numbers and special characters dot, -, _ and space."
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___VALIDATION The avatar should not be beggear than %(weight)s."
+msgstr "The avatar should not be beggear than %(weight)s."
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___VALIDATION This identifier has already been chosen."
+msgstr "This identifier has already been chosen."
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___VALIDATION This email has already been chosen."
+msgstr "This email has already been chosen."
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___VALIDATION The password and your confirmation do not match."
+msgstr "The password and your confirmation do not match."
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___VALIDATION Specify the tutor's institution."
+msgstr "Specify the tutor's institution."
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___VALIDATION Specify the tutor's mail."
+msgstr "Specify the tutor's mail."
+
+msgid "ADMINISTRATION___CONTENT___SECURITY___LDAPUSER___VALIDATION Specify the tutor's name."
+msgstr "Specify the tutor's name."

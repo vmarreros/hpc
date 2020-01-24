@@ -4,7 +4,7 @@ from django.core import validators
 from django.utils.translation import ugettext_lazy as _
 
 ___FIELD___IS_ACTIVE___ = forms.BooleanField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___PERMISSION___IS_ACTIVE'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___PERMISSION___IS_ACTIVE'),
     required=False,
     widget=forms.CheckboxInput(
         attrs={
@@ -15,7 +15,7 @@ ___FIELD___IS_ACTIVE___ = forms.BooleanField(
     ),
 )
 ___FIELD___CREATED___ = forms.DateField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___PERMISSION___CREATED'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___PERMISSION___CREATED'),
     required=False,
     widget=forms.DateInput(
         attrs={
@@ -26,7 +26,7 @@ ___FIELD___CREATED___ = forms.DateField(
     ),
 )
 ___FIELD___MODIFIED___ = forms.DateField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___PERMISSION___MODIFIED'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___PERMISSION___MODIFIED'),
     required=False,
     widget=forms.DateInput(
         attrs={
@@ -37,12 +37,12 @@ ___FIELD___MODIFIED___ = forms.DateField(
     ),
 )
 ___FIELD___NAME___ = forms.CharField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___PERMISSION___NAME'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___PERMISSION___NAME'),
     required=True,
     min_length=1,
     max_length=100,
     validators=[
-        validators.RegexValidator('^[\w .\-_]+$', message=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___PERMISSION___VALIDATION Only letters, numbers and special characters dot, -, _ and space.')),
+        validators.RegexValidator('^[\w .\-_]+$', message=_('ADMINISTRATION___CONTENT___SECURITY___PERMISSION___VALIDATION Only letters, numbers and special characters dot, -, _ and space.')),
     ],
     widget=forms.TextInput(
         attrs={
@@ -54,12 +54,12 @@ ___FIELD___NAME___ = forms.CharField(
     ),
 )
 ___FIELD___IDENTIFIER___ = forms.CharField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___PERMISSION___IDENTIFIER'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___PERMISSION___IDENTIFIER'),
     required=True,
     min_length=1,
     max_length=100,
     validators=[
-        validators.RegexValidator('^[\w.]+$', message=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___PERMISSION___VALIDATION Only letters, numbers and the special character dot.')),
+        validators.RegexValidator('^[\w.]+$', message=_('ADMINISTRATION___CONTENT___SECURITY___PERMISSION___VALIDATION Only letters, numbers and the special character dot.')),
     ],
     widget=forms.TextInput(
         attrs={
@@ -111,12 +111,12 @@ class PermissionUpdate(forms.ModelForm):
         super().__init__(*args, **kwargs)
         #
         # is_active
-        ___field___attribute___help_text___locale___reload__(field=self.fields['is_active'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___PERMISSION___IS_ACTIVE___HELP_TEXT')
+        ___field___attribute___help_text___locale___reload__(field=self.fields['is_active'], locale='ADMINISTRATION___CONTENT___SECURITY___PERMISSION___IS_ACTIVE___HELP_TEXT')
         # name
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['name'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___PERMISSION___NAME')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['name'], locale='ADMINISTRATION___CONTENT___SECURITY___PERMISSION___NAME')
         self.fields['name'].widget.attrs['autofocus'] = True
         # identifier
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['identifier'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___PERMISSION___IDENTIFIER')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['identifier'], locale='ADMINISTRATION___CONTENT___SECURITY___PERMISSION___IDENTIFIER')
         self.fields['identifier'].widget.attrs['readonly'] = 'readonly'
 
     def clean_name(self):
@@ -128,7 +128,7 @@ class PermissionUpdate(forms.ModelForm):
             return name
         if instance.name == self.instance_current.name:
             return name
-        raise forms.ValidationError(_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___PERMISSION___VALIDATION This name has already been chosen.'))
+        raise forms.ValidationError(_('ADMINISTRATION___CONTENT___SECURITY___PERMISSION___VALIDATION This name has already been chosen.'))
 
     def clean_identifier(self):
         identifier = self.instance_current.identifier

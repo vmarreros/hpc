@@ -13,7 +13,7 @@ def index(request):
     return shortcuts.render(
         request=request,
         context=dict___context,
-        template_name='application/hpc/application___hpc.html'
+        template_name='apps/hpc/application___hpc.html'
     )
 
 
@@ -25,7 +25,7 @@ def index___load(request):
     dict___data['___HTML___APPLICATION___HPC___LOAD___'] = utils.___html___template___(
         request=request,
         context=dict(),
-        template_name='application/hpc/___includes___/load/load.html'
+        template_name='apps/hpc/___includes___/load/load.html'
     )
     return http.JsonResponse(dict___data)
 
@@ -38,7 +38,7 @@ def index___title(request):
     dict___data['___HTML___APPLICATION___HPC___TITLE___'] = utils.___html___template___(
         request=request,
         context=dict(),
-        template_name='application/hpc/___includes___/title/title.html'
+        template_name='apps/hpc/___includes___/title/title.html'
     )
     return http.JsonResponse(dict___data)
 
@@ -51,7 +51,7 @@ def index___header(request):
     dict___data['___HTML___APPLICATION___HPC___HEADER___'] = utils.___html___template___(
         request=request,
         context=dict(),
-        template_name='application/hpc/___includes___/header/header.html'
+        template_name='apps/hpc/___includes___/header/header.html'
     )
     return http.JsonResponse(dict___data)
 
@@ -64,7 +64,7 @@ def index___leftside(request):
     dict___data['___HTML___APPLICATION___HPC___LEFTSIDE___'] = utils.___html___template___(
         request=request,
         context=dict(),
-        template_name='application/hpc/___includes___/leftside/leftside.html'
+        template_name='apps/hpc/___includes___/leftside/leftside.html'
     )
     return http.JsonResponse(dict___data)
 
@@ -74,10 +74,10 @@ def index___leftside(request):
 def index___content___center(request):
     dict___data = dict()
     dict___data['___BOOLEAN___ERROR___'] = False
-    dict___data['___HTML___APPLICATION___HPC___CONTENT___CENTER___'] = utils.___html___template___(
+    dict___data['___HTML___HPC___CONTENT___CENTER___'] = utils.___html___template___(
         request=request,
         context=dict(),
-        template_name='application/hpc/___includes___/content/center/index.html'
+        template_name='apps/hpc/___includes___/content/center/index.html'
     )
     return http.JsonResponse(dict___data)
 
@@ -87,10 +87,10 @@ def index___content___center(request):
 def index___content___footer(request):
     dict___data = dict()
     dict___data['___BOOLEAN___ERROR___'] = False
-    dict___data['___HTML___APPLICATION___HPC___CONTENT___FOOTER___'] = utils.___html___template___(
+    dict___data['___HTML___HPC___CONTENT___FOOTER___'] = utils.___html___template___(
         request=request,
         context=dict(),
-        template_name='application/hpc/___includes___/content/footer/footer.html'
+        template_name='apps/hpc/___includes___/content/footer/footer.html'
     )
     return http.JsonResponse(dict___data)
 

@@ -1,6 +1,6 @@
 from celery import shared_task
 
-from .models import Module, Version
+from .models import SoftwareInstalled, SoftwareVersion
 from .ssh import ssh_exec
 from src.application.security.models import LDAPUser
 
@@ -29,14 +29,14 @@ def ___task___application___hpc___modules___synchronize___():
             pattern = line[:-1]
 
     for module in modules:
-        obj, flag = Module.objects.get_or_create(name=module["name"])
+        obj, flag = SoftwareInstalled.objects.get_or_create(name=module["name"])
         if flag:
             obj.description = get_description(module["name"])
             obj.save()
         for version in module["version"]:
-            Version.objects.get_or_create(name=version, module=obj)
+            SoftwareVersion.objects.get_or_create(version=version, software=obj)
 
-    for obj in Module.objects.all():
+    for obj in SoftwareInstalled.objects.all():
         exist = False
         for module in modules:
             if obj.name == module["name"]:
@@ -48,7 +48,7 @@ def ___task___application___hpc___modules___synchronize___():
             exist = False
             for objv in obj.version_set.all():
                 for version in module["version"]:
-                    if objv.name == version:
+                    if objv.version == version:
                         exist = True
                         break
                 if not exist:

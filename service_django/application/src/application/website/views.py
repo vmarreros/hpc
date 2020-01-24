@@ -12,7 +12,7 @@ def index(request):
     return shortcuts.render(
         request=request,
         context=dict___context,
-        template_name='application/website/application___website.html'
+        template_name='apps/website/application___website.html'
     )
 
 
@@ -23,7 +23,7 @@ def index___load(request):
     dict___data['___HTML___APPLICATION___WEBSITE___LOAD___'] = utils.___html___template___(
         request=request,
         context=dict(),
-        template_name='application/website/___includes___/load/load.html'
+        template_name='apps/website/___includes___/load/load.html'
     )
     return http.JsonResponse(dict___data)
 
@@ -35,7 +35,7 @@ def index___title(request):
     dict___data['___HTML___APPLICATION___WEBSITE___TITLE___'] = utils.___html___template___(
         request=request,
         context=dict(),
-        template_name='application/website/___includes___/title/title.html'
+        template_name='apps/website/___includes___/title/title.html'
     )
     return http.JsonResponse(dict___data)
 
@@ -47,19 +47,7 @@ def index___header(request):
     dict___data['___HTML___APPLICATION___WEBSITE___HEADER___'] = utils.___html___template___(
         request=request,
         context=dict(),
-        template_name='application/website/___includes___/header/header.html'
-    )
-    return http.JsonResponse(dict___data)
-
-
-@decorators___application___security.___required___request_is_ajax___()
-def index___leftside(request):
-    dict___data = dict()
-    dict___data['___BOOLEAN___ERROR___'] = False
-    dict___data['___HTML___APPLICATION___WEBSITE___LEFTSIDE___'] = utils.___html___template___(
-        request=request,
-        context=dict(),
-        template_name='application/website/___includes___/leftside/leftside.html'
+        template_name='apps/website/___includes___/header/header.html'
     )
     return http.JsonResponse(dict___data)
 
@@ -68,10 +56,10 @@ def index___leftside(request):
 def index___content___center(request):
     dict___data = dict()
     dict___data['___BOOLEAN___ERROR___'] = False
-    dict___data['___HTML___APPLICATION___WEBSITE___CONTENT___CENTER___'] = utils.___html___template___(
+    dict___data['___HTML___WEBSITE___CONTENT___CENTER___'] = utils.___html___template___(
         request=request,
         context=dict(),
-        template_name='application/website/___includes___/content/center/index.html'
+        template_name='apps/website/___includes___/content/center/index.html'
     )
     return http.JsonResponse(dict___data)
 
@@ -80,10 +68,10 @@ def index___content___center(request):
 def index___content___footer(request):
     dict___data = dict()
     dict___data['___BOOLEAN___ERROR___'] = False
-    dict___data['___HTML___APPLICATION___WEBSITE___CONTENT___FOOTER___'] = utils.___html___template___(
+    dict___data['___HTML___WEBSITE___CONTENT___FOOTER___'] = utils.___html___template___(
         request=request,
         context=dict(),
-        template_name='application/website/___includes___/content/footer/footer.html'
+        template_name='apps/website/___includes___/content/footer/footer.html'
     )
     return http.JsonResponse(dict___data)
 

@@ -112,6 +112,12 @@ class Command(management.base.BaseCommand):
                 {'identifier': 'application_security_permission_list', 'name': 'security permission ___list___'},
                 {'identifier': 'application_security_permission_detail', 'name': 'security permission ___detail___'},
                 {'identifier': 'application_security_permission_update', 'name': 'security permission ___update___'},
+                {'identifier': 'application_hpc_softwareinstalled_list', 'name': 'hpc softwareinstalled ___list___'},
+                {'identifier': 'application_hpc_softwarerequested_list', 'name': 'hpc softwarerequested ___list___'},
+                {'identifier': 'application_hpc_softwarerequested_create', 'name': 'hpc softwarerequested ___create___'},
+                {'identifier': 'application_hpc_softwarerequested_detail', 'name': 'hpc softwarerequested ___detail___'},
+                {'identifier': 'application_hpc_softwarerequested_update', 'name': 'hpc softwarerequested ___update___'},
+                {'identifier': 'application_hpc_softwarerequested_delete', 'name': 'hpc softwarerequested ___delete___'},
                 {'identifier': 'application_help_document_list', 'name': 'help document ___list___'},
                 {'identifier': 'application_help_document_create', 'name': 'help document ___create___'},
                 {'identifier': 'application_help_document_detail', 'name': 'help document ___detail___'},
@@ -147,8 +153,8 @@ class Command(management.base.BaseCommand):
         #     task='src.application.statistic.tasks.statistic_generator',
         # )
         crontabschedule, boolean___created = models___django_celery_beat.CrontabSchedule.objects.get_or_create(
-            minute='midnight',  # */1
-            hour='*',  # '0,8,9,10,11,12,13,14,15,16,17,18',  # 0,12 # midnight and noon
+            minute='*',  # */1
+            hour='midnight',  # '0,8,9,10,11,12,13,14,15,16,17,18',  # 0,12 # midnight and noon
             day_of_week='*',
             day_of_month='*',
             month_of_year='*',

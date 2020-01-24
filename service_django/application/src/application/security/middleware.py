@@ -20,16 +20,15 @@ class ApplicationSecurityMiddleware(object):
         list_string___url = (
             '/website/',
             '/website/modules/website_home/',
-            '/website/modules/website_help/',
             '/hpc/',
-            '/hpc/modules/hpc_jobs/',
+            '/hpc/modules/hpc_jobs/history/',
+            '/hpc/modules/hpc_jobs/queue/',
             '/hpc/modules/hpc_script/',
             '/hpc/modules/hpc_nodes/',
             '/hpc/modules/hpc_explorer/',
+            '/hpc/modules/hpc_software/installed/',
             '/bigdata/',
             '/bigdata/modules/bigdata_module01/',
-            '/bigdata/modules/bigdata_module02/',
-            '/bigdata/modules/bigdata_module03/',
             '/administration/',
             '/administration/modules/administration_security/localuser/',
             '/administration/modules/administration_security/localuserrequest/',
@@ -39,12 +38,14 @@ class ApplicationSecurityMiddleware(object):
             '/administration/modules/administration_security/group/',
             '/administration/modules/administration_security/permission/',
             '/administration/modules/administration_help/document/',
+            '/help/',
+            '/help/modules/help_document/',
         )
         if request.path in list_string___url:
             if request.path == '/website/':
                 request.session['___APPLICATION___SECURITY___USER___URL_CURRENT___'] = '/website/modules/website_home/'
             elif request.path == '/hpc/':
-                request.session['___APPLICATION___SECURITY___USER___URL_CURRENT___'] = '/hpc/modules/hpc_jobs/'
+                request.session['___APPLICATION___SECURITY___USER___URL_CURRENT___'] = '/hpc/modules/hpc_software/installed/'
             elif request.path == '/bigdata/':
                 request.session['___APPLICATION___SECURITY___USER___URL_CURRENT___'] = '/bigdata/modules/bigdata_module01/'
             else:

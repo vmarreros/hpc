@@ -27,7 +27,7 @@ def ___html___template___(request, context, template_name):
 
 def ___html___template_message___(request):
     return loader.render_to_string(
-        template_name='application/administration/___includes___/modal/___includes___/message/message.html',
+        template_name='apps/administration/___includes___/modal/___includes___/message/message.html',
         context={
             'ctx___messages': messages.get_messages(request=request),
         },
@@ -37,7 +37,7 @@ def ___html___template_message___(request):
 
 def ___html___template_index___table_tbody___(request, ___utils___module___, ___utils___module_model___, page):
     return loader.render_to_string(
-        template_name='application/administration/___includes___/content/center/%s/%s/___includes___/%s.html' % (___utils___module___.___MODULE_PATH___, ___utils___module_model___.___MODEL_PATH___, ___APPLICATION___ADMINISTRATION___TEMPLATE___LIST___,),
+        template_name='apps/administration/___includes___/content/center/%s/%s/___includes___/%s.html' % (___utils___module___.___MODULE_PATH___, ___utils___module_model___.___MODEL_PATH___, ___APPLICATION___ADMINISTRATION___TEMPLATE___LIST___,),
         context={
             'ctx___page': page,
         },
@@ -52,7 +52,7 @@ def ___html___template_index___pagination___(request, ___utils___module___, ___u
     else:
         search = ''
     return loader.render_to_string(
-        template_name='application/administration/___includes___/content/center/___includes___/pagination/pagination.html',
+        template_name='apps/administration/___includes___/content/center/___includes___/pagination/pagination.html',
         context={
             'ctx___page': page,
             'ctx___data_url': 'administration:modules:%s:%s:list' % (___utils___module___.___MODULE_PATH___, ___utils___module_model___.___MODEL_PATH___,),
@@ -64,7 +64,7 @@ def ___html___template_index___pagination___(request, ___utils___module___, ___u
 
 def ___html___template_modal___(request, ___utils___module___, ___utils___module_model___, ___application___administration___template___, form):
     return loader.render_to_string(
-        template_name='application/administration/___includes___/modal/%s/%s/%s.html' % (___utils___module___.___MODULE_PATH___, ___utils___module_model___.___MODEL_PATH___, ___application___administration___template___,),
+        template_name='apps/administration/___includes___/modal/%s/%s/%s.html' % (___utils___module___.___MODULE_PATH___, ___utils___module_model___.___MODEL_PATH___, ___application___administration___template___,),
         context={
             'ctx___form': form,
         },
@@ -74,7 +74,7 @@ def ___html___template_modal___(request, ___utils___module___, ___utils___module
 
 def ___html___template_modal___message___(request):
     return loader.render_to_string(
-        template_name='application/administration/___includes___/modal/message/message.html',
+        template_name='apps/administration/___includes___/modal/message/message.html',
         context={
             'ctx___messages': messages.get_messages(request=request),
         },
@@ -121,7 +121,7 @@ def ___list_instance___search___(request, ___utils___module___, ___utils___modul
                             break
                 # Este codigo debe estar al final de todas las condiciones
                 if hasattr(instance, 'is_active'):
-                    list_string___is_active = [_('APPLICATION___ADMINISTRATION___CONTENT___OPTION_YES').lower(), _('APPLICATION___ADMINISTRATION___CONTENT___OPTION_NO').lower()]
+                    list_string___is_active = [_('ADMINISTRATION___CONTENT___OPTION_YES').lower(), _('ADMINISTRATION___CONTENT___OPTION_NO').lower()]
                     if instance.is_active:
                         string___is_active = list_string___is_active[0]
                     else:
@@ -187,10 +187,10 @@ def ___jsonresponse___error___(request):
 def ___jsonresponse___index___(request, ___utils___module___, ___utils___module_model___):
     dict___data = dict()
     dict___data['___BOOLEAN___ERROR___'] = False
-    dict___data['___HTML___APPLICATION___ADMINISTRATION___CONTENT___CENTER___'] = ___html___template___(
+    dict___data['___HTML___ADMINISTRATION___CONTENT___CENTER___'] = ___html___template___(
         request=request,
         context=dict(),
-        template_name='application/administration/___includes___/content/center/%s/%s/%s.html' % (___utils___module___.___MODULE_PATH___, ___utils___module_model___.___MODEL_PATH___, ___APPLICATION___ADMINISTRATION___TEMPLATE___INDEX___)
+        template_name='apps/administration/___includes___/content/center/%s/%s/%s.html' % (___utils___module___.___MODULE_PATH___, ___utils___module_model___.___MODEL_PATH___, ___APPLICATION___ADMINISTRATION___TEMPLATE___INDEX___)
     )
     return http.JsonResponse(dict___data)
 
@@ -200,8 +200,8 @@ def ___jsonresponse___list___(request, ___utils___module___, ___utils___module_m
     dict___data['___BOOLEAN___ERROR___'] = False
     list_instance___search = ___list_instance___search___(request=request, ___utils___module___=___utils___module___, ___utils___module_model___=___utils___module_model___)
     page = ___instance___page___(request=request, ___utils___module___=___utils___module___, ___utils___module_model___=___utils___module_model___, int___number_page=0, list_instance___search=list_instance___search)
-    dict___data['___HTML___APPLICATION___ADMINISTRATION___CONTENT___CENTER___CONTENT___TABLE___TBODY___'] = ___html___template_index___table_tbody___(request=request, ___utils___module___=___utils___module___, ___utils___module_model___=___utils___module_model___, page=page)
-    dict___data['___HTML___APPLICATION___ADMINISTRATION___CONTENT___CENTER___CONTENT___PAGINATION___'] = ___html___template_index___pagination___(request=request, ___utils___module___=___utils___module___, ___utils___module_model___=___utils___module_model___, page=page)
+    dict___data['___HTML___ADMINISTRATION___CONTENT___CENTER___CONTENT___TABLE___TBODY___'] = ___html___template_index___table_tbody___(request=request, ___utils___module___=___utils___module___, ___utils___module_model___=___utils___module_model___, page=page)
+    dict___data['___HTML___ADMINISTRATION___CONTENT___CENTER___CONTENT___PAGINATION___'] = ___html___template_index___pagination___(request=request, ___utils___module___=___utils___module___, ___utils___module_model___=___utils___module_model___, page=page)
     return http.JsonResponse(dict___data)
 
 
@@ -277,13 +277,13 @@ def ___jsonresponse___list___tree___(request, ___utils___module___, ___utils___m
                 temporal_instance.is_active = False
                 temporal_instance.save()
             dict___data['LOCALE___is_active'] = dict()
-            dict___data['LOCALE___is_active']['option_no'] = '%s' % (_('APPLICATION___ADMINISTRATION___CONTENT___OPTION_NO'),)
+            dict___data['LOCALE___is_active']['option_no'] = '%s' % (_('ADMINISTRATION___CONTENT___OPTION_NO'),)
     #
     if hasattr(___utils___module_model___, '___void___list___tree___'):
         instance = ___utils___module_model___.___MODEL___.objects.___instance___(request=request, pk=pk)
         ___utils___module_model___.___void___list___tree___(request=request, dict___data=dict___data, instance=instance)
     #
-    messages.add_message(request, messages.SUCCESS, _('APPLICATION___ADMINISTRATION___CONTENT___MESSAGE %(instance)s was successfully updated.') % {'instance': instance, })
+    messages.add_message(request, messages.SUCCESS, _('ADMINISTRATION___CONTENT___MESSAGE %(instance)s was successfully updated.') % {'instance': instance, })
     dict___data['___HTML___APPLICATION___ADMINISTRATION___MODAL___'] = ___html___template_modal___message___(request=request)
     dict___data['___HTML___APPLICATION___ADMINISTRATION___MODAL___MESSAGE___'] = ___html___template_message___(request=request)
     dict___data['___BOOLEAN___ERROR___'] = False
@@ -304,10 +304,10 @@ def ___jsonresponse___create___(request, ___utils___module___, ___utils___module
             list_instance___search = ___list_instance___search___(request=request, ___utils___module___=___utils___module___, ___utils___module_model___=___utils___module_model___)
             int___number_page = ___int___number_page___(request=request, ___utils___module___=___utils___module___, ___utils___module_model___=___utils___module_model___, list_instance___search=list_instance___search, pk=instance.pk)
             page = ___instance___page___(request=request, ___utils___module___=___utils___module___, ___utils___module_model___=___utils___module_model___, list_instance___search=list_instance___search, int___number_page=int___number_page)
-            messages.add_message(request, messages.SUCCESS, _('APPLICATION___ADMINISTRATION___CONTENT___MESSAGE %(instance)s was successfully created.') % {'instance': instance, })
+            messages.add_message(request, messages.SUCCESS, _('ADMINISTRATION___CONTENT___MESSAGE %(instance)s was successfully created.') % {'instance': instance, })
             dict___data['___BOOLEAN___IS_VALID_FORM___'] = True
-            dict___data['___HTML___APPLICATION___ADMINISTRATION___CONTENT___CENTER___CONTENT___TABLE___TBODY___'] = ___html___template_index___table_tbody___(request=request, ___utils___module___=___utils___module___, ___utils___module_model___=___utils___module_model___, page=page)
-            dict___data['___HTML___APPLICATION___ADMINISTRATION___CONTENT___CENTER___CONTENT___PAGINATION___'] = ___html___template_index___pagination___(request=request, ___utils___module___=___utils___module___, ___utils___module_model___=___utils___module_model___, page=page)
+            dict___data['___HTML___ADMINISTRATION___CONTENT___CENTER___CONTENT___TABLE___TBODY___'] = ___html___template_index___table_tbody___(request=request, ___utils___module___=___utils___module___, ___utils___module_model___=___utils___module_model___, page=page)
+            dict___data['___HTML___ADMINISTRATION___CONTENT___CENTER___CONTENT___PAGINATION___'] = ___html___template_index___pagination___(request=request, ___utils___module___=___utils___module___, ___utils___module_model___=___utils___module_model___, page=page)
             if request.GET.get('action_create_update') and request.GET.get('action_create_update') == 'active':
                 instance_current = copy.deepcopy(instance)
                 form = ___utils___module_model___.___FORM___UPDATE___(data=None, files=None, request=request, instance=instance, instance_current=instance_current)
@@ -377,10 +377,10 @@ def ___jsonresponse___update___(request, ___utils___module___, ___utils___module
             list_instance___search = ___list_instance___search___(request=request, ___utils___module___=___utils___module___, ___utils___module_model___=___utils___module_model___)
             int___number_page = ___int___number_page___(request=request, ___utils___module___=___utils___module___, ___utils___module_model___=___utils___module_model___, list_instance___search=list_instance___search, pk=instance.pk)
             page = ___instance___page___(request=request, ___utils___module___=___utils___module___, ___utils___module_model___=___utils___module_model___, list_instance___search=list_instance___search, int___number_page=int___number_page)
-            messages.add_message(request, messages.SUCCESS, _('APPLICATION___ADMINISTRATION___CONTENT___MESSAGE %(instance)s was successfully updated.') % {'instance': instance, })
+            messages.add_message(request, messages.SUCCESS, _('ADMINISTRATION___CONTENT___MESSAGE %(instance)s was successfully updated.') % {'instance': instance, })
             dict___data['___BOOLEAN___IS_VALID_FORM___'] = True
-            dict___data['___HTML___APPLICATION___ADMINISTRATION___CONTENT___CENTER___CONTENT___TABLE___TBODY___'] = ___html___template_index___table_tbody___(request=request, ___utils___module___=___utils___module___, ___utils___module_model___=___utils___module_model___, page=page)
-            dict___data['___HTML___APPLICATION___ADMINISTRATION___CONTENT___CENTER___CONTENT___PAGINATION___'] = ___html___template_index___pagination___(request=request, ___utils___module___=___utils___module___, ___utils___module_model___=___utils___module_model___, page=page)
+            dict___data['___HTML___ADMINISTRATION___CONTENT___CENTER___CONTENT___TABLE___TBODY___'] = ___html___template_index___table_tbody___(request=request, ___utils___module___=___utils___module___, ___utils___module_model___=___utils___module_model___, page=page)
+            dict___data['___HTML___ADMINISTRATION___CONTENT___CENTER___CONTENT___PAGINATION___'] = ___html___template_index___pagination___(request=request, ___utils___module___=___utils___module___, ___utils___module_model___=___utils___module_model___, page=page)
         else:
             if form.errors.as_data().get('__all__') is not None:
                 messages.add_message(request, messages.ERROR, form.errors['__all__'][0])
@@ -420,12 +420,12 @@ def ___jsonresponse___delete___(request, ___utils___module___, ___utils___module
                 instance.delete()
             list_instance___search = ___list_instance___search___(request=request, ___utils___module___=___utils___module___, ___utils___module_model___=___utils___module_model___)
             page = ___instance___page___(request=request, ___utils___module___=___utils___module___, ___utils___module_model___=___utils___module_model___, list_instance___search=list_instance___search, int___number_page=int___number_page)
-            messages.add_message(request, messages.SUCCESS, _('APPLICATION___ADMINISTRATION___CONTENT___MESSAGE %(instance)s was successfully deleted.') % {'instance': instance, })
+            messages.add_message(request, messages.SUCCESS, _('ADMINISTRATION___CONTENT___MESSAGE %(instance)s was successfully deleted.') % {'instance': instance, })
             dict___data['___BOOLEAN___IS_VALID_FORM___'] = True
             dict___data['___HTML___APPLICATION___ADMINISTRATION___MODAL___'] = ___html___template_modal___message___(request=request)
             dict___data['___HTML___APPLICATION___ADMINISTRATION___MODAL___MESSAGE___'] = ___html___template_message___(request=request)
-            dict___data['___HTML___APPLICATION___ADMINISTRATION___CONTENT___CENTER___CONTENT___TABLE___TBODY___'] = ___html___template_index___table_tbody___(request=request, ___utils___module___=___utils___module___, ___utils___module_model___=___utils___module_model___, page=page)
-            dict___data['___HTML___APPLICATION___ADMINISTRATION___CONTENT___CENTER___CONTENT___PAGINATION___'] = ___html___template_index___pagination___(request=request, ___utils___module___=___utils___module___, ___utils___module_model___=___utils___module_model___, page=page)
+            dict___data['___HTML___ADMINISTRATION___CONTENT___CENTER___CONTENT___TABLE___TBODY___'] = ___html___template_index___table_tbody___(request=request, ___utils___module___=___utils___module___, ___utils___module_model___=___utils___module_model___, page=page)
+            dict___data['___HTML___ADMINISTRATION___CONTENT___CENTER___CONTENT___PAGINATION___'] = ___html___template_index___pagination___(request=request, ___utils___module___=___utils___module___, ___utils___module_model___=___utils___module_model___, page=page)
             dict___data['___BOOLEAN___ERROR___'] = False
             return http.JsonResponse(dict___data)
         else:
@@ -461,7 +461,7 @@ def ___jsonresponse___approve___(request, ___utils___module___, ___utils___modul
         if form.is_valid():
             if hasattr(form, '___approve___'):
                 instance_mirror = form.___approve___()
-                messages.add_message(request, messages.SUCCESS, _('APPLICATION___ADMINISTRATION___CONTENT___MESSAGE %(instance)s was successfully approved.') % {'instance': instance_mirror, })
+                messages.add_message(request, messages.SUCCESS, _('ADMINISTRATION___CONTENT___MESSAGE %(instance)s was successfully approved.') % {'instance': instance_mirror, })
             else:
                 messages.add_message(request, messages.ERROR, _('APPLICATION___SECURITY___MESSAGE ERROR.'))
                 return ___jsonresponse___error___(request=request)
@@ -476,8 +476,8 @@ def ___jsonresponse___approve___(request, ___utils___module___, ___utils___modul
             dict___data['___BOOLEAN___IS_VALID_FORM___'] = True
             dict___data['___HTML___APPLICATION___ADMINISTRATION___MODAL___'] = ___html___template_modal___message___(request=request)
             dict___data['___HTML___APPLICATION___ADMINISTRATION___MODAL___MESSAGE___'] = ___html___template_message___(request=request)
-            dict___data['___HTML___APPLICATION___ADMINISTRATION___CONTENT___CENTER___CONTENT___TABLE___TBODY___'] = ___html___template_index___table_tbody___(request=request, ___utils___module___=___utils___module___, ___utils___module_model___=___utils___module_model___, page=page)
-            dict___data['___HTML___APPLICATION___ADMINISTRATION___CONTENT___CENTER___CONTENT___PAGINATION___'] = ___html___template_index___pagination___(request=request, ___utils___module___=___utils___module___, ___utils___module_model___=___utils___module_model___, page=page)
+            dict___data['___HTML___ADMINISTRATION___CONTENT___CENTER___CONTENT___TABLE___TBODY___'] = ___html___template_index___table_tbody___(request=request, ___utils___module___=___utils___module___, ___utils___module_model___=___utils___module_model___, page=page)
+            dict___data['___HTML___ADMINISTRATION___CONTENT___CENTER___CONTENT___PAGINATION___'] = ___html___template_index___pagination___(request=request, ___utils___module___=___utils___module___, ___utils___module_model___=___utils___module_model___, page=page)
             dict___data['___BOOLEAN___ERROR___'] = False
             return http.JsonResponse(dict___data)
         else:
@@ -513,7 +513,7 @@ def ___jsonresponse___disapprove___(request, ___utils___module___, ___utils___mo
         if form.is_valid():
             if hasattr(form, '___disapprove___'):
                 form.___disapprove___()
-                messages.add_message(request, messages.SUCCESS, _('APPLICATION___ADMINISTRATION___CONTENT___MESSAGE %(instance)s was successfully disapproved.') % {'instance': instance, })
+                messages.add_message(request, messages.SUCCESS, _('ADMINISTRATION___CONTENT___MESSAGE %(instance)s was successfully disapproved.') % {'instance': instance, })
             else:
                 messages.add_message(request, messages.ERROR, _('APPLICATION___SECURITY___MESSAGE ERROR.'))
                 return ___jsonresponse___error___(request=request)
@@ -528,8 +528,8 @@ def ___jsonresponse___disapprove___(request, ___utils___module___, ___utils___mo
             dict___data['___BOOLEAN___IS_VALID_FORM___'] = True
             dict___data['___HTML___APPLICATION___ADMINISTRATION___MODAL___'] = ___html___template_modal___message___(request=request)
             dict___data['___HTML___APPLICATION___ADMINISTRATION___MODAL___MESSAGE___'] = ___html___template_message___(request=request)
-            dict___data['___HTML___APPLICATION___ADMINISTRATION___CONTENT___CENTER___CONTENT___TABLE___TBODY___'] = ___html___template_index___table_tbody___(request=request, ___utils___module___=___utils___module___, ___utils___module_model___=___utils___module_model___, page=page)
-            dict___data['___HTML___APPLICATION___ADMINISTRATION___CONTENT___CENTER___CONTENT___PAGINATION___'] = ___html___template_index___pagination___(request=request, ___utils___module___=___utils___module___, ___utils___module_model___=___utils___module_model___, page=page)
+            dict___data['___HTML___ADMINISTRATION___CONTENT___CENTER___CONTENT___TABLE___TBODY___'] = ___html___template_index___table_tbody___(request=request, ___utils___module___=___utils___module___, ___utils___module_model___=___utils___module_model___, page=page)
+            dict___data['___HTML___ADMINISTRATION___CONTENT___CENTER___CONTENT___PAGINATION___'] = ___html___template_index___pagination___(request=request, ___utils___module___=___utils___module___, ___utils___module_model___=___utils___module_model___, page=page)
             dict___data['___BOOLEAN___ERROR___'] = False
             return http.JsonResponse(dict___data)
         else:

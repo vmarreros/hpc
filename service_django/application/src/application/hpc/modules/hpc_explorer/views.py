@@ -25,13 +25,13 @@ def index(request):
     dict___data = dict()
     path = linux.generate_data_dict(request, 'path')
     if path:
-        dict___data['___HTML___APPLICATION___HPC___CONTENT___CENTER___'] = utils___hpc.___html___template___(
+        dict___data['___HTML___HPC___CONTENT___CENTER___'] = utils___hpc.___html___template___(
             request=request,
             context={
                 'home': path,
                 'path': path,
             },
-            template_name='application/hpc/___includes___/content/center/hpc_explorer/index.html'
+            template_name='apps/hpc/___includes___/content/center/hpc_explorer/index.html'
         )
         return http.JsonResponse(dict___data)
     else:
@@ -50,7 +50,7 @@ def ls(request):
             context={
                 'data': data
             },
-            template_name='application/hpc/___includes___/content/center/hpc_explorer/___includes___/list.html'
+            template_name='apps/hpc/___includes___/content/center/hpc_explorer/___includes___/list.html'
         )
         return http.JsonResponse(dict___data)
     else:
@@ -88,7 +88,7 @@ def edit(request):
                     dict___data['___HTML___APPLICATION___HPC___MODAL___'] = utils___hpc.___html___template___(
                         request=request,
                         context={'form': forms.FileEditForm(content=response)},
-                        template_name='application/hpc/___includes___/modal/hpc/edit.html'
+                        template_name='apps/hpc/___includes___/modal/hpc/edit.html'
                     )
                     return http.JsonResponse(dict___data)
         dict___data['___BOOLEAN___ERROR___'] = True
@@ -111,7 +111,7 @@ def rename(request):
                 context={
                     'data': data
                 },
-                template_name='application/hpc/___includes___/content/center/hpc_explorer/___includes___/list.html'
+                template_name='apps/hpc/___includes___/content/center/hpc_explorer/___includes___/list.html'
             )
             return http.JsonResponse(dict___data)
         else:
@@ -122,7 +122,7 @@ def rename(request):
             context={
                 'form': forms.GenericForm(option='rename')
             },
-            template_name='application/hpc/___includes___/modal/hpc/rename.html'
+            template_name='apps/hpc/___includes___/modal/hpc/rename.html'
         )
         return http.JsonResponse(dict___data)
 
@@ -176,7 +176,7 @@ def paste(request):
                 context={
                     'data': data
                 },
-                template_name='application/hpc/___includes___/content/center/hpc_explorer/___includes___/list.html'
+                template_name='apps/hpc/___includes___/content/center/hpc_explorer/___includes___/list.html'
             )
             return http.JsonResponse(dict___data)
         else:
@@ -204,7 +204,7 @@ def execute(request):
         dict___data['___HTML___APPLICATION___HPC___MODAL___'] = utils___hpc.___html___template___(
             request=request,
             context=dict(),
-            template_name='application/hpc/___includes___/modal/hpc/execute.html'
+            template_name='apps/hpc/___includes___/modal/hpc/execute.html'
         )
         return http.JsonResponse(dict___data)
 
@@ -223,7 +223,7 @@ def delete(request):
                 context={
                     'data': data
                 },
-                template_name='application/hpc/___includes___/content/center/hpc_explorer/___includes___/list.html'
+                template_name='apps/hpc/___includes___/content/center/hpc_explorer/___includes___/list.html'
             )
             return http.JsonResponse(dict___data)
         else:
@@ -232,7 +232,7 @@ def delete(request):
         dict___data['___HTML___APPLICATION___HPC___MODAL___'] = utils___hpc.___html___template___(
             request=request,
             context=dict(),
-            template_name='application/hpc/___includes___/modal/hpc/delete.html'
+            template_name='apps/hpc/___includes___/modal/hpc/delete.html'
         )
         return http.JsonResponse(dict___data)
 
@@ -245,7 +245,7 @@ def go_to(request):
     dict___data['___HTML___APPLICATION___HPC___MODAL___'] = utils___hpc.___html___template___(
         request=request,
         context=dict(),
-        template_name='application/hpc/___includes___/modal/hpc/goto.html'
+        template_name='apps/hpc/___includes___/modal/hpc/goto.html'
     )
     return http.JsonResponse(dict___data)
 
@@ -265,7 +265,7 @@ def create_folder(request):
                 context={
                     'data': data
                 },
-                template_name='application/hpc/___includes___/content/center/hpc_explorer/___includes___/list.html'
+                template_name='apps/hpc/___includes___/content/center/hpc_explorer/___includes___/list.html'
             )
             return http.JsonResponse(dict___data)
         else:
@@ -276,7 +276,7 @@ def create_folder(request):
             context={
                 'form': forms.GenericForm(option='folder')
             },
-            template_name='application/hpc/___includes___/modal/hpc/folder.html'
+            template_name='apps/hpc/___includes___/modal/hpc/folder.html'
         )
         return http.JsonResponse(dict___data)
 
@@ -296,7 +296,7 @@ def create_file(request):
                 context={
                     'data': data
                 },
-                template_name='application/hpc/___includes___/content/center/hpc_explorer/___includes___/list.html'
+                template_name='apps/hpc/___includes___/content/center/hpc_explorer/___includes___/list.html'
             )
             return http.JsonResponse(dict___data)
         else:
@@ -307,7 +307,7 @@ def create_file(request):
             context={
                 'form': forms.GenericForm(option='file')
             },
-            template_name='application/hpc/___includes___/modal/hpc/file.html'
+            template_name='apps/hpc/___includes___/modal/hpc/file.html'
         )
         return http.JsonResponse(dict___data)
 
@@ -337,7 +337,7 @@ def upload(request):
                     context={
                         'data': data
                     },
-                    template_name='application/hpc/___includes___/content/center/hpc_explorer/___includes___/list.html'
+                    template_name='apps/hpc/___includes___/content/center/hpc_explorer/___includes___/list.html'
                 )
                 return http.JsonResponse(dict___data)
         return utils___hpc.___httpresponse___error___(request)
@@ -347,7 +347,7 @@ def upload(request):
             context={
                 'form': forms.UploadMultipleFilesForm()
             },
-            template_name='application/hpc/___includes___/modal/hpc/upload.html'
+            template_name='apps/hpc/___includes___/modal/hpc/upload.html'
         )
         dict___data['___HTML___APPLICATION___HPC___MODAL___MESSAGE___'] = utils___hpc.___html___template_message___(request=request)
         return http.JsonResponse(dict___data)

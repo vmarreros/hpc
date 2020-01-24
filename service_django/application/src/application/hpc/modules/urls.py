@@ -6,5 +6,6 @@ urlpatterns = [
     url(r'^hpc_script/', include('src.application.hpc.modules.hpc_script.urls', namespace='hpc_script')),
     url(r'^hpc_nodes/', include('src.application.hpc.modules.hpc_nodes.urls', namespace='hpc_nodes')),
     url(r'^hpc_explorer/', include('src.application.hpc.modules.hpc_explorer.urls', namespace='hpc_explorer')),
-    url(r'^hpc_modules/', include('src.application.hpc.modules.hpc_modules.urls', namespace='hpc_modules')),
+    url(r'^hpc_software/', include('src.application.hpc.modules.hpc_software.urls', namespace='hpc_software')),
+    url(r'^hpc_charts/', include('src.application.hpc.modules.hpc_charts.urls', namespace='hpc_charts')),
 ]

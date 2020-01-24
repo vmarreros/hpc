@@ -1,0 +1,43 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+
+
+
+# *****************************************************************************
+# DATA_TABLE
+# *****************************************************************************
+
+msgid "DATATABLE_Processing"
+msgstr "Procesando..."
+msgid "DATATABLE_Length_Menu"
+msgstr "Mostrar _MENU_ registros"
+msgid "DATATABLE_Zero_Records"
+msgstr "No se encontraron resultados"
+msgid "DATATABLE_Empty_Table"
+msgstr "Ningún dato disponible en esta tabla"
+msgid "DATATABLE_Info"
+msgstr "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros"
+msgid "DATATABLE_Info_Empty"
+msgstr "Mostrando registros del 0 al 0 de un total de 0 registros"
+msgid "DATATABLE_Info_Filtered"
+msgstr "(filtrado de un total de _MAX_ registros)"
+msgid "DATATABLE_Search"
+msgstr "Buscar:"
+msgid "DATATABLE_Loading_Records"
+msgstr "Cargando..."
+msgid "DATATABLE_First"
+msgstr "Primero"
+msgid "DATATABLE_Last"
+msgstr "Último"
+msgid "DATATABLE_Next"
+msgstr "Siguiente"
+msgid "DATATABLE_Previous"
+msgstr "Anterior"
+msgid "DATATABLE_Sort_Ascending"
+msgstr "Activar para ordenar la columna de manera ascendente"
+msgid "DATATABLE_Sort_Descending"
+msgstr "Activar para ordenar la columna de manera descendente"

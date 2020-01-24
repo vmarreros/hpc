@@ -5,7 +5,7 @@ from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
 ___FIELD___CREATED___ = forms.DateField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERREQUEST___CREATED'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSERREQUEST___CREATED'),
     required=False,
     widget=forms.DateInput(
         attrs={
@@ -16,7 +16,7 @@ ___FIELD___CREATED___ = forms.DateField(
     ),
 )
 ___FIELD___MODIFIED___ = forms.DateField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERREQUEST___MODIFIED'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSERREQUEST___MODIFIED'),
     required=False,
     widget=forms.DateInput(
         attrs={
@@ -27,7 +27,7 @@ ___FIELD___MODIFIED___ = forms.DateField(
     ),
 )
 ___FIELD___FIRST_NAME___ = forms.CharField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERREQUEST___FIRST_NAME'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSERREQUEST___FIRST_NAME'),
     required=False,
     min_length=1,
     max_length=100,
@@ -41,7 +41,7 @@ ___FIELD___FIRST_NAME___ = forms.CharField(
     ),
 )
 ___FIELD___LAST_NAME___ = forms.CharField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERREQUEST___LAST_NAME'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSERREQUEST___LAST_NAME'),
     required=False,
     min_length=1,
     max_length=100,
@@ -55,7 +55,7 @@ ___FIELD___LAST_NAME___ = forms.CharField(
     ),
 )
 ___FIELD___IDENTIFIER___ = forms.CharField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERREQUEST___IDENTIFIER'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSERREQUEST___IDENTIFIER'),
     required=True,
     min_length=1,
     max_length=100,
@@ -69,7 +69,7 @@ ___FIELD___IDENTIFIER___ = forms.CharField(
     ),
 )
 ___FIELD___EMAIL___ = forms.EmailField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERREQUEST___EMAIL'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSERREQUEST___EMAIL'),
     required=True,
     min_length=1,
     max_length=150,
@@ -83,7 +83,7 @@ ___FIELD___EMAIL___ = forms.EmailField(
     ),
 )
 ___FIELD___DETAIL___ = forms.CharField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERREQUEST___DETAIL'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSERREQUEST___DETAIL'),
     required=True,
     min_length=1,
     max_length=1024,
@@ -98,7 +98,7 @@ ___FIELD___DETAIL___ = forms.CharField(
     ),
 )
 ___FIELD___INSTITUTE___ = forms.CharField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERREQUEST___INSTITUTE'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSERREQUEST___INSTITUTE'),
     required=True,
     min_length=1,
     max_length=256,
@@ -112,7 +112,7 @@ ___FIELD___INSTITUTE___ = forms.CharField(
     ),
 )
 ___FIELD___RESEARCH_FIELD___ = forms.CharField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERREQUEST___RESEARCH_FIELD'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSERREQUEST___RESEARCH_FIELD'),
     required=True,
     min_length=1,
     max_length=256,
@@ -126,7 +126,7 @@ ___FIELD___RESEARCH_FIELD___ = forms.CharField(
     ),
 )
 ___FIELD___RESEARCH_GROUP___ = forms.CharField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERREQUEST___RESEARCH_GROUP'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSERREQUEST___RESEARCH_GROUP'),
     required=True,
     min_length=1,
     max_length=256,
@@ -140,15 +140,15 @@ ___FIELD___RESEARCH_GROUP___ = forms.CharField(
     ),
 )
 ___FIELD___USER_PROFILE___ = forms.ChoiceField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERREQUEST___USER_PROFILE'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSERREQUEST___USER_PROFILE'),
     required=True,
     choices=[
-        ('Teacher', _("APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERREQUEST___USER_PROFILE___OPTION___TEACHER")),
-        ('Investigator', _("APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERREQUEST___USER_PROFILE___OPTION___INVESTIGATOR")),
-        ('Undergraduate student', _("APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERREQUEST___USER_PROFILE___OPTION___UNDERGRADUATE_STUDENT")),
-        ('Master\'s student', _("APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERREQUEST___USER_PROFILE___OPTION____MASTER'S_STUDENT")),
-        ('PhD student', _("APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERREQUEST___USER_PROFILE___OPTION___PHD_STUDENT")),
-        ('Other', _("APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERREQUEST___USER_PROFILE___OPTION___OTHER")),
+        ('Teacher', _("ADMINISTRATION___CONTENT___SECURITY___LDAPUSERREQUEST___USER_PROFILE___OPTION___TEACHER")),
+        ('Investigator', _("ADMINISTRATION___CONTENT___SECURITY___LDAPUSERREQUEST___USER_PROFILE___OPTION___INVESTIGATOR")),
+        ('Undergraduate student', _("ADMINISTRATION___CONTENT___SECURITY___LDAPUSERREQUEST___USER_PROFILE___OPTION___UNDERGRADUATE_STUDENT")),
+        ('Master\'s student', _("ADMINISTRATION___CONTENT___SECURITY___LDAPUSERREQUEST___USER_PROFILE___OPTION____MASTER'S_STUDENT")),
+        ('PhD student', _("ADMINISTRATION___CONTENT___SECURITY___LDAPUSERREQUEST___USER_PROFILE___OPTION___PHD_STUDENT")),
+        ('Other', _("ADMINISTRATION___CONTENT___SECURITY___LDAPUSERREQUEST___USER_PROFILE___OPTION___OTHER")),
     ],
     initial='Teacher',
     widget=forms.Select(
@@ -161,7 +161,7 @@ ___FIELD___USER_PROFILE___ = forms.ChoiceField(
     ),
 )
 ___FIELD___TUTOR_INSTITUTION___ = forms.CharField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERREQUEST___TUTOR_INSTITUTION'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSERREQUEST___TUTOR_INSTITUTION'),
     required=False,
     min_length=1,
     max_length=256,
@@ -175,7 +175,7 @@ ___FIELD___TUTOR_INSTITUTION___ = forms.CharField(
     ),
 )
 ___FIELD___TUTOR_MAIL___ = forms.EmailField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERREQUEST___TUTOR_MAIL'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSERREQUEST___TUTOR_MAIL'),
     required=False,
     min_length=1,
     max_length=256,
@@ -189,7 +189,7 @@ ___FIELD___TUTOR_MAIL___ = forms.EmailField(
     ),
 )
 ___FIELD___TUTOR_NAME___ = forms.CharField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LDAPUSERREQUEST___TUTOR_NAME'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LDAPUSERREQUEST___TUTOR_NAME'),
     required=False,
     min_length=1,
     max_length=256,

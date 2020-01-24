@@ -17,6 +17,7 @@ from ....security import (
 from ... import utils as utils___hpc
 from ... import ssh
 from ... import linux
+from ...slurm import CommandError
 from . import forms
 from . import script
 
@@ -51,12 +52,12 @@ def index(request):
                     messages.add_message(request, messages.SUCCESS, _('HPC___SSH___MESSAGES_ScriptSendOk'))
             dict___data['___HTML___APPLICATION___HPC___MODAL___'] = utils___hpc.___html___template_modal___message___(request=request)
             dict___data['___HTML___APPLICATION___HPC___MODAL___MESSAGE___'] = utils___hpc.___html___template_message___(request=request)
-            dict___data['___HTML___APPLICATION___HPC___CONTENT___CENTER___'] = utils___hpc.___html___template___(
+            dict___data['___HTML___HPC___CONTENT___CENTER___'] = utils___hpc.___html___template___(
                 request=request,
                 context={
                     'form': form,
                 },
-                template_name='application/hpc/___includes___/content/center/hpc_script/index.html'
+                template_name='apps/hpc/___includes___/content/center/hpc_script/index.html'
             )
             return http.JsonResponse(dict___data)
         else:
@@ -64,22 +65,25 @@ def index(request):
             dict___data['___BOOLEAN___ERROR___'] = True
             dict___data['___HTML___APPLICATION___HPC___MODAL___'] = utils___hpc.___html___template_modal___message___(request=request)
             dict___data['___HTML___APPLICATION___HPC___MODAL___MESSAGE___'] = utils___hpc.___html___template_message___(request=request)
-            dict___data['___HTML___APPLICATION___HPC___CONTENT___CENTER___'] = utils___hpc.___html___template___(
+            dict___data['___HTML___HPC___CONTENT___CENTER___'] = utils___hpc.___html___template___(
                 request=request,
                 context={
                     'form': form
                 },
-                template_name='application/hpc/___includes___/content/center/hpc_script/index.html'
+                template_name='apps/hpc/___includes___/content/center/hpc_script/index.html'
             )
             return http.JsonResponse(dict___data)
     else:
-        dict___data['___HTML___APPLICATION___HPC___CONTENT___CENTER___'] = utils___hpc.___html___template___(
+        try:
+            form = forms.ScriptForm(request=request)
+        except CommandError:
+            return utils___hpc.___httpresponse___error___(request)
+        dict___data['___HTML___HPC___CONTENT___CENTER___'] = utils___hpc.___html___template___(
             request=request,
             context={
-                'form': forms.ScriptForm(request=request),
-                'method': 'GET',
-            },
-            template_name='application/hpc/___includes___/content/center/hpc_script/index.html'
+                'form': form,
+                'method': 'GET'},
+            template_name='apps/hpc/___includes___/content/center/hpc_script/index.html'
         )
         return http.JsonResponse(dict___data)
 
@@ -96,7 +100,7 @@ def vars(request):
             context={
                 'variables': data
             },
-            template_name='application/hpc/___includes___/modal/hpc/variables.html'
+            template_name='apps/hpc/___includes___/modal/hpc/variables.html'
         )
         return http.JsonResponse(dict___data)
     else:

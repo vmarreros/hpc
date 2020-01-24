@@ -1,0 +1,28 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+
+
+
+msgid "FOOTER___SOCIAL___HEADER"
+msgstr "Share"
+
+msgid "FOOTER___SUPPORT___HEADER"
+msgstr "Technical support"
+msgid "FOOTER___SUPPORT___TEXT1"
+msgstr "Phone"
+msgid "FOOTER___SUPPORT___TEXT2"
+msgstr "E-mail"
+
+msgid "FOOTER___DEVELOPED___HEADER"
+msgstr "Developed by"
+msgid "FOOTER___DEVELOPED___TEXT1"
+msgstr "Computerization Department of the UCLV"
+msgid "FOOTER___DEVELOPED___TEXT2 %(ctx___now_l)s %(ctx___now_F)s %(ctx___now_j)s %(ctx___now_Y)s"
+msgstr "Today is %(ctx___now_l)s, %(ctx___now_F)s %(ctx___now_j)s, %(ctx___now_Y)s"
+
+msgid "FOOTER___COPYRIGHT"
+msgstr "Copyright © 2018 Central University \"Marta Abreu\" of Las Villas. All rights reserved."

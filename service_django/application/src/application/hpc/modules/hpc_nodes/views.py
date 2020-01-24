@@ -16,28 +16,22 @@ from src.application.security import (
 )
 from ... import utils as utils___hpc
 from ... import ssh
-from ... import slurm
+from ...slurm import Command, CommandError
 
 
 @decorators___application___security.___required___request_is_ajax___()
 @decorators___application___security.___required___application___security___user___is_ldapuser_or_ldapuserimported___(___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___HPC___)
 def index(request):
     dict___data = dict()
-    info = slurm.generate_data_dict(request, option='nodes')
-    # info.update({'statistic': serializers.serialize("json", models.Node.objects.all())})
-    info.update({'random': random.random()})
-    if info:
-        dict___data['___HTML___APPLICATION___HPC___CONTENT___CENTER___'] = utils___hpc.___html___template___(
-            request=request,
-            context=info,
-            template_name='application/hpc/___includes___/content/center/hpc_nodes/index.html'
-        )
-        return http.JsonResponse(dict___data)
-    else:
-        return utils___hpc.___jsonresponse___error___(request)
-
-
-@decorators___application___security.___required___request_is_ajax___()
-@decorators___application___security.___required___application___security___user___is_ldapuser_or_ldapuserimported___(___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___HPC___)
-def chartnodes(request):
-    return HttpResponse(slurm.generate_data_json(request, option='nodes'))
+    command = Command(request, 'nodes')
+    try:
+        data = command.to_dict()
+    except CommandError as e:
+        return utils___hpc.___httpresponse___error___(request)
+    data.update({'random': random.random()})
+    dict___data['___HTML___HPC___CONTENT___CENTER___'] = utils___hpc.___html___template___(
+        request=request,
+        context=data,
+        template_name='apps/hpc/___includes___/content/center/hpc_nodes/index.html'
+    )
+    return http.JsonResponse(dict___data)

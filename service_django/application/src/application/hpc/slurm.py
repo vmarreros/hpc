@@ -6,7 +6,7 @@ from django.contrib import messages
 import json
 
 # user modules import
-from . import ssh
+from .ssh import ssh_exec
 
 
 def to_float(s):
@@ -16,16 +16,100 @@ def to_float(s):
         return 0
 
 
-def generate_data_dict(request, option, parameters=None):
-    __dict__ = dict()
-    str_in_bytes = run_command(request, option, parameters=parameters)
-    if str_in_bytes:
-        string_in_utf8 = str_in_bytes.decode('utf-8').rstrip('\n')
-        if option == 'nodes':
-            # sinfo -N --Format=all
+class CommandError(Exception):
+    pass
+
+
+class Command:
+    def __init__(self, request, action, *args):
+        self.instance = request.___APPLICATION___SECURITY___USER___
+        self.action = action
+        if args:
+            self.args = args
+
+    def _run(self):
+        err, out = ssh_exec(
+            username=self.instance.group_identifier(),
+            private_key_path=self.instance.private_key.path,
+            command=self._command())
+
+        if err:
+            raise CommandError(out)
+        return out
+
+    def _command(self):
+        if self.action == 'history':
+            b"""       JobID      State    JobName                           User  Partition   NNodes      NCPUS     ReqMem                 End 
+                ------------ ---------- ---------- ------------------------------ ---------- -------- ---------- ---------- ------------------- 
+                14960            FAILED      a.out                 uclv_vmarreros     public        2         16     2746Mn 2019-12-13T10:05:52 
+            """
+            return 'sacct -S {date} -u {user} --format=jobid,state,jobname,user,partition,nnodes' \
+                   ',ncpus,reqmem,end -X -P'.format(
+                date=self.args[0],
+                user=self.instance.group_identifier())
+        if self.action == 'summary':
+            b"""Job ID: 15000
+                Cluster: mambi
+                User/Group: uclv_efirvida/uclv
+                State: COMPLETED (exit code 0)
+                Nodes: 13
+                Cores per node: 7
+                CPU Utilized: 06:26:28
+                CPU Efficiency: 62.33% of 10:20:00 core-walltime
+                Memory Utilized: 1.33 GB
+                Memory Efficiency: 3.81% of 34.86 GB
+            """
+            return 'seff {jobid}'.format(
+                jobid=self.args[0])
+        if self.action == 'jobs':
+            return 'squeue -all --states=all -o "%i|%T|%j|%u|%P|%M|%l|%D|%R"'
+        if self.action == 'job-detail':  # job id in parameters
+            return 'scontrol show job -o {jobid}'.format(
+                jobid=self.args[0])
+        if self.action == 'job kill':  # Cancela el trabajo de la cola de ejecución.
+            return 'scancel --signal=KILL {jobid}'.format(
+                jobid=self.args[0])
+        if self.action == 'job hold':  # Impide que se inicie una tarea pendiente (establece su prioridad en 0) si se esta ejecutando su prioridad se establece en 0 en caso de una nueva ejecución
+            return 'scontrol hold {jobid}'.format(
+                jobid=self.args[0])
+        if self.action == 'job release':
+            return 'scontrol release {}'.format(self.args[0])  # Libere un trabajo retenido anteriormente para comenzar la ejecución.
+        if self.action == 'job suspend':
+            return 'scontrol suspend {}'.format(self.args[0])  # Suspender un trabajo en ejecución. Si se pone en cola un trabajo suspendido, se colocará en estado retenido.
+        if self.action == 'job resume':
+            return 'scontrol resume {}'.format(self.args[0])  # Reanudar un trabajo previamente suspendido. Un trabajo suspendido libera sus CPU para su asignación a otros trabajos.
+        if self.action == 'job requeue':
+            return 'scontrol requeue {}'.format(self.args[0])  # Re-encolar un trabajo por lotes Slurm en ejecución, suspendido o terminado en estado pendiente.
+        if self.action == 'job continue':
+            return 'scancel --signal=CONT {}'.format(self.args[0])  # Reanuda la ejecución de un trabajo suspendido con sus recursos retenidos.
+        if self.action == 'job stop':
+            return 'scancel --signal=STOP {}'.format(self.args[0])  # Suspender un trabajo en ejecución y retiene los recursos asignados.
+
+        # hpc script ########
+        if self.action == 'partitions':
+            return 'sinfo --format=%R'
+        if self.action == 'execute':
+            return 'sbatch "{}/{}"'.format(self.args[0], self.args[1])
+
+        # hpc nodes ########
+        if self.action == 'nodes':
+            return 'scontrol show nodes -o'
+        if self.action == 'nodes-partitions':
+            return 'sinfo -N --Format=all'
+        if self.action == 'cpusload':
+            return 'sinfo -N --Format=nodelist,cpusload'
+        if self.action == 'partitions-detail':
+            return 'sinfo --format="%R %a %D %N"'
+
+    def to_dict(self):
+        str_bytes = self._run()
+        str_utf8 = str_bytes.decode('utf-8').strip()
+
+        __dict__ = dict()
+        if self.action == 'nodes':
             nodes = list()
             cpu_load = cpu_total = cpu_alloc = free_mem = real_mem = 0
-            for node in string_in_utf8.split('\n'):
+            for node in str_utf8.split('\n'):
                 features = dict()
                 for feature in node.split():
                     if len(feature.split('=')) == 2:
@@ -33,57 +117,44 @@ def generate_data_dict(request, option, parameters=None):
                             feature.split('=')[0]: feature.split('=')[1]
                         })
                 nodes.append(features)
-                cpu_load = cpu_load + to_float(features['CPULoad'])
                 cpu_total = cpu_total + to_float(features['CPUTot'])
                 cpu_alloc = cpu_alloc + to_float(features['CPUAlloc'])
                 free_mem = free_mem + to_float(features['FreeMem'])
                 real_mem = real_mem + to_float(features['RealMemory'])
             __dict__['nodes'] = nodes
-            __dict__['summary'] = {'cpuload': cpu_load/len(nodes), 'free_mem': free_mem, 'real_mem': real_mem, 'cpu_tot': cpu_total, 'cpu_alloc': cpu_alloc}
-            __dict__.update(generate_data_dict(request, 'partitions-detail'))
-        if option == 'partitions-detail':
+            __dict__['summary'] = {
+                'free_mem': free_mem,
+                'real_mem': real_mem,
+                'cpu_tot': cpu_total,
+                'cpu_alloc': cpu_alloc}
+        if self.action == 'partitions-detail':
             data = list()
-            keys = string_in_utf8.split('\n')[0].split()
-            for s in string_in_utf8.split('\n')[1:]:
-                data.append(s.split())
+            keys = str_utf8.split('\n')[0].split()
+            for line in str_utf8.split('\n')[1:]:
+                data.append(line.split())
             __dict__['partitions'] = {'data': data, 'keys': keys}
-        if option == 'nodes-partitions':
-            # sinfo -N --Format=all
+        if self.action == 'nodes-partitions':
             nodes = list()
-            tmp = string_in_utf8.split('\n')
+            tmp = str_utf8.split('\n')
             keys = tmp[0].split('|')
             for node in tmp[1:]:
                 nodes.append(node.split('|'))
             __dict__['keys'] = keys
             __dict__['nodes'] = nodes
-        if option == 'cpusload':
-            # sinfo -N --Format=nodelist,cpusload
+        if self.action == 'cpusload':
             data = list()
-            tmp = string_in_utf8.split('\n')
+            tmp = str_utf8.split('\n')
             keys = tmp[1].split()
             for node in tmp[1:]:
                 data.append(node.split())
             __dict__['keys'] = keys
             __dict__['data'] = data
-        if option == 'keys':
-            tmp = string_in_utf8.split('\n')
-            keys = tmp[1].split()
-            __dict__['keys'] = keys
-        if option == 'jobs all' or option == 'jobs group' or option == 'jobs user':
-            tmp = string_in_utf8.split('\n')
-            l = list()
-            for data in tmp[2:]:
-                if len(data.split()) > 9:
-                    l.append(data.split()[0:8])
-                    l[-1].append(" ".join(data.split()[8:]))
-                elif len(data.split()) == 9:
-                    l.append(data.split())
-                else:
-                    row = data.split()
-                    row.append('')
-                    l.append(row)
-            __dict__['data'] = l
-        if option == 'detail job':
+        if self.action == 'jobs':
+            data = list()
+            for line in str_utf8.split('\n')[2:]:
+                data.append(line.split("|"))
+            __dict__['data'] = data
+        if self.action == 'job-detail':
             keys = [
                 'JobId', 'JobName', 'UserId', 'GroupId', 'Priority', 'Account', 'QOS', 'JobState',
                 'Reason', 'Requeue', 'Restarts', 'RunTime', 'TimeLimit', 'TimeMin', 'SubmitTime',
@@ -92,7 +163,7 @@ def generate_data_dict(request, option, parameters=None):
                 'NumNodes', 'NumCPUs', 'NumTasks', 'CPUs/Task', 'TRES', 'Command', 'WorkDir', 'StdErr',
                 'StdIn', 'StdOut'
             ]
-            fields = string_in_utf8.split()
+            fields = str_utf8.split()
             for key in keys:
                 i = 0
                 for field in fields:
@@ -105,76 +176,22 @@ def generate_data_dict(request, option, parameters=None):
                 fields.pop(i)
             __dict__['Username'] = __dict__['UserId'].split('(')[0]
             __dict__['CPUsTask'] = __dict__.pop('CPUs/Task')
-        if option == 'partitions':
-            tmp = string_in_utf8.split('\n')
-            data = list()
-            for partition in tmp[1:]:
-                data.append(partition)
-            __dict__['data'] = data
+        if self.action == 'partitions':
+            partitions = list()
+            for partition in str_utf8.split('\n')[1:]:
+                partitions.append(partition)
+            __dict__['data'] = partitions
+        if self.action == 'history':
+            jobs = list()
+            for line in str_utf8.split('\n')[1:]:
+                jobs.append(line.split('|'))
+            __dict__['data'] = jobs
+        if self.action == 'summary':
+            summary = dict()
+            for line in str_utf8.split('\n'):
+                summary[line.split(": ")[0]] = line.split(": ")[1]
+            __dict__['summary'] = summary
         return __dict__
 
-
-def generate_data_json(request, option, parameters=None):
-    __dict__ = generate_data_dict(request, option, parameters=parameters)
-    if __dict__:
-        return json.dumps(generate_data_dict(request, option, parameters=parameters))
-
-
-def run_command(request, option, parameters=None):
-    instance = request.___APPLICATION___SECURITY___USER___
-    command = 'ls'
-
-    # hpc jobs ########
-    if option == 'keys':
-        command = 'squeue -all'
-    if option == 'jobs all':
-        command = 'squeue -all --states=all -o "%i %T %j %u %P %M %l %D %R"'
-        # command = 'squeue -o "%i %T %j %u %P %M %l %D %R"'
-    if option == 'detail job':  # job id in parameters
-        command = 'scontrol show job -o ' + parameters[0]
-    if option == 'job kill':
-        command = 'scancel --signal=KILL ' + parameters[0]  # Cancela el trabajo de la cola de ejecución.
-    if option == 'job hold':
-        command = 'scontrol hold ' + parameters[0]  # Impide que se inicie una tarea pendiente (establece su prioridad en 0) si se esta ejecutando su prioridad se establece en 0 en caso de una nueva ejecución
-    if option == 'job release':
-        command = 'scontrol release ' + parameters[0]  # Libere un trabajo retenido anteriormente para comenzar la ejecución.
-    if option == 'job suspend':
-        command = 'scontrol suspend ' + parameters[0]  # Suspender un trabajo en ejecución. Si se pone en cola un trabajo suspendido, se colocará en estado retenido.
-    if option == 'job resume':
-        command = 'scontrol resume ' + parameters[0]  # Reanudar un trabajo previamente suspendido. Un trabajo suspendido libera sus CPU para su asignación a otros trabajos.
-    if option == 'job requeue':
-        command = 'scontrol requeue ' + parameters[0]  # Re-encolar un trabajo por lotes Slurm en ejecución, suspendido o terminado en estado pendiente.
-    if option == 'job continue':
-        command = 'scancel --signal=CONT ' + parameters[0]  # Reanuda la ejecución de un trabajo suspendido con sus recursos retenidos.
-    if option == 'job stop':
-        command = 'scancel --signal=STOP ' + parameters[0]  # Suspender un trabajo en ejecución y retiene los recursos asignados.
-    if option == 'jobs group':
-        group = run_command(request, 'groups user') or None
-        if group:
-            command = 'squeue -all --states=all -A ' + group.split(':')[1]
-        else:
-            return
-    if option == 'groups user':
-        command = 'groups ' + instance.__str__()
-
-    # hpc script ########
-    if option == 'partitions':
-        command = 'sinfo --format=%R'
-    if option == 'execute':
-        command = 'sbatch "' + parameters[0] + '/' + parameters[1] + '"'
-
-    # hpc nodes ########
-    if option == 'nodes':
-        command = 'scontrol show nodes -o'
-    if option == 'nodes-partitions':
-        command = 'sinfo -N --Format=all'
-    if option == 'cpusload':
-        command = 'sinfo -N --Format=nodelist,cpusload'
-    if option == 'partitions-detail':
-        command = 'sinfo --format="%R %a %D %N"'
-
-    err, out = ssh.ssh_exec(username=instance.group_identifier(), private_key_path=instance.private_key.path, command=command)
-    if err:
-        messages.add_message(request, messages.ERROR, out)
-    else:
-        return out
+    def to_json(self):
+        return json.dumps(self.to_dict())

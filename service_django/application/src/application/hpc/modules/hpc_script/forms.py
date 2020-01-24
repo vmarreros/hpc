@@ -2,7 +2,7 @@
 from django import forms
 from django.core.validators import ValidationError, RegexValidator
 from django.utils.translation import ugettext_lazy as _
-from ... import slurm
+from ...slurm import Command
 import re
 
 
@@ -249,7 +249,10 @@ class ScriptForm(forms.Form):
     def __init__(self, *args, **kwargs):
         self.request = kwargs.pop('request')
         super().__init__(*args, **kwargs)
-        dict___data = slurm.generate_data_dict(self.request, 'partitions')
+        c = Command(
+            self.request,
+            'partitions')
+        dict___data = c.to_dict()
         if dict___data:
             self.fields['partition'].choices = parse(dict___data['data'])
         else:

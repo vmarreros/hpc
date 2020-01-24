@@ -1,0 +1,130 @@
+{% load i18n %}
+
+<h3 id="center___header">
+    <span class="fa fa-dashboard fa-fw"></span> {% trans 'HPC___JOBS___Active_Jobs' %}
+</h3>
+<div id="center___content">
+    <div id="jobs___content" class="row container-fluid">
+        <table id="jobs___datatable" class="table table-striped nowrap" cellspacing="0" width="100%"
+               data-url-jobs="{% url "hpc:modules:hpc_jobs:queue_json" %}" data-url-detail="{% url "hpc:modules:hpc_jobs:detail_job" %}">
+            <thead>
+                <tr>
+                    <th>{% trans 'HPC___JOBS___Job_Id' %}</th>
+                    <th>{% trans 'HPC___JOBS___Job_State' %}</th>
+                    <th>{% trans 'HPC___JOBS___Job_Name' %}</th>
+                    <th>{% trans 'HPC___JOBS___Job_User' %}</th>
+                    <th>{% trans 'HPC___JOBS___Job_Partition' %}</th>
+                    <th>{% trans 'HPC___JOBS___Job_Time' %}</th>
+                    <th>{% trans 'HPC___JOBS___Job_Time_Limit' %}</th>
+                    <th>{% trans 'HPC___JOBS___Job_Nodes' %}</th>
+                    <th>{% trans 'HPC___JOBS___Job_Nodes_List' %}</th>
+                    <th class="none"></th>{# esta columna solo se muestra en la vista detallada #}
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <hr>
+        <div id="job-codes-info" class="col-lg-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <span class="fa fa-info-circle fa-inverse"></span> {% trans 'HPC___JOBS___PANEL_STATE___TITLE' %}
+                </div>
+                <div class="panel-body">
+                    <p>{% trans 'HPC___JOBS___PANEL_STATE___PARAGRAPH' %}</p>
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th>CA</th>
+                                <td>CANCELLED</td>
+                                <td>{% trans 'HPC___JOBS___PANEL_STATE___TABLE___ROW_CANCELLED' %}</td>
+                            </tr>
+                            <tr>
+                                <th>CD</th>
+                                <td>COMPLETED</td>
+                                <td>{% trans 'HPC___JOBS___PANEL_STATE___TABLE___ROW_COMPLETED' %}</td>
+                            </tr>
+                            <tr>
+                                <th>CG</th>
+                                <td>COMPLETING</td>
+                                <td>{% trans 'HPC___JOBS___PANEL_STATE___TABLE___ROW_COMPLETING' %}</td>
+                            </tr>
+                            <tr>
+                                <th>F</th>
+                                <td>FAILED</td>
+                                <td>{% trans 'HPC___JOBS___PANEL_STATE___TABLE___ROW_FAILED' %}</td>
+                            </tr>
+                            <tr>
+                                <th>NF</th>
+                                <td>NODE_FAIL</td>
+                                <td>{% trans 'HPC___JOBS___PANEL_STATE___TABLE___ROW_NODE_FAIL' %}</td>
+                            </tr>
+                            <tr>
+                                <th>PD</th>
+                                <td>PENDING</td>
+                                <td>{% trans 'HPC___JOBS___PANEL_STATE___TABLE___ROW_PENDING' %}</td>
+                            </tr>
+                            <tr>
+                                <th>R</th>
+                                <td>RUNNING</td>
+                                <td>{% trans 'HPC___JOBS___PANEL_STATE___TABLE___ROW_RUNNING' %}</td>
+                            </tr>
+                            <tr>
+                                <th>S</th>
+                                <td>SUSPENDED</td>
+                                <td>{% trans 'HPC___JOBS___PANEL_STATE___TABLE___ROW_SUSPENDED' %}</td>
+                            </tr>
+                            <tr>
+                                <th>TO</th>
+                                <td>TIMEOUT</td>
+                                <td>{% trans 'HPC___JOBS___PANEL_STATE___TABLE___ROW_TIMEOUT' %}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <span class="fa fa-info-circle fa-inverse"></span> {% trans 'HPC___JOBS___PANEL_REASON___TITLE' %}
+                </div>
+                <div class="panel-body">
+                    <p>{% trans 'HPC___JOBS___PANEL_REASON___PARAGRAPH' %}</p>
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th>Dependency</th>
+                                <td>{% trans 'HPC___JOBS___PANEL_REASON___TABLE___ROW_DEPENDENCY' %}</td>
+                            </tr>
+                            <tr>
+                                <th>None</th>
+                                <td>{% trans 'HPC___JOBS___PANEL_REASON___TABLE___ROW_NONE' %}</td>
+                            </tr>
+                            <tr>
+                                <th>PartitionDown</th>
+                                <td>{% trans 'HPC___JOBS___PANEL_REASON___TABLE___ROW_PARTITION_DOWN' %}</td>
+                            </tr>
+                            <tr>
+                                <th>PartitionNodeLimit</th>
+                                <td>{% trans 'HPC___JOBS___PANEL_REASON___TABLE___ROW_PARTITION_NODE_LIMIT' %}</td>
+                            </tr>
+                            <tr>
+                                <th>PartitionTimeLimit</th>
+                                <td>{% trans 'HPC___JOBS___PANEL_REASON___TABLE___ROW_PARTITION_TIME_LIMIT' %}</td>
+                            </tr>
+                            <tr>
+                                <th>Priority</th>
+                                <td>{% trans 'HPC___JOBS___PANEL_REASON___TABLE___ROW_PRIORITY' %}</td>
+                            </tr>
+                            <tr>
+                                <th>Resources</th>
+                                <td>{% trans 'HPC___JOBS___PANEL_REASON___TABLE___ROW_RESOURCES' %}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>$('#jobs___datatable').trigger('jobs')</script>

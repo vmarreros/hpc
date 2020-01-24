@@ -3,8 +3,10 @@ from . import views
 from django.conf.urls import url
 
 urlpatterns = [
-    url(regex=r'^$', view=views.index, name='index'),
-    url(regex=r'^list/$', view=views.jobs, name='list'),
-    url(regex=r'^detail/$', view=views.detail, name='detail'),
-    url(regex=r'^action/$', view=views.action, name='action'),
+    url(regex=r'^history/$', view=views.history, name='history'),
+    url(regex=r'^history_json/$', view=views.history_json, name='history_json'),
+    url(regex=r'^queue/$', view=views.queue, name='queue'),
+    url(regex=r'^queue_json/$', view=views.queue_json, name='queue_json'),
+    url(regex=r'^detail_job/$', view=views.detail_job, name='detail_job'),
+    url(regex=r'^action_job/$', view=views.action_job, name='action_job')
 ]

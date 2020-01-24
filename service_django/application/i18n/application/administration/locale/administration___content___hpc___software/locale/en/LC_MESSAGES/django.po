@@ -1,0 +1,14 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+
+
+
+msgid "ADMINISTRATION___CONTENT___HPC___Software_installed"
+msgstr "Installed software"
+
+msgid "ADMINISTRATION___CONTENT___HPC___Software_requested"
+msgstr "Requested software"

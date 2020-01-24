@@ -1,0 +1,93 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+
+
+
+msgid "LEFTSIDE___WELCOME"
+msgstr "Welcome"
+
+msgid "ADMINISTRATION___LEFTSIDE___SECURITY"
+msgstr "Security"
+
+
+msgid "ADMINISTRATION___LEFTSIDE___SECURITY___LOCAL"
+msgstr "LOCAL"
+
+msgid "ADMINISTRATION___LEFTSIDE___SECURITY___LOCALUSERREQUESTS"
+msgstr "User requests"
+
+msgid "ADMINISTRATION___LEFTSIDE___SECURITY___LOCALUSERS"
+msgstr "Users"
+
+msgid "ADMINISTRATION___LEFTSIDE___SECURITY___LDAP"
+msgstr "LDAP"
+
+msgid "ADMINISTRATION___LEFTSIDE___SECURITY___LDAPUSERREQUESTS"
+msgstr "User requests"
+
+msgid "ADMINISTRATION___LEFTSIDE___SECURITY___LDAPUSERS"
+msgstr "Users"
+
+msgid "ADMINISTRATION___LEFTSIDE___SECURITY___LDAPUSERIMPORTEDS"
+msgstr "Imported users"
+
+msgid "ADMINISTRATION___LEFTSIDE___SECURITY___GROUPS"
+msgstr "Groups"
+
+msgid "ADMINISTRATION___LEFTSIDE___SECURITY___PERMISSIONS"
+msgstr "Permisssions"
+
+msgid "ADMINISTRATION___LEFTSIDE___SOFTWARE"
+msgstr "Software"
+
+msgid "ADMINISTRATION___LEFTSIDE___SOFTWARE___INSTALLED"
+msgstr "Installed"
+
+msgid "ADMINISTRATION___LEFTSIDE___SOFTWARE___REQUESTED"
+msgstr "Requested"
+
+msgid "ADMINISTRATION___LEFTSIDE___HELP"
+msgstr "Help"
+
+msgid "ADMINISTRATION___LEFTSIDE___HELP___DOCUMENTS"
+msgstr "Documents"
+
+msgid "ADMINISTRATION___LEFTSIDE___HOMEPAGE"
+msgstr "Home page"
+
+msgid "BIGDATA___LEFTSIDE___MODULE01"
+msgstr "Module01"
+
+msgid "HPC___LEFTSIDE___Jobs"
+msgstr "Jobs"
+
+msgid "HPC___LEFTSIDE___Active_Jobs"
+msgstr "Actives"
+
+msgid "HPC___LEFTSIDE___History_Jobs"
+msgstr "Historical"
+
+msgid "HPC___LEFTSIDE___Script"
+msgstr "Scripts Generator"
+
+msgid "HPC___LEFTSIDE___Nodes"
+msgstr "Nodes"
+
+msgid "HPC___LEFTSIDE___Explorer"
+msgstr "Files System"
+
+msgid "HPC___LEFTSIDE___Modules"
+msgstr "Software"
+
+msgid "HPC___LEFTSIDE___Charts"
+msgstr "Statistics"
+
+msgid "HPC___LEFTSIDE___Users"
+msgstr "Users"
+
+msgid "HPC___LEFTSIDE___Terminal"
+msgstr "Terminal"

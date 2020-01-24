@@ -1,0 +1,26 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+
+
+
+msgid "WEBSITE___CONTENT___WEBSITE_HOME"
+msgstr "Red Académica de Supercómputo"
+
+
+
+msgid "WEBSITE___CONTENT___WEBSITE_HOME___BANNER___NON_TITLE"
+msgstr "Título"
+msgid "WEBSITE___CONTENT___WEBSITE_HOME___BANNER___NON_DESCRIPTION"
+msgstr "Descripción"
+msgid "WEBSITE___CONTENT___WEBSITE_HOME___CARD_HPC___TITLE"
+msgstr "Servicio HPC"
+msgid "WEBSITE___CONTENT___WEBSITE_HOME___CARD_HPC___DESCRIPTION"
+msgstr "Clúster HPC tipo Beowulf con capacidades de procesamiento CPU y GPU, SLURM como planificador de tareas y Easybuild como gestor de paquetes."
+msgid "WEBSITE___CONTENT___WEBSITE_HOME___CARD_BIGDATA___TITLE"
+msgstr "Servicio BigData"
+msgid "WEBSITE___CONTENT___WEBSITE_HOME___CARD_BIGDATA___DESCRIPTION"
+msgstr "Clúster Big Data, implementado sobre herramientas de Apache y con un sistema distribuido de almacenamiento HDFS."

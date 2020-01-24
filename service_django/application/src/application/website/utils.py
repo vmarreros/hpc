@@ -15,7 +15,7 @@ def ___html___template___(request, context, template_name):
 
 def ___html___template_message___(request):
     return loader.render_to_string(
-        template_name='application/website/___includes___/modal/___includes___/message/message.html',
+        template_name='apps/website/___includes___/modal/___includes___/message/message.html',
         context={
             'ctx___messages': messages.get_messages(request=request),
         },
@@ -25,7 +25,7 @@ def ___html___template_message___(request):
 
 def ___html___template_modal___message___(request):
     return loader.render_to_string(
-        template_name='application/website/___includes___/modal/message/message.html',
+        template_name='apps/website/___includes___/modal/message/message.html',
         context={
             'ctx___messages': messages.get_messages(request=request),
         },

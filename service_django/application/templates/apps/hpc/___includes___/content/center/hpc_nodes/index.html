@@ -1,0 +1,48 @@
+{% load i18n %}
+{% load application___hpc %}
+{% now "YmdHis" as ctx___now %}
+
+<h3 id="center___header">
+    <span class="fa fa-linode fa-fw" aria-hidden="true"></span> {% trans 'HPC___CONTENT___NODES' %}
+</h3>
+<div id="center___content">
+    <div id="nodes___content" class="container-fluid">
+        <table id="nodes___datatable" class="table nowrap" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th>{% trans 'HPC___CONTENT___NODES___TABLE_NODES___COLUMN_Name' %}</th>
+                    <th>{% trans 'HPC___CONTENT___NODES___TABLE_NODES___COLUMN_Partition' %}</th>
+                    <th>{% trans 'HPC___CONTENT___NODES___TABLE_NODES___COLUMN_IP_address' %}</th>
+                    <th>{% trans 'HPC___CONTENT___NODES___TABLE_NODES___COLUMN_State' %}</th>
+                    <th>CPUs</th>
+                    <th>{% trans 'HPC___CONTENT___NODES___TABLE_NODES___COLUMN_Assigned_CPUs' %}</th>
+                    <th>{% trans 'HPC___CONTENT___NODES___TABLE_NODES___COLUMN_CPU_load' %}</th>
+                    <th>{% trans 'HPC___CONTENT___NODES___TABLE_NODES___COLUMN_Resources' %}</th>
+                    <th>{% trans 'HPC___CONTENT___NODES___TABLE_NODES___COLUMN_Memory' %}</th>
+                    <th>{% trans 'HPC___CONTENT___NODES___TABLE_NODES___COLUMN_Free_memory' %}</th>
+                    <th>{% trans 'HPC___CONTENT___NODES___TABLE_NODES___COLUMN_Assigned_memory' %}</th>
+                    <th>S:C:T</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for node in nodes %}
+                <tr>
+                    <td>{{ node.NodeName }}</td>
+                    <td>{{ node.Partitions }}</td>
+                    <td>{{ node.NodeAddr }}</td>
+                    <td>{{ node.State | title }}</td>
+                    <td>{{ node.CPUTot }}</td>
+                    <td>{{ node.CPUAlloc }}</td>
+                    <td><span class="label" data-background-color="{{ node.CPULoad|bg_load_cpu }}">{{ node.CPULoad }}</span></td>
+                    <td>{% ifequal node.Gres '(null)' %}cpu{% else %}{{ node.Gres }}{% endifequal %}</td>
+                    <td>{{ node.RealMemory }}mb</td>
+                    <td>{{ node.FreeMem }}mb</td>
+                    <td>{{ node.AllocMem }}mb</td>
+                    <td>{{ node.Sockets }}:{{ node.CoresPerSocket }}:{{ node.ThreadsPerCore }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>$('#nodes___datatable').trigger('nodes')</script>

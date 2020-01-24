@@ -13,7 +13,7 @@ def index(request):
     return shortcuts.render(
         request=request,
         context=dict___context,
-        template_name='application/bigdata/application___bigdata.html'
+        template_name='apps/bigdata/application___bigdata.html'
     )
 
 
@@ -25,7 +25,7 @@ def index___load(request):
     dict___data['___HTML___APPLICATION___BIGDATA___LOAD___'] = utils.___html___template___(
         request=request,
         context=dict(),
-        template_name='application/bigdata/___includes___/load/load.html'
+        template_name='apps/bigdata/___includes___/load/load.html'
     )
     return http.JsonResponse(dict___data)
 
@@ -38,7 +38,7 @@ def index___title(request):
     dict___data['___HTML___APPLICATION___BIGDATA___TITLE___'] = utils.___html___template___(
         request=request,
         context=dict(),
-        template_name='application/bigdata/___includes___/title/title.html'
+        template_name='apps/bigdata/___includes___/title/title.html'
     )
     return http.JsonResponse(dict___data)
 
@@ -51,7 +51,7 @@ def index___header(request):
     dict___data['___HTML___APPLICATION___BIGDATA___HEADER___'] = utils.___html___template___(
         request=request,
         context=dict(),
-        template_name='application/bigdata/___includes___/header/header.html'
+        template_name='apps/bigdata/___includes___/header/header.html'
     )
     return http.JsonResponse(dict___data)
 
@@ -64,7 +64,7 @@ def index___leftside(request):
     dict___data['___HTML___APPLICATION___BIGDATA___LEFTSIDE___'] = utils.___html___template___(
         request=request,
         context=dict(),
-        template_name='application/bigdata/___includes___/leftside/leftside.html'
+        template_name='apps/bigdata/___includes___/leftside/leftside.html'
     )
     return http.JsonResponse(dict___data)
 
@@ -74,10 +74,10 @@ def index___leftside(request):
 def index___content___center(request):
     dict___data = dict()
     dict___data['___BOOLEAN___ERROR___'] = False
-    dict___data['___HTML___APPLICATION___BIGDATA___CONTENT___CENTER___'] = utils.___html___template___(
+    dict___data['___HTML___BIGDATA___CONTENT___CENTER___'] = utils.___html___template___(
         request=request,
         context=dict(),
-        template_name='application/bigdata/___includes___/content/center/index.html'
+        template_name='apps/bigdata/___includes___/content/center/index.html'
     )
     return http.JsonResponse(dict___data)
 
@@ -87,10 +87,10 @@ def index___content___center(request):
 def index___content___footer(request):
     dict___data = dict()
     dict___data['___BOOLEAN___ERROR___'] = False
-    dict___data['___HTML___APPLICATION___BIGDATA___CONTENT___FOOTER___'] = utils.___html___template___(
+    dict___data['___HTML___BIGDATA___CONTENT___FOOTER___'] = utils.___html___template___(
         request=request,
         context=dict(),
-        template_name='application/bigdata/___includes___/content/footer/footer.html'
+        template_name='apps/bigdata/___includes___/content/footer/footer.html'
     )
     return http.JsonResponse(dict___data)
 

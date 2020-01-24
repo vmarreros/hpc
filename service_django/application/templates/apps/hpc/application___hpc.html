@@ -1,0 +1,162 @@
+{% load i18n %}
+{% load staticfiles %}
+{% now "YmdHis" as ctx___now %}
+{% spaceless %}
+    <!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <!-- Application HPC Title -->
+            <title data-url="{% url "hpc:index___title" %}">{% include "apps/hpc/___includes___/title/title.html" %}</title>
+
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+            <meta charset="utf-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <!-- favicon -->
+            <link rel="shortcut icon" href="{% static 'apps/website/img/favicon/favicon.png' %}?{{ ctx___now }}" type="image/png">
+            <!-- Bootstrap -->
+            <link rel="stylesheet" href="{% static "vendors/bootstrap/css/bootstrap.min.css" %}?{{ ctx___now }}"/>
+            <!-- Font Awesome -->
+            <link rel="stylesheet" href="{% static "vendors/font-awesome/css/font-awesome.min.css" %}?{{ ctx___now }}"/>
+            <link rel="stylesheet" href="{% static "vendors/font-awesome/css/font-awesome-animation.min.css" %}?{{ ctx___now }}"/>
+            <!-- CodeMirror -->
+            <link rel="stylesheet" href="{% static 'vendors/codemirror/css/codemirror.css' %}">
+            <link rel="stylesheet" href="{% static 'vendors/codemirror/css/bespin.css' %}">
+            <link rel="stylesheet" href="{% static 'vendors/codemirror/css/cobalt.css' %}">
+            <link rel="stylesheet" href="{% static 'vendors/codemirror/css/eclipse.css' %}">
+            <link rel="stylesheet" href="{% static 'vendors/codemirror/css/elegant.css' %}">
+            <link rel="stylesheet" href="{% static 'vendors/codemirror/css/idea.css' %}">
+            <link rel="stylesheet" href="{% static 'vendors/codemirror/css/material.css' %}">
+            <link rel="stylesheet" href="{% static 'vendors/codemirror/css/monokai.css' %}">
+            <link rel="stylesheet" href="{% static 'vendors/codemirror/css/neo.css' %}">
+            <link rel="stylesheet" href="{% static 'vendors/codemirror/css/seti.css' %}">
+            <link rel="stylesheet" href="{% static 'vendors/codemirror/css/solarized.css' %}">
+            <link rel="stylesheet" href="{% static 'vendors/codemirror/css/twilight.css' %}">
+            <link rel="stylesheet" href="{% static 'vendors/codemirror/css/yeti.css' %}">
+            <!-- CodePrettify -->
+            <link rel="stylesheet" href="{% static 'vendors/code-prettify-master/src/desert.css' %}">
+            <!-- DataTables -->
+            <link rel="stylesheet" href="{% static 'vendors/DataTables/DataTables-1.10.16/css/dataTables.bootstrap.min.css' %}"/>
+            <link rel="stylesheet" href="{% static 'vendors/DataTables/Editor-2018-06-14-1.7.3/css/editor.bootstrap.min.css' %}"/>
+            <link rel="stylesheet" href="{% static 'vendors/DataTables/AutoFill-2.2.2/css/autoFill.bootstrap.css' %}"/>
+            <link rel="stylesheet" href="{% static 'vendors/DataTables/Buttons-1.5.1/css/buttons.bootstrap.min.css' %}"/>
+            <link rel="stylesheet" href="{% static 'vendors/DataTables/ColReorder-1.4.1/css/colReorder.bootstrap.min.css' %}"/>
+            <link rel="stylesheet" href="{% static 'vendors/DataTables/FixedColumns-3.2.4/css/fixedColumns.bootstrap.min.css' %}"/>
+            <link rel="stylesheet" href="{% static 'vendors/DataTables/FixedHeader-3.1.3/css/fixedHeader.bootstrap.min.css' %}"/>
+            <link rel="stylesheet" href="{% static 'vendors/DataTables/KeyTable-2.3.2/css/keyTable.bootstrap.min.css' %}"/>
+            <link rel="stylesheet" href="{% static 'vendors/DataTables/Responsive-2.2.1/css/responsive.bootstrap.min.css' %}"/>
+            <link rel="stylesheet" href="{% static 'vendors/DataTables/RowGroup-1.0.2/css/rowGroup.bootstrap.min.css' %}"/>
+            <link rel="stylesheet" href="{% static 'vendors/DataTables/RowReorder-1.2.3/css/rowReorder.bootstrap.min.css' %}"/>
+            <link rel="stylesheet" href="{% static 'vendors/DataTables/Scroller-1.4.4/css/scroller.bootstrap.min.css' %}"/>
+            <link rel="stylesheet" href="{% static 'vendors/DataTables/Select-1.2.5/css/select.bootstrap.min.css' %}"/>
+            <!-- Application HPC Custom Theme Style -->
+            <link rel="stylesheet" href="{% static "core/css/datatable.css" %}?{{ ctx___now }}">
+            <link rel="stylesheet" href="{% static "apps/hpc/css/hpc.css" %}?{{ ctx___now }}">
+            <link rel="stylesheet" href="{% static "apps/hpc/css/hpc___header.css" %}?{{ ctx___now }}">
+            <link rel="stylesheet" href="{% static "apps/hpc/css/hpc___leftside.css" %}?{{ ctx___now }}">
+            <link rel="stylesheet" href="{% static "apps/hpc/css/hpc___content.css" %}?{{ ctx___now }}">
+            <link rel="stylesheet" href="{% static "apps/hpc/css/hpc___content___center.css" %}?{{ ctx___now }}">
+            <link rel="stylesheet" href="{% static "apps/hpc/css/hpc___content___center___jobs.css" %}?{{ ctx___now }}">
+            <link rel="stylesheet" href="{% static 'apps/hpc/css/hpc___content___center___script.css' %}?{{ ctx___now }}">
+            <link rel="stylesheet" href="{% static 'apps/hpc/css/hpc___content___center___nodes.css' %}?{{ ctx___now }}">
+            <link rel="stylesheet" href="{% static "apps/hpc/css/hpc___content___center___explorer.css" %}?{{ ctx___now }}">
+            <link rel="stylesheet" href="{% static "apps/hpc/css/hpc___content___footer.css" %}?{{ ctx___now }}">
+            <link rel="stylesheet" href="{% static "apps/hpc/css/hpc___modal.css" %}?{{ ctx___now }}">
+            <link rel="stylesheet" href="{% static "apps/hpc/css/hpc___modal___message.css" %}?{{ ctx___now }}">
+            <link rel="stylesheet" href="{% static "apps/hpc/css/hpc___modal___form.css" %}?{{ ctx___now }}">
+            <!--[if lt IE 9]>
+                <script src="{% static "vendors/ie/js/ie8-responsive-file-warning.js" %}?{{ ctx___now }}"></script>
+            <![endif]-->
+            <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+            <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+            <!--[if lt IE 9]>
+                <script src="{% static "vendors/html5shiv/html5shiv.min.js" %}?{{ ctx___now }}"></script>
+                <script src="{% static "vendors/respond/respond.min.js" %}?{{ ctx___now }}"></script>
+            <![endif]-->
+        </head>
+        <body>
+            <!-- Application HPC -->
+            <div id="application___hpc">
+                <!-- Application HPC Load -->
+                <div id="application___hpc___load" class="hidden" data-url="{% url "hpc:index___load" %}">
+                    {% include "apps/hpc/___includes___/load/load.html" %}
+                </div>
+                <!-- Application HPC Header -->
+                <header id="application___hpc___header" class="navbar navbar-fixed-top" data-url="{% url "hpc:index___header" %}">
+                </header>
+                <!-- Application HPC Leftside -->
+                <aside id="application___hpc___leftside" data-url="{% url "hpc:index___leftside" %}">
+                </aside>
+                <!-- Application HPC Content -->
+                <section id="application___hpc___content">
+                    <!-- Application HPC Content Center -->
+                    <div id="application___hpc___content___center" data-url="{% url "hpc:index___content___center" %}">
+                    </div>
+                    <!-- Application HPC Content Footer -->
+                    <footer id="application___hpc___content___footer" data-url="{% url "hpc:index___content___footer" %}">
+                    </footer>
+                </section>
+                <!-- Application HPC Modal -->
+                <div id="application___hpc___modal" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="true">
+                </div>
+                <!-- Application HPC Modal Modal -->
+                <div id="application___hpc___modal___modal" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="true">
+                </div>
+            </div>
+            <!-- jQuery -->
+            <script src="{% static "vendors/jquery/jquery.min.js" %}?{{ ctx___now }}"></script>
+            <!-- Bootstrap -->
+            <script src="{% static "vendors/bootstrap/js/bootstrap.min.js" %}?{{ ctx___now }}"></script>
+            <!-- CustomScrollbar -->
+            <script src="{% static "vendors/malihu-custom-scrollbar/jquery.mCustomScrollbar.concat.min.js" %}?{{ ctx___now }}"></script>
+            <!-- ChartJS -->
+            <script src="{% static 'vendors/chartjs/chart.min.js' %}"></script>
+            <!-- CodeMirror -->
+            <script src="{% static 'vendors/codemirror/js/codemirror.js' %}"></script>
+            <script src="{% static 'vendors/codemirror/js/mode/clike.js' %}"></script>
+            <script src="{% static 'vendors/codemirror/js/mode/haskell.js' %}"></script>
+            <script src="{% static 'vendors/codemirror/js/mode/mathematica.js' %}"></script>
+            <script src="{% static 'vendors/codemirror/js/mode/octave.js' %}"></script>
+            <script src="{% static 'vendors/codemirror/js/mode/perl.js' %}"></script>
+            <script src="{% static 'vendors/codemirror/js/mode/python.js' %}"></script>
+            <script src="{% static 'vendors/codemirror/js/mode/r.js' %}"></script>
+            <script src="{% static 'vendors/codemirror/js/mode/shell.js' %}"></script>
+            <!-- CodePrettify -->
+            <script src="{% static 'vendors/code-prettify-master/src/prettify.js' %}"></script>
+            <!-- DataTables -->
+            <script src="{% static 'vendors/DataTables/JSZip-2.5.0/jszip.min.js' %}"></script>
+            <script src="{% static 'vendors/DataTables/pdfmake-0.1.32/pdfmake.min.js' %}"></script>
+            <script src="{% static 'vendors/DataTables/pdfmake-0.1.32/vfs_fonts.js' %}"></script>
+            <script src="{% static 'vendors/DataTables/DataTables-1.10.16/js/jquery.dataTables.min.js' %}"></script>
+            <script src="{% static 'vendors/DataTables/DataTables-1.10.16/js/dataTables.bootstrap.min.js' %}"></script>
+            <script src="{% static 'vendors/DataTables/AutoFill-2.2.2/js/dataTables.autoFill.min.js' %}"></script>
+            <script src="{% static 'vendors/DataTables/AutoFill-2.2.2/js/autoFill.bootstrap.min.js' %}"></script>
+            <script src="{% static 'vendors/DataTables/Buttons-1.5.1/js/dataTables.buttons.min.js' %}"></script>
+            <script src="{% static 'vendors/DataTables/Buttons-1.5.1/js/buttons.bootstrap.min.js' %}"></script>
+            <script src="{% static 'vendors/DataTables/Buttons-1.5.1/js/buttons.colVis.min.js' %}"></script>
+            <script src="{% static 'vendors/DataTables/Buttons-1.5.1/js/buttons.flash.min.js' %}"></script>
+            <script src="{% static 'vendors/DataTables/Buttons-1.5.1/js/buttons.html5.min.js' %}"></script>
+            <script src="{% static 'vendors/DataTables/Buttons-1.5.1/js/buttons.print.min.js' %}"></script>
+            <script src="{% static 'vendors/DataTables/ColReorder-1.4.1/js/dataTables.colReorder.min.js' %}"></script>
+            <script src="{% static 'vendors/DataTables/FixedColumns-3.2.4/js/dataTables.fixedColumns.min.js' %}"></script>
+            <script src="{% static 'vendors/DataTables/FixedHeader-3.1.3/js/dataTables.fixedHeader.min.js' %}"></script>
+            <script src="{% static 'vendors/DataTables/KeyTable-2.3.2/js/dataTables.keyTable.min.js' %}"></script>
+            <script src="{% static 'vendors/DataTables/Responsive-2.2.1/js/dataTables.responsive.min.js' %}"></script>
+            <script src="{% static 'vendors/DataTables/Responsive-2.2.1/js/responsive.bootstrap.min.js' %}"></script>
+            <script src="{% static 'vendors/DataTables/RowGroup-1.0.2/js/dataTables.rowGroup.min.js' %}"></script>
+            <script src="{% static 'vendors/DataTables/RowReorder-1.2.3/js/dataTables.rowReorder.min.js' %}"></script>
+            <script src="{% static 'vendors/DataTables/Scroller-1.4.4/js/dataTables.scroller.min.js' %}"></script>
+            <script src="{% static 'vendors/DataTables/Select-1.2.5/js/dataTables.select.min.js' %}"></script>
+            <!-- Application HPC Custom Theme JavaScript -->
+            <script src="{% url 'javascript-catalog' 'hpc' %}?{{ ctx___now }}"></script>
+            <script src="{% static "apps/hpc/js/hpc.js" %}?{{ ctx___now }}"></script>
+            <script src="{% static "apps/hpc/js/hpc___datatable.js" %}?{{ ctx___now }}"></script>
+            <script src="{% static "apps/hpc/js/hpc___jobs.js" %}?{{ ctx___now }}"></script>
+            <script src="{% static 'apps/hpc/js/hpc___script.js' %}?{{ ctx___now }}"></script>
+            <script src="{% static 'apps/hpc/js/hpc___script_generator.js' %}?{{ ctx___now }}"></script>
+            <script src="{% static "apps/hpc/js/hpc___explorer.js" %}?{{ ctx___now }}"></script>
+            <script src="{% static "apps/hpc/js/hpc___software.js" %}?{{ ctx___now }}"></script>
+            <script src="{% static "apps/hpc/js/hpc___charts.js" %}?{{ ctx___now }}"></script>
+        </body>
+    </html>
+{% endspaceless %}

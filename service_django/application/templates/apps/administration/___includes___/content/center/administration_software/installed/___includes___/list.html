@@ -1,0 +1,21 @@
+{% load application___security %}
+{% load i18n %}
+
+{% for ctx___instance in ctx___page.object_list %}
+    <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ ctx___instance }}</td>
+        <td>
+            {% for version in ctx___instance.softwareversion_set.all %}
+                {{ version.version }}<br>
+            {% endfor %}
+        </td>
+        <td>{{ ctx___instance.description }}</td>
+    </tr>
+{% empty %}
+    <tr>
+        <td colspan="10" class="text-center">
+            <span class="glyphicon glyphicon-hand-right"></span> {% trans "ADMINISTRATION___CONTENT___OPTION_NOT_FOUND" %} <strong>&OpenCurlyDoubleQuote;{% trans "ADMINISTRATION___CONTENT___HOME___DOCUMENTS" %}&CloseCurlyDoubleQuote;</strong>.
+        </td>
+    </tr>
+{% endfor %}

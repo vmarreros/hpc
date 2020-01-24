@@ -1,0 +1,15 @@
+{% load i18n staticfiles %}
+
+<h3 id="center___header">
+    <span class="fa fa-book fa-fw" aria-hidden="true"></span> {% trans "HELP___CONTENT___HEADER" %}
+</h3>
+<div id="center___content" class="container-fluid">
+    <div class="row">
+        <div id="content___list" class="col-md-2" data-url="{% url "help:modules:help_document:list" %}">
+        </div>
+        <div id="content___content" class="col-md-9" data-url="{% url "help:modules:help_document:content" pk=0 %}">
+        </div>
+    </div>
+</div>
+
+<script src="{% static "apps/help/js/help___documents.js" %}?{{ ctx___now }}"></script>

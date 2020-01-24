@@ -1,0 +1,93 @@
+#application___website___content___center
+{
+    margin           :10px 10px 10px 10px;
+    padding          :0;
+    background-color :#ffffff;
+    border           :1px solid #d9dee4;
+    color            :#504a4a;
+}
+
+
+@media (max-width :767px)
+{
+    #application___website___content___center
+    {
+        margin       :0;
+        border-right :none;
+        border-left  :none;
+    }
+}
+
+#application___website___content___center #center___header
+{
+    overflow      :hidden;
+    margin        :15px;
+    padding       :0 0 5px 0;
+    border-bottom :1px solid #d9dee4;
+}
+
+#application___website___content___center #center___content
+{
+    margin  :15px 20px 20px 20px;
+    padding :0;
+}
+
+@media (max-width :767px)
+{
+    /*#application___website___content___center #center___header
+    {
+        margin  :10px 0;
+        padding :0 5px 5px 5px;
+    }
+
+    #application___website___content___center #center___content
+    {
+        margin :10px;
+    }*/
+}
+
+
+#application___website___content___center #center___header {
+    margin: 30px 0 30px 0;
+    padding-bottom: 30px;
+    color: #262626;
+    font-size: 17px;
+}
+#application___website___content___center #center___header #banner {
+    display: flex;
+}
+#application___website___content___center #center___header #banner___right {
+    margin-left: 30px;
+    margin-bottom: 30px;
+}
+#application___website___content___center #center___header #banner___right #header {
+    margin-bottom: 30px;
+}
+#application___website___content___center #center___header .register {
+    -webkit-transition: all .3s;
+    -o-transition: all .3s;
+    transition: all .3s;
+    margin-bottom: 10px; border-radius: 40px 40px 40px 40px;
+}
+#application___website___content___center #center___header .login {
+    text-decoration: underline;
+    color: #0c0c0c;
+    font-size: 15px;
+    position: absolute;
+    padding: 12px 0;
+}
+#application___website___content___center #center___header .login:hover {
+    display: inline-block;
+    line-height: 1;
+    text-align: center;
+    -webkit-transition: all .3s;
+    -o-transition: all .3s;
+    transition: all .3s;
+}
+#application___website___content___center #center___content {
+    color: #262626;
+    font-size: 15px;
+}
+#application___website___content___center #center___content .cluster {
+    margin: 25px 0 25px 0;
+}

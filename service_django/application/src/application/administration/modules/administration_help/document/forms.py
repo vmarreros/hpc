@@ -6,7 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 import copy
 
 ___FIELD___IS_ACTIVE___ = forms.BooleanField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_HELP___DOCUMENT___IS_ACTIVE'),
+    label=_('ADMINISTRATION___CONTENT___HELP___DOCUMENT___IS_ACTIVE'),
     required=False,
     widget=forms.CheckboxInput(
         attrs={
@@ -17,7 +17,7 @@ ___FIELD___IS_ACTIVE___ = forms.BooleanField(
     ),
 )
 ___FIELD___CREATED___ = forms.DateField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_HELP___DOCUMENT___CREATED'),
+    label=_('ADMINISTRATION___CONTENT___HELP___DOCUMENT___CREATED'),
     required=False,
     widget=forms.DateInput(
         attrs={
@@ -28,7 +28,7 @@ ___FIELD___CREATED___ = forms.DateField(
     ),
 )
 ___FIELD___MODIFIED___ = forms.DateField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_HELP___DOCUMENT___MODIFIED'),
+    label=_('ADMINISTRATION___CONTENT___HELP___DOCUMENT___MODIFIED'),
     required=False,
     widget=forms.DateInput(
         attrs={
@@ -39,12 +39,12 @@ ___FIELD___MODIFIED___ = forms.DateField(
     ),
 )
 ___FIELD___TITLE___ = forms.CharField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_HELP___DOCUMENT___TITLE'),
+    label=_('ADMINISTRATION___CONTENT___HELP___DOCUMENT___TITLE'),
     required=False,
     min_length=1,
     max_length=1024,
     validators=[
-        validators.RegexValidator('^[\w .\-_]+$', message=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_HELP___DOCUMENT___VALIDATION Only letters, numbers and special characters dot, -, _ and space.')),
+        validators.RegexValidator('^[\w .\-_]+$', message=_('ADMINISTRATION___CONTENT___HELP___DOCUMENT___VALIDATION Only letters, numbers and special characters dot, -, _ and space.')),
     ],
     widget=forms.TextInput(
         attrs={
@@ -56,7 +56,7 @@ ___FIELD___TITLE___ = forms.CharField(
     ),
 )
 ___FIELD___CONTENT___ = forms.CharField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_HELP___DOCUMENT___CONTENT'),
+    label=_('ADMINISTRATION___CONTENT___HELP___DOCUMENT___CONTENT'),
     required=False,
     widget=forms.Textarea(
         attrs={
@@ -92,21 +92,21 @@ class DocumentCreate(forms.ModelForm):
         super().__init__(*args, **kwargs)
         #
         # is_active
-        ___field___attribute___help_text___locale___reload__(field=self.fields['is_active'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_HELP___DOCUMENT___IS_ACTIVE___HELP_TEXT')
+        ___field___attribute___help_text___locale___reload__(field=self.fields['is_active'], locale='ADMINISTRATION___CONTENT___HELP___DOCUMENT___IS_ACTIVE___HELP_TEXT')
         self.fields['is_active'].initial = True
         # title_en
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['title_en'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_HELP___DOCUMENT___TITLE')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['title_en'], locale='ADMINISTRATION___CONTENT___HELP___DOCUMENT___TITLE')
         self.fields['title_en'].widget.attrs['id'] = 'title_en'
         self.fields['title_en'].widget.attrs['aria-describedby'] = 'title_en_icon'
         # title_es
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['title_es'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_HELP___DOCUMENT___TITLE')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['title_es'], locale='ADMINISTRATION___CONTENT___HELP___DOCUMENT___TITLE')
         self.fields['title_es'].widget.attrs['id'] = 'title_es'
         self.fields['title_es'].widget.attrs['aria-describedby'] = 'title_es_icon'
         # content_en
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['content_en'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_HELP___DOCUMENT___CONTENT')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['content_en'], locale='ADMINISTRATION___CONTENT___HELP___DOCUMENT___CONTENT')
         self.fields['content_en'].widget.attrs['id'] = 'content_en'
         # content_es
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['content_es'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_HELP___DOCUMENT___CONTENT')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['content_es'], locale='ADMINISTRATION___CONTENT___HELP___DOCUMENT___CONTENT')
         self.fields['content_es'].widget.attrs['id'] = 'content_es'
 
     def save(self, commit=True):
@@ -150,20 +150,20 @@ class DocumentUpdate(forms.ModelForm):
         super().__init__(*args, **kwargs)
         #
         # is_active
-        ___field___attribute___help_text___locale___reload__(field=self.fields['is_active'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_HELP___DOCUMENT___IS_ACTIVE___HELP_TEXT')
+        ___field___attribute___help_text___locale___reload__(field=self.fields['is_active'], locale='ADMINISTRATION___CONTENT___HELP___DOCUMENT___IS_ACTIVE___HELP_TEXT')
         # title_en
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['title_en'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_HELP___DOCUMENT___TITLE')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['title_en'], locale='ADMINISTRATION___CONTENT___HELP___DOCUMENT___TITLE')
         self.fields['title_en'].widget.attrs['id'] = 'title_en'
         self.fields['title_en'].widget.attrs['aria-describedby'] = 'title_en_icon'
         # title_es
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['title_es'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_HELP___DOCUMENT___TITLE')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['title_es'], locale='ADMINISTRATION___CONTENT___HELP___DOCUMENT___TITLE')
         self.fields['title_es'].widget.attrs['id'] = 'title_es'
         self.fields['title_es'].widget.attrs['aria-describedby'] = 'title_es_icon'
         # content_en
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['content_en'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_HELP___DOCUMENT___CONTENT')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['content_en'], locale='ADMINISTRATION___CONTENT___HELP___DOCUMENT___CONTENT')
         self.fields['content_en'].widget.attrs['id'] = 'content_en'
         # content_es
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['content_es'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_HELP___DOCUMENT___CONTENT')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['content_es'], locale='ADMINISTRATION___CONTENT___HELP___DOCUMENT___CONTENT')
         self.fields['content_es'].widget.attrs['id'] = 'content_es'
 
     def clean_is_active(self):
@@ -172,7 +172,7 @@ class DocumentUpdate(forms.ModelForm):
             if self.instance_current.parent != 0:
                 instance_parent = models.Document.objects.get(pk=self.instance.parent)
                 if instance_parent is not None and instance_parent.is_active is False:
-                    raise forms.ValidationError(_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_HELP___DOCUMENT___VALIDATION This instance is a branch of a non-active instance, so it can not be activated.'))
+                    raise forms.ValidationError(_('ADMINISTRATION___CONTENT___HELP___DOCUMENT___VALIDATION This instance is a branch of a non-active instance, so it can not be activated.'))
         return is_active
 
     def save(self, commit=True):
@@ -220,5 +220,5 @@ class DocumentDelete(forms.ModelForm):
         instances = models.Document.objects.all()
         for temporal_instance in instances:
             if temporal_instance.parent == self.instance.pk:
-                raise forms.ValidationError(_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_HELP___DOCUMENT___VALIDATION There are instances that are branches of this instance, so it can not be deleted.'))
+                raise forms.ValidationError(_('ADMINISTRATION___CONTENT___HELP___DOCUMENT___VALIDATION There are instances that are branches of this instance, so it can not be deleted.'))
         return ___clean___

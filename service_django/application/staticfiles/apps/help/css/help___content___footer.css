@@ -1,0 +1,44 @@
+#application___help___content___footer {
+    margin :auto 10px 0 10px;
+    border: 1px solid #d9dee4;
+}
+
+@media (max-width :767px) {
+    #application___help___content___footer {
+        margin        :auto 0 0 0;
+        border-bottom :1px solid inherit;
+    }
+}
+
+#application___help___content___footer #footer__banner {
+    padding          :20px;
+    background: white;
+}
+
+#application___help___content___footer #footer__copyright {
+    padding          :10px;
+    color: white;
+    font-size: 12px;
+    background-color :#153e77;
+}
+
+#application___help___content___footer #footer__banner > #social > #share > img {
+    padding          :0 10px 0 0;
+}
+
+#application___help___content___footer #footer__banner > #social > #share > a {
+    text-decoration :none;
+    padding: 0 0 0 3px;
+}
+
+#application___help___content___footer #footer__banner > #social > #share > a:nth-child(0) {
+    color: #4267B2;
+}
+
+#application___help___content___footer #footer__banner > #social > #share > a:nth-child(1) {
+    color: #4267B2;
+}
+
+#application___help___content___footer #footer__banner > #social > #share > a:nth-child(2) {
+    color: #1CA0F2;
+}

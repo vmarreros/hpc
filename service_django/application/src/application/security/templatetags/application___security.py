@@ -83,7 +83,7 @@ def ___get_string___application___security___user___url_current___(request):
 
 @register.filter()
 def ___get_string___application___security___user___avatar_url___(request):
-    string___avatar_url = staticfiles.static('application/security/img/avatar/avatar.png')
+    string___avatar_url = staticfiles.static('apps/security/img/avatar/avatar.png')
     if request.___APPLICATION___SECURITY___USER___ is not None and request.___APPLICATION___SECURITY___USER___.avatar:
         string___avatar_url = request.___APPLICATION___SECURITY___USER___.avatar.url
     return '%s?%s' % (string___avatar_url, timezone.datetime.now().strftime("%Y%m%d%H%M%S"))
@@ -101,7 +101,7 @@ def ___get_string___application___security___user___ldap_group___(request):
 
 @register.filter()
 def ___get_string___user___avatar_url___(instance):
-    string___avatar_url = staticfiles.static('application/security/img/avatar/avatar.png')
+    string___avatar_url = staticfiles.static('apps/security/img/avatar/avatar.png')
     if instance is not None and instance.avatar:
         string___avatar_url = instance.avatar.url
     return '%s?%s' % (string___avatar_url, timezone.datetime.now().strftime("%Y%m%d%H%M%S"))

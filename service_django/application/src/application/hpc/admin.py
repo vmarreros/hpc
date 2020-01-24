@@ -1,16 +1,22 @@
 # -*- coding: utf-8 -*-
 from django.contrib import admin
 
-from .models import Module, Version
+from .models import SoftwareInstalled, SoftwareVersion, SoftwareRequested
 
 
-@admin.register(Module)
-class ModuleAdmin(admin.ModelAdmin):
+@admin.register(SoftwareInstalled)
+class SoftwareInstalledAdmin(admin.ModelAdmin):
     list_display = ('pk', 'name', 'description',)
     search_fields = ('name', 'description',)
 
 
-@admin.register(Version)
-class VersionAdmin(admin.ModelAdmin):
-    list_display = ('pk', 'name', 'module',)
-    search_fields = ('name', 'module',)
+@admin.register(SoftwareVersion)
+class SoftwareVersionAdmin(admin.ModelAdmin):
+    list_display = ('pk', 'version', 'software',)
+    search_fields = ('version', 'software',)
+
+
+@admin.register(SoftwareRequested)
+class SoftwareRequestedAdmin(admin.ModelAdmin):
+    list_display = ('pk', 'software', 'website', 'version', 'type', 'installation_guide', 'motivation', 'account')
+    # search_fields = ('software',)

@@ -1,0 +1,17 @@
+#application___hpc___content #nodes___content {
+    padding: 0;
+}
+
+#application___hpc___content #nodes___content #nodes___summary h4{
+    padding: 0 0 5px 10px;
+    margin: 0 15px;
+    border-bottom: 1px solid #d9dee4;
+}
+
+@media (max-width: 767px) {
+    #application___hpc___content #nodes___content #nodes___summary h4 {
+        padding: 0 0 5px 10px;
+        margin: 0;
+        border-bottom: 1px solid #d9dee4;
+    }
+}

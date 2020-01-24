@@ -7,7 +7,6 @@ urlpatterns = [
     url(regex=r'^index___load/$', view=views.index___load, name='index___load'),
     url(regex=r'^index___title/$', view=views.index___title, name='index___title'),
     url(regex=r'^index___header/$', view=views.index___header, name='index___header'),
-    url(regex=r'^index___leftside/$', view=views.index___leftside, name='index___leftside'),
     url(regex=r'^index___content___center/$', view=views.index___content___center, name='index___content___center'),
     url(regex=r'^index___content___footer/$', view=views.index___content___footer, name='index___content___footer'),
     #

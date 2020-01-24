@@ -57,7 +57,7 @@ def detail(request, pk):
     )
 
 
-@decorators___application___security.___required___request_is_ajax___()
+# @decorators___application___security.___required___request_is_ajax___()
 @decorators___application___security.___required___application___security___user___has_permission___(
     ___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___ADMINISTRATION___,
     set_identifier___to_verify={'application_security_ldapuser_list', 'application_security_ldapuser_update', }

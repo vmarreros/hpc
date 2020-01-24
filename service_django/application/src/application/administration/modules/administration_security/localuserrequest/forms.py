@@ -4,7 +4,7 @@ from django import forms
 from django.utils.translation import ugettext_lazy as _
 
 ___FIELD___CREATED___ = forms.DateField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LOCALUSERREQUEST___CREATED'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LOCALUSERREQUEST___CREATED'),
     required=False,
     widget=forms.DateInput(
         attrs={
@@ -15,7 +15,7 @@ ___FIELD___CREATED___ = forms.DateField(
     ),
 )
 ___FIELD___MODIFIED___ = forms.DateField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LOCALUSERREQUEST___MODIFIED'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LOCALUSERREQUEST___MODIFIED'),
     required=False,
     widget=forms.DateInput(
         attrs={
@@ -26,7 +26,7 @@ ___FIELD___MODIFIED___ = forms.DateField(
     ),
 )
 ___FIELD___FIRST_NAME___ = forms.CharField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LOCALUSERREQUEST___FIRST_NAME'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LOCALUSERREQUEST___FIRST_NAME'),
     required=False,
     min_length=1,
     max_length=100,
@@ -40,7 +40,7 @@ ___FIELD___FIRST_NAME___ = forms.CharField(
     ),
 )
 ___FIELD___LAST_NAME___ = forms.CharField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LOCALUSERREQUEST___LAST_NAME'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LOCALUSERREQUEST___LAST_NAME'),
     required=False,
     min_length=1,
     max_length=100,
@@ -54,7 +54,7 @@ ___FIELD___LAST_NAME___ = forms.CharField(
     ),
 )
 ___FIELD___IDENTIFIER___ = forms.CharField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LOCALUSERREQUEST___IDENTIFIER'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LOCALUSERREQUEST___IDENTIFIER'),
     required=True,
     min_length=1,
     max_length=100,
@@ -68,7 +68,7 @@ ___FIELD___IDENTIFIER___ = forms.CharField(
     ),
 )
 ___FIELD___EMAIL___ = forms.EmailField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LOCALUSERREQUEST___EMAIL'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LOCALUSERREQUEST___EMAIL'),
     required=True,
     min_length=1,
     max_length=150,
@@ -82,7 +82,7 @@ ___FIELD___EMAIL___ = forms.EmailField(
     ),
 )
 ___FIELD___DETAIL___ = forms.CharField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LOCALUSERREQUEST___DETAIL'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LOCALUSERREQUEST___DETAIL'),
     required=True,
     min_length=1,
     max_length=1024,

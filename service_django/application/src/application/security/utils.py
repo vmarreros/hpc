@@ -14,6 +14,7 @@ ___APPLICATION___SECURITY___FROM___MODULE___WEBSITE___ = 'website'
 ___APPLICATION___SECURITY___FROM___MODULE___HPC___ = 'hpc'
 ___APPLICATION___SECURITY___FROM___MODULE___BIGDATA___ = 'bigdata'
 ___APPLICATION___SECURITY___FROM___MODULE___ADMINISTRATION___ = 'administration'
+___APPLICATION___SECURITY___FROM___MODULE___HELP___ = 'help'
 # Sessions ___APPLICATION___SECURITY___USER___MODEL___
 ___APPLICATION___SECURITY___USER___MODEL___LOCALUSER___ = 'localuser'
 ___APPLICATION___SECURITY___USER___MODEL___LOCALUSER___TEXT___ = 'LOCAL'
@@ -35,7 +36,7 @@ def ___html___template___(request, context, template_name):
 
 def ___html___template_message___(request, ___application___security___from___module___):
     return loader.render_to_string(
-        template_name='application/%s/___includes___/modal/___includes___/message/message.html' % (___application___security___from___module___,),
+        template_name='apps/%s/___includes___/modal/___includes___/message/message.html' % (___application___security___from___module___,),
         context={
             'ctx___messages': messages.get_messages(request=request),
         },
@@ -45,7 +46,7 @@ def ___html___template_message___(request, ___application___security___from___mo
 
 def ___html___template_modal___login___(request, ___application___security___from___module___, tab___localuserlogin, tab___ldapuserlogin, form___localuserlogin, form___ldapuserlogin):
     return loader.render_to_string(
-        template_name='application/%s/___includes___/modal/security/login.html' % (___application___security___from___module___,),
+        template_name='apps/%s/___includes___/modal/security/login.html' % (___application___security___from___module___,),
         context={
             'ctx___tab___localuserlogin': tab___localuserlogin,
             'ctx___tab___ldapuserlogin': tab___ldapuserlogin,
@@ -58,7 +59,7 @@ def ___html___template_modal___login___(request, ___application___security___fro
 
 def ___html___template_modal___login___forgot_credentials_1___(request, ___application___security___from___module___, tab___localuserlogin___forgot_credentials, tab___ldapuserlogin___forgot_credentials, form):
     return loader.render_to_string(
-        template_name='application/%s/___includes___/modal/security/login___forgot_credentials_1.html' % (___application___security___from___module___,),
+        template_name='apps/%s/___includes___/modal/security/login___forgot_credentials_1.html' % (___application___security___from___module___,),
         context={
             'ctx___tab___localuserlogin___forgot_credentials': tab___localuserlogin___forgot_credentials,
             'ctx___tab___ldapuserlogin___forgot_credentials': tab___ldapuserlogin___forgot_credentials,
@@ -70,7 +71,7 @@ def ___html___template_modal___login___forgot_credentials_1___(request, ___appli
 
 def ___html___template_modal___login___forgot_credentials_2___(request, ___application___security___from___module___, tab___localuserlogin___forgot_credentials, tab___ldapuserlogin___forgot_credentials, form):
     return loader.render_to_string(
-        template_name='application/%s/___includes___/modal/security/login___forgot_credentials_2.html' % (___application___security___from___module___,),
+        template_name='apps/%s/___includes___/modal/security/login___forgot_credentials_2.html' % (___application___security___from___module___,),
         context={
             'ctx___tab___localuserlogin___forgot_credentials': tab___localuserlogin___forgot_credentials,
             'ctx___tab___ldapuserlogin___forgot_credentials': tab___ldapuserlogin___forgot_credentials,
@@ -82,7 +83,7 @@ def ___html___template_modal___login___forgot_credentials_2___(request, ___appli
 
 def ___html___template_modal___login___forgot_credentials_3___(request, ___application___security___from___module___, tab___localuserlogin___forgot_credentials, tab___ldapuserlogin___forgot_credentials, form):
     return loader.render_to_string(
-        template_name='application/%s/___includes___/modal/security/login___forgot_credentials_3.html' % (___application___security___from___module___,),
+        template_name='apps/%s/___includes___/modal/security/login___forgot_credentials_3.html' % (___application___security___from___module___,),
         context={
             'ctx___tab___localuserlogin___forgot_credentials': tab___localuserlogin___forgot_credentials,
             'ctx___tab___ldapuserlogin___forgot_credentials': tab___ldapuserlogin___forgot_credentials,
@@ -94,7 +95,7 @@ def ___html___template_modal___login___forgot_credentials_3___(request, ___appli
 
 def ___html___template_modal___login___request___(request, ___application___security___from___module___, tab___localuserlogin___request, tab___ldapuserlogin___request, form):
     return loader.render_to_string(
-        template_name='application/%s/___includes___/modal/security/login___request.html' % (___application___security___from___module___,),
+        template_name='apps/%s/___includes___/modal/security/login___request.html' % (___application___security___from___module___,),
         context={
             'ctx___tab___localuserlogin___request': tab___localuserlogin___request,
             'ctx___tab___ldapuserlogin___request': tab___ldapuserlogin___request,
@@ -106,7 +107,7 @@ def ___html___template_modal___login___request___(request, ___application___secu
 
 def ___html___template_modal___logout___(request, ___application___security___from___module___):
     return loader.render_to_string(
-        template_name='application/%s/___includes___/modal/security/logout.html' % (___application___security___from___module___,),
+        template_name='apps/%s/___includes___/modal/security/logout.html' % (___application___security___from___module___,),
         context={
         },
         request=request
@@ -115,7 +116,7 @@ def ___html___template_modal___logout___(request, ___application___security___fr
 
 def ___html___template_modal___profile___(request, ___application___security___from___module___, form):
     return loader.render_to_string(
-        template_name='application/%s/___includes___/modal/security/profile.html' % (___application___security___from___module___,),
+        template_name='apps/%s/___includes___/modal/security/profile.html' % (___application___security___from___module___,),
         context={
             'ctx___form': form,
         },
@@ -125,7 +126,7 @@ def ___html___template_modal___profile___(request, ___application___security___f
 
 def ___html___template_modal___message___(request, ___application___security___from___module___):
     return loader.render_to_string(
-        template_name='application/%s/___includes___/modal/message/message.html' % (___application___security___from___module___,),
+        template_name='apps/%s/___includes___/modal/message/message.html' % (___application___security___from___module___,),
         context={
             'ctx___messages': messages.get_messages(request=request),
         },
@@ -158,6 +159,11 @@ def ___dict_string___application___security___from___module___(request, ___appli
         string___modal___message = '___HTML___APPLICATION___ADMINISTRATION___MODAL___MESSAGE___'
         string___modal___modal = '___HTML___APPLICATION___ADMINISTRATION___MODAL___MODAL___'
         string___modal___modal___message = '___HTML___APPLICATION___ADMINISTRATION___MODAL___MODAL___MESSAGE___'
+    if ___application___security___from___module___ == ___APPLICATION___SECURITY___FROM___MODULE___HELP___:
+        string___modal = '___HTML___APPLICATION___HELP___MODAL___'
+        string___modal___message = '___HTML___APPLICATION___HELP___MODAL___MESSAGE___'
+        string___modal___modal = '___HTML___APPLICATION___HELP___MODAL___MODAL___'
+        string___modal___modal___message = '___HTML___APPLICATION___HELP___MODAL___MODAL___MESSAGE___'
     dict___response = {
         'string___modal': string___modal,
         'string___modal___message': string___modal___message,

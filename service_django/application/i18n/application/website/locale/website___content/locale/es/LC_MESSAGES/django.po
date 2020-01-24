@@ -1,0 +1,33 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+
+
+
+msgid "WEBSITE___CONTENT___WEBSITE"
+msgstr "Sitio web"
+
+
+
+msgid "WEBSITE___CONTENT___FOOTER___SOCIAL___HEADER"
+msgstr "Compartir"
+
+msgid "WEBSITE___CONTENT___FOOTER___SUPPORT___HEADER"
+msgstr "Soporte Técnico"
+msgid "WEBSITE___CONTENT___FOOTER___SUPPORT___TEXT1"
+msgstr "Teléfono"
+msgid "WEBSITE___CONTENT___FOOTER___SUPPORT___TEXT2"
+msgstr "Email"
+
+msgid "WEBSITE___CONTENT___FOOTER___DEVELOPED___HEADER"
+msgstr "Desarrollado por"
+msgid "WEBSITE___CONTENT___FOOTER___DEVELOPED___TEXT1"
+msgstr "Departamento de Informatizacion de la UCLV"
+msgid "WEBSITE___CONTENT___FOOTER___DEVELOPED___TEXT2 %(ctx___now_l)s %(ctx___now_F)s %(ctx___now_j)s %(ctx___now_Y)s"
+msgstr "Hoy es %(ctx___now_l)s, %(ctx___now_j)s de %(ctx___now_F)s del %(ctx___now_Y)s"
+
+msgid "WEBSITE___CONTENT___FOOTER___COPYRIGHT"
+msgstr "Copyright © 2018 Universidad Central \"Marta Abreu\" de Las Villas. Todos los derechos reservados."

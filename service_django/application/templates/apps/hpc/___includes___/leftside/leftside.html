@@ -1,0 +1,70 @@
+{% load application___security %}
+{% load i18n %}
+
+{% if request|___required___application___security___user___is_ldapuser_or_ldapuserimported___ %}
+    <div id="leftside___user">
+        <div id="user___img">
+            <img src="{{ request|___get_string___application___security___user___avatar_url___ }}" alt="..." class="img-circle"/>
+        </div>
+        <div id="user___text">
+            <h4 id="text___welcome">{% trans "LEFTSIDE___WELCOME" %},</h4>
+
+            <p id="text___name">{{ request|___get_instance___application___security___user___ }}</p>
+        </div>
+    </div>
+
+    <ul id="leftside___nav" class="nav">
+        <li>
+            <a href=""><span class="fa fa-dashboard fa-fw" aria-hidden="true"></span> {% trans 'HPC___LEFTSIDE___Jobs' %}<span class="fa arrow" aria-hidden="true"></span></a>
+            <ul class="nav nav___second_level">
+                <li>
+                    {% url "hpc:modules:hpc_jobs:queue" as url %}
+                    <a data-url="{{ url }}" class="LINK___application___hpc___content___center___reload {% if url == request|___get_string___application___security___user___url_current___ %}active{% endif %}"><span class="fa fa-clock-o fa-fw" aria-hidden="true"></span> {% trans 'HPC___LEFTSIDE___Active_Jobs' %}</a>
+                </li>
+                <li>
+                    {% url "hpc:modules:hpc_jobs:history" as url %}
+                    <a data-url="{{ url }}" class="LINK___application___hpc___content___center___reload {% if url == request|___get_string___application___security___user___url_current___ %}active{% endif %}"><span class="fa fa-history fa-fw" aria-hidden="true"></span> {% trans 'HPC___LEFTSIDE___History_Jobs' %}</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            {% url "hpc:modules:hpc_script:index" as url %}
+            <a data-url="{{ url }}" class="LINK___application___hpc___content___center___reload {% if url == request|___get_string___application___security___user___url_current___ %}active{% endif %}"><span class="fa fa-file-code-o fa-fw" aria-hidden="true"></span> {% trans "HPC___LEFTSIDE___Script" %}</a>
+        </li>
+        <li>
+            {% url "hpc:modules:hpc_nodes:index" as url %}
+            <a data-url="{{ url }}" class="LINK___application___hpc___content___center___reload {% if url == request|___get_string___application___security___user___url_current___ %}active{% endif %}"><span class="fa fa-linode fa-fw" aria-hidden="true"></span> {% trans "HPC___LEFTSIDE___Nodes" %}</a>
+        </li>
+        <li>
+            {% url "hpc:modules:hpc_explorer:index" as url %}
+            <a data-url="{{ url }}" class="LINK___application___hpc___content___center___reload {% if url == request|___get_string___application___security___user___url_current___ %}active{% endif %}"><span class="fa fa-folder-open fa-fw" aria-hidden="true"></span> {% trans "HPC___LEFTSIDE___Explorer" %}</a>
+        </li>
+        <li>
+            {% url "hpc:modules:hpc_software:installed" as url %}
+            <a data-url="{{ url }}" class="LINK___application___hpc___content___center___reload {% if url == request|___get_string___application___security___user___url_current___ %}active{% endif %}"><span class="fa fa-archive fa-fw" aria-hidden="true"></span> {% trans "HPC___LEFTSIDE___Modules" %}</a>
+        </li>
+        <li>
+            <a href=""><span class="fa fa-bar-chart fa-fw" aria-hidden="true"></span> {% trans 'HPC___LEFTSIDE___Charts' %}<span class="fa arrow" aria-hidden="true"></span></a>
+            <ul class="nav nav___second_level">
+                <li>
+                    {% url "hpc:modules:hpc_charts:nodes" as url %}
+                    <a data-url="{{ url }}" class="LINK___application___hpc___content___center___reload {% if url == request|___get_string___application___security___user___url_current___ %}active{% endif %}"><span class="fa fa-linode fa-fw" aria-hidden="true"></span> {% trans "HPC___LEFTSIDE___Nodes" %}</a>
+                </li>
+                <li>
+                    {% url "hpc:modules:hpc_charts:jobs" as url %}
+                    <a data-url="{{ url }}" class="LINK___application___hpc___content___center___reload {% if url == request|___get_string___application___security___user___url_current___ %}active{% endif %}"><span class="fa fa-dashboard fa-fw" aria-hidden="true"></span> {% trans "HPC___LEFTSIDE___Jobs" %}</a>
+                </li>
+                <li>
+                    {% url "hpc:modules:hpc_charts:users" as url %}
+                    <a data-url="{{ url }}" class="LINK___application___hpc___content___center___reload {% if url == request|___get_string___application___security___user___url_current___ %}active{% endif %}"><span class="fa fa-user fa-fw" aria-hidden="true"></span> {% trans "HPC___LEFTSIDE___Users" %}</a>
+                </li>
+            </ul>
+        </li>
+        {% comment %}
+        <li>
+            {% url "hpc:modules:hpc_nodes:index" as url %}
+            <a data-url="{{ url }}" class="LINK___application___hpc___content___center___reload {% if url == request|___get_string___application___security___user___url_current___ %}active{% endif %}"><span class="fa fa-terminal fa-fw" aria-hidden="true"></span> {% trans "APPLICATION___HPC___LEFTSIDE___NAV___MODULE___TERMINAL" %}</a>
+        </li>
+        {% endcomment %}
+    </ul>
+{% endif %}

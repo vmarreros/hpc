@@ -1,0 +1,36 @@
+{% load application___security %}
+{% load i18n %}
+
+{% for ctx___instance in ctx___page.object_list %}
+    <tr>
+        <th>
+            {% if request|___required___application___security___user___has_permission___:"application_hpc_softwarerequested_detail" %}
+                <a class="btn btn-xs btn-default LINK___application___administration___modal___reload" data-url="{% url "administration:modules:administration_software:requested:detail" pk=ctx___instance.pk %}" title="{% trans "ADMINISTRATION___CONTENT___ACTION_DETAIL" %}" role="button">
+                    <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                </a>&nbsp;
+            {% endif %}
+            {% if request|___required___application___security___user___has_permission___:"application_hpc_softwarerequested_update" %}
+                <a class="btn btn-xs btn-default LINK___application___administration___modal___reload" data-url="{% url "administration:modules:administration_software:requested:update" pk=ctx___instance.pk %}" title="{% trans "ADMINISTRATION___CONTENT___ACTION_UPDATE" %}" role="button">
+                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                </a>&nbsp;
+            {% endif %}
+            {% if request|___required___application___security___user___has_permission___:"application_hpc_softwarerequested_delete" %}
+                <a class="btn btn-xs btn-default LINK___application___administration___modal___reload" data-url="{% url "administration:modules:administration_software:requested:delete" pk=ctx___instance.pk %}" title="{% trans "ADMINISTRATION___CONTENT___ACTION_DELETE" %}" role="button">
+                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                </a>
+            {% endif %}
+        </th>
+        <td>{{ ctx___instance }}</td>
+        <td>{{ ctx___instance.website }}</td>
+        <td>{{ ctx___instance.version }}</td>
+        <td>{{ ctx___instance.type }}</td>
+        <td>{{ ctx___instance.account }}</td>
+        <td>{{ ctx___instance.requested }}</td>
+    </tr>
+{% empty %}
+    <tr>
+        <td colspan="10" class="text-center">
+            <span class="glyphicon glyphicon-hand-right"></span> {% trans "ADMINISTRATION___CONTENT___OPTION_NOT_FOUND" %} <strong>&OpenCurlyDoubleQuote;{% trans "ADMINISTRATION___CONTENT___HOME___DOCUMENTS" %}&CloseCurlyDoubleQuote;</strong>.
+        </td>
+    </tr>
+{% endfor %}

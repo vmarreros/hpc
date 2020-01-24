@@ -5,7 +5,7 @@ from django.core import validators
 from django.utils.translation import ugettext_lazy as _
 
 ___FIELD___IS_ACTIVE___ = forms.BooleanField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___GROUP___IS_ACTIVE'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___GROUP___IS_ACTIVE'),
     required=False,
     widget=forms.CheckboxInput(
         attrs={
@@ -16,7 +16,7 @@ ___FIELD___IS_ACTIVE___ = forms.BooleanField(
     ),
 )
 ___FIELD___CREATED___ = forms.DateField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___GROUP___CREATED'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___GROUP___CREATED'),
     required=False,
     widget=forms.DateInput(
         attrs={
@@ -27,7 +27,7 @@ ___FIELD___CREATED___ = forms.DateField(
     ),
 )
 ___FIELD___MODIFIED___ = forms.DateField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___GROUP___MODIFIED'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___GROUP___MODIFIED'),
     required=False,
     widget=forms.DateInput(
         attrs={
@@ -38,12 +38,12 @@ ___FIELD___MODIFIED___ = forms.DateField(
     ),
 )
 ___FIELD___NAME___ = forms.CharField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___GROUP___NAME'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___GROUP___NAME'),
     required=True,
     min_length=1,
     max_length=100,
     validators=[
-        validators.RegexValidator('^[\w .\-_]+$', message=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___GROUP___VALIDATION Only letters, numbers and special characters dot, -, _ and space.')),
+        validators.RegexValidator('^[\w .\-_]+$', message=_('ADMINISTRATION___CONTENT___SECURITY___GROUP___VALIDATION Only letters, numbers and special characters dot, -, _ and space.')),
     ],
     widget=forms.TextInput(
         attrs={
@@ -55,7 +55,7 @@ ___FIELD___NAME___ = forms.CharField(
     ),
 )
 ___FIELD___PERMISSIONS___ = forms.ModelMultipleChoiceField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___GROUP___PERMISSIONS'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___GROUP___PERMISSIONS'),
     required=False,
     widget=forms.CheckboxSelectMultiple(
         attrs={
@@ -91,10 +91,10 @@ class GroupCreate(forms.ModelForm):
         super().__init__(*args, **kwargs)
         #
         # is_active
-        ___field___attribute___help_text___locale___reload__(field=self.fields['is_active'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___GROUP___IS_ACTIVE___HELP_TEXT')
+        ___field___attribute___help_text___locale___reload__(field=self.fields['is_active'], locale='ADMINISTRATION___CONTENT___SECURITY___GROUP___IS_ACTIVE___HELP_TEXT')
         self.fields['is_active'].initial = True
         # name
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['name'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___GROUP___NAME')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['name'], locale='ADMINISTRATION___CONTENT___SECURITY___GROUP___NAME')
         self.fields['name'].widget.attrs['autofocus'] = True
         # permissions
         self.permissions_choices = models.Permission.objects.all()
@@ -106,7 +106,7 @@ class GroupCreate(forms.ModelForm):
             models.Group.objects.get(name=name)
         except models.Group.DoesNotExist:
             return name
-        raise forms.ValidationError(_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___GROUP___VALIDATION This name has already been chosen.'))
+        raise forms.ValidationError(_('ADMINISTRATION___CONTENT___SECURITY___GROUP___VALIDATION This name has already been chosen.'))
 
     def save(self, commit=True):
         instance = super(GroupCreate, self).save(commit=False)
@@ -156,9 +156,9 @@ class GroupUpdate(forms.ModelForm):
         super().__init__(*args, **kwargs)
         #
         # is_active
-        ___field___attribute___help_text___locale___reload__(field=self.fields['is_active'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___GROUP___IS_ACTIVE___HELP_TEXT')
+        ___field___attribute___help_text___locale___reload__(field=self.fields['is_active'], locale='ADMINISTRATION___CONTENT___SECURITY___GROUP___IS_ACTIVE___HELP_TEXT')
         # name
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['name'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___GROUP___NAME')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['name'], locale='ADMINISTRATION___CONTENT___SECURITY___GROUP___NAME')
         self.fields['name'].widget.attrs['autofocus'] = True
         # permissions
         self.permissions_choices = models.Permission.objects.all()
@@ -169,7 +169,7 @@ class GroupUpdate(forms.ModelForm):
             if self.instance_current.parent != 0:
                 instance_parent = models.Group.objects.get(pk=self.instance.parent)
                 if instance_parent is not None and instance_parent.is_active is False:
-                    raise forms.ValidationError(_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___GROUP___VALIDATION This instance is a branch of a non-active instance, so it can not be activated.'))
+                    raise forms.ValidationError(_('ADMINISTRATION___CONTENT___SECURITY___GROUP___VALIDATION This instance is a branch of a non-active instance, so it can not be activated.'))
         return is_active
 
     def clean_name(self):
@@ -181,7 +181,7 @@ class GroupUpdate(forms.ModelForm):
             return name
         if instance.name == self.instance_current.name:
             return name
-        raise forms.ValidationError(_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___GROUP___VALIDATION This name has already been chosen.'))
+        raise forms.ValidationError(_('ADMINISTRATION___CONTENT___SECURITY___GROUP___VALIDATION This name has already been chosen.'))
 
     def save(self, commit=True):
         instance = super(GroupUpdate, self).save(commit=False)
@@ -245,5 +245,5 @@ class GroupDelete(forms.ModelForm):
         instances = models.Group.objects.all()
         for temporal_instance in instances:
             if temporal_instance.parent == self.instance.pk:
-                raise forms.ValidationError(_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___GROUP___VALIDATION There are instances that are branches of this instance, so it can not be deleted.'))
+                raise forms.ValidationError(_('ADMINISTRATION___CONTENT___SECURITY___GROUP___VALIDATION There are instances that are branches of this instance, so it can not be deleted.'))
         return ___clean___

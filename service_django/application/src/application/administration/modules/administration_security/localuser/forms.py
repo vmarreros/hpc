@@ -7,7 +7,7 @@ import os
 import shutil
 
 ___FIELD___IS_ACTIVE___ = forms.BooleanField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LOCALUSER___IS_ACTIVE'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___IS_ACTIVE'),
     required=False,
     widget=forms.CheckboxInput(
         attrs={
@@ -18,7 +18,7 @@ ___FIELD___IS_ACTIVE___ = forms.BooleanField(
     ),
 )
 ___FIELD___CREATED___ = forms.DateField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LOCALUSER___CREATED'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___CREATED'),
     required=False,
     widget=forms.DateInput(
         attrs={
@@ -29,7 +29,7 @@ ___FIELD___CREATED___ = forms.DateField(
     ),
 )
 ___FIELD___MODIFIED___ = forms.DateField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LOCALUSER___MODIFIED'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___MODIFIED'),
     required=False,
     widget=forms.DateInput(
         attrs={
@@ -40,7 +40,7 @@ ___FIELD___MODIFIED___ = forms.DateField(
     ),
 )
 ___FIELD___AVATAR___ = forms.ImageField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LOCALUSER___AVATAR'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___AVATAR'),
     required=False,
     widget=forms.FileInput(
         attrs={
@@ -53,12 +53,12 @@ ___FIELD___AVATAR___ = forms.ImageField(
     ),
 )
 ___FIELD___FIRST_NAME___ = forms.CharField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LOCALUSER___FIRST_NAME'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___FIRST_NAME'),
     required=False,
     min_length=1,
     max_length=100,
     validators=[
-        validators.RegexValidator('^[\w .\-_]+$', message=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LOCALUSER___VALIDATION Only letters, numbers and special characters dot, -, _ and space.')),
+        validators.RegexValidator('^[\w .\-_]+$', message=_('ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___VALIDATION Only letters, numbers and special characters dot, -, _ and space.')),
     ],
     widget=forms.TextInput(
         attrs={
@@ -70,12 +70,12 @@ ___FIELD___FIRST_NAME___ = forms.CharField(
     ),
 )
 ___FIELD___LAST_NAME___ = forms.CharField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LOCALUSER___LAST_NAME'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___LAST_NAME'),
     required=False,
     min_length=1,
     max_length=100,
     validators=[
-        validators.RegexValidator('^[\w .\-_]+$', message=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LOCALUSER___VALIDATION Only letters, numbers and special characters dot, -, _ and space.')),
+        validators.RegexValidator('^[\w .\-_]+$', message=_('ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___VALIDATION Only letters, numbers and special characters dot, -, _ and space.')),
     ],
     widget=forms.TextInput(
         attrs={
@@ -87,12 +87,12 @@ ___FIELD___LAST_NAME___ = forms.CharField(
     ),
 )
 ___FIELD___IDENTIFIER___ = forms.CharField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LOCALUSER___IDENTIFIER'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___IDENTIFIER'),
     required=True,
     min_length=1,
     max_length=100,
     validators=[
-        validators.RegexValidator('^[\w_]+$', message=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LOCALUSER___VALIDATION Only letters, numbers and the special character _.')),
+        validators.RegexValidator('^[\w_]+$', message=_('ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___VALIDATION Only letters, numbers and the special character _.')),
     ],
     widget=forms.TextInput(
         attrs={
@@ -104,7 +104,7 @@ ___FIELD___IDENTIFIER___ = forms.CharField(
     ),
 )
 ___FIELD___EMAIL___ = forms.EmailField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LOCALUSER___EMAIL'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___EMAIL'),
     required=True,
     min_length=1,
     max_length=150,
@@ -118,7 +118,7 @@ ___FIELD___EMAIL___ = forms.EmailField(
     ),
 )
 ___FIELD___PASSWORD___ = forms.CharField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LOCALUSER___PASSWORD'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___PASSWORD'),
     required=False,
     max_length=32,
     widget=forms.PasswordInput(
@@ -132,7 +132,7 @@ ___FIELD___PASSWORD___ = forms.CharField(
     ),
 )
 ___FIELD___PASSWORD_CONFIRMATION___ = forms.CharField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LOCALUSER___PASSWORD_CONFIRMATION'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___PASSWORD_CONFIRMATION'),
     required=False,
     max_length=32,
     widget=forms.PasswordInput(
@@ -146,7 +146,7 @@ ___FIELD___PASSWORD_CONFIRMATION___ = forms.CharField(
     ),
 )
 ___FIELD___DETAIL___ = forms.CharField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LOCALUSER___DETAIL'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___DETAIL'),
     required=True,
     min_length=1,
     max_length=1024,
@@ -161,7 +161,7 @@ ___FIELD___DETAIL___ = forms.CharField(
     ),
 )
 ___FIELD___GROUPS___ = forms.ModelMultipleChoiceField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LOCALUSER___GROUPS'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___GROUPS'),
     required=False,
     widget=forms.CheckboxSelectMultiple(
         attrs={
@@ -174,7 +174,7 @@ ___FIELD___GROUPS___ = forms.ModelMultipleChoiceField(
     queryset=models.Group.objects.all(),
 )
 ___FIELD___PERMISSIONS___ = forms.ModelMultipleChoiceField(
-    label=_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LOCALUSER___PERMISSIONS'),
+    label=_('ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___PERMISSIONS'),
     required=False,
     widget=forms.CheckboxSelectMultiple(
         attrs={
@@ -217,24 +217,24 @@ class LOCALUserCreate(forms.ModelForm):
         super().__init__(*args, **kwargs)
         #
         # is_active
-        ___field___attribute___help_text___locale___reload__(field=self.fields['is_active'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LOCALUSER___IS_ACTIVE___HELP_TEXT')
+        ___field___attribute___help_text___locale___reload__(field=self.fields['is_active'], locale='ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___IS_ACTIVE___HELP_TEXT')
         self.fields['is_active'].initial = True
         # first_name
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['first_name'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LOCALUSER___FIRST_NAME')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['first_name'], locale='ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___FIRST_NAME')
         self.fields['first_name'].widget.attrs['autofocus'] = True
         # last name
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['last_name'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LOCALUSER___LAST_NAME')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['last_name'], locale='ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___LAST_NAME')
         # identifier
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['identifier'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LOCALUSER___IDENTIFIER')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['identifier'], locale='ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___IDENTIFIER')
         # email
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['email'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LOCALUSER___EMAIL')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['email'], locale='ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___EMAIL')
         # password
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['password'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LOCALUSER___PASSWORD')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['password'], locale='ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___PASSWORD')
         # password_confirmation
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['password_confirmation'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LOCALUSER___PASSWORD_CONFIRMATION')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['password_confirmation'], locale='ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___PASSWORD_CONFIRMATION')
         # detail
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['detail'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LOCALUSER___DETAIL')
-        ___field___attribute___help_text___locale___reload__(field=self.fields['detail'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LOCALUSER___DETAIL___HELP_TEXT')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['detail'], locale='ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___DETAIL')
+        ___field___attribute___help_text___locale___reload__(field=self.fields['detail'], locale='ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___DETAIL___HELP_TEXT')
         # groups
         self.groups_choices = models.Group.objects.all()
         # permissions
@@ -249,7 +249,7 @@ class LOCALUserCreate(forms.ModelForm):
                 models.LOCALUserRequest.objects.get(identifier=identifier)
             except models.LOCALUserRequest.DoesNotExist:
                 return identifier
-        raise forms.ValidationError(_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LOCALUSER___VALIDATION This identifier has already been chosen.'))
+        raise forms.ValidationError(_('ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___VALIDATION This identifier has already been chosen.'))
 
     def clean_email(self):
         email = self.cleaned_data.get('email')
@@ -260,7 +260,7 @@ class LOCALUserCreate(forms.ModelForm):
                 models.LOCALUserRequest.objects.get(email=email)
             except models.LOCALUserRequest.DoesNotExist:
                 return email
-        raise forms.ValidationError(_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LOCALUSER___VALIDATION This email has already been chosen.'))
+        raise forms.ValidationError(_('ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___VALIDATION This email has already been chosen.'))
 
     def clean(self):
         ___clean___ = super(LOCALUserCreate, self).clean()
@@ -268,8 +268,8 @@ class LOCALUserCreate(forms.ModelForm):
         password = self.cleaned_data.get('password')
         password_confirmation = self.cleaned_data.get('password_confirmation')
         if password != password_confirmation:
-            self.add_error('password', _('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LOCALUSER___VALIDATION The password and your confirmation do not match.'))
-            self.add_error('password_confirmation', _('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LOCALUSER___VALIDATION The password and your confirmation do not match.'))
+            self.add_error('password', _('ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___VALIDATION The password and your confirmation do not match.'))
+            self.add_error('password_confirmation', _('ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___VALIDATION The password and your confirmation do not match.'))
         return ___clean___
 
     def save(self, commit=True):
@@ -344,23 +344,23 @@ class LOCALUserUpdate(forms.ModelForm):
         super().__init__(*args, **kwargs)
         #
         # is_active
-        ___field___attribute___help_text___locale___reload__(field=self.fields['is_active'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LOCALUSER___IS_ACTIVE___HELP_TEXT')
+        ___field___attribute___help_text___locale___reload__(field=self.fields['is_active'], locale='ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___IS_ACTIVE___HELP_TEXT')
         # first_name
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['first_name'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LOCALUSER___FIRST_NAME')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['first_name'], locale='ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___FIRST_NAME')
         self.fields['first_name'].widget.attrs['autofocus'] = True
         # last name
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['last_name'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LOCALUSER___LAST_NAME')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['last_name'], locale='ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___LAST_NAME')
         # identifier
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['identifier'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LOCALUSER___IDENTIFIER')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['identifier'], locale='ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___IDENTIFIER')
         # email
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['email'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LOCALUSER___EMAIL')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['email'], locale='ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___EMAIL')
         # password
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['password'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LOCALUSER___PASSWORD')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['password'], locale='ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___PASSWORD')
         # password_confirmation
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['password_confirmation'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LOCALUSER___PASSWORD_CONFIRMATION')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['password_confirmation'], locale='ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___PASSWORD_CONFIRMATION')
         # detail
-        ___field___attribute___placeholder___locale___reload__(field=self.fields['detail'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LOCALUSER___DETAIL')
-        ___field___attribute___help_text___locale___reload__(field=self.fields['detail'], locale='APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LOCALUSER___DETAIL___HELP_TEXT')
+        ___field___attribute___placeholder___locale___reload__(field=self.fields['detail'], locale='ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___DETAIL')
+        ___field___attribute___help_text___locale___reload__(field=self.fields['detail'], locale='ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___DETAIL___HELP_TEXT')
         # groups
         self.groups_choices = models.Group.objects.all()
         # permissions
@@ -370,7 +370,7 @@ class LOCALUserUpdate(forms.ModelForm):
         avatar = self.cleaned_data.get('avatar')
         if self.files.get('avatar'):
             if len(self.files.get('avatar')) > 1 * 1024 * 1024:  # 1MB
-                raise forms.ValidationError(_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LOCALUSER___VALIDATION The avatar should not be beggear than %(weight)s.') % {'weight': '1mb', })
+                raise forms.ValidationError(_('ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___VALIDATION The avatar should not be beggear than %(weight)s.') % {'weight': '1mb', })
         return avatar
 
     def clean_identifier(self):
@@ -384,7 +384,7 @@ class LOCALUserUpdate(forms.ModelForm):
                 return identifier
         if instance.identifier == self.instance_current.identifier:
             return identifier
-        raise forms.ValidationError(_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LOCALUSER___VALIDATION This identifier has already been chosen.'))
+        raise forms.ValidationError(_('ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___VALIDATION This identifier has already been chosen.'))
 
     def clean_email(self):
         email = self.cleaned_data.get('email')
@@ -397,7 +397,7 @@ class LOCALUserUpdate(forms.ModelForm):
                 return email
         if instance.email == self.instance_current.email:
             return email
-        raise forms.ValidationError(_('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LOCALUSER___VALIDATION This email has already been chosen.'))
+        raise forms.ValidationError(_('ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___VALIDATION This email has already been chosen.'))
 
     def clean(self):
         ___clean___ = super(LOCALUserUpdate, self).clean()
@@ -405,8 +405,8 @@ class LOCALUserUpdate(forms.ModelForm):
         password = self.cleaned_data.get('password')
         password_confirmation = self.cleaned_data.get('password_confirmation')
         if password != password_confirmation:
-            self.add_error('password', _('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LOCALUSER___VALIDATION The password and your confirmation do not match.'))
-            self.add_error('password_confirmation', _('APPLICATION___ADMINISTRATION___CONTENT___ADMINISTRATION_SECURITY___LOCALUSER___VALIDATION The password and your confirmation do not match.'))
+            self.add_error('password', _('ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___VALIDATION The password and your confirmation do not match.'))
+            self.add_error('password_confirmation', _('ADMINISTRATION___CONTENT___SECURITY___LOCALUSER___VALIDATION The password and your confirmation do not match.'))
         return ___clean___
 
     def save(self, commit=True):

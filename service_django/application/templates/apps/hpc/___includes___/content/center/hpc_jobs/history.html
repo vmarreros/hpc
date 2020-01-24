@@ -1,0 +1,42 @@
+{% load i18n %}
+{% load application___hpc %}
+
+<h3 id="center___header">
+    <span class="fa fa-dashboard fa-fw"></span> {% trans 'HPC___JOBS___History_Jobs' %}
+</h3>
+<div id="center___content">
+    <div id="jobs___content" class="row container-fluid">
+        <table id="history___datatable" class="table table-striped nowrap" cellspacing="0" width="100%"
+               data-url="{% url "hpc:modules:hpc_jobs:history_json" %}">
+            <thead>
+                <tr>
+                    <th>{% trans 'HPC___JOBS___Job_Id' %}</th>
+                    <th>{% trans 'HPC___JOBS___Job_State' %}</th>
+                    <th>{% trans 'HPC___JOBS___Job_Name' %}</th>
+                    <th>{% trans 'HPC___JOBS___Job_User' %}</th>
+                    <th>{% trans 'HPC___JOBS___Job_Partition' %}</th>
+                    <th>{% trans 'HPC___JOBS___Job_Nodes' %}</th>
+                    <th>{% trans 'HPC___JOBS___Job_Num_CPUs' %}</th>
+                    <th>{% trans 'HPC___JOBS___Job_Memory' %}</th>
+                    <th>{% trans 'HPC___JOBS___Job_End_Time' %}</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <form id="hpc_job_history_search" method="GET" action="{% url "hpc:modules:hpc_jobs:history_json" %}">
+        <div class="form-group">
+            <label for="history-search">Mostrar resultados desde:</label>
+            <div class="input-group input-group-sm">
+                <div class="input-group-btn">
+                    <button type="submit" title="Buscar" class="btn btn-primary"><i class="fa fa-search fa-fw"></i></button>
+                </div>
+                <input id="history-search" type="date" class="form-control" value="{{ date }}" style="width: 180px !important;">
+            </div>
+        </div>
+    </form>
+</div>
+<script>
+    $('#history___datatable').trigger('history')
+</script>

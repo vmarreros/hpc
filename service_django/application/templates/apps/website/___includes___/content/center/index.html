@@ -1,0 +1,164 @@
+{% load i18n application___security%}
+{% load staticfiles %}
+
+<div id="center___header">
+    <div class="row">
+        <div id="banner" class="col-sm-10 col-sm-offset-1">
+            <div id="banner___left">
+                <img src="{% static 'apps/website/img/logo/hpcuclv.png' %}" alt="HPC UCLV"/>
+            </div>
+            <div id="banner___right">
+                <div id="header">
+                    <h2>Sistema de Supercómputo de la UCLV.</h2>
+                </div>
+                <div>
+                    <p>Como líder en la computación de alto desempeño (High Performance Computing, HPC), el <b>Cluster HPC de la Universidad Central “Marta Abreu” de Las Villas (HPC UCLV)</b> es un recurso de vital importancia para investigadores e ingenieros en nuestra universidad, así como en el territorio nacional.</p>
+                </div>
+                {% if request|___required___application___security___user___|___get_boolean___not___ %}
+                    <div>
+                        <button class="btn btn-primary register LINK___application___website___modal___reload" data-url="{% url "website:login___request" %}?tab___ldapuserlogin___request=True" role="button">
+                            <i aria-hidden="true" class="fa fa-user-plus fa-fw"></i>
+                            <span >Regístrate</span>
+                        </button>
+                    </div>
+                    <div>
+                        <a class="LINK___application___website___modal___reload login" data-url="{% url "website:login" %}" role="button">
+                            <i aria-hidden="true" class="fa fa-sign-in fa-fw"></i>
+                            <span>o inicia sesión</span>
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="center___content">
+    <div id="website___home">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <p>La <a href="http://intranet.uclv.edu.cu">Universidad Central “Marta Abreu” de Las Villas</a>
+                    cuenta con un centro de supercómputo integrado por el clúster de Cálculo de alta disponibilidad,
+                    MAMBÍ y por un clúster de Big Data, puestos ambos en función de la investigación y la docencia.</p>
+                <div class="cluster">
+                    <h4><b>Características del clúster HPC</b></h4>
+                    <p>Para el servicio de HPC se utilizan 81 nodos para el procesamiento CPU y un nodo con dos GPU Nvidia K80
+                        para procesamientos que requieran GPU.</p>
+                    <table class="table table-responsive">
+                        <thead>
+                        <tr>
+                            <th><b>Equipo</b></th>
+                            <th><b>Model</b></th>
+                            <th><b>#</b></th>
+                            <th><b>Processor</b></th>
+                            <th><b>Cores</b></th>
+                            <th><b>RAM</b></th>
+                            <th><b>NIC</b></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td rowspan="4">Nodos delgados</td>
+                            <td rowspan="4">IBM iDataPlex dx360 M2</td>
+                            <td>12</td>
+                            <td>2 x Intel Xeon L5520&nbsp;<br>(Gainestown or&nbsp;Nehalem-EP)</td>
+                            <td>8</td>
+                            <td>64&nbsp;<abbr style="cursor: help; border-bottom: 1px dotted;" title="Gigabyte">GB</abbr></td>
+                            <td>2 x 1 Ethernet&nbsp;<abbr style="cursor: help; border-bottom: 1px dotted;" title="Gigabyte">GB</abbr></td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>2 x Intel Xeon L5520&nbsp;<br>(Gainestown or&nbsp;Nehalem-EP)</td>
+                            <td>8</td>
+                            <td>32&nbsp;<abbr style="cursor: help; border-bottom: 1px dotted;" title="Gigabyte">GB</abbr></td>
+                            <td>2 x 1 Ethernet&nbsp;<abbr style="cursor: help; border-bottom: 1px dotted;" title="Gigabyte">GB</abbr></td>
+                        </tr>
+                        <tr>
+                            <td>31</td>
+                            <td>2 x Intel Xeon L5520&nbsp;<br>(Gainestown or&nbsp;Nehalem-EP)</td>
+                            <td>8</td>
+                            <td>16&nbsp;<abbr style="cursor: help; border-bottom: 1px dotted;" title="Gigabyte">GB</abbr></td>
+                            <td>2 x 1 Ethernet&nbsp;<abbr style="cursor: help; border-bottom: 1px dotted;" title="Gigabyte">GB</abbr></td>
+                        </tr>
+                        <tr>
+                            <td>30</td>
+                            <td>2 x Intel Xeon L5520&nbsp;<br>(Gainestown or&nbsp;Nehalem-EP)</td>
+                            <td>8</td>
+                            <td><16&nbsp;<abbr style="cursor: help; border-bottom: 1px dotted;" title="Gigabyte">GB</abbr></td>
+                            <td>2 x 1 Ethernet&nbsp;<abbr style="cursor: help; border-bottom: 1px dotted;" title="Gigabyte">GB</abbr></td>
+                        </tr>
+                        <tr>
+                            <td>Nodos Gruesos</td>
+                            <td>DELL R730</td>
+                            <td>1</td>
+                            <td>2 x Intel Xeon E5-2630 v3 (Haswell)&nbsp;<br><br>2 x GPU Nvidia K80</td>
+                            <td>16&nbsp;<br><br>9984</td>
+                            <td>128&nbsp;<abbr style="cursor: help; border-bottom: 1px dotted;" title="Gigabyte">GB</abbr></td>
+                            <td>4 x 1 Ethernet&nbsp;<abbr style="cursor: help; border-bottom: 1px dotted;" title="Gigabyte">GB</abbr></td>
+                        </tr>
+                        <tr>
+                            <td><b>Total</b></td>
+                            <td></td>
+                            <td>81</td>
+                            <td></td>
+                            <td>656 CPU&nbsp;<br>9984 GPU</td>
+                            <td>1916&nbsp;<abbr style="cursor: help; border-bottom: 1px dotted;" title="Gigabyte">GB</abbr></td>
+                            <td></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <span>El rendimiento teórico del sistema es de 3,90 TFLOPs de operaciones en CPU y 5,82 TFLOPs de operaciones en GPU.</span>
+                </div>
+                <div class="cluster">
+                    <h4><b>Características del clúster de BigData</b></h4>
+                    <p>El Clúster Big Data, está implementado sobre herramientas de Apache y con un sistema distribuido de almacenamiento
+                        HDFS. Está compuesto por 32 servidores IBM con procesadores Nehalem.</p>
+                    <table class="table table-responsive">
+                        <thead>
+                        <tr>
+                            <th><b>Equipo</b></th>
+                            <th><b>Model</b></th>
+                            <th><b>#</b></th>
+                            <th><b>Processor</b></th>
+                            <th><b>Cores</b></th>
+                            <th><b>RAM</b></th>
+                            <th><b>NIC</b></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Nodos delgados</td>
+                            <td>HP Proliant SL230S Gen8 </td>
+                            <td>32</td>
+                            <td>2 x Intel Xeon E5-2600 (Gainestown or Nehalem-EP)</td>
+                            <td>16</td>
+                            <td>32 <abbr style="cursor: help; border-bottom: 1px dotted;" title="Gigabyte">GB</abbr></td>
+                            <td>2 x 1 Ethernet&nbsp;<abbr style="cursor: help; border-bottom: 1px dotted;" title="Gigabyte">GB</abbr></td>
+                        </tr>
+                        <tr>
+                            <td>Nodos Gruesos</td>
+                            <td>DELL R730</td>
+                            <td>1</td>
+                            <td>2 x Intel Xeon E5-2630 v3 (Haswell)&nbsp;<br><br>2 x GPU Nvidia K80</td>
+                            <td>16&nbsp;<br><br>9984</td>
+                            <td>128&nbsp;<abbr style="cursor: help; border-bottom: 1px dotted;" title="Gigabyte">GB</abbr></td>
+                            <td>4 x 1 Ethernet&nbsp;<abbr style="cursor: help; border-bottom: 1px dotted;" title="Gigabyte">GB</abbr></td>
+                        </tr>
+                        <tr>
+                            <td>Total</td>
+                            <td></td>
+                            <td>33</td>
+                            <td></td>
+                            <td>512 CPU&nbsp;<br>9984 GPU</td>
+                            <td>1152&nbsp;<abbr style="cursor: help; border-bottom: 1px dotted;" title="Gigabyte">GB</abbr></td>
+                            <td></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <span>El rendimiento teórico del sistema es de 3,90 TFLOPs de operaciones en CPU y 5,82 TFLOPs de
+                        operaciones en GPU.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

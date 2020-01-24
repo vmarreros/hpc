@@ -85,3 +85,8 @@ def ___disable_if_cant_cancelled___(state):
         return 'disabled'
     else:
         return
+
+
+@register.filter(name='split')
+def split(value, arg=' ', index=0):
+    return value.split(arg)[index]

@@ -6,7 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.core import urlresolvers
 import json
 
-___APPLICATION___HPC___JOBS___URL_REVERSE___ = 'application___hpc:modules:hpc_jobs:index'
+___APPLICATION___HPC___JOBS___URL_REVERSE___ = 'hpc:modules:hpc_jobs:queue'
 
 
 def ___html___template___(request, context, template_name):
@@ -19,7 +19,7 @@ def ___html___template___(request, context, template_name):
 
 def ___html___template_message___(request):
     return loader.render_to_string(
-        template_name='application/hpc/___includes___/modal/___includes___/message/message.html',
+        template_name='apps/hpc/___includes___/modal/___includes___/message/message.html',
         context={
             'ctx___messages': messages.get_messages(request=request),
         },
@@ -29,7 +29,7 @@ def ___html___template_message___(request):
 
 def ___html___template_modal___message___(request):
     return loader.render_to_string(
-        template_name='application/hpc/___includes___/modal/message/message.html',
+        template_name='apps/hpc/___includes___/modal/message/message.html',
         context={
             'ctx___messages': messages.get_messages(request=request),
         },
@@ -39,7 +39,7 @@ def ___html___template_modal___message___(request):
 
 def ___httpresponse___error___(request):
     if len(messages.get_messages(request=request)) <= 0:
-        messages.add_message(request, messages.ERROR, _('HPC___SSH___MESSAGES_ServerNotAvailable'))
+        messages.add_message(request, messages.ERROR, _('HPC___SSH___MESSAGES_ClusterNotAvailable'))
     dict___data = dict()
     dict___data['___BOOLEAN___ERROR___'] = True
     dict___data['___HTML___APPLICATION___HPC___MODAL___'] = ___html___template_modal___message___(request=request)
@@ -49,7 +49,7 @@ def ___httpresponse___error___(request):
 
 def ___jsonresponse___error___(request):
     if len(messages.get_messages(request=request)) <= 0:
-        messages.add_message(request, messages.ERROR, _('APPLICATION___HPC___SSH___MESSAGES_ServerNotAvailable'))
+        messages.add_message(request, messages.ERROR, _('HPC___SSH___MESSAGES_ClusterNotAvailable'))
     dict___data = dict()
     dict___data['___BOOLEAN___ERROR___'] = True
     dict___data['___HTML___APPLICATION___HPC___MODAL___'] = ___html___template_modal___message___(request=request)

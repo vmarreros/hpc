@@ -1,9 +1,9 @@
 FROM python:3.6
 
-RUN echo "deb http://repos.uclv.edu.cu/debian stretch main non-free contrib \
-deb http://repos.uclv.edu.cu/debian stretch-updates main non-free contrib \
-deb http://repos.uclv.edu.cu/debian-security stretch/updates main non-free contrib \
-deb http://repos.uclv.edu.cu/debian stretch-proposed-updates main non-free contrib \
+RUN echo "deb http://repos.uclv.edu.cu/debian stretch main non-free contrib\n \
+deb http://repos.uclv.edu.cu/debian stretch-updates main non-free contrib\n \
+deb http://repos.uclv.edu.cu/debian-security stretch/updates main non-free contrib\n \
+deb http://repos.uclv.edu.cu/debian stretch-proposed-updates main non-free contrib\n \
 deb http://repos.uclv.edu.cu/debian stretch-backports main non-free contrib \
 " > /etc/apt/sources.list
 
