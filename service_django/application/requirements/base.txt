@@ -1,0 +1,14 @@
+celery==4.4.0
+django==2.2.9
+django-admin-honeypot==1.1.0
+django_celery_beat==1.5.0
+django_celery_results==1.1.2
+django-simple-captcha==0.5.12
+django-widget-tweaks==1.4.5
+paramiko==2.7.1
+channels==2.4.0
+ldap3==2.6.1
+passlib==1.7.2
+pillow==7.0.0
+psycopg2==2.8.4
+uwsgi==2.0.18
