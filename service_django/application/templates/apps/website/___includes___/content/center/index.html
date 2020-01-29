@@ -9,22 +9,22 @@
             </div>
             <div id="banner___right">
                 <div id="header">
-                    <h2>Sistema de Supercómputo de la UCLV.</h2>
+                    <h2>{% trans "WEBSITE___CONTENT___HOME___HEADER___Title" %}</h2>
                 </div>
                 <div>
-                    <p>Como líder en la computación de alto desempeño (High Performance Computing, HPC), el <b>Cluster HPC de la Universidad Central “Marta Abreu” de Las Villas (HPC UCLV)</b> es un recurso de vital importancia para investigadores e ingenieros en nuestra universidad, así como en el territorio nacional.</p>
+                    <p>{% trans "WEBSITE___CONTENT___HOME___HEADER___Description" %}</p>
                 </div>
                 {% if request|___required___application___security___user___|___get_boolean___not___ %}
                     <div>
                         <button class="btn btn-primary register LINK___application___website___modal___reload" data-url="{% url "website:login___request" %}?tab___ldapuserlogin___request=True" role="button">
                             <i aria-hidden="true" class="fa fa-user-plus fa-fw"></i>
-                            <span >Regístrate</span>
+                            <span>{% trans "WEBSITE___CONTENT___HOME___HEADER___Register" %}</span>
                         </button>
                     </div>
                     <div>
                         <a class="LINK___application___website___modal___reload login" data-url="{% url "website:login" %}" role="button">
                             <i aria-hidden="true" class="fa fa-sign-in fa-fw"></i>
-                            <span>o inicia sesión</span>
+                            <span>{% trans "WEBSITE___CONTENT___HOME___HEADER___Login" %}</span>
                         </a>
                     </div>
                 {% endif %}
@@ -37,28 +37,25 @@
     <div id="website___home">
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
-                <p>La <a href="http://intranet.uclv.edu.cu">Universidad Central “Marta Abreu” de Las Villas</a>
-                    cuenta con un centro de supercómputo integrado por el clúster de Cálculo de alta disponibilidad,
-                    MAMBÍ y por un clúster de Big Data, puestos ambos en función de la investigación y la docencia.</p>
+                <p>{% trans WEBSITE___CONTENT___HOME___CONTENT___Description %}</p>
                 <div class="cluster">
-                    <h4><b>Características del clúster HPC</b></h4>
-                    <p>Para el servicio de HPC se utilizan 81 nodos para el procesamiento CPU y un nodo con dos GPU Nvidia K80
-                        para procesamientos que requieran GPU.</p>
+                    <h4><b>{% trans "WEBSITE___CONTENT___HOME___CONTENT___HPC___Title" %}</b></h4>
+                    <p>{% trans "WEBSITE___CONTENT___HOME___CONTENT___HPC___Description" %}</p>
                     <table class="table table-responsive">
                         <thead>
                         <tr>
-                            <th><b>Equipo</b></th>
-                            <th><b>Model</b></th>
+                            <th><b>{% trans "WEBSITE___CONTENT___HOME___CONTENT___TABLE___Equipment" %}</b></th>
+                            <th><b>{% trans "WEBSITE___CONTENT___HOME___CONTENT___TABLE___Model" %}</b></th>
                             <th><b>#</b></th>
-                            <th><b>Processor</b></th>
-                            <th><b>Cores</b></th>
+                            <th><b>{% trans "WEBSITE___CONTENT___HOME___CONTENT___TABLE___Processor" %}</b></th>
+                            <th><b>{% trans "WEBSITE___CONTENT___HOME___CONTENT___TABLE___Cores" %}</b></th>
                             <th><b>RAM</b></th>
                             <th><b>NIC</b></th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
-                            <td rowspan="4">Nodos delgados</td>
+                            <td rowspan="4">{% trans "WEBSITE___CONTENT___HOME___CONTENT___TABLE___Thin_nodes" %}</td>
                             <td rowspan="4">IBM iDataPlex dx360 M2</td>
                             <td>12</td>
                             <td>2 x Intel Xeon L5520&nbsp;<br>(Gainestown or&nbsp;Nehalem-EP)</td>
@@ -88,7 +85,7 @@
                             <td>2 x 1 Ethernet&nbsp;<abbr style="cursor: help; border-bottom: 1px dotted;" title="Gigabyte">GB</abbr></td>
                         </tr>
                         <tr>
-                            <td>Nodos Gruesos</td>
+                            <td>{% trans "WEBSITE___CONTENT___HOME___CONTENT___TABLE___Thick_nodes" %}</td>
                             <td>DELL R730</td>
                             <td>1</td>
                             <td>2 x Intel Xeon E5-2630 v3 (Haswell)&nbsp;<br><br>2 x GPU Nvidia K80</td>
@@ -107,27 +104,26 @@
                         </tr>
                         </tbody>
                     </table>
-                    <span>El rendimiento teórico del sistema es de 3,90 TFLOPs de operaciones en CPU y 5,82 TFLOPs de operaciones en GPU.</span>
+                    <span>{% trans "WEBSITE___CONTENT___HOME___CONTENT___HPC___Footer" %}</span>
                 </div>
                 <div class="cluster">
-                    <h4><b>Características del clúster de BigData</b></h4>
-                    <p>El Clúster Big Data, está implementado sobre herramientas de Apache y con un sistema distribuido de almacenamiento
-                        HDFS. Está compuesto por 32 servidores IBM con procesadores Nehalem.</p>
+                    <h4><b>{% trans "WEBSITE___CONTENT___HOME___CONTENT___BIGDATA___Title" %}</b></h4>
+                    <p>{% trans "WEBSITE___CONTENT___HOME___CONTENT___BIGDATA___Description" %}</p>
                     <table class="table table-responsive">
                         <thead>
                         <tr>
-                            <th><b>Equipo</b></th>
-                            <th><b>Model</b></th>
+                            <th><b>{% trans "WEBSITE___CONTENT___HOME___CONTENT___TABLE___Equipment" %}</b></th>
+                            <th><b>{% trans "WEBSITE___CONTENT___HOME___CONTENT___TABLE___Model" %}</b></th>
                             <th><b>#</b></th>
-                            <th><b>Processor</b></th>
-                            <th><b>Cores</b></th>
+                            <th><b>{% trans "WEBSITE___CONTENT___HOME___CONTENT___TABLE___Processor" %}</b></th>
+                            <th><b>{% trans "WEBSITE___CONTENT___HOME___CONTENT___TABLE___Cores" %}</b></th>
                             <th><b>RAM</b></th>
                             <th><b>NIC</b></th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
-                            <td>Nodos delgados</td>
+                            <td>{% trans "WEBSITE___CONTENT___HOME___CONTENT___TABLE___Thin_nodes" %}</td>
                             <td>HP Proliant SL230S Gen8 </td>
                             <td>32</td>
                             <td>2 x Intel Xeon E5-2600 (Gainestown or Nehalem-EP)</td>
@@ -136,7 +132,7 @@
                             <td>2 x 1 Ethernet&nbsp;<abbr style="cursor: help; border-bottom: 1px dotted;" title="Gigabyte">GB</abbr></td>
                         </tr>
                         <tr>
-                            <td>Nodos Gruesos</td>
+                            <td>{% trans "WEBSITE___CONTENT___HOME___CONTENT___TABLE___Thick_nodes" %}</td>
                             <td>DELL R730</td>
                             <td>1</td>
                             <td>2 x Intel Xeon E5-2630 v3 (Haswell)&nbsp;<br><br>2 x GPU Nvidia K80</td>
@@ -155,8 +151,7 @@
                         </tr>
                         </tbody>
                     </table>
-                    <span>El rendimiento teórico del sistema es de 3,90 TFLOPs de operaciones en CPU y 5,82 TFLOPs de
-                        operaciones en GPU.</span>
+                    <span>{% trans "WEBSITE___CONTENT___HOME___CONTENT___BIGDATA___Footer" %}</span>
                 </div>
             </div>
         </div>
