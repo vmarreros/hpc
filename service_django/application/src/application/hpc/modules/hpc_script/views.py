@@ -14,7 +14,7 @@ from ....security import (
     decorators as decorators___application___security,
     utils as utils___application___security
 )
-from ... import utils as utils___hpc
+from src.application.hpc import utils as utils___hpc
 from ... import ssh
 from ... import linux
 from ...slurm import CommandError

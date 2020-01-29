@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
-from django.conf.urls import include, url
+from django.urls import path, include
+
+app_name = 'website'
 
 urlpatterns = [
-    url(r'^website_home/', include('src.application.website.modules.website_home.urls', namespace='website_home')),
+    path('website_home/', include(('src.application.website.modules.website_home.urls', app_name), namespace='website_home')),
 ]

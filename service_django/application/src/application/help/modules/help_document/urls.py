@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
+from django.urls import path, re_path
+
 from . import views
-from django.conf.urls import url
+
+app_name = 'help_document'
 
 urlpatterns = [
-    url(regex=r'^$', view=views.index, name='index'),
-    url(regex=r'^list/$', view=views.list, name='list'),
-    url(regex=r'^content/(?P<pk>\d+)/$', view=views.content, name='content'),
+    path('', view=views.index, name='index'),
+    path('list/', view=views.list, name='list'),
+    re_path(r'^content/(?P<pk>\d+)/$', view=views.content, name='content'),
 ]

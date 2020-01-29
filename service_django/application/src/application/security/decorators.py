@@ -2,7 +2,7 @@
 from . import ldap, models, utils
 from django import http, shortcuts
 from django.contrib import messages
-from django.core import urlresolvers
+from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
 
@@ -21,10 +21,10 @@ def ___jsonresponse___not_permission___(request, ___application___security___fro
         dict___data[string___modal___modal] = utils.___html___template_modal___message___(request=request, ___application___security___from___module___=___application___security___from___module___)
         dict___data[string___modal___modal___message] = utils.___html___template_message___(request=request, ___application___security___from___module___=___application___security___from___module___)
         dict___data['___APPLICATION___SECURITY___USER___WITHOUT_PERMISSION___'] = True
-        dict___data['___APPLICATION___SECURITY___USER___URL_REDIRECT___'] = urlresolvers.reverse(utils.___APPLICATION___SECURITY___USER___URL_REVERSE___)
+        dict___data['___APPLICATION___SECURITY___USER___URL_REDIRECT___'] = reverse(utils.___APPLICATION___SECURITY___USER___URL_REVERSE___)
         return http.JsonResponse(dict___data)
     else:
-        return shortcuts.redirect(urlresolvers.reverse(utils.___APPLICATION___SECURITY___USER___URL_REVERSE___))
+        return shortcuts.redirect(reverse(utils.___APPLICATION___SECURITY___USER___URL_REVERSE___))
 
 
 def ___required___request_is_ajax___(function=None):
@@ -32,7 +32,7 @@ def ___required___request_is_ajax___(function=None):
         def _view(request, *args, **kwargs):
             if request.is_ajax():
                 return view_func(request, *args, **kwargs)
-            return shortcuts.redirect(urlresolvers.reverse(utils.___APPLICATION___SECURITY___USER___URL_REVERSE___))
+            return shortcuts.redirect(reverse(utils.___APPLICATION___SECURITY___USER___URL_REVERSE___))
 
         return _view
 

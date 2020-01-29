@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from . import views
-from django.conf.urls import url
+from django.urls import path
 
 urlpatterns = [
-    url(regex=r'^$', view=views.index, name='index'),
+    path('', view=views.index, name='index'),
 ]

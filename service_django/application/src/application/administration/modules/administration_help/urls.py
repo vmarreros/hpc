@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
-from django.conf.urls import include, url
+from django.urls import path, include
+
+app_name = 'administration'
 
 urlpatterns = [
-    url(r'^document/', include('src.application.administration.modules.administration_help.document.urls', namespace='document')),
+    path('document/', include(('src.application.administration.modules.administration_help.document.urls', app_name), namespace='document')),
 ]

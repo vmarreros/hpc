@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
+from django.urls import path, re_path
+
 from . import views
-from django.conf.urls import url
 
 urlpatterns = [
-    url(regex=r'^$', view=views.index, name='index'),
-    url(regex=r'^list/$', view=views.list, name='list'),
-    url(regex=r'^list___tree/$', view=views.list___tree, name='list___tree'),
-    url(regex=r'^create/$', view=views.create, name='create'),
-    url(regex=r'^detail/(?P<pk>\d+)/$', view=views.detail, name='detail'),
-    url(regex=r'^update/(?P<pk>\d+)/$', view=views.update, name='update'),
-    url(regex=r'^delete/(?P<pk>\d+)/$', view=views.delete, name='delete'),
+    path('', view=views.index, name='index'),
+    path('list/', view=views.list, name='list'),
+    path('list___tree/', view=views.list___tree, name='list___tree'),
+    path('create/', view=views.create, name='create'),
+    re_path(r'^detail/(?P<pk>\d+)/$', view=views.detail, name='detail'),
+    re_path(r'^update/(?P<pk>\d+)/$', view=views.update, name='update'),
+    re_path(r'^delete/(?P<pk>\d+)/$', view=views.delete, name='delete'),
 ]

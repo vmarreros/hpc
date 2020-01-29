@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django import shortcuts
-from django.core import urlresolvers
+from django.urls import reverse
 
 
 def index(request):
-    return shortcuts.redirect(urlresolvers.reverse('website:index'))
+    return shortcuts.redirect(reverse('website:index'))

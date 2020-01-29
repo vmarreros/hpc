@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
-from django.conf.urls import include, url
+from django.urls import path, include
+
+app_name = 'administration'
 
 urlpatterns = [
-    url(r'^localuser/', include('src.application.administration.modules.administration_security.localuser.urls', namespace='localuser')),
-    url(r'^localuserrequest/', include('src.application.administration.modules.administration_security.localuserrequest.urls', namespace='localuserrequest')),
-    url(r'^ldapuser/', include('src.application.administration.modules.administration_security.ldapuser.urls', namespace='ldapuser')),
-    url(r'^ldapuserrequest/', include('src.application.administration.modules.administration_security.ldapuserrequest.urls', namespace='ldapuserrequest')),
-    url(r'^ldapuserimported/', include('src.application.administration.modules.administration_security.ldapuserimported.urls', namespace='ldapuserimported')),
-    url(r'^group/', include('src.application.administration.modules.administration_security.group.urls', namespace='group')),
-    url(r'^permission/', include('src.application.administration.modules.administration_security.permission.urls', namespace='permission')),
+    path('localuser/', include(('src.application.administration.modules.administration_security.localuser.urls', app_name), namespace='localuser')),
+    path('localuserrequest/', include(('src.application.administration.modules.administration_security.localuserrequest.urls', app_name), namespace='localuserrequest')),
+    path('ldapuser/', include(('src.application.administration.modules.administration_security.ldapuser.urls', app_name), namespace='ldapuser')),
+    path('ldapuserrequest/', include(('src.application.administration.modules.administration_security.ldapuserrequest.urls', app_name), namespace='ldapuserrequest')),
+    path('ldapuserimported/', include(('src.application.administration.modules.administration_security.ldapuserimported.urls', app_name), namespace='ldapuserimported')),
+    path('group/', include(('src.application.administration.modules.administration_security.group.urls', app_name), namespace='group')),
+    path('permission/', include(('src.application.administration.modules.administration_security.permission.urls', app_name), namespace='permission')),
 ]

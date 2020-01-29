@@ -61,10 +61,10 @@
                 </ul>
             </div>
             <div class="btn-group pull-right" role="group">
-                <a disabled class="btn btn-sm btn-primary visible-xs visible-sm" title="{% trans 'HPC___CONTENT___EXPLORER___BUTTONS___Download' %}" data-option="download-small" data-url="{% url "hpc:download" %}" data-loading-text="<span class='fa fa-spinner fa-pulse'></span>">
+                <a disabled class="btn btn-sm btn-primary visible-xs visible-sm" title="{% trans 'HPC___CONTENT___EXPLORER___BUTTONS___Download' %}" data-option="download-small" data-url="{% url "hpc:modules:hpc_explorer:download" %}" data-loading-text="<span class='fa fa-spinner fa-pulse'></span>">
                     <span class="fa fa-download fa-fw" aria-hidden="true"></span>
                 </a>
-                <a disabled class="btn btn-sm btn-primary hidden-xs hidden-sm" title="{% trans 'HPC___CONTENT___EXPLORER___BUTTONS___Download' %}" data-option="download" data-url="{% url "hpc:download" %}" data-loading-text="<span class='fa fa-spinner fa-pulse'></span> {% trans 'HPC___CONTENT___EXPLORER___BUTTONS___Download' %}">
+                <a disabled class="btn btn-sm btn-primary hidden-xs hidden-sm" title="{% trans 'HPC___CONTENT___EXPLORER___BUTTONS___Download' %}" data-option="download" data-url="{% url "hpc:modules:hpc_explorer:download" %}" data-loading-text="<span class='fa fa-spinner fa-pulse'></span> {% trans 'HPC___CONTENT___EXPLORER___BUTTONS___Download' %}">
                     <span class="fa fa-download fa-fw" aria-hidden="true"></span> <span>{% trans 'HPC___CONTENT___EXPLORER___BUTTONS___Download' %}</span>
                 </a>
                 <a class="btn btn-sm btn-default" title="{% trans 'HPC___CONTENT___EXPLORER___HEADER___BUTTONS___Upload' %}" data-option="upload" data-url="{% url "hpc:modules:hpc_explorer:upload" %}">

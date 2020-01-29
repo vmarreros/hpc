@@ -3,7 +3,7 @@ from . import forms, ldap, models, tasks, ssh
 from django import http
 from django.conf import settings
 from django.contrib import messages
-from django.core import urlresolvers
+from django.urls import reverse
 from django.template import loader
 from django.utils import translation
 from django.utils.translation import ugettext_lazy as _
@@ -587,7 +587,7 @@ def ___jsonresponse___logout___(request, ___application___security___from___modu
         request.___APPLICATION___SECURITY___USER___ = None
         messages.add_message(request, messages.SUCCESS, _('APPLICATION___SECURITY___LOGOUT___MESSAGE %(instance)s your session was successfully closed.') % {'instance': instance, })
         dict___data['___APPLICATION___SECURITY___USER___WITHOUT_PERMISSION___'] = True
-        dict___data['___APPLICATION___SECURITY___USER___URL_REDIRECT___'] = urlresolvers.reverse(___APPLICATION___SECURITY___USER___URL_REVERSE___)
+        dict___data['___APPLICATION___SECURITY___USER___URL_REDIRECT___'] = reverse(___APPLICATION___SECURITY___USER___URL_REVERSE___)
     else:
         dict___data['___BOOLEAN___IS_METHOD_POST___'] = False
     #

@@ -15,4 +15,4 @@ uwsgi \
         --threads=5 \
         --max-requests=5000 \
         --vacuum \
-        --python-autoreload=1 \
+        --python-autoreload=1

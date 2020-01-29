@@ -54,7 +54,7 @@ INSTALLED_APPS = [
 ]
 
 # Middleware
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'src.application.security.middleware.ApplicationSecurityMiddleware',
     'django.middleware.locale.LocaleMiddleware',

@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
+from django.urls import path
+
 from . import views
-from django.conf.urls import url
+
+app_name = 'bigdata_module01'
 
 urlpatterns = [
-    url(regex=r'^$', view=views.index, name='index'),
+    path('', view=views.index, name='index'),
 ]

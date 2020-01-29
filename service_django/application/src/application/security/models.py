@@ -365,9 +365,11 @@ class LOCALUserGroupManager(models.Manager):
 class LOCALUserGroup(models.Model):
     localuser = models.ForeignKey(
         'LOCALUser',
+        on_delete=models.CASCADE
     )
     group = models.ForeignKey(
         'Group',
+        on_delete=models.CASCADE
     )
     is_active = models.BooleanField(
         default=True,
@@ -401,9 +403,11 @@ class LOCALUserPermissionManager(models.Manager):
 class LOCALUserPermission(models.Model):
     localuser = models.ForeignKey(
         'LOCALUser',
+        on_delete=models.CASCADE
     )
     permission = models.ForeignKey(
         'Permission',
+        on_delete=models.CASCADE
     )
     is_active = models.BooleanField(
         default=True,
@@ -1089,9 +1093,11 @@ class LDAPUserGroupManager(models.Manager):
 class LDAPUserGroup(models.Model):
     ldapuser = models.ForeignKey(
         'LDAPUser',
+        on_delete=models.CASCADE
     )
     group = models.ForeignKey(
         'Group',
+        on_delete=models.CASCADE
     )
     is_active = models.BooleanField(
         default=True,
@@ -1125,9 +1131,11 @@ class LDAPUserPermissionManager(models.Manager):
 class LDAPUserPermission(models.Model):
     ldapuser = models.ForeignKey(
         'LDAPUser',
+        on_delete=models.CASCADE
     )
     permission = models.ForeignKey(
         'Permission',
+        on_delete=models.CASCADE
     )
     is_active = models.BooleanField(
         default=True,
@@ -1307,9 +1315,11 @@ class GroupPermissionManager(models.Manager):
 class GroupPermission(models.Model):
     group = models.ForeignKey(
         'Group',
+        on_delete=models.CASCADE
     )
     permission = models.ForeignKey(
         'Permission',
+        on_delete=models.CASCADE
     )
     is_active = models.BooleanField(
         default=True,

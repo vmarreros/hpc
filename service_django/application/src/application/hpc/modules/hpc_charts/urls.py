@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
+from django.urls import path
+
 from . import views
-from django.conf.urls import url
 
 urlpatterns = [
-    url(regex=r'^nodes/$', view=views.nodes, name='nodes'),
-    url(regex=r'^nodes_json/$', view=views.nodes_json, name='nodes_json'),
-    url(regex=r'^jobs/$', view=views.jobs, name='jobs'),
-    url(regex=r'^users/$', view=views.users, name='users'),
+    path('nodes/', view=views.nodes, name='nodes'),
+    path('nodes_json/', view=views.nodes_json, name='nodes_json'),
+    path('jobs/', view=views.jobs, name='jobs'),
+    path('users/', view=views.users, name='users'),
 ]

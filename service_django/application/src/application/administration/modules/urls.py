@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
-from django.conf.urls import include, url
+from django.urls import path, include
+
+app_name = 'administration'
 
 urlpatterns = [
-    url(r'^administration_security/', include('src.application.administration.modules.administration_security.urls', namespace='administration_security')),
-    url(r'^administration_software/', include('src.application.administration.modules.administration_software.urls', namespace='administration_software')),
-    url(r'^administration_help/', include('src.application.administration.modules.administration_help.urls', namespace='administration_help')),
+    path('administration_security/', include(('src.application.administration.modules.administration_security.urls', app_name), namespace='administration_security')),
+    path('administration_software/', include(('src.application.administration.modules.administration_software.urls', app_name), namespace='administration_software')),
+    path('administration_help/', include(('src.application.administration.modules.administration_help.urls', app_name), namespace='administration_help')),
 ]

@@ -2,8 +2,14 @@ from . import models, utils
 from django.utils import translation
 
 
-class ApplicationSecurityMiddleware(object):
-    def process_request(self, request):
+class ApplicationSecurityMiddleware:
+    def __init__(self, get_response):
+        self.get_response = get_response
+        # One-time configuration and initialization.
+
+    def __call__(self, request):
+        # Code to be executed for each request before
+        # the view (and later middleware) are called.
         instance = None
         if request.session.get('___APPLICATION___SECURITY___USER___MODEL___') and (request.session.get('___APPLICATION___SECURITY___USER___PK___')):
             if request.session.get('___APPLICATION___SECURITY___USER___MODEL___') == utils.___APPLICATION___SECURITY___USER___MODEL___LOCALUSER___:
@@ -51,5 +57,9 @@ class ApplicationSecurityMiddleware(object):
             else:
                 request.session['___APPLICATION___SECURITY___USER___URL_CURRENT___'] = request.path
 
-    def process_response(self, request, response):
+        response = self.get_response(request)
+
+        # Code to be executed for each request/response after
+        # the view is called.
+
         return response

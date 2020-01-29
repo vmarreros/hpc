@@ -3,4 +3,4 @@
 # The module to administrate
 # 'administration_home'
 # The module path to administrate
-___MODULE_PATH___ = 'administration_home'
+___MODULE_PATH___ = 'administration_software'

@@ -3,7 +3,6 @@ from django import http
 from django.contrib import messages
 from django.template import loader
 from django.utils.translation import ugettext_lazy as _
-from django.core import urlresolvers
 import json
 
 ___APPLICATION___HPC___JOBS___URL_REVERSE___ = 'hpc:modules:hpc_jobs:queue'

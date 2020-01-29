@@ -1,20 +1,14 @@
 # -*- coding: utf-8 -*-
-import random
 
 # django modules import
-from django.conf import settings
-from django.core import serializers
 from django.http import HttpResponse, JsonResponse
-from django.utils import timezone
 
 # user modules import
-from src.application.statistic import models
 from src.application.security import (
     decorators as decorators___application___security,
     utils as utils___application___security
 )
-from ... import utils as utils___hpc
-from ... import ssh
+from src.application.hpc import utils as utils___hpc
 from ...slurm import Command, CommandError
 
 

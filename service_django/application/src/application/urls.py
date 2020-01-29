@@ -1,9 +1,10 @@
-from . import views
 from django.conf import settings
-from django.conf.urls import include, url
+from django.urls import include, path, re_path
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.views.i18n import javascript_catalog
+from django.views.i18n import JavaScriptCatalog
+
+from . import views
 
 js_info_dict = {
     'domain': 'djangojs',
@@ -11,16 +12,16 @@ js_info_dict = {
 }
 
 urlpatterns = [
-    url(regex=r'^$', view=views.index, name='application'),
-    url(r'^jsi18n/(?P<packages>\S+?)/$', javascript_catalog, js_info_dict, name='javascript-catalog'),
-    url(r'^captcha/', include('captcha.urls')),
-    url(r'^website/', include('src.application.website.urls', namespace='website')),
-    url(r'^hpc/', include('src.application.hpc.urls', namespace='hpc')),
-    url(r'^bigdata/', include('src.application.bigdata.urls', namespace='bigdata')),
-    url(r'^administration/', include('src.application.administration.urls', namespace='administration')),
-    url(r'^help/', include('src.application.help.urls', namespace='help')),
-    url(r'^secret/', admin.site.urls),
-    url(r'^admin/', include('admin_honeypot.urls', namespace='admin_honeypot')),
+    path('', view=views.index, name='application'),
+    path('jsi18n/', JavaScriptCatalog.as_view(), name='javascript-catalog'),
+    path('captcha/', include('captcha.urls')),
+    path('website/', include('src.application.website.urls', namespace='website')),
+    path('hpc/', include('src.application.hpc.urls', namespace='hpc')),
+    path('bigdata/', include('src.application.bigdata.urls', namespace='bigdata')),
+    path('administration/', include('src.application.administration.urls', namespace='administration')),
+    path('help/', include('src.application.help.urls', namespace='help')),
+    path('secret/', admin.site.urls),
+    path('admin/', include('admin_honeypot.urls', namespace='admin_honeypot')),
 ]
 
 if settings.DEBUG:
