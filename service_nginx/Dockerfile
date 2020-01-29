@@ -1,4 +1,4 @@
-FROM nginx:1.15.3
+FROM nginx:1.17.8
 
 ARG ENVIRONMENT
 

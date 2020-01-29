@@ -1,10 +1,10 @@
-FROM python:3.6
+FROM python:3.7
 
-RUN echo "deb http://repos.uclv.edu.cu/debian stretch main non-free contrib\n \
-deb http://repos.uclv.edu.cu/debian stretch-updates main non-free contrib\n \
-deb http://repos.uclv.edu.cu/debian-security stretch/updates main non-free contrib\n \
-deb http://repos.uclv.edu.cu/debian stretch-proposed-updates main non-free contrib\n \
-deb http://repos.uclv.edu.cu/debian stretch-backports main non-free contrib \
+RUN echo "deb http://repos.uclv.edu.cu/debian buster main non-free contrib\n \
+deb http://repos.uclv.edu.cu/debian buster-updates main non-free contrib\n \
+deb http://repos.uclv.edu.cu/debian-security buster/updates main non-free contrib\n \
+deb http://repos.uclv.edu.cu/debian buster-proposed-updates main non-free contrib\n \
+deb http://repos.uclv.edu.cu/debian buster-backports main non-free contrib \
 " > /etc/apt/sources.list
 
 ARG DEBIAN_FRONTEND=noninteractive

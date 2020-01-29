@@ -1,4 +1,4 @@
-FROM rabbitmq:3.7.7
+FROM rabbitmq:3.8.2
 
 ARG ENVIRONMENT
 
