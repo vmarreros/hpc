@@ -28,7 +28,7 @@ ALLOWED_HOSTS = ['*']
 
 WSGI_APPLICATION = 'wsgi.application'
 
-ROOT_URLCONF = 'src.application.urls'
+ROOT_URLCONF = 'src.apps.urls'
 
 # Installed applications
 INSTALLED_APPS = [
@@ -43,20 +43,20 @@ INSTALLED_APPS = [
     'admin_honeypot',
     'widget_tweaks',
     'captcha',
-    'src.application.security',
-    'src.application.help',
-    'src.application.home',
-    'src.application.website',
-    'src.application.statistic',
-    'src.application.hpc',
-    'src.application.bigdata',
-    'src.application.administration',
+    'src.apps.security',
+    'src.apps.help',
+    'src.apps.home',
+    'src.apps.website',
+    'src.apps.statistic',
+    'src.apps.hpc',
+    'src.apps.bigdata',
+    'src.apps.administration',
 ]
 
 # Middleware
 MIDDLEWARE = (
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'src.application.security.middleware.ApplicationSecurityMiddleware',
+    'src.apps.security.middleware.ApplicationSecurityMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -81,39 +81,39 @@ LANGUAGES = [
 
 # Directory that will host po and mo files
 LOCALE_PATHS = (
-    root('i18n/application/site/locale/site/locale'),
-    root('i18n/application/site/locale/header/locale'),
-    root('i18n/application/site/locale/leftside/locale'),
-    root('i18n/application/site/locale/footer/locale'),
+    root('i18n/apps/site/locale/site/locale'),
+    root('i18n/apps/site/locale/header/locale'),
+    root('i18n/apps/site/locale/leftside/locale'),
+    root('i18n/apps/site/locale/footer/locale'),
     #
-    root('i18n/application/security/locale/security/locale'),
+    root('i18n/apps/security/locale/security/locale'),
     #
-    root('i18n/application/website/locale/website___content/locale'),
-    root('i18n/application/website/locale/website___content___homepage/locale'),
+    root('i18n/apps/website/locale/website___content/locale'),
+    root('i18n/apps/website/locale/website___content___homepage/locale'),
     #
-    root('i18n/application/help/locale/help___content/locale'),
+    root('i18n/apps/help/locale/help___content/locale'),
     #
-    root('i18n/application/hpc/locale/hpc___content/locale'),
-    root('i18n/application/hpc/locale/hpc___content___explorer/locale'),
-    root('i18n/application/hpc/locale/hpc___content___jobs/locale'),
-    root('i18n/application/hpc/locale/hpc___content___software/locale'),
-    root('i18n/application/hpc/locale/hpc___content___nodes/locale'),
-    root('i18n/application/hpc/locale/hpc___content___script/locale'),
-    root('i18n/application/hpc/locale/hpc___ssh/locale'),
+    root('i18n/apps/hpc/locale/hpc___content/locale'),
+    root('i18n/apps/hpc/locale/hpc___content___explorer/locale'),
+    root('i18n/apps/hpc/locale/hpc___content___jobs/locale'),
+    root('i18n/apps/hpc/locale/hpc___content___software/locale'),
+    root('i18n/apps/hpc/locale/hpc___content___nodes/locale'),
+    root('i18n/apps/hpc/locale/hpc___content___script/locale'),
+    root('i18n/apps/hpc/locale/hpc___ssh/locale'),
     #
-    root('i18n/application/bigdata/locale/bigdata___content/locale'),
-    root('i18n/application/bigdata/locale/bigdata___content___module01/locale'),
+    root('i18n/apps/bigdata/locale/bigdata___content/locale'),
+    root('i18n/apps/bigdata/locale/bigdata___content___module01/locale'),
     #
-    root('i18n/application/administration/locale/administration___content/locale'),
-    root('i18n/application/administration/locale/administration___content___security___localuser/locale'),
-    root('i18n/application/administration/locale/administration___content___security___localuserrequest/locale'),
-    root('i18n/application/administration/locale/administration___content___security___ldapuser/locale'),
-    root('i18n/application/administration/locale/administration___content___security___ldapuserrequest/locale'),
-    root('i18n/application/administration/locale/administration___content___security___ldapuserimported/locale'),
-    root('i18n/application/administration/locale/administration___content___security___group/locale'),
-    root('i18n/application/administration/locale/administration___content___security___permission/locale'),
-    root('i18n/application/administration/locale/administration___content___hpc___software/locale'),
-    root('i18n/application/administration/locale/administration___content___help___document/locale'),
+    root('i18n/apps/administration/locale/administration___content/locale'),
+    root('i18n/apps/administration/locale/administration___content___security___localuser/locale'),
+    root('i18n/apps/administration/locale/administration___content___security___localuserrequest/locale'),
+    root('i18n/apps/administration/locale/administration___content___security___ldapuser/locale'),
+    root('i18n/apps/administration/locale/administration___content___security___ldapuserrequest/locale'),
+    root('i18n/apps/administration/locale/administration___content___security___ldapuserimported/locale'),
+    root('i18n/apps/administration/locale/administration___content___security___group/locale'),
+    root('i18n/apps/administration/locale/administration___content___security___permission/locale'),
+    root('i18n/apps/administration/locale/administration___content___hpc___software/locale'),
+    root('i18n/apps/administration/locale/administration___content___help___document/locale'),
 )
 
 DATABASES = {
