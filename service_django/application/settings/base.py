@@ -26,6 +26,7 @@ SECRET_KEY = get_env_variable('DJANGO_SECRET_KEY')
 
 ALLOWED_HOSTS = ['*']
 
+ASGI_APPLICATION = 'routing.application'
 WSGI_APPLICATION = 'wsgi.application'
 
 ROOT_URLCONF = 'src.apps.urls'
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
     'admin_honeypot',
     'widget_tweaks',
     'captcha',
+    'channels',
     'src.apps.security',
     'src.apps.help',
     'src.apps.home',
@@ -50,6 +52,7 @@ INSTALLED_APPS = [
     'src.apps.statistic',
     'src.apps.hpc',
     'src.apps.bigdata',
+    'src.apps.terminal',
     'src.apps.administration',
 ]
 

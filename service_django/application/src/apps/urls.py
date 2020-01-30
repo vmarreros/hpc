@@ -18,6 +18,7 @@ urlpatterns = [
     path('website/', include('src.apps.website.urls', namespace='website')),
     path('hpc/', include('src.apps.hpc.urls', namespace='hpc')),
     path('bigdata/', include('src.apps.bigdata.urls', namespace='bigdata')),
+    path('terminal/', include('src.apps.terminal.urls', namespace='terminal')),
     path('administration/', include('src.apps.administration.urls', namespace='administration')),
     path('help/', include('src.apps.help.urls', namespace='help')),
     path('secret/', admin.site.urls),

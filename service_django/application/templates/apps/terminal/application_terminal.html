@@ -1,0 +1,39 @@
+{% load staticfiles %}
+{% now "YmdHis" as ctx___now %}
+{% spaceless %}
+    <!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <title>Terminal</title>
+
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+            <meta charset="utf-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <!-- favicon -->
+            <link rel="shortcut icon" href="{% static 'apps/website/img/favicon/favicon.png' %}?{{ ctx___now }}" type="image/png">
+            <link rel="stylesheet" href="{% static "vendors/xterm/xterm.css" %}"/>
+            <link rel="stylesheet" href="{% static "vendors/xterm/style.css" %}"/>
+            <script>
+                function checkwindow() {
+                    event.returnValue=false;
+                }
+            </script>
+        </head>
+        <body>
+            <div id="django-webssh-terminal">
+                <div id="terminal"></div>
+            </div>
+            <!-- jQuery -->
+            <script src="{% static "vendors/jquery/jquery.min.js" %}?{{ ctx___now }}"></script>
+            <!-- xTerm -->
+            <script src="{% static "vendors/xterm/xterm.js" %}?{{ ctx___now }}"></script>
+            <script src="{% static "apps/terminal/webssh.js" %}?{{ ctx___now }}"></script>
+            <script>
+                websocket()
+                websocket()
+                websocket()
+            </script>
+        </body>
+    </html>
+{% endspaceless %}

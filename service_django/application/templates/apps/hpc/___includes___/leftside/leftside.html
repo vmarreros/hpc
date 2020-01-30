@@ -43,7 +43,7 @@
             {% url "hpc:modules:hpc_software:installed" as url %}
             <a data-url="{{ url }}" class="LINK___application___hpc___content___center___reload {% if url == request|___get_string___application___security___user___url_current___ %}active{% endif %}"><span class="fa fa-archive fa-fw" aria-hidden="true"></span> {% trans "HPC___LEFTSIDE___Modules" %}</a>
         </li>
-        <li>
+        {% comment %}<li>
             <a href=""><span class="fa fa-bar-chart fa-fw" aria-hidden="true"></span> {% trans 'HPC___LEFTSIDE___Charts' %}<span class="fa arrow" aria-hidden="true"></span></a>
             <ul class="nav nav___second_level">
                 <li>
@@ -59,12 +59,6 @@
                     <a data-url="{{ url }}" class="LINK___application___hpc___content___center___reload {% if url == request|___get_string___application___security___user___url_current___ %}active{% endif %}"><span class="fa fa-user fa-fw" aria-hidden="true"></span> {% trans "HPC___LEFTSIDE___Users" %}</a>
                 </li>
             </ul>
-        </li>
-        {% comment %}
-        <li>
-            {% url "hpc:modules:hpc_nodes:index" as url %}
-            <a data-url="{{ url }}" class="LINK___application___hpc___content___center___reload {% if url == request|___get_string___application___security___user___url_current___ %}active{% endif %}"><span class="fa fa-terminal fa-fw" aria-hidden="true"></span> {% trans "APPLICATION___HPC___LEFTSIDE___NAV___MODULE___TERMINAL" %}</a>
-        </li>
-        {% endcomment %}
+        </li>{% endcomment %}
     </ul>
 {% endif %}
