@@ -32,21 +32,6 @@
     padding :0;
 }
 
-@media (max-width :767px)
-{
-    /*#application___website___content___center #center___header
-    {
-        margin  :10px 0;
-        padding :0 5px 5px 5px;
-    }
-
-    #application___website___content___center #center___content
-    {
-        margin :10px;
-    }*/
-}
-
-
 #application___website___content___center #center___header {
     margin: 30px 0 30px 0;
     padding-bottom: 30px;
@@ -89,5 +74,5 @@
     font-size: 15px;
 }
 #application___website___content___center #center___content .cluster {
-    margin: 25px 0 25px 0;
+    margin: 25px 0 35px 0;
 }

@@ -10,6 +10,13 @@
     }
 }
 
+@media (max-width :991px) {
+    #application___website___content___footer #support,
+    #application___website___content___footer #developed {
+        margin-top: 40px
+    }
+}
+
 #application___help___content___footer #footer__banner {
     padding          :20px;
     background: white;
