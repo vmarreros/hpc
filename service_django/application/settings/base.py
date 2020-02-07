@@ -117,6 +117,7 @@ LOCALE_PATHS = (
     root('i18n/apps/administration/locale/administration___content___security___permission/locale'),
     root('i18n/apps/administration/locale/administration___content___hpc___software/locale'),
     root('i18n/apps/administration/locale/administration___content___help___document/locale'),
+    root('i18n/apps/notifications/locale'),
 )
 
 DATABASES = {

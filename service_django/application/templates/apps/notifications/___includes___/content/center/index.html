@@ -4,27 +4,16 @@
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
         <h5 id="center___header" style="padding: 10px 0 20px 0">
-            <strong><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> {% trans "Tus notificaciones" %}</strong>
+            <strong><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> {% trans "NOTIFICATIONS___CONTENT___NOTIFICATIONS" %}</strong>
         </h5>
     </div>
 </div>
-
-<style>
-    .list-group > div.list-group-item.active {
-        background-color: #F7F7F7;
-        border: 1px solid #ddd;
-        color: #333;
-    }
-    .list-group > div.list-group-item:hover {
-        background-color: #EEEEEE !important;
-    }
-</style>
 
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
         <div id="center___content" class="container-fluid">
             {% if alerts %}
-            <p style='font-size: 12px' class="hidden list-group-message">Se ha eliminado la notificacion.</p>
+            <p style='font-size: 12px' class="hidden list-group-message">{% trans "NOTIFICATIONS___CONTENT___ALERT___DELETED" %}</p>
             <div class="list-group">
                 {% for alert in alerts %}
                 <div class="list-group-item {% if alert.unread %}active{% endif %}">
@@ -44,15 +33,27 @@
                     <div class="dropdown" style="position: absolute; right: 10px; top: 5px; overflow: visible">
                         <span class="btn btn-sm dropdown-toggle dropup" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-option-horizontal"></span></span></span>
                         <ul class="dropdown-menu dropdown-menu-right">
-                            <li><a class="LINK___alert___delete" data-url="{% url "notifications:modules:alerts:delete" alert.pk %}">Eliminar notificacion</a></li>
-                            <li><a class="LINK___alert___unread" data-url="{% url "notifications:modules:alerts:unread" alert.pk %}" onclick="$(this).parent().parent().parent().parent().removeClass('unread')">Marcar como leido</a></li>
+                            <li>
+                                <a class="LINK___alert___delete" data-url="{% url "notifications:modules:alerts:delete" alert.pk %}">
+                                    {% trans "NOTIFICATIONS___CONTENT___ALERT___DELETE" %}
+                                </a>
+                            </li>
+                            <li>
+                                <a class="LINK___alert___unread" data-url="{% url "notifications:modules:alerts:unread" alert.pk %}">
+                                    {% if alert.unread %}
+                                        {% trans "NOTIFICATIONS___CONTENT___ALERT___READ" %}
+                                    {% else %}
+                                        {% trans "NOTIFICATIONS___CONTENT___ALERT___UNREAD" %}
+                                    {% endif %}
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
                 {% endfor %}
             </div>
             {% else %}
-                <span>No tienes notificaciones</span>
+                <p style='font-size: 12px'>{% trans "NOTIFICATIONS___CONTENT___ALERTS___EMPTY" %}</p>
             {% endif %}
         </div>
     </div>

@@ -45,3 +45,11 @@
     }
 }
 */
+#application___notifications___content .list-group > div.list-group-item.active {
+    background-color: #F7F7F7;
+    border: 1px solid #ddd;
+    color: #333;
+}
+#application___notifications___content .list-group > div.list-group-item:hover {
+    background-color: #EEEEEE !important;
+}

@@ -7,7 +7,7 @@
             <button type="button" class="btn btn-sm btn-default close LINK___modal___action_close" data-dismiss="modal" aria-label="Close" title="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
-            <h4 class="modal-title"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> {% trans "Detalle de notificacion" %}</h4>
+            <h4 class="modal-title"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> {% trans "ADMINISTRATION___CONTENT___ACTION_DETAIL" %} <strong>&OpenCurlyDoubleQuote;{% trans "NOTIFICATIONS___CONTENT___ALERT" %}&CloseCurlyDoubleQuote;</strong></h4>
         </div>
         <div class="modal-body">
             <!-- Modal Menssage -->
@@ -25,30 +25,25 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <th><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span></th>
-                        <td>Tipo</td>
-                        <td>{{ alert.level }}</td>
-                    </tr>
-                    <tr>
                         <th><span class="glyphicon glyphicon-user" aria-hidden="true"></span></th>
-                        <td>From</td>
+                        <td>{% trans "NOTIFICATIONS___CONTENT___ALERTS___FROM" %}</td>
                         <td>
                             <img alt="profile" data-toggle="tooltip" title="{{ alert.from_user }} ({{ alert.from_user.group_identifier }})" width="30px" src="{{ alert.from_user|get_string_notification_user_avatar_url }}" class="img-circle"/>
                         </td>
                     </tr>
                     <tr>
                         <th><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></th>
-                        <td>Asunto</td>
+                        <td>{% trans "NOTIFICATIONS___CONTENT___ALERTS___SUBJECT" %}</td>
                         <td>{{ alert.subject }}</td>
                     </tr>
                     <tr>
                         <th><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></th>
-                        <td>Mensaje</td>
+                        <td>{% trans "NOTIFICATIONS___CONTENT___ALERTS___MESSAGE" %}</td>
                         <td>{{ alert.message }}</td>
                     </tr>
                     <tr>
                         <th><span class="glyphicon glyphicon-time" aria-hidden="true"></span></th>
-                        <td>Recibido</td>
+                        <td>{% trans "NOTIFICATIONS___CONTENT___ALERTS___DATE" %}</td>
                         <td>{{ alert.created }}</td>
                     </tr>
                     </tbody>
