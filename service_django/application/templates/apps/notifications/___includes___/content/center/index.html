@@ -1,0 +1,59 @@
+{% load i18n staticfiles %}
+{% load application___security %}
+
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <h5 id="center___header" style="padding: 10px 0 20px 0">
+            <strong><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> {% trans "Tus notificaciones" %}</strong>
+        </h5>
+    </div>
+</div>
+
+<style>
+    .list-group > div.list-group-item.active {
+        background-color: #F7F7F7;
+        border: 1px solid #ddd;
+        color: #333;
+    }
+    .list-group > div.list-group-item:hover {
+        background-color: #EEEEEE !important;
+    }
+</style>
+
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <div id="center___content" class="container-fluid">
+            {% if alerts %}
+            <p style='font-size: 12px' class="hidden list-group-message">Se ha eliminado la notificacion.</p>
+            <div class="list-group">
+                {% for alert in alerts %}
+                <div class="list-group-item {% if alert.unread %}active{% endif %}">
+                    <div style="margin-right: 40px; cursor: pointer;" data-url="{% url "notifications:modules:alerts:detail" alert.pk %}" class="LINK___modal___reload">
+                        <div class="pull-left">
+                            <img data-toggle="tooltip" title="{{ alert.from_user }} ({{ alert.from_user.group_identifier }})" width="30px" src="{{ alert.from_user|get_string_notification_user_avatar_url }}" class="img-circle"/>
+                        </div>
+                        <div style="margin-left: 40px">
+                            <span style="font-size: 13px"><strong>{{ alert.subject }}</strong></span>
+                            <p style="font-size: 12px">{% ifequal alert.message alert.message|stringformat:".100s" %}{{ alert.message }}{% else %}{{ alert.message|stringformat:".100s" }}...{% endifequal %}</p>
+                            <div class="clearfix">
+                                <span class="text-muted small">{{ alert.timesince }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single button -->
+                    <div class="dropdown" style="position: absolute; right: 10px; top: 5px; overflow: visible">
+                        <span class="btn btn-sm dropdown-toggle dropup" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-option-horizontal"></span></span></span>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li><a class="LINK___alert___delete" data-url="{% url "notifications:modules:alerts:delete" alert.pk %}">Eliminar notificacion</a></li>
+                            <li><a class="LINK___alert___unread" data-url="{% url "notifications:modules:alerts:unread" alert.pk %}" onclick="$(this).parent().parent().parent().parent().removeClass('unread')">Marcar como leido</a></li>
+                        </ul>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+                <span>No tienes notificaciones</span>
+            {% endif %}
+        </div>
+    </div>
+</div>

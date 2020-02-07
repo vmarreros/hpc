@@ -1,11 +1,7 @@
-# -*- coding: utf-8 -*-
-# django modules import
 from django.contrib import messages
 
-# python libraries import
 import json
 
-# user modules import
 from .ssh import ssh_exec
 
 
@@ -22,7 +18,7 @@ class CommandError(Exception):
 
 class Command:
     def __init__(self, request, action, *args):
-        self.instance = request.___APPLICATION___SECURITY___USER___
+        self.instance = request.security_user
         self.action = action
         if args:
             self.args = args

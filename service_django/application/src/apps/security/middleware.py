@@ -12,16 +12,16 @@ class ApplicationSecurityMiddleware:
         # the view (and later middleware) are called.
         instance = None
         if request.session.get('___APPLICATION___SECURITY___USER___MODEL___') and (request.session.get('___APPLICATION___SECURITY___USER___PK___')):
-            if request.session.get('___APPLICATION___SECURITY___USER___MODEL___') == utils.___APPLICATION___SECURITY___USER___MODEL___LOCALUSER___:
+            if request.session.get('___APPLICATION___SECURITY___USER___MODEL___') == utils.security_user_localuser:
                 instance = models.LOCALUser.objects.___instance___by_pk___(pk=request.session.get('___APPLICATION___SECURITY___USER___PK___'))
-            if request.session.get('___APPLICATION___SECURITY___USER___MODEL___') == utils.___APPLICATION___SECURITY___USER___MODEL___LDAPUSER___:
+            if request.session.get('___APPLICATION___SECURITY___USER___MODEL___') == utils.security_user_ldapuser:
                 instance = models.LDAPUser.objects.___instance___by_pk___(pk=request.session.get('___APPLICATION___SECURITY___USER___PK___'))
-            if request.session.get('___APPLICATION___SECURITY___USER___MODEL___') == utils.___APPLICATION___SECURITY___USER___MODEL___LDAPUSERIMPORTED___:
+            if request.session.get('___APPLICATION___SECURITY___USER___MODEL___') == utils.security_user_ldapuserimported:
                 instance = models.LDAPUserImported.objects.___instance___by_pk___(pk=request.session.get('___APPLICATION___SECURITY___USER___PK___'))
             if instance is not None:
                 translation.activate(instance.locale)
                 request.session[translation.LANGUAGE_SESSION_KEY] = instance.locale
-        request.___APPLICATION___SECURITY___USER___ = instance
+        request.security_user = instance
         #
         list_string___url = (
             '/website/',
@@ -46,6 +46,7 @@ class ApplicationSecurityMiddleware:
             '/administration/modules/administration_help/document/',
             '/help/',
             '/help/modules/help_document/',
+            '/notifications/',
         )
         if request.path in list_string___url:
             if request.path == '/website/':

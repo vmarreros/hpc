@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from . import ldap, models, utils
 from django import http, shortcuts
 from django.contrib import messages
@@ -6,7 +5,7 @@ from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
 
-def ___jsonresponse___not_permission___(request, ___application___security___from___module___):
+def jsonresponse_not_permission(request, ___application___security___from___module___):
     if request.is_ajax():
         dict___data = dict()
         dict___data['___BOOLEAN___ERROR___'] = True
@@ -21,18 +20,18 @@ def ___jsonresponse___not_permission___(request, ___application___security___fro
         dict___data[string___modal___modal] = utils.___html___template_modal___message___(request=request, ___application___security___from___module___=___application___security___from___module___)
         dict___data[string___modal___modal___message] = utils.___html___template_message___(request=request, ___application___security___from___module___=___application___security___from___module___)
         dict___data['___APPLICATION___SECURITY___USER___WITHOUT_PERMISSION___'] = True
-        dict___data['___APPLICATION___SECURITY___USER___URL_REDIRECT___'] = reverse(utils.___APPLICATION___SECURITY___USER___URL_REVERSE___)
+        dict___data['___APPLICATION___SECURITY___USER___URL_REDIRECT___'] = reverse(utils.security_user_url_reverse)
         return http.JsonResponse(dict___data)
     else:
-        return shortcuts.redirect(reverse(utils.___APPLICATION___SECURITY___USER___URL_REVERSE___))
+        return shortcuts.redirect(reverse(utils.security_user_url_reverse))
 
 
-def ___required___request_is_ajax___(function=None):
+def ajax_required(function=None):
     def _decorator(view_func):
         def _view(request, *args, **kwargs):
             if request.is_ajax():
                 return view_func(request, *args, **kwargs)
-            return shortcuts.redirect(reverse(utils.___APPLICATION___SECURITY___USER___URL_REVERSE___))
+            return shortcuts.redirect(reverse(utils.security_user_url_reverse))
 
         return _view
 
@@ -42,12 +41,12 @@ def ___required___request_is_ajax___(function=None):
         return _decorator(function)
 
 
-def ___required___application___security___user___(function=None, ___application___security___from___module___=''):
+def required_security_user(function=None, ___application___security___from___module___=''):
     def _decorator(view_func):
         def _view(request, *args, **kwargs):
-            if request.___APPLICATION___SECURITY___USER___ is not None:
+            if request.security_user is not None:
                 return view_func(request, *args, **kwargs)
-            return ___jsonresponse___not_permission___(request=request, ___application___security___from___module___=___application___security___from___module___)
+            return jsonresponse_not_permission(request=request, ___application___security___from___module___=___application___security___from___module___)
 
         return _view
 
@@ -57,13 +56,13 @@ def ___required___application___security___user___(function=None, ___application
         return _decorator(function)
 
 
-def ___required___application___security___user___has_permission___(function=None, ___application___security___from___module___='', set_identifier___to_verify=set()):
+def security_user_has_permission(function=None, ___application___security___from___module___='', set_identifier___to_verify=set()):
     def _decorator(view_func):
-        @___required___application___security___user___(___application___security___from___module___=___application___security___from___module___)
+        @required_security_user(___application___security___from___module___=___application___security___from___module___)
         def _view(request, *args, **kwargs):
-            if request.___APPLICATION___SECURITY___USER___.is_superuser is True or request.___APPLICATION___SECURITY___USER___.___boolean___has_permission___(set_identifier___to_verify=set_identifier___to_verify):
+            if request.security_user.is_superuser is True or request.security_user.___boolean___has_permission___(set_identifier___to_verify=set_identifier___to_verify):
                 return view_func(request, *args, **kwargs)
-            return ___jsonresponse___not_permission___(request=request, ___application___security___from___module___=___application___security___from___module___)
+            return jsonresponse_not_permission(request=request, ___application___security___from___module___=___application___security___from___module___)
 
         return _view
 
@@ -73,13 +72,13 @@ def ___required___application___security___user___has_permission___(function=Non
         return _decorator(function)
 
 
-def ___required___application___security___user___is_localuser___(function=None, ___application___security___from___module___=''):
+def security_user_is_localuser(function=None, ___application___security___from___module___=''):
     def _decorator(view_func):
-        @___required___application___security___user___()
+        @required_security_user()
         def _view(request, *args, **kwargs):
-            if isinstance(request.___APPLICATION___SECURITY___USER___, models.LOCALUser):
+            if isinstance(request.security_user, models.LOCALUser):
                 return view_func(request, *args, **kwargs)
-            return ___jsonresponse___not_permission___(request=request, ___application___security___from___module___=___application___security___from___module___)
+            return jsonresponse_not_permission(request=request, ___application___security___from___module___=___application___security___from___module___)
 
         return _view
 
@@ -89,13 +88,13 @@ def ___required___application___security___user___is_localuser___(function=None,
         return _decorator(function)
 
 
-def ___required___application___security___user___is_ldapuser_or_ldapuserimported___(function=None, ___application___security___from___module___=''):
+def security_user_is_ldapuser_or_ldapuserimported(function=None, ___application___security___from___module___=''):
     def _decorator(view_func):
-        @___required___application___security___user___()
+        @required_security_user()
         def _view(request, *args, **kwargs):
-            if isinstance(request.___APPLICATION___SECURITY___USER___, models.LDAPUser) or isinstance(request.___APPLICATION___SECURITY___USER___, models.LDAPUserImported):
+            if isinstance(request.security_user, models.LDAPUser) or isinstance(request.security_user, models.LDAPUserImported):
                 return view_func(request, *args, **kwargs)
-            return ___jsonresponse___not_permission___(request=request, ___application___security___from___module___=___application___security___from___module___)
+            return jsonresponse_not_permission(request=request, ___application___security___from___module___=___application___security___from___module___)
 
         return _view
 
@@ -105,13 +104,13 @@ def ___required___application___security___user___is_ldapuser_or_ldapuserimporte
         return _decorator(function)
 
 
-def ___required___application___security___user___is_ldapuser___(function=None, ___application___security___from___module___=''):
+def security_user_is_ldapuser(function=None, ___application___security___from___module___=''):
     def _decorator(view_func):
-        @___required___application___security___user___()
+        @required_security_user()
         def _view(request, *args, **kwargs):
-            if isinstance(request.___APPLICATION___SECURITY___USER___, models.LDAPUser):
+            if isinstance(request.security_user, models.LDAPUser):
                 return view_func(request, *args, **kwargs)
-            return ___jsonresponse___not_permission___(request=request, ___application___security___from___module___=___application___security___from___module___)
+            return jsonresponse_not_permission(request=request, ___application___security___from___module___=___application___security___from___module___)
 
         return _view
 
@@ -121,13 +120,13 @@ def ___required___application___security___user___is_ldapuser___(function=None, 
         return _decorator(function)
 
 
-def ___required___application___security___user___is_ldapuserimported___(function=None, ___application___security___from___module___=''):
+def security_user_is_ldapuserimported(function=None, ___application___security___from___module___=''):
     def _decorator(view_func):
-        @___required___application___security___user___()
+        @required_security_user()
         def _view(request, *args, **kwargs):
-            if isinstance(request.___APPLICATION___SECURITY___USER___, models.LDAPUserImported):
+            if isinstance(request.security_user, models.LDAPUserImported):
                 return view_func(request, *args, **kwargs)
-            return ___jsonresponse___not_permission___(request=request, ___application___security___from___module___=___application___security___from___module___)
+            return jsonresponse_not_permission(request=request, ___application___security___from___module___=___application___security___from___module___)
 
         return _view
 
@@ -137,7 +136,7 @@ def ___required___application___security___user___is_ldapuserimported___(functio
         return _decorator(function)
 
 
-def ___required___ldap_connection___(function=None, ___application___security___from___module___=''):
+def required_ldap_connection(function=None, ___application___security___from___module___=''):
     def _decorator(view_func):
         def _view(request, *args, **kwargs):
             boolean___is_there_connection = False

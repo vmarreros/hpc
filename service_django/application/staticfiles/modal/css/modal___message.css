@@ -1,0 +1,66 @@
+#site___modal .modal___message,
+#site___modal___modal .modal___message
+{
+    margin  :0;
+    padding :0;
+}
+
+#site___modal .modal___message .alert,
+#site___modal___modal .modal___message .alert
+{
+    margin        :0;
+    padding       :10px 15px 10px 10px;
+    border-radius :0;
+}
+
+#site___modal .modal___message .alert.alert-success,
+#site___modal___modal .modal___message .alert.alert-success
+{
+    background-color :#7ee87e;
+    border           :1px solid #7ee87e;
+}
+
+#site___modal .modal___message .alert.alert-danger,
+#site___modal___modal .modal___message .alert.alert-danger
+{
+    background-color :#f59090;
+    border           :1px solid #f59090;
+}
+
+#site___modal .modal___message .alert.alert-warning,
+#site___modal___modal .modal___message .alert.alert-warning
+{
+    background-color :#f9e996;
+    border           :1px solid #f9e996;
+}
+
+#site___modal .modal___message .alert.alert-info,
+#site___modal___modal .modal___message .alert.alert-info
+{
+    background-color :#b6dcef;
+    border           :1px solid #b6dcef;
+}
+
+#site___modal .modal___message .alert .alert___message,
+#site___modal___modal .modal___message .alert .alert___message
+{
+    margin  :0;
+    padding :0;
+}
+
+#site___modal .modal___message .alert .alert___message .alert___message___icon,
+#site___modal___modal .modal___message .alert .alert___message .alert___message___icon
+{
+    float   :left;
+    margin  :0;
+    padding :0;
+    color   :#2a3f54;
+}
+
+#site___modal .modal___message .alert .alert___message .alert___message___text,
+#site___modal___modal .modal___message .alert .alert___message .alert___message___text
+{
+    margin  :0 30px 0 30px;
+    padding :0;
+    color   :#2a3f54;
+}

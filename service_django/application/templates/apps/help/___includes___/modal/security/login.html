@@ -3,7 +3,7 @@
 <div class="modal-dialog modal-sm">
     <div class="modal-content">
         <div class="modal-header">
-            <button type="button" class="btn btn-sm btn-default close LINK___application___help___modal___action_close" data-dismiss="modal" aria-label="{% trans "APPLICATION___SECURITY___ACTION_CLOSE" %}" title="{% trans "APPLICATION___SECURITY___ACTION_CLOSE" %}">
+            <button type="button" class="btn btn-sm btn-default close LINK___modal___action_close" data-dismiss="modal" aria-label="{% trans "APPLICATION___SECURITY___ACTION_CLOSE" %}" title="{% trans "APPLICATION___SECURITY___ACTION_CLOSE" %}">
                 <span aria-hidden="true">&times;</span>
             </button>
             <h4 class="modal-title"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> {% trans "APPLICATION___SECURITY___LOGIN" %}</h4>
@@ -18,7 +18,7 @@
         </ul>
         <div class="tab-content">
             <div id="tab___ldapuserlogin" class="tab-pane fade in {% if ctx___tab___ldapuserlogin %}active{% endif %}">
-                <form method="post" action="{% url "help:login" %}?tab___ldapuserlogin=True" class="LINK___application___help___modal___action_login">
+                <form method="post" action="{% url "help:login" %}?tab___ldapuserlogin=True" class="LINK___modal___action_login">
                     {% csrf_token %}
                     <div class="modal-body">
                         <!-- Modal Menssage -->
@@ -92,12 +92,12 @@
                             <div id="{{ ctx___form___ldapuserlogin.ldap_group.field.widget.attrs.id }}_options">
                                 <div class="divider___transparent"></div>
                                 <div>
-                                    <a class="btn btn-link LINK___application___help___modal___modal___reload" data-url="{% url "help:login___forgot_credentials_1" %}?tab___ldapuserlogin___forgot_credentials=True">
+                                    <a class="btn btn-link LINK___modal___modal___reload" data-url="{% url "help:login___forgot_credentials_1" %}?tab___ldapuserlogin___forgot_credentials=True">
                                         <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> {% trans "APPLICATION___SECURITY___LOGIN___LINK___FORGOT_CREDENTIALS" %}
                                     </a>
                                 </div>
                                 <div>
-                                    <a class="btn btn-link LINK___application___help___modal___modal___reload" data-url="{% url "help:login___request" %}?tab___ldapuserlogin___request=True">
+                                    <a class="btn btn-link LINK___modal___modal___reload" data-url="{% url "help:login___request" %}?tab___ldapuserlogin___request=True">
                                         <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> {% trans "APPLICATION___SECURITY___LOGIN___LINK___REQUEST" %}
                                     </a>
                                 </div>
@@ -108,17 +108,17 @@
                         <button type="submit" class="btn btn-sm btn-primary pull-left" title="{% trans "APPLICATION___SECURITY___ACTION_LOGIN" %}">
                             <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> {% trans "APPLICATION___SECURITY___ACTION_LOGIN" %}
                         </button>
-                        <a class="btn btn-sm btn-default pull-left LINK___application___help___modal___action_refresh___security___login" data-url="{% url "help:login" %}?tab___ldapuserlogin=True" title="{% trans "APPLICATION___SECURITY___ACTION_REFRESH" %}">
+                        <a class="btn btn-sm btn-default pull-left LINK___modal___action_refresh___security___login" data-url="{% url "help:login" %}?tab___ldapuserlogin=True" title="{% trans "APPLICATION___SECURITY___ACTION_REFRESH" %}">
                             <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span><span class="hidden-xs"> {% trans "APPLICATION___SECURITY___ACTION_REFRESH" %}</span>
                         </a>
-                        <button type="button" class="btn btn-sm btn-default pull-left LINK___application___help___modal___action_close" data-dismiss="modal" title="{% trans "APPLICATION___SECURITY___ACTION_CLOSE" %}">
+                        <button type="button" class="btn btn-sm btn-default pull-left LINK___modal___action_close" data-dismiss="modal" title="{% trans "APPLICATION___SECURITY___ACTION_CLOSE" %}">
                             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span><span class="hidden-xs"> {% trans "APPLICATION___SECURITY___ACTION_CLOSE" %}</span>
                         </button>
                     </div>
                 </form>
             </div>
             <div id="tab___localuserlogin" class="tab-pane fade in {% if ctx___tab___localuserlogin %}active{% endif %}">
-                <form method="post" action="{% url "help:login" %}?tab___localuserlogin=True" class="LINK___application___help___modal___action_login">
+                <form method="post" action="{% url "help:login" %}?tab___localuserlogin=True" class="LINK___modal___action_login">
                     {% csrf_token %}
                     <div class="modal-body">
                         <!-- Modal Menssage -->
@@ -135,13 +135,13 @@
 
                             <div class="divider___transparent"></div>
                             <div>
-                                <a class="btn btn-link LINK___application___help___modal___modal___reload" data-url="{% url "help:login___forgot_credentials_1" %}?tab___localuserlogin___forgot_credentials=True">
+                                <a class="btn btn-link LINK___modal___modal___reload" data-url="{% url "help:login___forgot_credentials_1" %}?tab___localuserlogin___forgot_credentials=True">
                                     <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> {% trans "APPLICATION___SECURITY___LOGIN___LINK___FORGOT_CREDENTIALS" %}
                                 </a>
                             </div>
                             {% comment %}
                             <div>
-                                <a class="btn btn-link LINK___application___help___modal___modal___reload" data-url="{% url "help:login___request" %}?tab___localuserlogin___request=True">
+                                <a class="btn btn-link LINK___modal___modal___reload" data-url="{% url "help:login___request" %}?tab___localuserlogin___request=True">
                                     <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> {% trans "APPLICATION___SECURITY___LOGIN___LINK___REQUEST" %}
                                 </a>
                             </div>
@@ -152,10 +152,10 @@
                         <button type="submit" class="btn btn-sm btn-primary pull-left" title="{% trans "APPLICATION___SECURITY___ACTION_LOGIN" %}">
                             <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> {% trans "APPLICATION___SECURITY___ACTION_LOGIN" %}
                         </button>
-                        <a class="btn btn-sm btn-default pull-left LINK___application___help___modal___action_refresh___security___login" data-url="{% url "help:login" %}?tab___localuserlogin=True" title="{% trans "APPLICATION___SECURITY___ACTION_REFRESH" %}">
+                        <a class="btn btn-sm btn-default pull-left LINK___modal___action_refresh___security___login" data-url="{% url "help:login" %}?tab___localuserlogin=True" title="{% trans "APPLICATION___SECURITY___ACTION_REFRESH" %}">
                             <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span><span class="hidden-xs"> {% trans "APPLICATION___SECURITY___ACTION_REFRESH" %}</span>
                         </a>
-                        <button type="button" class="btn btn-sm btn-default pull-left LINK___application___help___modal___action_close" data-dismiss="modal" title="{% trans "APPLICATION___SECURITY___ACTION_CLOSE" %}">
+                        <button type="button" class="btn btn-sm btn-default pull-left LINK___modal___action_close" data-dismiss="modal" title="{% trans "APPLICATION___SECURITY___ACTION_CLOSE" %}">
                             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span><span class="hidden-xs"> {% trans "APPLICATION___SECURITY___ACTION_CLOSE" %}</span>
                         </button>
                     </div>

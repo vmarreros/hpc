@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from django.urls import path, re_path, include
 
 from . import views
@@ -21,6 +20,4 @@ urlpatterns = [
     path('logout/', view=views.logout, name='logout'),
     path('profile/', view=views.profile, name='profile'),
     path('locale/', view=views.locale, name='locale'),
-    #
-    path('modules/', include('src.apps.website.modules.urls', namespace='modules')),
 ]

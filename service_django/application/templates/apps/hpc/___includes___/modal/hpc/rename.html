@@ -4,7 +4,7 @@
     <div class="modal-content">
         <form method="post" action="{% url "hpc:modules:hpc_explorer:rename" %}" data-option="rename" class="hpc___modal___submit___rename">
             <div class="modal-header">
-                <button type="button" class="btn btn-sm btn-default close LINK___application___hpc___modal___action_close" data-dismiss="modal" aria-label="Close" title="Close">
+                <button type="button" class="btn btn-sm btn-default close LINK___modal___action_close" data-dismiss="modal" aria-label="Close" title="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
                 <h4 class="modal-title"><span class="fa fa-pencil fa-fw" aria-hidden="true"></span> {% trans 'HPC___EXPLORER___MODAL___RENAME___TITLE' %}</h4>
@@ -24,7 +24,7 @@
                 <button class="btn btn-sm btn-primary pull-left" disabled>
                     <span class="fa fa-pencil fa-fw" aria-hidden="true"></span> {% trans 'HPC___EXPLORER___MODAL___RENAME___FORM___SUBMIT' %}
                 </button>
-                <button class="btn btn-sm btn-default pull-left LINK___application___hpc___modal___action_close" data-dismiss="modal" title="{% trans "APPLICATION___SECURITY___ACTION_CLOSE" %}">
+                <button class="btn btn-sm btn-default pull-left LINK___modal___action_close" data-dismiss="modal" title="{% trans "APPLICATION___SECURITY___ACTION_CLOSE" %}">
                     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span><span class="hidden-xs"> {% trans "APPLICATION___SECURITY___ACTION_CLOSE" %}</span>
                 </button>
             </div>

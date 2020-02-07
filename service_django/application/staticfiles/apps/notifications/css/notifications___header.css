@@ -1,0 +1,239 @@
+#application___notifications___header
+{
+    height           :50px;
+    background-color :#6D002E;
+    border           :none;
+}
+
+@media (max-width :767px)
+{
+    #application___notifications___header
+    {
+        height :100px;
+    }
+}
+
+#application___notifications___header .application___notifications___load {
+    color :#ffffff !important;
+}
+
+#application___notifications___header .navbar-header .navbar-brand {
+    color: #ffffff;
+}
+
+#application___notifications___header .navbar-header .navbar-brand img {
+    max-height       :40px;
+}
+
+#application___notifications___header .navbar-toggle
+{
+    clear        :both;
+    margin-right :10px;
+    margin-left  :10px;
+    border       :1px solid #73879c;
+}
+
+#application___notifications___header .navbar-toggle .icon-bar
+{
+    background-color :#73879c;
+}
+
+#application___notifications___header .navbar-toggle:hover,
+#application___notifications___header .navbar-toggle:focus
+{
+    background-color :#73879c;
+}
+
+#application___notifications___header .navbar-toggle:hover .icon-bar,
+#application___notifications___header .navbar-toggle:focus .icon-bar
+{
+    background-color :#ffffff;
+}
+
+#application___notifications___header .header___links
+{
+    margin  :0;
+    padding :0;
+}
+
+#application___notifications___header .header___links a
+{
+    cursor :pointer;
+}
+
+#application___notifications___header .header___links > li
+{
+    display :inline-block;
+    float   :none;
+}
+
+#application___notifications___header .header___links > li:last-child
+{
+    margin-right :10px;
+}
+
+#application___notifications___header .header___links > li > a
+{
+    padding    :15px 10px;
+    min-height :50px;
+    color      :#ffffff;
+    cursor     :pointer;
+    font-size: 13px !important;
+    font-weight: bolder !important;
+}
+
+#application___notifications___header .header___links > li > a:hover,
+#application___notifications___header .header___links > li > a:focus,
+#application___notifications___header .header___links > li.open > a,
+#application___notifications___header .header___links > li.open > a:hover,
+#application___notifications___header .header___links > li.open > a:focus,
+#application___notifications___header .header___links > li.active > a
+{
+    background-color :transparent;
+    color            :#ffffff;
+}
+
+@media (min-width :768px) {
+    #application___notifications___header .header___links > li.active {
+        color: #ffffff;
+    }
+
+    #application___notifications___header .header___links > li.active:after {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 0;
+        margin-left: -5px;
+        vertical-align: middle;
+        content: " ";
+        border-right: 5px solid transparent;
+        border-bottom: 5px solid;
+        border-left: 5px solid transparent;
+    }
+}
+
+#application___notifications___header .header___links > li > a > img
+{
+    width         :30px;
+    height        :30px;
+    margin-top    :-6px;
+    margin-bottom :-6px;
+}
+
+#application___notifications___header .header___links > li:nth-child(3) > a > img
+{
+    width        :30px;
+    height       :20px;
+    border-radius:5px;
+}
+
+#application___notifications___header .header___links > li > a > span.badge
+{
+    margin-top       :-15px;
+    background-color :#ff0000;
+}
+
+#application___notifications___header .header___links > li.dropdown > ul.dropdown-menu
+{
+    position           :absolute;
+    right              :0;
+    left               :auto;
+    width              :100px;
+    margin             :0;
+    padding            :0;
+    min-width          :0;
+    background         :#ffffff;
+    border-top         :none;
+    border-right       :1px solid #2a3f54;
+    border-bottom      :1px solid #2a3f54;
+    border-left        :1px solid #2a3f54;
+    border-radius      :0 0 3px 3px;
+    -webkit-box-shadow :0 6px 12px rgba(0, 0, 0, .175);
+    box-shadow         :0 6px 12px rgba(0, 0, 0, .175);
+}
+
+#application___notifications___header .header___links > li.dropdown > ul.dropdown-menu > li
+{
+    display :block;
+    margin  :3px 5px;
+}
+
+#application___notifications___header .header___links > li.dropdown > ul.dropdown-menu > li.divider
+{
+    background-color :#2a3f54;
+}
+
+#application___notifications___header .header___links > li.dropdown > ul.dropdown-menu > li > a
+{
+    padding    :3px 5px;
+    min-height :0;
+    color      :#2a3f54;
+}
+
+#application___notifications___header .header___links > li.dropdown > ul.dropdown-menu > li > a > div > span
+{
+    color :#2a3f54;
+}
+
+#application___notifications___header .header___links > li.dropdown > ul.dropdown-menu > li > a:hover,
+#application___notifications___header .header___links > li.dropdown > ul.dropdown-menu > li > a:hover > div > span,
+#application___notifications___header .header___links > li.dropdown > ul.dropdown-menu > li > a:active,
+#application___notifications___header .header___links > li.dropdown > ul.dropdown-menu > li > a:active > div > span,
+#application___notifications___header .header___links > li.dropdown > ul.dropdown-menu > li > a:focus,
+#application___notifications___header .header___links > li.dropdown > ul.dropdown-menu > li > a:focus > div > span
+{
+    background-color :#6D002E;
+    color            :#ffffff;
+}
+
+#application___notifications___header .header___links > li.dropdown > ul.dropdown-menu > li > a > div
+{
+    white-space :normal;
+}
+
+#application___notifications___header .header___links > li.dropdown > ul.dropdown-menu > li > a > img
+{
+    width      :18px;
+    height     :18px;
+    margin-top :-4px;
+}
+
+#application___notifications___header .header___links > li.dropdown:nth-child(2) > ul.dropdown-menu > li > a > img
+{
+    width      :24px;
+    border-radius: 3px;
+}
+
+#application___notifications___header .header___links > li.dropdown > ul.dropdown-menu.dropdown_menu___alerts
+{
+    width :500px;
+}
+
+#application___notifications___header .header___links > li.dropdown > ul.dropdown-menu.dropdown_menu___user
+{
+    width :150px;
+}
+
+#application___notifications___header .header___links > li.dropdown > ul.dropdown-menu.dropdown_menu___locale
+{
+    width :100px;
+}
+
+@media (max-width :767px)
+{
+    #application___notifications___header .header___links > li.dropdown > ul.dropdown-menu.dropdown_menu___alerts
+    {
+        right :-120px;
+        width :300px;
+    }
+
+    #application___notifications___header .header___links > li.dropdown > ul.dropdown-menu.dropdown_menu___user
+    {
+        right :-60px;
+    }
+}
+
+.navbar-brand {
+    padding: 5px 15px;
+}

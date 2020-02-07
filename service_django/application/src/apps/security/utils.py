@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from . import forms, ldap, models, tasks, ssh
 from django import http
 from django.conf import settings
@@ -15,15 +14,16 @@ ___APPLICATION___SECURITY___FROM___MODULE___HPC___ = 'hpc'
 ___APPLICATION___SECURITY___FROM___MODULE___BIGDATA___ = 'bigdata'
 ___APPLICATION___SECURITY___FROM___MODULE___ADMINISTRATION___ = 'administration'
 ___APPLICATION___SECURITY___FROM___MODULE___HELP___ = 'help'
+___APPLICATION___SECURITY___FROM___MODULE___NOTIFICATIONS___ = 'notifications'
 # Sessions ___APPLICATION___SECURITY___USER___MODEL___
-___APPLICATION___SECURITY___USER___MODEL___LOCALUSER___ = 'localuser'
-___APPLICATION___SECURITY___USER___MODEL___LOCALUSER___TEXT___ = 'LOCAL'
-___APPLICATION___SECURITY___USER___MODEL___LDAPUSER___ = 'ldapuser'
-___APPLICATION___SECURITY___USER___MODEL___LDAPUSER___TEXT___ = 'LDAP'
-___APPLICATION___SECURITY___USER___MODEL___LDAPUSERIMPORTED___ = 'ldapuserimported'
-___APPLICATION___SECURITY___USER___MODEL___LDAPUSERIMPORTED___TEXT___ = 'LDAPIMPORTED'
+security_user_localuser = 'localuser'
+security_user_localuser_text = 'LOCAL'
+security_user_ldapuser = 'ldapuser'
+security_user_ldapuser_text = 'LDAP'
+security_user_ldapuserimported = 'ldapuserimported'
+security_user_ldapuserimported_text = 'LDAPIMPORTED'
 # It is the URL where the user should go, either because of an error or when sawing his session.
-___APPLICATION___SECURITY___USER___URL_REVERSE___ = 'application'
+security_user_url_reverse = 'application'
 
 
 def ___html___template___(request, context, template_name):
@@ -140,30 +140,35 @@ def ___dict_string___application___security___from___module___(request, ___appli
     string___modal___modal = ''
     string___modal___modal___message = ''
     if ___application___security___from___module___ == ___APPLICATION___SECURITY___FROM___MODULE___WEBSITE___:
-        string___modal = '___HTML___APPLICATION___WEBSITE___MODAL___'
-        string___modal___message = '___HTML___APPLICATION___WEBSITE___MODAL___MESSAGE___'
-        string___modal___modal = '___HTML___APPLICATION___WEBSITE___MODAL___MODAL___'
-        string___modal___modal___message = '___HTML___APPLICATION___WEBSITE___MODAL___MODAL___MESSAGE___'
+        string___modal = '___HTML___MODAL___'
+        string___modal___message = '___HTML___MODAL___MESSAGE___'
+        string___modal___modal = '___HTML___MODAL___MODAL___'
+        string___modal___modal___message = '___HTML___MODAL___MODAL___MESSAGE___'
     if ___application___security___from___module___ == ___APPLICATION___SECURITY___FROM___MODULE___HPC___:
-        string___modal = '___HTML___APPLICATION___HPC___MODAL___'
-        string___modal___message = '___HTML___APPLICATION___HPC___MODAL___MESSAGE___'
-        string___modal___modal = '___HTML___APPLICATION___HPC___MODAL___MODAL___'
-        string___modal___modal___message = '___HTML___APPLICATION___HPC___MODAL___MODAL___MESSAGE___'
+        string___modal = '___HTML___MODAL___'
+        string___modal___message = '___HTML___MODAL___MESSAGE___'
+        string___modal___modal = '___HTML___MODAL___MODAL___'
+        string___modal___modal___message = '___HTML___MODAL___MODAL___MESSAGE___'
     if ___application___security___from___module___ == ___APPLICATION___SECURITY___FROM___MODULE___BIGDATA___:
-        string___modal = '___HTML___APPLICATION___BIGDATA___MODAL___'
-        string___modal___message = '___HTML___APPLICATION___BIGDATA___MODAL___MESSAGE___'
-        string___modal___modal = '___HTML___APPLICATION___BIGDATA___MODAL___MODAL___'
-        string___modal___modal___message = '___HTML___APPLICATION___BIGDATA___MODAL___MODAL___MESSAGE___'
+        string___modal = '___HTML___MODAL___'
+        string___modal___message = '___HTML___MODAL___MESSAGE___'
+        string___modal___modal = '___HTML___MODAL___MODAL___'
+        string___modal___modal___message = '___HTML___MODAL___MODAL___MESSAGE___'
     if ___application___security___from___module___ == ___APPLICATION___SECURITY___FROM___MODULE___ADMINISTRATION___:
-        string___modal = '___HTML___APPLICATION___ADMINISTRATION___MODAL___'
-        string___modal___message = '___HTML___APPLICATION___ADMINISTRATION___MODAL___MESSAGE___'
-        string___modal___modal = '___HTML___APPLICATION___ADMINISTRATION___MODAL___MODAL___'
-        string___modal___modal___message = '___HTML___APPLICATION___ADMINISTRATION___MODAL___MODAL___MESSAGE___'
+        string___modal = '___HTML___MODAL___'
+        string___modal___message = '___HTML___MODAL___MESSAGE___'
+        string___modal___modal = '___HTML___MODAL___MODAL___'
+        string___modal___modal___message = '___HTML___MODAL___MODAL___MESSAGE___'
     if ___application___security___from___module___ == ___APPLICATION___SECURITY___FROM___MODULE___HELP___:
-        string___modal = '___HTML___APPLICATION___HELP___MODAL___'
-        string___modal___message = '___HTML___APPLICATION___HELP___MODAL___MESSAGE___'
-        string___modal___modal = '___HTML___APPLICATION___HELP___MODAL___MODAL___'
-        string___modal___modal___message = '___HTML___APPLICATION___HELP___MODAL___MODAL___MESSAGE___'
+        string___modal = '___HTML___MODAL___'
+        string___modal___message = '___HTML___MODAL___MESSAGE___'
+        string___modal___modal = '___HTML___MODAL___MODAL___'
+        string___modal___modal___message = '___HTML___MODAL___MODAL___MESSAGE___'
+    if ___application___security___from___module___ == ___APPLICATION___SECURITY___FROM___MODULE___NOTIFICATIONS___:
+        string___modal = '___HTML___MODAL___'
+        string___modal___message = '___HTML___MODAL___MESSAGE___'
+        string___modal___modal = '___HTML___MODAL___MODAL___'
+        string___modal___modal___message = '___HTML___MODAL___MODAL___MESSAGE___'
     dict___response = {
         'string___modal': string___modal,
         'string___modal___message': string___modal___message,
@@ -192,7 +197,7 @@ def ___jsonresponse___error___(request, ___application___security___from___modul
 def ___jsonresponse___login___(request, ___application___security___from___module___):
     dict___data = dict()
     dict___data['___BOOLEAN___ERROR___'] = False
-    if request.___APPLICATION___SECURITY___USER___ is not None:
+    if request.security_user is not None:
         messages.add_message(request, messages.ERROR, _('APPLICATION___SECURITY___MESSAGE ERROR.'))
         return ___jsonresponse___error___(request=request, ___application___security___from___module___=___application___security___from___module___)
     if request.GET.get('tab___localuserlogin'):
@@ -229,7 +234,7 @@ def ___jsonresponse___login___(request, ___application___security___from___modul
                 identifier = form.cleaned_data.get('local_identifier')
                 password = form.cleaned_data.get('local_password')
                 model = models.LOCALUser
-                ___application___security___user___model___ = ___APPLICATION___SECURITY___USER___MODEL___LOCALUSER___
+                security_user_model = security_user_localuser
                 instance = model.objects.___instance___by_identifier___(identifier=identifier)
             elif tab___ldapuserlogin is True:
                 identifier = form.cleaned_data.get('ldap_identifier')
@@ -237,20 +242,20 @@ def ___jsonresponse___login___(request, ___application___security___from___modul
                 ldap_group = form.cleaned_data.get('ldap_group')
                 if ldap_group == settings.LDAP_SERVER_GROUPS_GROUP_CN:
                     model = models.LDAPUser
-                    ___application___security___user___model___ = ___APPLICATION___SECURITY___USER___MODEL___LDAPUSER___
+                    security_user_model = security_user_ldapuser
                     instance = model.objects.___instance___by_identifier___(identifier=identifier)
                 else:
                     model = models.LDAPUserImported
-                    ___application___security___user___model___ = ___APPLICATION___SECURITY___USER___MODEL___LDAPUSERIMPORTED___
+                    security_user_model = security_user_ldapuserimported
                     instance = model.objects.___instance___by_ldap_group_and_identifier___(ldap_group=ldap_group, identifier=identifier)
             else:
                 messages.add_message(request, messages.ERROR, _('APPLICATION___SECURITY___MESSAGE ERROR.'))
                 return ___jsonresponse___error___(request=request, ___application___security___from___module___=___application___security___from___module___)
             if instance is not None and instance.___boolean___verify_password___(password=password):
                 if instance.is_active or instance.is_superuser:
-                    request.session['___APPLICATION___SECURITY___USER___MODEL___'] = ___application___security___user___model___
+                    request.session['___APPLICATION___SECURITY___USER___MODEL___'] = security_user_model
                     request.session['___APPLICATION___SECURITY___USER___PK___'] = instance.pk
-                    request.___APPLICATION___SECURITY___USER___ = instance
+                    request.security_user = instance
                     boolean___error = True
                     for language in settings.LANGUAGES:
                         if instance.locale != '' and instance.locale in language[0]:
@@ -301,7 +306,7 @@ def ___jsonresponse___login___forgot_credentials_1___(request, ___application___
     tasks.___task___application___security___login___forgot_credentials___delete_instances___()
     dict___data = dict()
     dict___data['___BOOLEAN___ERROR___'] = False
-    if request.___APPLICATION___SECURITY___USER___ is not None:
+    if request.security_user is not None:
         messages.add_message(request, messages.ERROR, _('APPLICATION___SECURITY___MESSAGE ERROR.'))
         return ___jsonresponse___error___(request=request, ___application___security___from___module___=___application___security___from___module___)
     if request.GET.get('tab___localuserlogin___forgot_credentials'):
@@ -361,7 +366,7 @@ def ___jsonresponse___login___forgot_credentials_2___(request, ___application___
     tasks.___task___application___security___login___forgot_credentials___delete_instances___()
     dict___data = dict()
     dict___data['___BOOLEAN___ERROR___'] = False
-    if request.___APPLICATION___SECURITY___USER___ is not None:
+    if request.security_user is not None:
         messages.add_message(request, messages.ERROR, _('APPLICATION___SECURITY___MESSAGE ERROR.'))
         return ___jsonresponse___error___(request=request, ___application___security___from___module___=___application___security___from___module___)
     try:
@@ -438,7 +443,7 @@ def ___jsonresponse___login___forgot_credentials_3___(request, ___application___
     tasks.___task___application___security___login___forgot_credentials___delete_instances___()
     dict___data = dict()
     dict___data['___BOOLEAN___ERROR___'] = False
-    if request.___APPLICATION___SECURITY___USER___ is not None:
+    if request.security_user is not None:
         messages.add_message(request, messages.ERROR, _('APPLICATION___SECURITY___MESSAGE ERROR.'))
         return ___jsonresponse___error___(request=request, ___application___security___from___module___=___application___security___from___module___)
     try:
@@ -508,19 +513,19 @@ def ___jsonresponse___login___forgot_credentials_3___(request, ___application___
 def ___jsonresponse___login___request___(request, ___application___security___from___module___):
     dict___data = dict()
     dict___data['___BOOLEAN___ERROR___'] = False
-    if request.___APPLICATION___SECURITY___USER___ is not None:
+    if request.security_user is not None:
         return ___jsonresponse___error___(request=request, ___application___security___from___module___=___application___security___from___module___)
     if request.GET.get('tab___localuserlogin___request'):
         tab___localuserlogin___request = True
         tab___ldapuserlogin___request = False
         form = forms.LOCALUserLoginRequest(data=request.POST or None, request=request)
-        string___user_model = ___APPLICATION___SECURITY___USER___MODEL___LOCALUSER___TEXT___
+        string___user_model = security_user_localuser_text
         string___identifier = ''
     elif request.GET.get('tab___ldapuserlogin___request'):
         tab___localuserlogin___request = False
         tab___ldapuserlogin___request = True
         form = forms.LDAPUserLoginRequest(data=request.POST or None, request=request)
-        string___user_model = ___APPLICATION___SECURITY___USER___MODEL___LDAPUSER___TEXT___
+        string___user_model = security_user_ldapuser_text
         string___identifier = '%s_' % (settings.LDAP_SERVER_GROUPS_GROUP_CN.lower(),)
     else:
         return ___jsonresponse___error___(request=request, ___application___security___from___module___=___application___security___from___module___)
@@ -574,7 +579,7 @@ def ___jsonresponse___login___request___(request, ___application___security___fr
 def ___jsonresponse___logout___(request, ___application___security___from___module___):
     dict___data = dict()
     dict___data['___BOOLEAN___ERROR___'] = False
-    instance = request.___APPLICATION___SECURITY___USER___
+    instance = request.security_user
     if instance is None:
         messages.add_message(request, messages.ERROR, _('APPLICATION___SECURITY___MESSAGE ERROR.'))
         return ___jsonresponse___error___(request=request, ___application___security___from___module___=___application___security___from___module___)
@@ -584,10 +589,10 @@ def ___jsonresponse___logout___(request, ___application___security___from___modu
             del request.session['___APPLICATION___SECURITY___USER___MODEL___']
         if request.session.get('___APPLICATION___SECURITY___USER___PK___'):
             del request.session['___APPLICATION___SECURITY___USER___PK___']
-        request.___APPLICATION___SECURITY___USER___ = None
+        request.security_user = None
         messages.add_message(request, messages.SUCCESS, _('APPLICATION___SECURITY___LOGOUT___MESSAGE %(instance)s your session was successfully closed.') % {'instance': instance, })
         dict___data['___APPLICATION___SECURITY___USER___WITHOUT_PERMISSION___'] = True
-        dict___data['___APPLICATION___SECURITY___USER___URL_REDIRECT___'] = reverse(___APPLICATION___SECURITY___USER___URL_REVERSE___)
+        dict___data['___APPLICATION___SECURITY___USER___URL_REDIRECT___'] = reverse(security_user_url_reverse)
     else:
         dict___data['___BOOLEAN___IS_METHOD_POST___'] = False
     #
@@ -605,7 +610,7 @@ def ___jsonresponse___logout___(request, ___application___security___from___modu
 def ___jsonresponse___profile___(request, ___application___security___from___module___):
     dict___data = dict()
     dict___data['___BOOLEAN___ERROR___'] = False
-    instance = request.___APPLICATION___SECURITY___USER___
+    instance = request.security_user
     if instance is None:
         messages.add_message(request, messages.ERROR, _('APPLICATION___SECURITY___MESSAGE ERROR.'))
         return ___jsonresponse___error___(request=request, ___application___security___from___module___=___application___security___from___module___)
@@ -624,7 +629,7 @@ def ___jsonresponse___profile___(request, ___application___security___from___mod
         dict___data['___BOOLEAN___IS_METHOD_POST___'] = True
         if form is not None and form.is_valid():
             instance = form.save(commit=True)
-            request.___APPLICATION___SECURITY___USER___ = instance
+            request.security_user = instance
             messages.add_message(request, messages.SUCCESS, _('APPLICATION___SECURITY___PROFILE___MESSAGE %(instance)s your profile was successfully update.') % {'instance': instance, })
             dict___data['___BOOLEAN___IS_VALID_FORM___'] = True
         else:
@@ -649,10 +654,10 @@ def ___jsonresponse___locale___(request, ___application___security___from___modu
             if request.GET.get('locale') in language[0]:
                 translation.activate(request.GET.get('locale'))
                 request.session[translation.LANGUAGE_SESSION_KEY] = request.GET.get('locale')
-                if request.___APPLICATION___SECURITY___USER___ is not None:
-                    request.___APPLICATION___SECURITY___USER___.locale = request.GET.get('locale')
-                    request.___APPLICATION___SECURITY___USER___.save()
-                    messages.add_message(request, messages.SUCCESS, _('APPLICATION___SECURITY___LOCALE___MESSAGE %(instance)s the language of the application was successfully update.') % {'instance': request.___APPLICATION___SECURITY___USER___, })
+                if request.security_user is not None:
+                    request.security_user.locale = request.GET.get('locale')
+                    request.security_user.save()
+                    messages.add_message(request, messages.SUCCESS, _('APPLICATION___SECURITY___LOCALE___MESSAGE %(instance)s the language of the application was successfully update.') % {'instance': request.security_user, })
                 else:
                     messages.add_message(request, messages.SUCCESS, _('APPLICATION___SECURITY___LOCALE___MESSAGE The language of the application was successfully update.'))
                 boolean___is_valid = True

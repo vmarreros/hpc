@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from src.apps.security import models, tasks, utils
 from django import forms
 from django.utils.translation import ugettext_lazy as _
@@ -146,7 +145,7 @@ class LOCALUserRequestApprove(forms.ModelForm):
         tasks.___task___application___security___login___request___approve___send_mail___.apply_async(
                     args=[],
                     kwargs={
-                        'string___user_model': utils.___APPLICATION___SECURITY___USER___MODEL___LOCALUSER___TEXT___,
+                        'string___user_model': utils.security_user_localuser_text,
                         'string___first_name': instance_mirror.first_name,
                         'string___last_name': instance_mirror.last_name,
                         'string___identifier': instance_mirror.identifier,
@@ -171,7 +170,7 @@ class LOCALUserRequestDisapprove(forms.ModelForm):
         tasks.___task___application___security___login___request___disapprove___send_mail___.apply_async(
                 args=[],
                 kwargs={
-                    'string___user_model': utils.___APPLICATION___SECURITY___USER___MODEL___LOCALUSER___TEXT___,
+                    'string___user_model': utils.security_user_localuser_text,
                     'string___first_name': self.instance.first_name,
                     'string___last_name': self.instance.last_name,
                     'string___identifier': self.instance.identifier,

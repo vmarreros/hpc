@@ -12,17 +12,17 @@ var hpc_script_submit = function(evt){
         processData: false,
         contentType: false,
         beforeSend: function () {
-            ___HTML___application___hpc___modal___SHOW_LOAD___();
+            ___HTML___modal___SHOW_LOAD___();
         },
         success: function (data) {
             var $application___hpc___content___center = $("#application___hpc___content___center");
             if (data['___BOOLEAN___ERROR___']) {
-                ___HTML___application___hpc___modal___SHOW_MESSAGE_ERROR___(data);
-                $application___hpc___content___center.html(data['___HTML___HPC___CONTENT___CENTER___']);
+                ___HTML___modal___SHOW_MESSAGE_ERROR___(data);
+                $application___hpc___content___center.html(data['___HTML___CONTENT___CENTER___']);
             }
             else {
-                $application___hpc___content___center.html(data['___HTML___HPC___CONTENT___CENTER___']);
-                ___HTML___application___hpc___modal___SHOW_MESSAGE_OK___(data);
+                $application___hpc___content___center.html(data['___HTML___CONTENT___CENTER___']);
+                ___HTML___modal___SHOW_MESSAGE_OK___(data);
             }
         }
     });
@@ -43,17 +43,17 @@ var hpc_script_run = function(){
         processData: false,
         contentType: false,
         beforeSend: function () {
-            ___HTML___application___hpc___modal___SHOW_LOAD___();
+            ___HTML___modal___SHOW_LOAD___();
         },
         success: function (data) {
             var $application___hpc___content___center = $("#application___hpc___content___center");
             if (data['___BOOLEAN___ERROR___']) {
-                ___HTML___application___hpc___modal___SHOW_MESSAGE_ERROR___(data);
-                $application___hpc___content___center.html(data['___HTML___HPC___CONTENT___CENTER___']);
+                ___HTML___modal___SHOW_MESSAGE_ERROR___(data);
+                $application___hpc___content___center.html(data['___HTML___CONTENT___CENTER___']);
             }
             else {
-                $application___hpc___content___center.html(data['___HTML___HPC___CONTENT___CENTER___']);
-                ___HTML___application___hpc___modal___SHOW_MESSAGE_OK___(data);
+                $application___hpc___content___center.html(data['___HTML___CONTENT___CENTER___']);
+                ___HTML___modal___SHOW_MESSAGE_OK___(data);
             }
         }
     });

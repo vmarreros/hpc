@@ -21,6 +21,7 @@ urlpatterns = [
     path('terminal/', include('src.apps.terminal.urls', namespace='terminal')),
     path('administration/', include('src.apps.administration.urls', namespace='administration')),
     path('help/', include('src.apps.help.urls', namespace='help')),
+    path('notifications/', include('src.apps.notifications.urls', namespace='notifications')),
     path('secret/', admin.site.urls),
     path('admin/', include('admin_honeypot.urls', namespace='admin_honeypot')),
 ]

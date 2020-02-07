@@ -7,7 +7,7 @@
             {% for ctx___instance in ctx___instances %}
                 <tr>
                     <td>
-                        {{ ctx___instance|deep|safe }}<a class="btn btn-xs btn-link LINK___application___help___content___center___content___list___reload___" data-url="{% url "help:modules:help_document:content" pk=ctx___instance.pk %}" role="button">{{ ctx___instance|truncatechars:40 }}</a><br/>
+                        {{ ctx___instance|deep|safe }}<a class="btn btn-xs btn-link LINK___content___center___content___list___reload___" data-url="{% url "help:modules:help_document:content" pk=ctx___instance.pk %}" role="button">{{ ctx___instance|truncatechars:40 }}</a><br/>
                     </td>
                 </tr>
             {% endfor %}

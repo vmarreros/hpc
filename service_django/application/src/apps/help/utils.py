@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from django import http
 from django.contrib import messages
 from django.template import loader
@@ -38,6 +37,6 @@ def ___jsonresponse___error___(request):
         messages.add_message(request, messages.ERROR, _('APPLICATION___SECURITY___MESSAGE ERROR.'))
     dict___data = dict()
     dict___data['___BOOLEAN___ERROR___'] = True
-    dict___data['___HTML___APPLICATION___HELP___MODAL___'] = ___html___template_modal___message___(request=request)
-    dict___data['___HTML___APPLICATION___HELP___MODAL___MESSAGE___'] = ___html___template_message___(request=request)
+    dict___data['___HTML___MODAL___'] = ___html___template_modal___message___(request=request)
+    dict___data['___HTML___MODAL___MESSAGE___'] = ___html___template_message___(request=request)
     return http.JsonResponse(dict___data)

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from src.apps.security import models
 from django import template
 from django.conf import settings
@@ -9,98 +8,106 @@ register = template.Library()
 
 
 @register.filter()
-def ___get_string___title___(request):
+def get_string_title(request):
     return '-%s' % (settings.LDAP_SERVER_GROUPS_GROUP_CN,)
 
 
 @register.filter()
-def ___get_string___group_user___(request):
-    return '%s_%s' % (settings.LDAP_SERVER_GROUPS_GROUP_CN.lower(), request.___APPLICATION___SECURITY___USER___.identifier)
+def get_string_group_user(request):
+    return '%s_%s' % (settings.LDAP_SERVER_GROUPS_GROUP_CN.lower(), request.security_user.identifier)
 
 
 @register.filter()
-def ___get_boolean___not___(boolean):
+def get_boolean_not(boolean):
     return not boolean
 
 
 @register.filter()
-def ___required___application___security___user___(request):
-    if request.___APPLICATION___SECURITY___USER___ is not None:
+def required_security_user(request):
+    if request.security_user is not None:
         return True
     return False
 
 
 @register.filter()
-def ___required___application___security___user___has_permission___(request, string___identifiers_to_verify):
-    if ___required___application___security___user___(request=request):
+def security_user_has_permission(request, string___identifiers_to_verify):
+    if required_security_user(request=request):
         set_identifier___to_verify = set(' '.join(string___identifiers_to_verify.split()).split())  # delete space
-        if request.___APPLICATION___SECURITY___USER___.is_superuser is True or request.___APPLICATION___SECURITY___USER___.___boolean___has_permission___(set_identifier___to_verify=set_identifier___to_verify):
+        if request.security_user.is_superuser is True or request.security_user.___boolean___has_permission___(set_identifier___to_verify=set_identifier___to_verify):
             return True
     return False
 
 
 @register.filter()
-def ___required___application___security___user___is_localuser___(request):
-    if ___required___application___security___user___(request=request):
-        if isinstance(request.___APPLICATION___SECURITY___USER___, models.LOCALUser):
+def security_user_is_localuser(request):
+    if required_security_user(request=request):
+        if isinstance(request.security_user, models.LOCALUser):
             return True
     return False
 
 
 @register.filter()
-def ___required___application___security___user___is_ldapuser_or_ldapuserimported___(request):
-    if ___required___application___security___user___(request=request):
-        if isinstance(request.___APPLICATION___SECURITY___USER___, models.LDAPUser) or isinstance(request.___APPLICATION___SECURITY___USER___, models.LDAPUserImported):
+def security_user_is_ldapuser_or_ldapuserimported(request):
+    if required_security_user(request=request):
+        if isinstance(request.security_user, models.LDAPUser) or isinstance(request.security_user, models.LDAPUserImported):
             return True
     return False
 
 
 @register.filter()
-def ___required___application___security___user___is_ldapuser___(request):
-    if ___required___application___security___user___(request=request):
-        if isinstance(request.___APPLICATION___SECURITY___USER___, models.LDAPUser):
+def security_user_is_ldapuser(request):
+    if required_security_user(request=request):
+        if isinstance(request.security_user, models.LDAPUser):
             return True
     return False
 
 
 @register.filter()
-def ___required___application___security___user___is_ldapuserimported___(request):
-    if ___required___application___security___user___(request=request):
-        if isinstance(request.___APPLICATION___SECURITY___USER___, models.LDAPUserImported):
+def security_user_is_ldapuserimported(request):
+    if required_security_user(request=request):
+        if isinstance(request.security_user, models.LDAPUserImported):
             return True
     return False
 
 
 @register.filter()
-def ___get_instance___application___security___user___(request):
-    return request.___APPLICATION___SECURITY___USER___
+def get_instance_security_user(request):
+    return request.security_user
 
 
 @register.filter()
-def ___get_string___application___security___user___url_current___(request):
+def get_string_security_user_url_current(request):
     return request.session['___APPLICATION___SECURITY___USER___URL_CURRENT___']
 
 
 @register.filter()
-def ___get_string___application___security___user___avatar_url___(request):
+def get_string_security_user_avatar_url(request):
     string___avatar_url = staticfiles.static('apps/security/img/avatar/avatar.png')
-    if request.___APPLICATION___SECURITY___USER___ is not None and request.___APPLICATION___SECURITY___USER___.avatar:
-        string___avatar_url = request.___APPLICATION___SECURITY___USER___.avatar.url
+    if request.security_user is not None and request.security_user.avatar:
+        string___avatar_url = request.security_user.avatar.url
     return '%s?%s' % (string___avatar_url, timezone.datetime.now().strftime("%Y%m%d%H%M%S"))
 
 
 @register.filter()
-def ___get_string___application___security___user___ldap_group___(request):
-    if ___required___application___security___user___is_ldapuser_or_ldapuserimported___(request=request):
-        if ___required___application___security___user___is_ldapuser___(request=request):
+def get_string_notification_user_avatar_url(user):
+    string___avatar_url = staticfiles.static('apps/security/img/avatar/avatar.png')
+    if user.avatar:
+        string___avatar_url = user.avatar.url
+    return '%s?%s' % (string___avatar_url, timezone.datetime.now().strftime("%Y%m%d%H%M%S"))
+
+
+@register.filter()
+def get_string_security_user_ldap_group(request):
+    if security_user_is_ldapuser_or_ldapuserimported(request=request):
+        if security_user_is_ldapuser(request=request):
             return '%s_' % (settings.LDAP_SERVER_GROUPS_GROUP_CN.lower(),)
-        if ___required___application___security___user___is_ldapuserimported___(request=request):
-            return '%s_' % (request.___APPLICATION___SECURITY___USER___.ldap_group.lower(),)
+        if security_user_is_ldapuserimported(request=request):
+            return '%s_' % (request.security_user.ldap_group.lower(),)
     return ''
 
 
 @register.filter()
-def ___get_string___user___avatar_url___(instance):
+def get_string_user_avatar_url(instance):
     string___avatar_url = staticfiles.static('apps/security/img/avatar/avatar.png')
     if instance is not None and instance.avatar:
         string___avatar_url = instance.avatar.url
@@ -108,7 +115,7 @@ def ___get_string___user___avatar_url___(instance):
 
 
 @register.filter()
-def ___get_string___user___ldap_group___(instance):
+def get_string_user_ldap_group(instance):
     if instance is None:
         return '%s' % (settings.LDAP_SERVER_GROUPS_GROUP_CN,)
     if isinstance(instance, models.LDAPUserRequest):
@@ -121,7 +128,7 @@ def ___get_string___user___ldap_group___(instance):
 
 
 @register.filter()
-def ___get_string___user___ldap_identifier___(instance):
+def get_string_user_ldap_identifier(instance):
     if isinstance(instance, models.LDAPUserRequest):
         return '%s_%s' % (settings.LDAP_SERVER_GROUPS_GROUP_CN.lower(), instance.identifier, )
     if isinstance(instance, models.LDAPUser):
@@ -132,23 +139,23 @@ def ___get_string___user___ldap_identifier___(instance):
 
 
 @register.filter()
-def ___get_string___user___th___width___(request, string___identifiers_to_verify):
-    if request.___APPLICATION___SECURITY___USER___ is not None:
+def get_string_user_th_width(request, string___identifiers_to_verify):
+    if request.security_user is not None:
         list_identifier___to_verify = list(' '.join(string___identifiers_to_verify.split()).split())  # delete space
         if list_identifier___to_verify[0] != 'none':
-            boolean___has_permission_0 = request.___APPLICATION___SECURITY___USER___.___boolean___has_permission___(set_identifier___to_verify={list_identifier___to_verify[0], })
+            boolean___has_permission_0 = request.security_user.___boolean___has_permission___(set_identifier___to_verify={list_identifier___to_verify[0], })
         else:
             boolean___has_permission_0 = False
         if list_identifier___to_verify[1] != 'none':
-            boolean___has_permission_1 = request.___APPLICATION___SECURITY___USER___.___boolean___has_permission___(set_identifier___to_verify={list_identifier___to_verify[1], })
+            boolean___has_permission_1 = request.security_user.___boolean___has_permission___(set_identifier___to_verify={list_identifier___to_verify[1], })
         else:
             boolean___has_permission_1 = False
         if list_identifier___to_verify[2] != 'none':
-            boolean___has_permission_2 = request.___APPLICATION___SECURITY___USER___.___boolean___has_permission___(set_identifier___to_verify={list_identifier___to_verify[2], })
+            boolean___has_permission_2 = request.security_user.___boolean___has_permission___(set_identifier___to_verify={list_identifier___to_verify[2], })
         else:
             boolean___has_permission_2 = False
         if list_identifier___to_verify[3] != 'none':
-            boolean___has_permission_3 = request.___APPLICATION___SECURITY___USER___.___boolean___has_permission___(set_identifier___to_verify={list_identifier___to_verify[3], })
+            boolean___has_permission_3 = request.security_user.___boolean___has_permission___(set_identifier___to_verify={list_identifier___to_verify[3], })
         else:
             boolean___has_permission_3 = False
         #
@@ -164,24 +171,24 @@ def ___get_string___user___th___width___(request, string___identifiers_to_verify
 
 
 @register.filter()
-def ___get_boolean___show_the_administration_link___(request):
-    if ___required___application___security___user___(request=request):
-        if request.___APPLICATION___SECURITY___USER___.is_superuser is True:
+def get_boolean_show_the_administration_link(request):
+    if required_security_user(request=request):
+        if request.security_user.is_superuser is True:
             return True
-        if request.___APPLICATION___SECURITY___USER___.___boolean___has_permission___(set_identifier___to_verify={'application_security_localuser_list', }):
+        if request.security_user.___boolean___has_permission___(set_identifier___to_verify={'application_security_localuser_list', }):
             return True
-        if request.___APPLICATION___SECURITY___USER___.___boolean___has_permission___(set_identifier___to_verify={'application_security_localuserrequest_list', }):
+        if request.security_user.___boolean___has_permission___(set_identifier___to_verify={'application_security_localuserrequest_list', }):
             return True
-        if request.___APPLICATION___SECURITY___USER___.___boolean___has_permission___(set_identifier___to_verify={'application_security_ldapuser_list', }):
+        if request.security_user.___boolean___has_permission___(set_identifier___to_verify={'application_security_ldapuser_list', }):
             return True
-        if request.___APPLICATION___SECURITY___USER___.___boolean___has_permission___(set_identifier___to_verify={'application_security_ldapuserrequest_list', }):
+        if request.security_user.___boolean___has_permission___(set_identifier___to_verify={'application_security_ldapuserrequest_list', }):
             return True
-        if request.___APPLICATION___SECURITY___USER___.___boolean___has_permission___(set_identifier___to_verify={'application_security_ldapuserimported_list', }):
+        if request.security_user.___boolean___has_permission___(set_identifier___to_verify={'application_security_ldapuserimported_list', }):
             return True
-        if request.___APPLICATION___SECURITY___USER___.___boolean___has_permission___(set_identifier___to_verify={'application_security_group_list', }):
+        if request.security_user.___boolean___has_permission___(set_identifier___to_verify={'application_security_group_list', }):
             return True
-        if request.___APPLICATION___SECURITY___USER___.___boolean___has_permission___(set_identifier___to_verify={'application_security_permission_list', }):
+        if request.security_user.___boolean___has_permission___(set_identifier___to_verify={'application_security_permission_list', }):
             return True
-        if request.___APPLICATION___SECURITY___USER___.___boolean___has_permission___(set_identifier___to_verify={'application_help_document_list', }):
+        if request.security_user.___boolean___has_permission___(set_identifier___to_verify={'application_help_document_list', }):
             return True
     return False

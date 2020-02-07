@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from django import shortcuts
 from django.urls import reverse
 

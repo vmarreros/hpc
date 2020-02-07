@@ -78,6 +78,8 @@
     min-height :50px;
     color      :#ffffff;
     cursor     :pointer;
+    font-size: 13px !important;
+    font-weight: bolder !important;
 }
 
 #application___bigdata___header .header___links > li > a:hover,
@@ -99,7 +101,7 @@
     margin-bottom :-6px;
 }
 
-#application___bigdata___header .header___links > li:nth-child(2) > a > img
+#application___bigdata___header .header___links > li:nth-child(3) > a > img
 {
     width        :30px;
     height       :20px;

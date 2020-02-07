@@ -6,7 +6,7 @@
     <div class="panel-heading">
         <span class="label" data-background-color="{{ data.JobState|bg_job_state }}">{{ data.JobState }}</span>
         <b>{{ data.JobName }}({{ data.JobId }})</b>
-        {% ifequal data.Username request|___get_string___group_user___ %}
+        {% ifequal data.Username request|get_string_group_user %}
         <div class="pull-right">
             <button class="btn btn-xs btn-default" type="button" data-url="{% url 'hpc:modules:hpc_jobs:action_job' %}" data-option="job resume" title="Resume" {% ifnotequal data.JobState 'STOPPED' %}disabled{% endifnotequal %}>
                 <span class="fa fa-play"></span>

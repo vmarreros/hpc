@@ -1,0 +1,36 @@
+{% load i18n %}
+{% load application___security %}
+
+<li class="dropdown active">
+    <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-hover="dropdown" role="button">
+        <span class="fa fa-bell {% if alerts %}faa-ring animated{% endif %} fa-fw" aria-hidden="true"></span>
+        <span class="badge">{% if alerts %}{{ alerts.count }}{% endif %}</span>
+        <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu dropdown_menu___alerts" role="menu">
+        {% for alert in alerts %}
+            <li>
+                <a data-url="{% url "notifications:modules:alerts:detail" alert.pk %}" class="LINK___modal___reload">
+                    <div>
+                        <div class="pull-left">
+                            <img data-toggle="tooltip" title="{{ alert.from_user }} ({{ alert.from_user.group_identifier }})" width="30px" src="{{ alert.from_user|get_string_notification_user_avatar_url }}" class="img-circle"/>
+                        </div>
+                        <div style="margin-left: 40px">
+                            <span style="font-size: 13px">{{ alert.subject }}</span>
+                            <div class="clearfix">
+                                <span class="text-muted small">{{ alert.timesince }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </li>
+        {% endfor %}
+        <li class="divider"></li>
+        <li>
+            <a data-url="" class="text-center LINK___application___reload">
+                <strong>See All Alerts</strong>
+                <span class="fa fa-angle-right" aria-hidden="true"></span>
+            </a>
+        </li>
+    </ul>
+</li>

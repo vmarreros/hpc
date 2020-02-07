@@ -1,22 +1,7 @@
-function getCookie(c_name) {
-    if (document.cookie.length > 0)
-    {
-        var c_start = document.cookie.indexOf(c_name + "=");
-        if (c_start !== -1)
-        {
-            c_start = c_start + c_name.length + 1;
-            var c_end = document.cookie.indexOf(";", c_start);
-            if (c_end === -1) c_end = document.cookie.length;
-            return decodeURI(document.cookie.substring(c_start,c_end));
-        }
-    }
-    return "";
-}
-
 var hpc_explorer_init = function(){
     const
         $hpc__content__center = $('#application___hpc___content___center'),
-        $hpc__modal =  $('#application___hpc___modal'),
+        $hpc__modal =  $('#site___modal'),
         $hpc__tbody =  $hpc__content__center.find('#explorer___content').find('#tableFileSystem').find('tbody'),
         $hpc__buttons = $hpc__content__center.find('#explorer___content').find('#actionsFileSystem'),
         url_list =  $hpc__content__center.find('#explorer___content').find('#tableFileSystem').attr('data-url-list'),
@@ -98,9 +83,9 @@ var hpc_explorer_init = function(){
         hpc__explorer__btn__disable();
         $.getJSON(url_list, {'path': path}, function(data) {
             if(data['___BOOLEAN___ERROR___']){
-                ___HTML___application___hpc___modal___SHOW_LOAD___();
-                ___HTML___application___hpc___modal___SHOW_MESSAGE_ERROR___(data);
-               $(data['___HTML___APPLICATION___HPC___MODAL___MESSAGE___']).find('.alert___message___text').text();
+                ___HTML___modal___SHOW_LOAD___();
+                ___HTML___modal___SHOW_MESSAGE_ERROR___(data);
+               $(data['___HTML___MODAL___MESSAGE___']).find('.alert___message___text').text();
             }
             else {
                 $hpc__tbody.html(data.list);
@@ -176,16 +161,16 @@ var hpc_explorer_init = function(){
                 data: data,
                 dataType: 'json',
                 beforeSend: function () {
-                    ___HTML___application___hpc___modal___SHOW_LOAD___();
+                    ___HTML___modal___SHOW_LOAD___();
                 },
                 success: function (data) {
                     if (data['___BOOLEAN___ERROR___']) {
-                        ___HTML___application___hpc___modal___SHOW_MESSAGE_ERROR___(data, 10000);
+                        ___HTML___modal___SHOW_MESSAGE_ERROR___(data, 10000);
                     }
                     else {
-                        $hpc__modal.html(data['___HTML___APPLICATION___HPC___MODAL___']);
-                        $hpc__modal.find('.modal___message').html(data['___HTML___APPLICATION___HPC___MODAL___MESSAGE___']);
-                        ___HTML___application___hpc___modal___EVENTS_ON___();
+                        $hpc__modal.html(data['___HTML___MODAL___']);
+                        $hpc__modal.find('.modal___message').html(data['___HTML___MODAL___MESSAGE___']);
+                        ___HTML___modal___EVENTS_ON___();
                     }
                     hpc__explorer__btn__enable();
                 }
@@ -205,16 +190,16 @@ var hpc_explorer_init = function(){
                 data: data,
                 dataType: 'json',
                 beforeSend: function () {
-                    ___HTML___application___hpc___modal___SHOW_LOAD___();
+                    ___HTML___modal___SHOW_LOAD___();
                 },
                 success: function (data) {
                     if (data['___BOOLEAN___ERROR___']) {
-                        ___HTML___application___hpc___modal___SHOW_MESSAGE_ERROR___(data, 10000);
+                        ___HTML___modal___SHOW_MESSAGE_ERROR___(data, 10000);
                     }
                     else {
-                        $hpc__modal.html(data['___HTML___APPLICATION___HPC___MODAL___']);
-                        $hpc__modal.find('.modal___message').html(data['___HTML___APPLICATION___HPC___MODAL___MESSAGE___']);
-                        ___HTML___application___hpc___modal___EVENTS_ON___();
+                        $hpc__modal.html(data['___HTML___MODAL___']);
+                        $hpc__modal.find('.modal___message').html(data['___HTML___MODAL___MESSAGE___']);
+                        ___HTML___modal___EVENTS_ON___();
                     }
                     hpc__explorer__btn__enable();
                 }
@@ -229,16 +214,16 @@ var hpc_explorer_init = function(){
                 type: 'GET',
                 dataType: 'json',
                 beforeSend: function () {
-                    ___HTML___application___hpc___modal___SHOW_LOAD___();
+                    ___HTML___modal___SHOW_LOAD___();
                 },
                 success: function (data) {
                     if (data['___BOOLEAN___ERROR___']) {
-                        ___HTML___application___hpc___modal___SHOW_MESSAGE_ERROR___(data);
+                        ___HTML___modal___SHOW_MESSAGE_ERROR___(data);
                     }
                     else {
-                        $hpc__modal.html(data['___HTML___APPLICATION___HPC___MODAL___']);
-                        $hpc__modal.find('.modal___message').html(data['___HTML___APPLICATION___HPC___MODAL___MESSAGE___']);
-                        ___HTML___application___hpc___modal___EVENTS_ON___();
+                        $hpc__modal.html(data['___HTML___MODAL___']);
+                        $hpc__modal.find('.modal___message').html(data['___HTML___MODAL___MESSAGE___']);
+                        ___HTML___modal___EVENTS_ON___();
                     }
                 }
             });
@@ -252,16 +237,16 @@ var hpc_explorer_init = function(){
                 type: 'GET',
                 dataType: 'json',
                 beforeSend: function () {
-                    ___HTML___application___hpc___modal___SHOW_LOAD___();
+                    ___HTML___modal___SHOW_LOAD___();
                 },
                 success: function (data) {
                     if (data['___BOOLEAN___ERROR___']) {
-                        ___HTML___application___hpc___modal___SHOW_MESSAGE_ERROR___(data);
+                        ___HTML___modal___SHOW_MESSAGE_ERROR___(data);
                     }
                     else {
-                        $hpc__modal.html(data['___HTML___APPLICATION___HPC___MODAL___']);
-                        $hpc__modal.find('.modal___message').html(data['___HTML___APPLICATION___HPC___MODAL___MESSAGE___']);
-                        ___HTML___application___hpc___modal___EVENTS_ON___();
+                        $hpc__modal.html(data['___HTML___MODAL___']);
+                        $hpc__modal.find('.modal___message').html(data['___HTML___MODAL___MESSAGE___']);
+                        ___HTML___modal___EVENTS_ON___();
                     }
                 }
             });
@@ -310,10 +295,10 @@ var hpc_explorer_init = function(){
                                 },
                                 dataType: 'json',
                                 beforeSend: function () {
-                                    ___HTML___application___hpc___modal___SHOW_LOAD___();
+                                    ___HTML___modal___SHOW_LOAD___();
                                 },
                                 success: function (data) {
-                                    ___HTML___application___hpc___modal___SHOW_MESSAGE_ERROR___(data);
+                                    ___HTML___modal___SHOW_MESSAGE_ERROR___(data);
                                 }
                             });
                     }
@@ -347,9 +332,6 @@ var hpc_explorer_init = function(){
     var hpc__explorer__a__paste = function(){
         if($(this).attr('disabled')!=='disabled') {
             $(this).attr('disabled', 'disabled');
-            $.ajaxSetup({
-                headers: {"X-CSRFToken": getCookie("csrftoken")}
-            });
             $.ajax({
                 url: $(this).attr('data-url'),
                 data: {
@@ -371,9 +353,9 @@ var hpc_explorer_init = function(){
                 success: function (data) {
                     filesToCopy = [];
                     if (data['___BOOLEAN___ERROR___']) {
-                        ___HTML___application___hpc___modal___SHOW_LOAD___();
-                        ___HTML___application___hpc___modal___SHOW_MESSAGE_ERROR___(data, 10000);
-                        $(data['___HTML___APPLICATION___HPC___MODAL___MESSAGE___']).find('.alert___message___text').text();
+                        ___HTML___modal___SHOW_LOAD___();
+                        ___HTML___modal___SHOW_MESSAGE_ERROR___(data, 10000);
+                        $(data['___HTML___MODAL___MESSAGE___']).find('.alert___message___text').text();
                     }
                     else {
                         $hpc__tbody.html(data.list);
@@ -387,9 +369,7 @@ var hpc_explorer_init = function(){
     var hpc__explorer__li__paste = function(){
         if(!$(this).hasClass('disabled')) {
             $(this).addClass('disabled');
-            $.ajaxSetup({
-                headers: {"X-CSRFToken": getCookie("csrftoken")}
-            });
+
             $.ajax({
                 url: $(this).attr('data-url'),
                 data: {
@@ -411,9 +391,9 @@ var hpc_explorer_init = function(){
                 success: function (data) {
                     filesToCopy = [];
                     if (data['___BOOLEAN___ERROR___']) {
-                        ___HTML___application___hpc___modal___SHOW_LOAD___();
-                        ___HTML___application___hpc___modal___SHOW_MESSAGE_ERROR___(data, 10000);
-                        $(data['___HTML___APPLICATION___HPC___MODAL___MESSAGE___']).find('.alert___message___text').text();
+                        ___HTML___modal___SHOW_LOAD___();
+                        ___HTML___modal___SHOW_MESSAGE_ERROR___(data, 10000);
+                        $(data['___HTML___MODAL___MESSAGE___']).find('.alert___message___text').text();
                     }
                     else {
                         $hpc__tbody.html(data.list);
@@ -445,16 +425,16 @@ var hpc_explorer_init = function(){
                 type: 'GET',
                 dataType: 'json',
                 beforeSend: function () {
-                    ___HTML___application___hpc___modal___SHOW_LOAD___();
+                    ___HTML___modal___SHOW_LOAD___();
                 },
                 success: function (data) {
                     if (data['___BOOLEAN___ERROR___']) {
-                        ___HTML___application___hpc___modal___SHOW_MESSAGE_ERROR___(data);
+                        ___HTML___modal___SHOW_MESSAGE_ERROR___(data);
                     }
                     else {
-                        $hpc__modal.html(data['___HTML___APPLICATION___HPC___MODAL___']);
-                        $hpc__modal.find('.modal___message').html(data['___HTML___APPLICATION___HPC___MODAL___MESSAGE___']);
-                        ___HTML___application___hpc___modal___EVENTS_ON___();
+                        $hpc__modal.html(data['___HTML___MODAL___']);
+                        $hpc__modal.find('.modal___message').html(data['___HTML___MODAL___MESSAGE___']);
+                        ___HTML___modal___EVENTS_ON___();
                     }
                 }
             });
@@ -467,16 +447,16 @@ var hpc_explorer_init = function(){
                 type: 'GET',
                 dataType: 'json',
                 beforeSend: function () {
-                    ___HTML___application___hpc___modal___SHOW_LOAD___();
+                    ___HTML___modal___SHOW_LOAD___();
                 },
                 success: function (data) {
                     if (data['___BOOLEAN___ERROR___']) {
-                        ___HTML___application___hpc___modal___SHOW_MESSAGE_ERROR___(data);
+                        ___HTML___modal___SHOW_MESSAGE_ERROR___(data);
                     }
                     else {
-                        $hpc__modal.html(data['___HTML___APPLICATION___HPC___MODAL___']);
-                        $hpc__modal.find('.modal___message').html(data['___HTML___APPLICATION___HPC___MODAL___MESSAGE___']);
-                        ___HTML___application___hpc___modal___EVENTS_ON___();
+                        $hpc__modal.html(data['___HTML___MODAL___']);
+                        $hpc__modal.find('.modal___message').html(data['___HTML___MODAL___MESSAGE___']);
+                        ___HTML___modal___EVENTS_ON___();
                     }
                 }
             });
@@ -490,16 +470,16 @@ var hpc_explorer_init = function(){
                 type: 'GET',
                 dataType: 'json',
                 beforeSend: function () {
-                    ___HTML___application___hpc___modal___SHOW_LOAD___();
+                    ___HTML___modal___SHOW_LOAD___();
                 },
                 success: function (data) {
                     if (data['___BOOLEAN___ERROR___']) {
-                        ___HTML___application___hpc___modal___SHOW_MESSAGE_ERROR___(data);
+                        ___HTML___modal___SHOW_MESSAGE_ERROR___(data);
                     }
                     else {
-                        $hpc__modal.html(data['___HTML___APPLICATION___HPC___MODAL___']);
-                        $hpc__modal.find('.modal___message').html(data['___HTML___APPLICATION___HPC___MODAL___MESSAGE___']);
-                        ___HTML___application___hpc___modal___EVENTS_ON___();
+                        $hpc__modal.html(data['___HTML___MODAL___']);
+                        $hpc__modal.find('.modal___message').html(data['___HTML___MODAL___MESSAGE___']);
+                        ___HTML___modal___EVENTS_ON___();
                     }
                 }
             });
@@ -513,16 +493,16 @@ var hpc_explorer_init = function(){
                 type: 'GET',
                 dataType: 'json',
                 beforeSend: function () {
-                    ___HTML___application___hpc___modal___SHOW_LOAD___();
+                    ___HTML___modal___SHOW_LOAD___();
                 },
                 success: function (data) {
                     if (data['___BOOLEAN___ERROR___']) {
-                        ___HTML___application___hpc___modal___SHOW_MESSAGE_ERROR___(data);
+                        ___HTML___modal___SHOW_MESSAGE_ERROR___(data);
                     }
                     else {
-                        $hpc__modal.html(data['___HTML___APPLICATION___HPC___MODAL___']);
-                        $hpc__modal.find('.modal___message').html(data['___HTML___APPLICATION___HPC___MODAL___MESSAGE___']);
-                        ___HTML___application___hpc___modal___EVENTS_ON___();
+                        $hpc__modal.html(data['___HTML___MODAL___']);
+                        $hpc__modal.find('.modal___message').html(data['___HTML___MODAL___MESSAGE___']);
+                        ___HTML___modal___EVENTS_ON___();
                     }
                 }
             });
@@ -537,16 +517,16 @@ var hpc_explorer_init = function(){
             type: 'GET',
             dataType: 'json',
             beforeSend: function () {
-                ___HTML___application___hpc___modal___SHOW_LOAD___();
+                ___HTML___modal___SHOW_LOAD___();
             },
             success: function (data) {
                 if (data['___BOOLEAN___ERROR___']) {
-                    ___HTML___application___hpc___modal___SHOW_MESSAGE_ERROR___(data);
+                    ___HTML___modal___SHOW_MESSAGE_ERROR___(data);
                 }
                 else {
-                    $hpc__modal.html(data['___HTML___APPLICATION___HPC___MODAL___']);
-                    $hpc__modal.find('.modal___message').html(data['___HTML___APPLICATION___HPC___MODAL___MESSAGE___']);
-                    ___HTML___application___hpc___modal___EVENTS_ON___();
+                    $hpc__modal.html(data['___HTML___MODAL___']);
+                    $hpc__modal.find('.modal___message').html(data['___HTML___MODAL___MESSAGE___']);
+                    ___HTML___modal___EVENTS_ON___();
                 }
             }
         });
@@ -560,16 +540,16 @@ var hpc_explorer_init = function(){
                 type: 'GET',
                 dataType: 'json',
                 beforeSend: function () {
-                    ___HTML___application___hpc___modal___SHOW_LOAD___();
+                    ___HTML___modal___SHOW_LOAD___();
                 },
                 success: function (data) {
                     if (data['___BOOLEAN___ERROR___']) {
-                        ___HTML___application___hpc___modal___SHOW_MESSAGE_ERROR___(data);
+                        ___HTML___modal___SHOW_MESSAGE_ERROR___(data);
                     }
                     else {
-                        $hpc__modal.html(data['___HTML___APPLICATION___HPC___MODAL___']);
-                        $hpc__modal.find('.modal___message').html(data['___HTML___APPLICATION___HPC___MODAL___MESSAGE___']);
-                        ___HTML___application___hpc___modal___EVENTS_ON___();
+                        $hpc__modal.html(data['___HTML___MODAL___']);
+                        $hpc__modal.find('.modal___message').html(data['___HTML___MODAL___MESSAGE___']);
+                        ___HTML___modal___EVENTS_ON___();
                     }
                 }
             });
@@ -621,14 +601,14 @@ var hpc_explorer_init = function(){
                     '</tr>'
                 );
                 hpc__explorer__btn__disable();
-                ___HTML___application___hpc___modal___SHOW_LOAD___();
+                ___HTML___modal___SHOW_LOAD___();
                 $('.application___hpc___load').css('height', '20px');
             },
             success: function (data) {
                 if(data['___BOOLEAN___ERROR___'])
-                    ___HTML___application___hpc___modal___SHOW_MESSAGE_ERROR___(data, 10000);
+                    ___HTML___modal___SHOW_MESSAGE_ERROR___(data, 10000);
                 else
-                    ___HTML___application___hpc___modal___ACTION_CLOSE___();
+                    ___HTML___modal___ACTION_CLOSE___();
                 if(data.list) {
                     $hpc__tbody.html(data.list);
                     breadcumbs(path);
@@ -660,14 +640,14 @@ var hpc_explorer_init = function(){
                     '</tr>'
                 );
                 hpc__explorer__btn__disable();
-                ___HTML___application___hpc___modal___SHOW_LOAD___();
+                ___HTML___modal___SHOW_LOAD___();
                 $('.application___hpc___load').css('height', '20px');
             },
             success: function (data) {
                 if(data['___BOOLEAN___ERROR___'])
-                    ___HTML___application___hpc___modal___SHOW_MESSAGE_ERROR___(data, 10000);
+                    ___HTML___modal___SHOW_MESSAGE_ERROR___(data, 10000);
                 else
-                    ___HTML___application___hpc___modal___ACTION_CLOSE___();
+                    ___HTML___modal___ACTION_CLOSE___();
                 if (data.list) {
                     $hpc__tbody.html(data.list);
                     breadcumbs(path);
@@ -699,14 +679,14 @@ var hpc_explorer_init = function(){
                     '</tr>'
                 );
                 hpc__explorer__btn__disable();
-                ___HTML___application___hpc___modal___SHOW_LOAD___();
+                ___HTML___modal___SHOW_LOAD___();
                 $('.application___hpc___load').css('height', '20px');
             },
             success: function (data) {
                 if(data['___BOOLEAN___ERROR___'])
-                    ___HTML___application___hpc___modal___SHOW_MESSAGE_ERROR___(data, 10000);
+                    ___HTML___modal___SHOW_MESSAGE_ERROR___(data, 10000);
                 else
-                    ___HTML___application___hpc___modal___ACTION_CLOSE___();
+                    ___HTML___modal___ACTION_CLOSE___();
                 if (data.list) {
                     $hpc__tbody.html(data.list);
                     breadcumbs(path);
@@ -738,14 +718,14 @@ var hpc_explorer_init = function(){
                     '</tr>'
                 );
                 hpc__explorer__btn__disable();
-                ___HTML___application___hpc___modal___SHOW_LOAD___();
+                ___HTML___modal___SHOW_LOAD___();
                 $('.application___hpc___load').css('height', '20px');
             },
             success: function (data) {
                 if(data['___BOOLEAN___ERROR___'])
-                    ___HTML___application___hpc___modal___SHOW_MESSAGE_ERROR___(data, 10000);
+                    ___HTML___modal___SHOW_MESSAGE_ERROR___(data, 10000);
                 else
-                    ___HTML___application___hpc___modal___ACTION_CLOSE___();
+                    ___HTML___modal___ACTION_CLOSE___();
                 if (data.list) {
                     $hpc__tbody.html(data.list);
                     breadcumbs(path);
@@ -817,14 +797,14 @@ var hpc_explorer_init = function(){
                     '</tr>'
                 );
                 hpc__explorer__btn__disable();
-                ___HTML___application___hpc___modal___SHOW_LOAD___();
+                ___HTML___modal___SHOW_LOAD___();
                 $('.application___hpc___load').css('height', '20px');
             },
             success: function (data) {
                 if(data['___BOOLEAN___ERROR___'])
-                    ___HTML___application___hpc___modal___SHOW_MESSAGE_ERROR___(data, 10000);
+                    ___HTML___modal___SHOW_MESSAGE_ERROR___(data, 10000);
                 else
-                    ___HTML___application___hpc___modal___ACTION_CLOSE___();
+                    ___HTML___modal___ACTION_CLOSE___();
                 if (data.list) {
                     $hpc__tbody.html(data.list);
                     breadcumbs(path);
@@ -836,9 +816,6 @@ var hpc_explorer_init = function(){
     var hpc__explorer__modal__click__execute = function () {
         var url = $('#modal-execute').find('.modal-footer').find('button').eq(0).attr('data-url');
         var values = [path, $hpc__tbody.find('tr.primary').attr('data-name')];
-        $.ajaxSetup({
-            headers: { "X-CSRFToken": getCookie("csrftoken") }
-        });
         $.ajax({
             url: url,
             data: {
@@ -849,14 +826,14 @@ var hpc_explorer_init = function(){
             cache: false,
             beforeSend: function () {
                 hpc__explorer__btn__disable();
-                ___HTML___application___hpc___modal___SHOW_LOAD___();
+                ___HTML___modal___SHOW_LOAD___();
                 $('.application___hpc___load').css('height', '20px')
             },
             success: function (data) {
                 if(data['___BOOLEAN___ERROR___'])
-                    ___HTML___application___hpc___modal___SHOW_MESSAGE_ERROR___(data, 10000);
+                    ___HTML___modal___SHOW_MESSAGE_ERROR___(data, 10000);
                 else
-                    ___HTML___application___hpc___modal___SHOW_MESSAGE_OK___(data);
+                    ___HTML___modal___SHOW_MESSAGE_OK___(data);
                 hpc__explorer__btn__enable();
             }
         });
@@ -866,9 +843,6 @@ var hpc_explorer_init = function(){
         var values = [path];
         $.each($hpc__tbody.find('tr.primary'), function(index, elem){
             values.push($(elem).attr('data-name'));
-        });
-        $.ajaxSetup({
-            headers: { "X-CSRFToken": getCookie("csrftoken") }
         });
         $.ajax({
             url: $btn.attr('data-url'),
@@ -885,14 +859,14 @@ var hpc_explorer_init = function(){
                     '</tr>'
                 );
                 hpc__explorer__btn__disable();
-                ___HTML___application___hpc___modal___SHOW_LOAD___();
+                ___HTML___modal___SHOW_LOAD___();
                 $('.application___hpc___load').css('height', '20px')
             },
             success: function (data) {
                 if(data['___BOOLEAN___ERROR___'])
-                    ___HTML___application___hpc___modal___SHOW_MESSAGE_ERROR___(data, 10000);
+                    ___HTML___modal___SHOW_MESSAGE_ERROR___(data, 10000);
                 else
-                    ___HTML___application___hpc___modal___ACTION_CLOSE___();
+                    ___HTML___modal___ACTION_CLOSE___();
                 if (data.list) {
                     $hpc__tbody.html(data.list);
                     breadcumbs(path);

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from src.apps.hpc import models
 
 # The model to administrate

@@ -1,0 +1,46 @@
+#application___notifications___content___center #center___content h4
+{
+    margin :20px 0 5px 0;
+}
+
+#application___notifications___content___center #center___content h4:first-child
+{
+    margin :5px 0 10px 0;
+}
+
+#application___notifications___content___center #center___content #content___list div {
+    border: 0;
+}
+
+#application___notifications___content___center #center___content #content___list div.table-responsive table tbody tr td
+{
+    margin  :0;
+    padding :3px 5px 3px 5px;
+    border  :none;
+}
+
+#application___notifications___content___center #center___content #content___list div.table-responsive table tbody tr:first-child td
+{
+    padding-top :10px;
+}
+
+#application___notifications___content___center #center___content #content___list div.table-responsive table tbody tr:last-child td
+{
+    padding-bottom :10px;
+}
+
+#application___notifications___content___center #center___content #content___list div.table-responsive table tbody tr td a
+{
+    color: rgba(0,0,0,.65);
+    font-size: 15px;
+}
+
+#application___notifications___content___center #center___content #content___list div.table-responsive table tbody tr td a.active
+{
+    font-weight: 600;
+    color: rgba(0,0,0,.85);
+}
+
+#application___notifications___content___center #center___content #content___content {
+    font-size: 15px
+}

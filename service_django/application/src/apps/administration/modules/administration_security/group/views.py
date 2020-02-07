@@ -1,68 +1,64 @@
-# -*- coding: utf-8 -*-
-from .... import utils as utils___application___administration
+from src.apps.security import decorators, utils as utils_security
+from src.apps.administration import utils
 from .. import utils as utils___application___administration___module
 from . import utils as utils___application___administration___module___model
-from src.apps.security import (
-    decorators as decorators___application___security,
-    utils as utils___application___security
-)
 
 
-@decorators___application___security.___required___request_is_ajax___()
+@decorators.ajax_required()
 def index(request):
-    return utils___application___administration.___jsonresponse___index___(
+    return utils.___jsonresponse___index___(
         request=request,
         ___utils___module___=utils___application___administration___module,
         ___utils___module_model___=utils___application___administration___module___model
     )
 
 
-@decorators___application___security.___required___request_is_ajax___()
-@decorators___application___security.___required___application___security___user___has_permission___(
-    ___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___ADMINISTRATION___,
+@decorators.ajax_required()
+@decorators.security_user_has_permission(
+    ___application___security___from___module___=utils_security.___APPLICATION___SECURITY___FROM___MODULE___ADMINISTRATION___,
     set_identifier___to_verify={'application_security_group_list', }
 )
 def list(request):
-    return utils___application___administration.___jsonresponse___list___(
+    return utils.___jsonresponse___list___(
         request=request,
         ___utils___module___=utils___application___administration___module,
         ___utils___module_model___=utils___application___administration___module___model
     )
 
 
-@decorators___application___security.___required___request_is_ajax___()
-@decorators___application___security.___required___application___security___user___has_permission___(
-    ___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___ADMINISTRATION___,
+@decorators.ajax_required()
+@decorators.security_user_has_permission(
+    ___application___security___from___module___=utils_security.___APPLICATION___SECURITY___FROM___MODULE___ADMINISTRATION___,
     set_identifier___to_verify={'application_security_group_list', 'application_security_group_update', }
 )
 def list___tree(request):
-    return utils___application___administration.___jsonresponse___list___tree___(
+    return utils.___jsonresponse___list___tree___(
         request=request,
         ___utils___module___=utils___application___administration___module,
         ___utils___module_model___=utils___application___administration___module___model
     )
 
 
-@decorators___application___security.___required___request_is_ajax___()
-@decorators___application___security.___required___application___security___user___has_permission___(
-    ___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___ADMINISTRATION___,
+@decorators.ajax_required()
+@decorators.security_user_has_permission(
+    ___application___security___from___module___=utils_security.___APPLICATION___SECURITY___FROM___MODULE___ADMINISTRATION___,
     set_identifier___to_verify={'application_security_group_list', 'application_security_group_create', }
 )
 def create(request):
-    return utils___application___administration.___jsonresponse___create___(
+    return utils.___jsonresponse___create___(
         request=request,
         ___utils___module___=utils___application___administration___module,
         ___utils___module_model___=utils___application___administration___module___model
     )
 
 
-@decorators___application___security.___required___request_is_ajax___()
-@decorators___application___security.___required___application___security___user___has_permission___(
-    ___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___ADMINISTRATION___,
+@decorators.ajax_required()
+@decorators.security_user_has_permission(
+    ___application___security___from___module___=utils_security.___APPLICATION___SECURITY___FROM___MODULE___ADMINISTRATION___,
     set_identifier___to_verify={'application_security_group_list', 'application_security_group_detail', }
 )
 def detail(request, pk):
-    return utils___application___administration.___jsonresponse___detail___(
+    return utils.___jsonresponse___detail___(
         request=request,
         ___utils___module___=utils___application___administration___module,
         ___utils___module_model___=utils___application___administration___module___model,
@@ -70,13 +66,13 @@ def detail(request, pk):
     )
 
 
-@decorators___application___security.___required___request_is_ajax___()
-@decorators___application___security.___required___application___security___user___has_permission___(
-    ___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___ADMINISTRATION___,
+@decorators.ajax_required()
+@decorators.security_user_has_permission(
+    ___application___security___from___module___=utils_security.___APPLICATION___SECURITY___FROM___MODULE___ADMINISTRATION___,
     set_identifier___to_verify={'application_security_group_list', 'application_security_group_update', }
 )
 def update(request, pk):
-    return utils___application___administration.___jsonresponse___update___(
+    return utils.___jsonresponse___update___(
         request=request,
         ___utils___module___=utils___application___administration___module,
         ___utils___module_model___=utils___application___administration___module___model,
@@ -84,13 +80,13 @@ def update(request, pk):
     )
 
 
-@decorators___application___security.___required___request_is_ajax___()
-@decorators___application___security.___required___application___security___user___has_permission___(
-    ___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___ADMINISTRATION___,
+@decorators.ajax_required()
+@decorators.security_user_has_permission(
+    ___application___security___from___module___=utils_security.___APPLICATION___SECURITY___FROM___MODULE___ADMINISTRATION___,
     set_identifier___to_verify={'application_security_group_list', 'application_security_group_delete', }
 )
 def delete(request, pk):
-    return utils___application___administration.___jsonresponse___delete___(
+    return utils.___jsonresponse___delete___(
         request=request,
         ___utils___module___=utils___application___administration___module,
         ___utils___module_model___=utils___application___administration___module___model,

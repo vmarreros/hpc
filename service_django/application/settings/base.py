@@ -47,13 +47,13 @@ INSTALLED_APPS = [
     'channels',
     'src.apps.security',
     'src.apps.help',
-    'src.apps.home',
     'src.apps.website',
     'src.apps.statistic',
     'src.apps.hpc',
     'src.apps.bigdata',
     'src.apps.terminal',
     'src.apps.administration',
+    'src.apps.notifications',
 ]
 
 # Middleware

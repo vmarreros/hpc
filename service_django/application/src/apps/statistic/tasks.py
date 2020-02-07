@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+
 from . import models
 from celery import shared_task
 import random

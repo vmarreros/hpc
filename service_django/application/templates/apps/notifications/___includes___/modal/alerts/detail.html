@@ -1,0 +1,67 @@
+{% load i18n %}
+{% load application___security %}
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="btn btn-sm btn-default close LINK___modal___action_close" data-dismiss="modal" aria-label="Close" title="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> {% trans "Detalle de notificacion" %}</h4>
+        </div>
+        <div class="modal-body">
+            <!-- Modal Menssage -->
+            <div class="modal___message">
+            </div>
+            <!-- Nav tabs -->
+            <div class="table-responsive modal___table">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>&nbsp;</th>
+                        <th>{% trans "ADMINISTRATION___CONTENT___OPTION_ATTRIBUTE" %}</th>
+                        <th>{% trans "ADMINISTRATION___CONTENT___OPTION_VALUE" %}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span></th>
+                        <td>Tipo</td>
+                        <td>{{ alert.level }}</td>
+                    </tr>
+                    <tr>
+                        <th><span class="glyphicon glyphicon-user" aria-hidden="true"></span></th>
+                        <td>From</td>
+                        <td>
+                            <img alt="profile" data-toggle="tooltip" title="{{ alert.from_user }} ({{ alert.from_user.group_identifier }})" width="30px" src="{{ alert.from_user|get_string_notification_user_avatar_url }}" class="img-circle"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></th>
+                        <td>Asunto</td>
+                        <td>{{ alert.subject }}</td>
+                    </tr>
+                    <tr>
+                        <th><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></th>
+                        <td>Mensaje</td>
+                        <td>{{ alert.message }}</td>
+                    </tr>
+                    <tr>
+                        <th><span class="glyphicon glyphicon-time" aria-hidden="true"></span></th>
+                        <td>Recibido</td>
+                        <td>{{ alert.created }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-sm btn-default pull-left LINK___modal___action_close" data-dismiss="modal" title="{% trans "APPLICATION___SECURITY___ACTION_CLOSE" %}">
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span><span class="hidden-xs"> {% trans "APPLICATION___SECURITY___ACTION_CLOSE" %}</span>
+            </button>
+            <a class="btn btn-sm btn-default LINK___modal___reload" data-url="{% url "notifications:modules:alerts:delete" alert.pk %}" title="{% trans "ADMINISTRATION___CONTENT___ACTION_DELETE" %}">
+                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span><span class="hidden-xs"> {% trans "ADMINISTRATION___CONTENT___ACTION_DELETE" %}</span>
+            </a>
+        </div>
+    </div>
+</div>

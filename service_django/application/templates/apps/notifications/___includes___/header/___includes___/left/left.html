@@ -1,0 +1,40 @@
+{% load application___security %}
+{% load i18n %}
+{% load staticfiles %}
+
+<div class="navbar-header navbar-left pull-left">
+    <a class="navbar-brand" href="#">
+        <img src="{% static 'apps/website/img/favicon/favicon.png' %}" alt="UCLV"/>
+    </a>
+</div>
+<ul class="nav navbar-nav navbar-left pull-left header___links">
+    <li>
+        <a data-url="{% url "website:index" %}" class="LINK___application___reload">
+            <span class="fa fa-sitemap fa-fw" aria-hidden="true"></span> <span class="hidden-xs">{% trans "HEADER___LEFT___WEBSITE" %}</span>
+        </a>
+    </li>
+    {% if request|security_user_is_ldapuser_or_ldapuserimported %}
+        <li>
+            <a data-url="{% url "hpc:index" %}" class="LINK___application___reload">
+                <span class="fa fa-server fa-fw" aria-hidden="true"></span> <span class="hidden-xs">{% trans "HEADER___LEFT___HPC" %}</span>
+            </a>
+        </li>
+        <li>
+            <a data-url="{% url "bigdata:index" %}" class="LINK___application___reload">
+                <span class="fa fa-database fa-fw" aria-hidden="true"></span> <span class="hidden-xs">{% trans "HEADER___LEFT___BIGDATA" %}</span>
+            </a>
+        </li>
+    {% endif %}
+    {% if request|required_security_user and request|get_boolean_show_the_administration_link %}
+        <li>
+            <a data-url="{% url "administration:index" %}" class="LINK___application___reload">
+                <span class="fa fa-wrench fa-fw" aria-hidden="true"></span> <span class="hidden-xs">{% trans "HEADER___LEFT___ADMINISTRATION" %}</span>
+            </a>
+        </li>
+    {% endif %}
+    <li>
+        <a data-url="{% url "help:index" %}" class="LINK___application___reload">
+            <span class="fa fa-book fa-fw" aria-hidden="true"></span> <span class="hidden-xs">{% trans "HEADER___LEFT___HELP" %}</span>
+        </a>
+    </li>
+</ul>

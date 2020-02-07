@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from django.conf import settings
 from django.db import models
 from django.utils import timezone
@@ -12,8 +11,8 @@ ___LDAPUSERIMPORTED_FOLDER_PATH___ = 'application/security/ldapuserimported'
 
 class LOCALUserManager(models.Manager):
     def ___instances___(self, request):
-        if isinstance(request.___APPLICATION___SECURITY___USER___, LOCALUser):
-            instances = self.all().filter(is_superuser=False).exclude(pk=request.___APPLICATION___SECURITY___USER___.pk)
+        if isinstance(request.security_user, LOCALUser):
+            instances = self.all().filter(is_superuser=False).exclude(pk=request.security_user.pk)
         else:
             instances = self.all().filter(is_superuser=False)
         instances = instances.order_by('first_name', 'identifier')
@@ -22,7 +21,7 @@ class LOCALUserManager(models.Manager):
     def ___instance___(self, request, pk):
         try:
             instance = self.get(pk=pk)
-            if instance.is_superuser or (isinstance(request.___APPLICATION___SECURITY___USER___, LOCALUser) and request.___APPLICATION___SECURITY___USER___.pk == instance.pk):
+            if instance.is_superuser or (isinstance(request.security_user, LOCALUser) and request.security_user.pk == instance.pk):
                 return None
         except LOCALUser.DoesNotExist:
             return None
@@ -138,7 +137,7 @@ class LOCALUser(models.Model):
     objects = LOCALUserManager()
 
     class Meta:
-        db_table = 'application___security___localuser'
+        db_table = 'security_localuser'
         ordering = ['id', ]
 
     def __str__(self):
@@ -243,7 +242,7 @@ class LOCALUserForgotCredentials(models.Model):
     ___INT___MAXIMUM_TIME_OF_EXISTENCE___ = 15
 
     class Meta:
-        db_table = 'application___security___localuserforgotcredentials'
+        db_table = 'security_localuserforgotcredentials'
         ordering = ['id', ]
 
     def __str__(self):
@@ -339,7 +338,7 @@ class LOCALUserRequest(models.Model):
     objects = LOCALUserRequestManager()
 
     class Meta:
-        db_table = 'application___security___localuserrequest'
+        db_table = 'security_localuserrequest'
         ordering = ['id', ]
 
     def __str__(self):
@@ -389,7 +388,7 @@ class LOCALUserGroup(models.Model):
     objects = LOCALUserGroupManager()
 
     class Meta:
-        db_table = 'application___security___localusergroup'
+        db_table = 'security_localusergroup'
         ordering = ['localuser', 'group']
 
     def __str__(self):
@@ -427,7 +426,7 @@ class LOCALUserPermission(models.Model):
     objects = LOCALUserPermissionManager()
 
     class Meta:
-        db_table = 'application___security___localuserpermission'
+        db_table = 'security_localuserpermission'
         ordering = ['localuser', 'permission']
 
     def __str__(self):
@@ -436,8 +435,8 @@ class LOCALUserPermission(models.Model):
 
 class LDAPUserManager(models.Manager):
     def ___instances___(self, request):
-        if isinstance(request.___APPLICATION___SECURITY___USER___, LDAPUser):
-            instances = self.all().filter(is_superuser=False).exclude(pk=request.___APPLICATION___SECURITY___USER___.pk)
+        if isinstance(request.security_user, LDAPUser):
+            instances = self.all().filter(is_superuser=False).exclude(pk=request.security_user.pk)
         else:
             instances = self.all().filter(is_superuser=False)
         instances = instances.order_by('first_name', 'identifier')
@@ -446,7 +445,7 @@ class LDAPUserManager(models.Manager):
     def ___instance___(self, request, pk):
         try:
             instance = self.get(pk=pk)
-            if instance.is_superuser or (isinstance(request.___APPLICATION___SECURITY___USER___, LDAPUser) and request.___APPLICATION___SECURITY___USER___.pk == instance.pk):
+            if instance.is_superuser or (isinstance(request.security_user, LDAPUser) and request.security_user.pk == instance.pk):
                 return None
         except LDAPUser.DoesNotExist:
             return None
@@ -623,7 +622,7 @@ class LDAPUser(models.Model):
     objects = LDAPUserManager()
 
     class Meta:
-        db_table = 'application___security___ldapuser'
+        db_table = 'security_ldapuser'
         ordering = ['id', ]
 
     def __str__(self):
@@ -844,7 +843,7 @@ class LDAPUserImported(models.Model):
 
     class Meta:
         unique_together = ('ldap_group', 'identifier', )
-        db_table = 'application___security___ldapuserimported'
+        db_table = 'security_ldapuserimported'
         ordering = ['id', ]
 
     def __str__(self):
@@ -929,7 +928,7 @@ class LDAPUserForgotCredentials(models.Model):
     ___INT___MAXIMUM_TIME_OF_EXISTENCE___ = 15
 
     class Meta:
-        db_table = 'application___security___ldapuserforgotcredentials'
+        db_table = 'security_ldapuserforgotcredentials'
         ordering = ['id', ]
 
     def __str__(self):
@@ -1067,7 +1066,7 @@ class LDAPUserRequest(models.Model):
     objects = LDAPUserRequestManager()
 
     class Meta:
-        db_table = 'application___security___ldapuserrequest'
+        db_table = 'security_ldapuserrequest'
         ordering = ['id', ]
 
     def __str__(self):
@@ -1117,7 +1116,7 @@ class LDAPUserGroup(models.Model):
     objects = LDAPUserGroupManager()
 
     class Meta:
-        db_table = 'application___security___ldapusergroup'
+        db_table = 'security_ldapusergroup'
         ordering = ['ldapuser', 'group']
 
     def __str__(self):
@@ -1155,7 +1154,7 @@ class LDAPUserPermission(models.Model):
     objects = LDAPUserPermissionManager()
 
     class Meta:
-        db_table = 'application___security___ldapuserpermission'
+        db_table = 'security_ldapuserpermission'
         ordering = ['ldapuser', 'permission']
 
     def __str__(self):
@@ -1240,7 +1239,7 @@ class Group(models.Model):
     objects = GroupManager()
 
     class Meta:
-        db_table = 'application___security___group'
+        db_table = 'security_group'
         ordering = ['position', 'id', ]
 
     def __str__(self):
@@ -1301,7 +1300,7 @@ class Permission(models.Model):
     objects = PermissionManager()
 
     class Meta:
-        db_table = 'application___security___permission'
+        db_table = 'security_permission'
         ordering = ['id', ]
 
     def __str__(self):
@@ -1339,7 +1338,7 @@ class GroupPermission(models.Model):
     objects = GroupPermissionManager()
 
     class Meta:
-        db_table = 'application___security___grouppermission'
+        db_table = 'security_grouppermission'
         ordering = ['group', 'permission']
 
     def __str__(self):

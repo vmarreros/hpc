@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from django import http
 from django.contrib import messages
 from django.template import loader
@@ -41,8 +40,8 @@ def ___httpresponse___error___(request):
         messages.add_message(request, messages.ERROR, _('HPC___SSH___MESSAGES_ClusterNotAvailable'))
     dict___data = dict()
     dict___data['___BOOLEAN___ERROR___'] = True
-    dict___data['___HTML___APPLICATION___HPC___MODAL___'] = ___html___template_modal___message___(request=request)
-    dict___data['___HTML___APPLICATION___HPC___MODAL___MESSAGE___'] = ___html___template_message___(request=request)
+    dict___data['___HTML___MODAL___'] = ___html___template_modal___message___(request=request)
+    dict___data['___HTML___MODAL___MESSAGE___'] = ___html___template_message___(request=request)
     return http.HttpResponse(json.dumps(dict___data), content_type='application/json')
 
 
@@ -51,8 +50,8 @@ def ___jsonresponse___error___(request):
         messages.add_message(request, messages.ERROR, _('HPC___SSH___MESSAGES_ClusterNotAvailable'))
     dict___data = dict()
     dict___data['___BOOLEAN___ERROR___'] = True
-    dict___data['___HTML___APPLICATION___HPC___MODAL___'] = ___html___template_modal___message___(request=request)
-    dict___data['___HTML___APPLICATION___HPC___MODAL___MESSAGE___'] = ___html___template_message___(request=request)
+    dict___data['___HTML___MODAL___'] = ___html___template_modal___message___(request=request)
+    dict___data['___HTML___MODAL___MESSAGE___'] = ___html___template_message___(request=request)
     return http.JsonResponse(dict___data)
 
 
@@ -61,6 +60,6 @@ def ___jsonresponse___success___modal(request):
         messages.add_message(request, messages.SUCCESS, "El archivo se ha guardado satisfactoriamente")
     dict___data = dict()
     dict___data['___BOOLEAN___ERROR___'] = False
-    dict___data['___HTML___APPLICATION___HPC___MODAL___'] = ___html___template_modal___message___(request=request)
-    dict___data['___HTML___APPLICATION___HPC___MODAL___MESSAGE___'] = ___html___template_message___(request=request)
+    dict___data['___HTML___MODAL___'] = ___html___template_modal___message___(request=request)
+    dict___data['___HTML___MODAL___MESSAGE___'] = ___html___template_message___(request=request)
     return http.JsonResponse(dict___data)

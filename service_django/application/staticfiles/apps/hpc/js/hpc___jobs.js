@@ -34,9 +34,9 @@ var hpc_jobs_datatable_detail = function() {
         var row = datatable.row(tr).index();
         $.getJSON($table.attr('data-url-detail'), {'jobid': datatable.cell(row, 0).data()}, function (data) {
             if (data['___BOOLEAN___ERROR___']) {
-                ___HTML___application___hpc___modal___SHOW_LOAD___();
-                ___HTML___application___hpc___modal___SHOW_MESSAGE_ERROR___(data);
-                var text = $(data['___HTML___APPLICATION___HPC___MODAL___MESSAGE___']).find('.alert___message___text').text();
+                ___HTML___modal___SHOW_LOAD___();
+                ___HTML___modal___SHOW_MESSAGE_ERROR___(data);
+                var text = $(data['___HTML___MODAL___MESSAGE___']).find('.alert___message___text').text();
                 datatable.cell(row, 9).data(text).page(datatable.page()).draw('page');
             }
             else {
@@ -65,8 +65,8 @@ var hpc_jobs_datatable_actionJob = function(){
         },
         success: function (data) {
             if(data['___BOOLEAN___ERROR___']){
-                ___HTML___application___hpc___modal___SHOW_LOAD___();
-                ___HTML___application___hpc___modal___SHOW_MESSAGE_ERROR___(data);
+                ___HTML___modal___SHOW_LOAD___();
+                ___HTML___modal___SHOW_MESSAGE_ERROR___(data);
             }
             else {
                 datatable.cell(row, 1).data($(data.detail).find('.panel-heading').find('span').text());

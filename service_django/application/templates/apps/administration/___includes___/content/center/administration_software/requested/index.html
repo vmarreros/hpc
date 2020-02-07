@@ -3,7 +3,7 @@
 
 <h3 id="center___header">
     <span class="fa fa-list-ol fa-fw" aria-hidden="true"></span> {% trans "ADMINISTRATION___CONTENT___HPC___Software_requested" %}
-    <a class="btn btn-sm btn-default pull-right LINK___application___administration___content___center___content___table___tbody___action_refresh" data-url="{% url "administration:modules:administration_software:requested:list" %}{% if ctx___page.number %}?page={{ ctx___page.number }}{% endif %}" title="{% trans "ADMINISTRATION___CONTENT___ACTION_REFRESH" %}" role="button">
+    <a class="btn btn-sm btn-default pull-right LINK___content___center___content___table___tbody___action_refresh" data-url="{% url "administration:modules:administration_software:requested:list" %}{% if ctx___page.number %}?page={{ ctx___page.number }}{% endif %}" title="{% trans "ADMINISTRATION___CONTENT___ACTION_REFRESH" %}" role="button">
         <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span><span class="hidden-xs"> {% trans "ADMINISTRATION___CONTENT___ACTION_REFRESH" %}</span>
     </a>
 </h3>
@@ -13,8 +13,8 @@
         <table class="table table-hover">
             <thead>
             <tr>
-                <th class="{{ request|___get_string___user___th___width___:"application_hpc_softwarerequested_create application_hpc_softwarerequested_detail application_hpc_softwarerequested_update application_hpc_softwarerequested_delete" }}">
-                    {% if request|___required___application___security___user___has_permission___:"application_hpc_softwarerequested_create" %}
+                <th class="{{ request|get_string_user_th_width:"application_hpc_softwarerequested_create application_hpc_softwarerequested_detail application_hpc_softwarerequested_update application_hpc_softwarerequested_delete" }}">
+                    {% if request|security_user_has_permission:"application_hpc_softwarerequested_create" %}
 
                     {% endif %}
                 </th>

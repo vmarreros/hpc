@@ -14,15 +14,15 @@
                 <div>
                     <p>{% trans "WEBSITE___CONTENT___HOME___HEADER___Description" %}</p>
                 </div>
-                {% if request|___required___application___security___user___|___get_boolean___not___ %}
+                {% if request|required_security_user|get_boolean_not %}
                     <div>
-                        <button class="btn btn-primary register LINK___application___website___modal___reload" data-url="{% url "website:login___request" %}?tab___ldapuserlogin___request=True" role="button">
+                        <button class="btn btn-primary register LINK___modal___reload" data-url="{% url "website:login___request" %}?tab___ldapuserlogin___request=True" role="button">
                             <i aria-hidden="true" class="fa fa-user-plus fa-fw"></i>
                             <span>{% trans "WEBSITE___CONTENT___HOME___HEADER___Register" %}</span>
                         </button>
                     </div>
                     <div>
-                        <a class="LINK___application___website___modal___reload login" data-url="{% url "website:login" %}" role="button">
+                        <a class="LINK___modal___reload login" data-url="{% url "website:login" %}" role="button">
                             <i aria-hidden="true" class="fa fa-sign-in fa-fw"></i>
                             <span>{% trans "WEBSITE___CONTENT___HOME___HEADER___Login" %}</span>
                         </a>

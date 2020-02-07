@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from src.apps.security import models
 from django import forms
 from django.core import validators

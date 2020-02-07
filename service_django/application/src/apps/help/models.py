@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from django.db import models
 from django.utils import translation
 
@@ -91,7 +90,7 @@ class Document(models.Model):
     objects = DocumentManager()
 
     class Meta:
-        db_table = 'application___help___document'
+        db_table = 'help_document'
         ordering = ['position', 'id', ]
 
     def __str__(self):

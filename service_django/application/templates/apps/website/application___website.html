@@ -25,9 +25,10 @@
             <link href="{% static "apps/website/css/website___content.css" %}?{{ ctx___now }}" rel="stylesheet">
             <link href="{% static "apps/website/css/website___content___center.css" %}?{{ ctx___now }}" rel="stylesheet">
             <link href="{% static "apps/website/css/website___content___footer.css" %}?{{ ctx___now }}" rel="stylesheet">
-            <link href="{% static "apps/website/css/website___modal.css" %}?{{ ctx___now }}" rel="stylesheet">
-            <link href="{% static "apps/website/css/website___modal___message.css" %}?{{ ctx___now }}" rel="stylesheet">
-            <link href="{% static "apps/website/css/website___modal___form.css" %}?{{ ctx___now }}" rel="stylesheet">
+            <link href="{% static "modal/css/modal.css" %}?{{ ctx___now }}" rel="stylesheet">
+            <link href="{% static "modal/css/modal___message.css" %}?{{ ctx___now }}" rel="stylesheet">
+            <link href="{% static "modal/css/modal___form.css" %}?{{ ctx___now }}" rel="stylesheet">
+            <link href="{% static "modal/css/modal___table.css" %}?{{ ctx___now }}" rel="stylesheet">
             <!--[if lt IE 9]>
                 <script src="{% static "vendors/ie/js/ie8-responsive-file-warning.js" %}?{{ ctx___now }}"></script>
             <![endif]-->
@@ -58,10 +59,10 @@
                     </footer>
                 </section>
                 <!-- Application Website Modal -->
-                <div id="application___website___modal" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="true">
+                <div id="site___modal" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="true">
                 </div>
                 <!-- Application Website Modal Modal -->
-                <div id="application___website___modal___modal" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="true">
+                <div id="site___modal___modal" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="true">
                 </div>
             </div>
             <!-- jQuery -->

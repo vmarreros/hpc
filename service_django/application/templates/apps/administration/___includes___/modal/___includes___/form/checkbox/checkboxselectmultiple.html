@@ -1,0 +1,33 @@
+<label>{{ ctx___field.field.label }}:{% if ctx___field.field.required %} *{% endif %}</label>
+<div class="form-group {% if ctx___field.errors %}has-error{% endif %}">
+    <div id="modal___form___field_table_{{ ctx___field.field.widget.attrs.id }}" class="table-responsive modal___form___field_table">
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <td class="">
+                        <label for="todos">
+                            <input type="checkbox" class="selectall"> Todos
+                        </label>
+                    </td>
+                </tr>
+                {% for checkbox in ctx___field %}
+                    <tr>
+                        <td class="">
+                            {{ checkbox }}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% if ctx___field.help_text %}
+        <p class="help-block text-justify">{{ ctx___field.help_text }}</p>
+    {% endif %}
+    {% if ctx___field.errors %}
+        <ul>
+            {% for ctx___error in ctx___field.errors %}
+                <li><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> {{ ctx___error|escape }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</div>

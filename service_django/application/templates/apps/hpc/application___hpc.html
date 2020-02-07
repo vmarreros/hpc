@@ -50,7 +50,7 @@
             <link rel="stylesheet" href="{% static 'vendors/DataTables/Scroller-1.4.4/css/scroller.bootstrap.min.css' %}"/>
             <link rel="stylesheet" href="{% static 'vendors/DataTables/Select-1.2.5/css/select.bootstrap.min.css' %}"/>
             <!-- Application HPC Custom Theme Style -->
-            <link rel="stylesheet" href="{% static "core/css/datatable.css" %}?{{ ctx___now }}">
+            <link rel="stylesheet" href="{% static "datatable/css/datatable.css" %}?{{ ctx___now }}">
             <link rel="stylesheet" href="{% static "apps/hpc/css/hpc.css" %}?{{ ctx___now }}">
             <link rel="stylesheet" href="{% static "apps/hpc/css/hpc___header.css" %}?{{ ctx___now }}">
             <link rel="stylesheet" href="{% static "apps/hpc/css/hpc___leftside.css" %}?{{ ctx___now }}">
@@ -61,9 +61,10 @@
             <link rel="stylesheet" href="{% static 'apps/hpc/css/hpc___content___center___nodes.css' %}?{{ ctx___now }}">
             <link rel="stylesheet" href="{% static "apps/hpc/css/hpc___content___center___explorer.css" %}?{{ ctx___now }}">
             <link rel="stylesheet" href="{% static "apps/hpc/css/hpc___content___footer.css" %}?{{ ctx___now }}">
-            <link rel="stylesheet" href="{% static "apps/hpc/css/hpc___modal.css" %}?{{ ctx___now }}">
-            <link rel="stylesheet" href="{% static "apps/hpc/css/hpc___modal___message.css" %}?{{ ctx___now }}">
-            <link rel="stylesheet" href="{% static "apps/hpc/css/hpc___modal___form.css" %}?{{ ctx___now }}">
+            <link href="{% static "modal/css/modal.css" %}?{{ ctx___now }}" rel="stylesheet">
+            <link href="{% static "modal/css/modal___message.css" %}?{{ ctx___now }}" rel="stylesheet">
+            <link href="{% static "modal/css/modal___form.css" %}?{{ ctx___now }}" rel="stylesheet">
+            <link href="{% static "modal/css/modal___table.css" %}?{{ ctx___now }}" rel="stylesheet">
             <!--[if lt IE 9]>
                 <script src="{% static "vendors/ie/js/ie8-responsive-file-warning.js" %}?{{ ctx___now }}"></script>
             <![endif]-->
@@ -97,16 +98,18 @@
                     </footer>
                 </section>
                 <!-- Application HPC Modal -->
-                <div id="application___hpc___modal" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="true">
+                <div id="site___modal" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="true">
                 </div>
                 <!-- Application HPC Modal Modal -->
-                <div id="application___hpc___modal___modal" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="true">
+                <div id="site___modal___modal" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="true">
                 </div>
             </div>
             <!-- jQuery -->
             <script src="{% static "vendors/jquery/jquery.min.js" %}?{{ ctx___now }}"></script>
             <!-- Bootstrap -->
             <script src="{% static "vendors/bootstrap/js/bootstrap.min.js" %}?{{ ctx___now }}"></script>
+            <!-- CSRF Token Ajax Post -->
+            <script src="{% static "vendors/ajax.csrftoken/js/ajax.csrftoken.js" %}?{{ ctx___now }}"></script>
             <!-- CustomScrollbar -->
             <script src="{% static "vendors/malihu-custom-scrollbar/jquery.mCustomScrollbar.concat.min.js" %}?{{ ctx___now }}"></script>
             <!-- ChartJS -->

@@ -1,0 +1,79 @@
+{% load i18n %}
+{% load staticfiles %}
+{% now "YmdHis" as ctx___now %}
+{% spaceless %}
+    <!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <!-- Application Notifications Title -->
+            <title data-url="{% url "notifications:index___title" %}">{% include "apps/notifications/___includes___/title/title.html" %}</title>
+
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+            <meta charset="utf-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <!-- favicon -->
+            <link rel="shortcut icon" href="{% static 'apps/website/img/favicon/favicon.png' %}?{{ ctx___now }}" type="image/png">
+            <!-- Bootstrap -->
+            <link href="{% static "vendors/bootstrap/css/bootstrap.min.css" %}?{{ ctx___now }}" rel="stylesheet"/>
+            <!-- Font Awesome -->
+            <link href="{% static "vendors/font-awesome/css/font-awesome.min.css" %}?{{ ctx___now }}" rel="stylesheet"/>
+            <link href="{% static "vendors/font-awesome/css/font-awesome-animation.min.css" %}?{{ ctx___now }}" rel="stylesheet"/>
+            <!-- Application Notifications Custom Theme Style -->
+            <link href="{% static "apps/notifications/css/notifications.css" %}?{{ ctx___now }}" rel="stylesheet">
+            <link href="{% static "apps/notifications/css/notifications___header.css" %}?{{ ctx___now }}" rel="stylesheet">
+            <link href="{% static "apps/notifications/css/notifications___content.css" %}?{{ ctx___now }}" rel="stylesheet">
+            <link href="{% static "apps/notifications/css/notifications___content___center.css" %}?{{ ctx___now }}" rel="stylesheet">
+            <link href="{% static "apps/notifications/css/notifications___content___footer.css" %}?{{ ctx___now }}" rel="stylesheet">
+            <link href="{% static "modal/css/modal.css" %}?{{ ctx___now }}" rel="stylesheet">
+            <link href="{% static "modal/css/modal___message.css" %}?{{ ctx___now }}" rel="stylesheet">
+            <link href="{% static "modal/css/modal___form.css" %}?{{ ctx___now }}" rel="stylesheet">
+            <link href="{% static "modal/css/modal___table.css" %}?{{ ctx___now }}" rel="stylesheet">
+            <!--[if lt IE 9]>
+                <script src="{% static "vendors/ie/js/ie8-responsive-file-warning.js" %}?{{ ctx___now }}"></script>
+            <![endif]-->
+            <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+            <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+            <!--[if lt IE 9]>
+                <script src="{% static "vendors/html5shiv/html5shiv.min.js" %}?{{ ctx___now }}"></script>
+                <script src="{% static "vendors/respond/respond.min.js" %}?{{ ctx___now }}"></script>
+            <![endif]-->
+        </head>
+        <body>
+            <!-- Application Notifications -->
+            <div id="application___notifications">
+                <!-- Application Notifications Load -->
+                <div id="application___notifications___load" class="hidden" data-url="{% url "notifications:index___load" %}">
+                    {% include "apps/notifications/___includes___/load/load.html" %}
+                </div>
+                <!-- Application Notifications Header -->
+                <header id="application___notifications___header" class="navbar navbar-fixed-top" data-url="{% url "notifications:index___header" %}">
+                </header>
+                <!-- Application Notifications Content -->
+                <section id="application___notifications___content">
+                    <!-- Application notifications Content Center -->
+                    <div id="application___notifications___content___center" data-url="{% url "notifications:index___content___center" %}">
+                    </div>
+                    <!-- Application Notifications Content Footer -->
+                    <footer id="application___notifications___content___footer" data-url="{% url "notifications:index___content___footer" %}">
+                    </footer>
+                </section>
+                <!-- Application Notifications Modal -->
+                <div id="site___modal" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="true">
+                </div>
+                <!-- Application Notifications Modal Modal -->
+                <div id="site___modal___modal" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="true">
+                </div>
+            </div>
+            <!-- jQuery -->
+            <script src="{% static "vendors/jquery/jquery.min.js" %}?{{ ctx___now }}"></script>
+            <!-- Bootstrap -->
+            <script src="{% static "vendors/bootstrap/js/bootstrap.min.js" %}?{{ ctx___now }}"></script>
+            <!-- CSRF Token Ajax Post -->
+            <script src="{% static "vendors/ajax.csrftoken/js/ajax.csrftoken.js" %}?{{ ctx___now }}"></script>
+            <!-- Application Notifications Custom Theme JavaScript -->
+            <script src="{% static "apps/notifications/js/notifications.js" %}?{{ ctx___now }}"></script>
+            <script src="{% static "apps/notifications/js/notifications___alerts.js" %}?{{ ctx___now }}"></script>
+        </body>
+    </html>
+{% endspaceless %}

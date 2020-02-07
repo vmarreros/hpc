@@ -7,20 +7,20 @@ var hpc_software_request_saveForm = function () {
         dataType: 'json',
         cache: false,
         beforeSend: function () {
-            ___HTML___application___hpc___modal___modal_content___modal_body___SHOW_LOAD___();
+            ___HTML___modal___modal_content___modal_body___SHOW_LOAD___();
         },
         success: function (data) {
             if (data.___BOOLEAN___ERROR___) {
-                ___HTML___application___hpc___modal___SHOW_MESSAGE_ERROR___(data);
+                ___HTML___modal___SHOW_MESSAGE_ERROR___(data);
             }
             else {
-                var $application___hpc___modal = $("#application___hpc___modal");
+                var $site___modal = $("#site___modal");
                 if (data.___BOOLEAN___IS_VALID_FORM___) {
-                    ___HTML___application___hpc___modal___SHOW_MESSAGE_OK___(data);
+                    ___HTML___modal___SHOW_MESSAGE_OK___(data);
                 }
                 else {
-                    $application___hpc___modal.html(data.___HTML___APPLICATION___HPC___MODAL___);
-                    $application___hpc___modal.find(".modal___message").html(data.___HTML___APPLICATION___HPC___MODAL___MESSAGE___);
+                    $site___modal.html(data.___HTML___MODAL___);
+                    $site___modal.find(".modal___message").html(data.___HTML___MODAL___MESSAGE___);
                 }
             }
         }
@@ -28,5 +28,5 @@ var hpc_software_request_saveForm = function () {
     return false;
 };
 
-$("#application___hpc___modal")
+$("#site___modal")
     .on("submit", "#hpc_software_request_submit", hpc_software_request_saveForm);

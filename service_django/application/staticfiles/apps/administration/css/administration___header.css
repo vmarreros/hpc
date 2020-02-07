@@ -78,6 +78,8 @@
     min-height :50px;
     color      :#ffffff;
     cursor     :pointer;
+    font-size: 13px !important;
+    font-weight: bolder !important;
 }
 
 #application___administration___header .header___links > li > a:hover,
@@ -119,7 +121,7 @@
     margin-bottom :-6px;
 }
 
-#application___administration___header .header___links > li:nth-child(2) > a > img
+#application___administration___header .header___links > li:nth-child(3) > a > img
 {
     width        :30px;
     height       :20px;
@@ -181,7 +183,7 @@
 #application___administration___header .header___links > li.dropdown > ul.dropdown-menu > li > a:focus,
 #application___administration___header .header___links > li.dropdown > ul.dropdown-menu > li > a:focus > div > span
 {
-    background-color :#002E6D;
+    background-color :#6D002E;
     color            :#ffffff;
 }
 
@@ -205,7 +207,7 @@
 
 #application___administration___header .header___links > li.dropdown > ul.dropdown-menu.dropdown_menu___alerts
 {
-    width :500px;
+    width :450px;
 }
 
 #application___administration___header .header___links > li.dropdown > ul.dropdown-menu.dropdown_menu___user

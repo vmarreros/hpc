@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from . import models
 from django.conf import settings
 from django.contrib import messages

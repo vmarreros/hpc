@@ -1,11 +1,7 @@
-# -*- coding: utf-8 -*-
-# django modules import
 from django.contrib import messages
 
-# python libraries import
 import json
 
-# user modules import
 from . import ssh, utils as utils___hpc
 
 
@@ -66,7 +62,7 @@ def columns7(line):
 
 
 def command_execution(request, option, dict___data, parameters):
-    instance = request.___APPLICATION___SECURITY___USER___
+    instance = request.security_user
     command = 'ls'
     if option == 'envVars':
         command = 'echo $USER $UID $HOME $PATH $SHELL'

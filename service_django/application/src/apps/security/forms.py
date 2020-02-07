@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from . import ldap, models
 from captcha.fields import CaptchaField
 from django import forms

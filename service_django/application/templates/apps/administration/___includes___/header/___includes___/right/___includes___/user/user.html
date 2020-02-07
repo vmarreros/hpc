@@ -1,21 +1,21 @@
 {% load application___security %}
 {% load i18n %}
 
-{% if request|___required___application___security___user___ %}
+{% if request|required_security_user %}
     <li class="dropdown">
         <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-hover="dropdown" role="button">
-            <img src="{{ request|___get_string___application___security___user___avatar_url___ }}" class="img-circle"/>
-            <span class="hidden-xs hidden-sm"> {{ request|___get_instance___application___security___user___ }}</span><span class="caret"></span>
+            <img src="{{ request|get_string_security_user_avatar_url }}" class="img-circle"/>
+            <span class="hidden-xs hidden-sm"> {{ request.security_user.first_name }}</span><span class="caret"></span>
         </a>
         <ul class="dropdown-menu dropdown_menu___user" role="menu">
             <li>
-                <a data-url="{% url "administration:profile" %}" class="LINK___application___administration___modal___reload">
+                <a data-url="{% url "administration:profile" %}" class="LINK___modal___reload">
                     <span class="fa fa-user fa-fw" aria-hidden="true"></span> {% trans "HEADER___RIGHT___USER___PROFILE" %}
                 </a>
             </li>
             <li class="divider"></li>
             <li>
-                <a data-url="{% url "administration:logout" %}" class="LINK___application___administration___modal___reload">
+                <a data-url="{% url "administration:logout" %}" class="LINK___modal___reload">
                     <span class="fa fa-sign-out fa-fw" aria-hidden="true"></span> {% trans "HEADER___RIGHT___USER___LOGOUT" %}
                 </a>
             </li>

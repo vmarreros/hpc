@@ -83,8 +83,8 @@ $('#application___hpc___content___center')
                 type: "GET",
                 dataSrc: function(response) {
                     if(response['___BOOLEAN___ERROR___']){
-                        ___HTML___application___hpc___modal___SHOW_LOAD___();
-                        ___HTML___application___hpc___modal___SHOW_MESSAGE_ERROR___(response);
+                        ___HTML___modal___SHOW_LOAD___();
+                        ___HTML___modal___SHOW_MESSAGE_ERROR___(response);
                         return [];
                     }
                     else {
@@ -147,8 +147,8 @@ $('#application___hpc___content___center')
                 },
                 dataSrc: function(response) {
                     if(response['___BOOLEAN___ERROR___']){
-                        ___HTML___application___hpc___modal___SHOW_LOAD___();
-                        ___HTML___application___hpc___modal___SHOW_MESSAGE_ERROR___(response);
+                        ___HTML___modal___SHOW_LOAD___();
+                        ___HTML___modal___SHOW_MESSAGE_ERROR___(response);
                         return [];
                     }
                     else {

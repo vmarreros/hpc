@@ -17,7 +17,7 @@
         {% for ctx___language in ctx___available_lenguages_info %}
             {% if ctx___language.code != ctx___current_language %}
                 <li>
-                    <a data-url="{% url "bigdata:locale" %}?locale={{ ctx___language.code }}" class="LINK___application___bigdata___modal___action_locale">
+                    <a data-url="{% url "bigdata:locale" %}?locale={{ ctx___language.code }}" class="LINK___modal___action_locale">
                         <img src="{% static "apps/security/img/locale/"|add:ctx___language.code|add:".png" %}" alt="{% trans ctx___language.name %}"/> {% trans ctx___language.name %}
                     </a>
                 </li>

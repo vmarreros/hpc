@@ -1,31 +1,24 @@
-# -*- coding: utf-8 -*-
-# django modules import
 from django import http
 from django.contrib import messages
 from django.http import HttpResponse
 from django.utils.translation import ugettext_lazy as _
 
-# python libraries import
 from tempfile import TemporaryFile
 from datetime import datetime
 
-# user modules import
-from ....security import (
-    decorators as decorators___application___security,
-    utils as utils___application___security
-)
-from src.apps.hpc import utils as utils___hpc
-from ... import ssh, linux, crlf
+from src.apps.security import decorators, utils as utils_security
+from src.apps.hpc import utils
+from src.apps.hpc import ssh, linux, crlf
 from . import forms
 
 
-@decorators___application___security.___required___request_is_ajax___()
-@decorators___application___security.___required___application___security___user___is_ldapuser_or_ldapuserimported___(___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___HPC___)
+@decorators.ajax_required()
+@decorators.security_user_is_ldapuser_or_ldapuserimported(___application___security___from___module___=utils_security.___APPLICATION___SECURITY___FROM___MODULE___HPC___)
 def index(request):
     dict___data = dict()
     path = linux.generate_data_dict(request, 'path')
     if path:
-        dict___data['___HTML___HPC___CONTENT___CENTER___'] = utils___hpc.___html___template___(
+        dict___data['___HTML___CONTENT___CENTER___'] = utils.___html___template___(
             request=request,
             context={
                 'home': path,
@@ -35,17 +28,17 @@ def index(request):
         )
         return http.JsonResponse(dict___data)
     else:
-        return utils___hpc.___httpresponse___error___(request)
+        return utils.___httpresponse___error___(request)
 
 
-@decorators___application___security.___required___request_is_ajax___()
-@decorators___application___security.___required___application___security___user___is_ldapuser_or_ldapuserimported___(___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___HPC___)
+@decorators.ajax_required()
+@decorators.security_user_is_ldapuser_or_ldapuserimported(___application___security___from___module___=utils_security.___APPLICATION___SECURITY___FROM___MODULE___HPC___)
 def ls(request):
     dict___data = dict()
     path = request.GET.get('path', None)
     data = linux.generate_data_dict(request, option='list', dict___data=dict___data, parameters=[path])
     if data:
-        dict___data['list'] = utils___hpc.___html___template___(
+        dict___data['list'] = utils.___html___template___(
             request=request,
             context={
                 'data': data
@@ -54,13 +47,13 @@ def ls(request):
         )
         return http.JsonResponse(dict___data)
     else:
-        return utils___hpc.___httpresponse___error___(request)
+        return utils.___httpresponse___error___(request)
 
 
-@decorators___application___security.___required___request_is_ajax___()
-@decorators___application___security.___required___application___security___user___is_ldapuser_or_ldapuserimported___(___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___HPC___)
+@decorators.ajax_required()
+@decorators.security_user_is_ldapuser_or_ldapuserimported(___application___security___from___module___=utils_security.___APPLICATION___SECURITY___FROM___MODULE___HPC___)
 def edit(request):
-    instance = request.___APPLICATION___SECURITY___USER___
+    instance = request.security_user
     dict___data = dict()
     dict___data['___BOOLEAN___ERROR___'] = False
     if request.method == 'POST':
@@ -85,18 +78,18 @@ def edit(request):
                 if error:
                     messages.add_message(request, messages.ERROR, response)
                 else:
-                    dict___data['___HTML___APPLICATION___HPC___MODAL___'] = utils___hpc.___html___template___(
+                    dict___data['___HTML___MODAL___'] = utils.___html___template___(
                         request=request,
                         context={'form': forms.FileEditForm(content=response)},
                         template_name='apps/hpc/___includes___/modal/hpc/edit.html'
                     )
                     return http.JsonResponse(dict___data)
         dict___data['___BOOLEAN___ERROR___'] = True
-        return utils___hpc.___jsonresponse___error___(request)
+        return utils.___jsonresponse___error___(request)
 
 
-@decorators___application___security.___required___request_is_ajax___()
-@decorators___application___security.___required___application___security___user___is_ldapuser_or_ldapuserimported___(___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___HPC___)
+@decorators.ajax_required()
+@decorators.security_user_is_ldapuser_or_ldapuserimported(___application___security___from___module___=utils_security.___APPLICATION___SECURITY___FROM___MODULE___HPC___)
 def rename(request):
     dict___data = dict()
     dict___data['___BOOLEAN___ERROR___'] = False
@@ -106,7 +99,7 @@ def rename(request):
         new_name = request.POST.get('generic', None)
         data = linux.generate_data_dict(request, option='rename', dict___data=dict___data, parameters=[path, name, new_name])
         if data:
-            dict___data['list'] = utils___hpc.___html___template___(
+            dict___data['list'] = utils.___html___template___(
                 request=request,
                 context={
                     'data': data
@@ -115,9 +108,9 @@ def rename(request):
             )
             return http.JsonResponse(dict___data)
         else:
-            return utils___hpc.___jsonresponse___error___(request)
+            return utils.___jsonresponse___error___(request)
     else:
-        dict___data['___HTML___APPLICATION___HPC___MODAL___'] = utils___hpc.___html___template___(
+        dict___data['___HTML___MODAL___'] = utils.___html___template___(
             request=request,
             context={
                 'form': forms.GenericForm(option='rename')
@@ -127,9 +120,9 @@ def rename(request):
         return http.JsonResponse(dict___data)
 
 
-@decorators___application___security.___required___application___security___user___is_ldapuser_or_ldapuserimported___(___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___HPC___)
+@decorators.security_user_is_ldapuser_or_ldapuserimported(___application___security___from___module___=utils_security.___APPLICATION___SECURITY___FROM___MODULE___HPC___)
 def download(request):
-    instance = request.___APPLICATION___SECURITY___USER___
+    instance = request.security_user
     path = request.GET.get('path', None)
     name = request.GET.get('name', None)
     ftype = request.GET.get('type', None)
@@ -157,8 +150,8 @@ def download(request):
     return response
 
 
-@decorators___application___security.___required___request_is_ajax___()
-@decorators___application___security.___required___application___security___user___is_ldapuser_or_ldapuserimported___(___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___HPC___)
+@decorators.ajax_required()
+@decorators.security_user_is_ldapuser_or_ldapuserimported(___application___security___from___module___=utils_security.___APPLICATION___SECURITY___FROM___MODULE___HPC___)
 def paste(request):
     dict___data = dict()
     dict___data['___BOOLEAN___ERROR___'] = False
@@ -171,7 +164,7 @@ def paste(request):
             parameters.append(file)
         data = linux.generate_data_dict(request, option='paste', dict___data=dict___data, parameters=parameters)
         if data:
-            dict___data['list'] = utils___hpc.___html___template___(
+            dict___data['list'] = utils.___html___template___(
                 request=request,
                 context={
                     'data': data
@@ -180,13 +173,13 @@ def paste(request):
             )
             return http.JsonResponse(dict___data)
         else:
-            return utils___hpc.___httpresponse___error___(request)
+            return utils.___httpresponse___error___(request)
 
 
-@decorators___application___security.___required___request_is_ajax___()
-@decorators___application___security.___required___application___security___user___is_ldapuser_or_ldapuserimported___(___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___HPC___)
+@decorators.ajax_required()
+@decorators.security_user_is_ldapuser_or_ldapuserimported(___application___security___from___module___=utils_security.___APPLICATION___SECURITY___FROM___MODULE___HPC___)
 def execute(request):
-    instance = request.___APPLICATION___SECURITY___USER___
+    instance = request.security_user
     dict___data = dict()
     dict___data['___BOOLEAN___ERROR___'] = False
     if request.method == 'POST':
@@ -197,11 +190,11 @@ def execute(request):
             dict___data['___BOOLEAN___ERROR___'] = True
         else:
             messages.add_message(request, messages.SUCCESS, _('HPC___EXPLORER___MESSAGES___ExecuteOk'))
-        dict___data['___HTML___APPLICATION___HPC___MODAL___'] = utils___hpc.___html___template_modal___message___(request=request)
-        dict___data['___HTML___APPLICATION___HPC___MODAL___MESSAGE___'] = utils___hpc.___html___template_message___(request=request)
+        dict___data['___HTML___MODAL___'] = utils.___html___template_modal___message___(request=request)
+        dict___data['___HTML___MODAL___MESSAGE___'] = utils.___html___template_message___(request=request)
         return http.JsonResponse(dict___data)
     else:
-        dict___data['___HTML___APPLICATION___HPC___MODAL___'] = utils___hpc.___html___template___(
+        dict___data['___HTML___MODAL___'] = utils.___html___template___(
             request=request,
             context=dict(),
             template_name='apps/hpc/___includes___/modal/hpc/execute.html'
@@ -209,8 +202,8 @@ def execute(request):
         return http.JsonResponse(dict___data)
 
 
-@decorators___application___security.___required___request_is_ajax___()
-@decorators___application___security.___required___application___security___user___is_ldapuser_or_ldapuserimported___(___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___HPC___)
+@decorators.ajax_required()
+@decorators.security_user_is_ldapuser_or_ldapuserimported(___application___security___from___module___=utils_security.___APPLICATION___SECURITY___FROM___MODULE___HPC___)
 def delete(request):
     dict___data = dict()
     dict___data['___BOOLEAN___ERROR___'] = False
@@ -218,7 +211,7 @@ def delete(request):
         values = request.POST.getlist('values[]', None)
         data = linux.generate_data_dict(request, option='delete', dict___data=dict___data, parameters=values)
         if data:
-            dict___data['list'] = utils___hpc.___html___template___(
+            dict___data['list'] = utils.___html___template___(
                 request=request,
                 context={
                     'data': data
@@ -227,9 +220,9 @@ def delete(request):
             )
             return http.JsonResponse(dict___data)
         else:
-            return utils___hpc.___httpresponse___error___(request)
+            return utils.___httpresponse___error___(request)
     else:
-        dict___data['___HTML___APPLICATION___HPC___MODAL___'] = utils___hpc.___html___template___(
+        dict___data['___HTML___MODAL___'] = utils.___html___template___(
             request=request,
             context=dict(),
             template_name='apps/hpc/___includes___/modal/hpc/delete.html'
@@ -237,12 +230,12 @@ def delete(request):
         return http.JsonResponse(dict___data)
 
 
-@decorators___application___security.___required___request_is_ajax___()
-@decorators___application___security.___required___application___security___user___is_ldapuser_or_ldapuserimported___(___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___HPC___)
+@decorators.ajax_required()
+@decorators.security_user_is_ldapuser_or_ldapuserimported(___application___security___from___module___=utils_security.___APPLICATION___SECURITY___FROM___MODULE___HPC___)
 def go_to(request):
     dict___data = dict()
     dict___data['___BOOLEAN___ERROR___'] = False
-    dict___data['___HTML___APPLICATION___HPC___MODAL___'] = utils___hpc.___html___template___(
+    dict___data['___HTML___MODAL___'] = utils.___html___template___(
         request=request,
         context=dict(),
         template_name='apps/hpc/___includes___/modal/hpc/goto.html'
@@ -250,8 +243,8 @@ def go_to(request):
     return http.JsonResponse(dict___data)
 
 
-@decorators___application___security.___required___request_is_ajax___()
-@decorators___application___security.___required___application___security___user___is_ldapuser_or_ldapuserimported___(___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___HPC___)
+@decorators.ajax_required()
+@decorators.security_user_is_ldapuser_or_ldapuserimported(___application___security___from___module___=utils_security.___APPLICATION___SECURITY___FROM___MODULE___HPC___)
 def create_folder(request):
     dict___data = dict()
     dict___data['___BOOLEAN___ERROR___'] = False
@@ -260,7 +253,7 @@ def create_folder(request):
         name = request.POST.get('generic', None)
         data = linux.generate_data_dict(request, option='folder', dict___data=dict___data, parameters=[path, name])
         if data:
-            dict___data['list'] = utils___hpc.___html___template___(
+            dict___data['list'] = utils.___html___template___(
                 request=request,
                 context={
                     'data': data
@@ -269,9 +262,9 @@ def create_folder(request):
             )
             return http.JsonResponse(dict___data)
         else:
-            return utils___hpc.___jsonresponse___error___(request)
+            return utils.___jsonresponse___error___(request)
     else:
-        dict___data['___HTML___APPLICATION___HPC___MODAL___'] = utils___hpc.___html___template___(
+        dict___data['___HTML___MODAL___'] = utils.___html___template___(
             request=request,
             context={
                 'form': forms.GenericForm(option='folder')
@@ -281,8 +274,8 @@ def create_folder(request):
         return http.JsonResponse(dict___data)
 
 
-@decorators___application___security.___required___request_is_ajax___()
-@decorators___application___security.___required___application___security___user___is_ldapuser_or_ldapuserimported___(___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___HPC___)
+@decorators.ajax_required()
+@decorators.security_user_is_ldapuser_or_ldapuserimported(___application___security___from___module___=utils_security.___APPLICATION___SECURITY___FROM___MODULE___HPC___)
 def create_file(request):
     dict___data = dict()
     dict___data['___BOOLEAN___ERROR___'] = False
@@ -291,7 +284,7 @@ def create_file(request):
         name = request.POST.get('generic', None)
         data = linux.generate_data_dict(request, option='file', dict___data=dict___data, parameters=[path, name])
         if data:
-            dict___data['list'] = utils___hpc.___html___template___(
+            dict___data['list'] = utils.___html___template___(
                 request=request,
                 context={
                     'data': data
@@ -300,9 +293,9 @@ def create_file(request):
             )
             return http.JsonResponse(dict___data)
         else:
-            return utils___hpc.___jsonresponse___error___(request)
+            return utils.___jsonresponse___error___(request)
     else:
-        dict___data['___HTML___APPLICATION___HPC___MODAL___'] = utils___hpc.___html___template___(
+        dict___data['___HTML___MODAL___'] = utils.___html___template___(
             request=request,
             context={
                 'form': forms.GenericForm(option='file')
@@ -312,8 +305,8 @@ def create_file(request):
         return http.JsonResponse(dict___data)
 
 
-@decorators___application___security.___required___request_is_ajax___()
-@decorators___application___security.___required___application___security___user___is_ldapuser_or_ldapuserimported___(___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___HPC___)
+@decorators.ajax_required()
+@decorators.security_user_is_ldapuser_or_ldapuserimported(___application___security___from___module___=utils_security.___APPLICATION___SECURITY___FROM___MODULE___HPC___)
 def upload(request):
     dict___data = dict()
     dict___data['___BOOLEAN___ERROR___'] = False
@@ -321,18 +314,18 @@ def upload(request):
         path = request.POST.get('path')
         files = request.FILES.getlist('files')
         form = forms.UploadMultipleFilesForm(request.POST, request.FILES)
-        instance = request.___APPLICATION___SECURITY___USER___
+        instance = request.security_user
         if form.is_valid():
             for file in files:
                 result = ssh.ssh_sftp_putfo(instance.group_identifier(), instance.private_key.path, file, path + '/' + file.name)
                 if isinstance(result, tuple):
                     messages.add_message(request, messages.ERROR, result[1])
                     dict___data['___BOOLEAN___ERROR___'] = True
-                    dict___data['___HTML___APPLICATION___HPC___MODAL___'] = utils___hpc.___html___template_modal___message___(request=request)
-                    dict___data['___HTML___APPLICATION___HPC___MODAL___MESSAGE___'] = utils___hpc.___html___template_message___(request=request)
+                    dict___data['___HTML___MODAL___'] = utils.___html___template_modal___message___(request=request)
+                    dict___data['___HTML___MODAL___MESSAGE___'] = utils.___html___template_message___(request=request)
             data = linux.generate_data_dict(request, option='list', dict___data=dict___data, parameters=[path])
             if data:
-                dict___data['list'] = utils___hpc.___html___template___(
+                dict___data['list'] = utils.___html___template___(
                     request=request,
                     context={
                         'data': data
@@ -340,22 +333,22 @@ def upload(request):
                     template_name='apps/hpc/___includes___/content/center/hpc_explorer/___includes___/list.html'
                 )
                 return http.JsonResponse(dict___data)
-        return utils___hpc.___httpresponse___error___(request)
+        return utils.___httpresponse___error___(request)
     else:
-        dict___data['___HTML___APPLICATION___HPC___MODAL___'] = utils___hpc.___html___template___(
+        dict___data['___HTML___MODAL___'] = utils.___html___template___(
             request=request,
             context={
                 'form': forms.UploadMultipleFilesForm()
             },
             template_name='apps/hpc/___includes___/modal/hpc/upload.html'
         )
-        dict___data['___HTML___APPLICATION___HPC___MODAL___MESSAGE___'] = utils___hpc.___html___template_message___(request=request)
+        dict___data['___HTML___MODAL___MESSAGE___'] = utils.___html___template_message___(request=request)
         return http.JsonResponse(dict___data)
 
 
-@decorators___application___security.___required___request_is_ajax___()
-@decorators___application___security.___required___application___security___user___is_ldapuser_or_ldapuserimported___(___application___security___from___module___=utils___application___security.___APPLICATION___SECURITY___FROM___MODULE___HPC___)
+@decorators.ajax_required()
+@decorators.security_user_is_ldapuser_or_ldapuserimported(___application___security___from___module___=utils_security.___APPLICATION___SECURITY___FROM___MODULE___HPC___)
 def error(request):
     message = request.GET.get('message')
     messages.add_message(request, messages.ERROR, message)
-    return utils___hpc.___httpresponse___error___(request)
+    return utils.___httpresponse___error___(request)

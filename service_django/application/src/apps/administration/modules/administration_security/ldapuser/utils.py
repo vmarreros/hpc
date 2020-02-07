@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from . import forms
 from src.apps.security import ldap, models
 from django.contrib import messages

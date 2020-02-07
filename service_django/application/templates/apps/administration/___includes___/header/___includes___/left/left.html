@@ -13,7 +13,7 @@
             <span class="fa fa-sitemap fa-fw" aria-hidden="true"></span> <span class="hidden-xs">{% trans "HEADER___LEFT___WEBSITE" %}</span>
         </a>
     </li>
-    {% if request|___required___application___security___user___is_ldapuser_or_ldapuserimported___ %}
+    {% if request|security_user_is_ldapuser_or_ldapuserimported %}
         <li>
             <a data-url="{% url "hpc:index" %}" class="LINK___application___reload">
                 <span class="fa fa-server fa-fw" aria-hidden="true"></span> <span class="hidden-xs">{% trans "HEADER___LEFT___HPC" %}</span>
@@ -25,7 +25,7 @@
             </a>
         </li>
     {% endif %}
-    {% if request|___required___application___security___user___ and request|___get_boolean___show_the_administration_link___ %}
+    {% if request|required_security_user and request|get_boolean_show_the_administration_link %}
         <li class="active">
             <a data-url="{% url "administration:index" %}" class="LINK___application___reload">
                 <span class="fa fa-wrench faa-tada animated" aria-hidden="true"></span> <span class="hidden-xs">{% trans "HEADER___LEFT___ADMINISTRATION" %}</span>

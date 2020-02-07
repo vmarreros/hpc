@@ -1,0 +1,52 @@
+{% load i18n %}
+{% load application___security %}
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="btn btn-sm btn-default close LINK___modal___action_close" data-dismiss="modal" aria-label="Close" title="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> {% trans "HPC___CONTENT___SCRIPT___MODAL___VARIABLES___TITLE" %}</h4>
+        </div>
+        <div class="modal-body">
+            <!-- Modal Menssage -->
+            <div class="modal___message">
+            </div>
+            <!-- Nav tabs -->
+            <div class="table-responsive modal___table">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>From</th>
+                        <th>Subject</th>
+                        <th>Desde</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for notification in notifications %}
+                    <tr>
+                        <td>
+                            <img data-toggle="tooltip" title="{{ notification.from_user }} ({{ notification.from_user.group_identifier }})" width="30px" src="{{ notification.from_user|get_string_notification_user_avatar_url }}" class="img-circle"/>
+                        </td>
+                        <td>{{ notification.subject }}</td>
+                        <td>{{ notification.timesince }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="10" class="text-center">
+                            <span class="glyphicon glyphicon-hand-right"></span> {% trans "ADMINISTRATION___CONTENT___OPTION_NOT_FOUND" %} <strong>&OpenCurlyDoubleQuote;{% trans "ADMINISTRATION___CONTENT___HOME___DOCUMENTS" %}&CloseCurlyDoubleQuote;</strong>.
+                        </td>
+                    </tr>
+                {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-sm btn-default pull-left LINK___modal___action_close" data-dismiss="modal" title="{% trans "APPLICATION___SECURITY___ACTION_CLOSE" %}">
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span><span class="hidden-xs"> {% trans "APPLICATION___SECURITY___ACTION_CLOSE" %}</span>
+            </button>
+        </div>
+    </div>
+</div>
